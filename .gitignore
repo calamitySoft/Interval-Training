@@ -2,8 +2,10 @@
 # http://gist.github.com/137348
 
 # Xcode extras
-*.mode1v3		# In Project.xcodeproj.  User file, doesn't need to be committed.
-*.pbxuser		# In Project.xcodeproj.  User file.
+*.mode1v3
+## In Project.xcodeproj.  User file, doesn't need to be committed.
+*.pbxuser
+## In Project.xcodeproj.  User file.
 *.perspective
 *.perspectivev3
 *.pyc
@@ -11,5 +13,6 @@
 build/*
 
 # OSX extras
+.gitignore~
 .DS_Store
 profile
