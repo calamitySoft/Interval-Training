@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		22206A651223715E0050D13F /* note.m in Sources */ = {isa = PBXBuildFile; fileRef = 22206A641223715E0050D13F /* note.m */; };
+		22206A6A12237D1C0050D13F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22206A6912237D1C0050D13F /* AudioToolbox.framework */; };
 		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
 		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
@@ -25,6 +27,9 @@
 		1D3623250D0F684500981E51 /* Interval_TrainingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interval_TrainingAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Interval-Training.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Interval-Training.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		22206A631223715E0050D13F /* note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = note.h; sourceTree = "<group>"; };
+		22206A641223715E0050D13F /* note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = note.m; sourceTree = "<group>"; };
+		22206A6912237D1C0050D13F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
 		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
+				22206A6A12237D1C0050D13F /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +88,8 @@
 		289233A00DB2D0730083E9F9 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
+				22206A631223715E0050D13F /* note.h */,
+				22206A641223715E0050D13F /* note.m */,
 				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
 				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
 			);
@@ -98,6 +106,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				22206A6912237D1C0050D13F /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -198,6 +207,7 @@
 				1D3623260D0F684500981E51 /* Interval_TrainingAppDelegate.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
+				22206A651223715E0050D13F /* note.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
