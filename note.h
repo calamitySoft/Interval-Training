@@ -13,6 +13,8 @@
 	
 	float hertz;
 	NSString *noteName;
+	
+	// The actual samples
 	SystemSoundID wholeSample;
 	SystemSoundID halfSample;
 	SystemSoundID quarterSample;
@@ -24,8 +26,10 @@
 @property (nonatomic, copy) NSString *noteName;
 
 -(id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz;
--(void) playNote:(NSString *)theNote;
 
+-(void) playNote:(NSString *)theNote; // does a switch to pick the right note playback
+
+// Functions to play the samples
 -(void) playWhole;
 -(void) playHalf;
 -(void) playQuarter;

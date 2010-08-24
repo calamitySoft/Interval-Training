@@ -33,7 +33,7 @@
 	{
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
 		
-		OSStatus err = AudioServicesCreateSystemSoundID((CFURLRef)soundURL, &wholeNote);
+		OSStatus err = AudioServicesCreateSystemSoundID((CFURLRef)soundURL, &wholeSample);
 		
 		if(err != kAudioServicesNoError)
 			NSLog(@"Could not load %@, error code: %d", soundURL, err);

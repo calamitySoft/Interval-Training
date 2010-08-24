@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		22206A651223715E0050D13F /* note.m in Sources */ = {isa = PBXBuildFile; fileRef = 22206A641223715E0050D13F /* note.m */; };
 		22206A6A12237D1C0050D13F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22206A6912237D1C0050D13F /* AudioToolbox.framework */; };
+		2226F97C1223968E00670702 /* dj.m in Sources */ = {isa = PBXBuildFile; fileRef = 2226F97B1223968E00670702 /* dj.m */; };
 		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
 		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
@@ -30,6 +31,8 @@
 		22206A631223715E0050D13F /* note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = note.h; sourceTree = "<group>"; };
 		22206A641223715E0050D13F /* note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = note.m; sourceTree = "<group>"; };
 		22206A6912237D1C0050D13F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2226F97A1223968E00670702 /* dj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dj.h; sourceTree = "<group>"; };
+		2226F97B1223968E00670702 /* dj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dj.m; sourceTree = "<group>"; };
 		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
 		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 		289233A00DB2D0730083E9F9 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
+				2226F97A1223968E00670702 /* dj.h */,
+				2226F97B1223968E00670702 /* dj.m */,
 				22206A631223715E0050D13F /* note.h */,
 				22206A641223715E0050D13F /* note.m */,
 				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
@@ -208,6 +213,7 @@
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
 				22206A651223715E0050D13F /* note.m in Sources */,
+				2226F97C1223968E00670702 /* dj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
