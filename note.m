@@ -27,7 +27,7 @@
 	if(!self)
 		return nil;
 	
-	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:"W"] ofType:@"wav"];
+	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"wav"];
 	
 	if(soundPath)
 	{
@@ -47,8 +47,35 @@
 
 -(void) playNote:(NSString *)theNote
 {
-	
+	// This function will determine and call the proper play function in future apps
 	[self playWhole];
+}
+
+
+
+-(void) playWhole
+{
+	AudioServicesPlaySystemSound(wholeSample);
+}
+
+-(void) playHalf
+{
+	AudioServicesPlaySystemSound(halfSample);
+}
+
+-(void) playQuarter
+{
+	AudioServicesPlaySystemSound(quarterSample);
+}
+
+-(void) playEighth
+{
+	AudioServicesPlaySystemSound(eighthSample);
+}
+
+-(void) playSixteenth
+{
+	AudioServicesPlaySystemSound(sixteenthSample);
 }
 	
 @end

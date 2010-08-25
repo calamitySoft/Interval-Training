@@ -11,4 +11,24 @@
 
 @implementation dj
 
+
+-(id) init
+{
+	return self;
+}
+
+-(void) playNote:(NSString *)theNote
+{
+	
+}
+
+// Gets handed a base note and finds the 
+-(void) setBase:(NSString *)baseNote
+{
+	base = [noteBank indexOfObjectPassingTest:
+			 ^(id obj, NSUInteger idx, BOOL *stop) {
+				 return ([[obj noteName] isEqualToString:baseNote]);
+			 }];
+	
+}
 @end

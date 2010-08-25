@@ -16,6 +16,7 @@
 	
 	// The actual samples
 	SystemSoundID wholeSample;
+	// The rest of these we probably won't use for this app
 	SystemSoundID halfSample;
 	SystemSoundID quarterSample;
 	SystemSoundID eighthSample;
