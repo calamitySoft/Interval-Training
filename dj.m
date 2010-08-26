@@ -30,7 +30,7 @@
 				 return ([[obj noteName] isEqualToString:baseNote]);
 			 }];
 	// I'm putting 12 as the range for now, and we'll limit our app to an octave.
-	NSRange range = NSMakeRange(root, [NSNumber numberWithInt:12]));
+	NSRange range = NSMakeRange(root, 12);
 	viableNotes = [NSIndexSet indexSetWithIndexesInRange:range];
 	
 }
