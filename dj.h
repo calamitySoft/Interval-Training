@@ -9,12 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "note.h"
 
-@interface dj : NSObject {
+@interface DJ : NSObject {
 
 	NSArray *noteBank;
-	NSIndexSet *viableNotes;
-	NSUInteger base;
-	
+	NSIndexSet *viableNotes;	
 }
 
 -(id) init;

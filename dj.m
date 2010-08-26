@@ -6,10 +6,10 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "dj.h"
+#import "DJ.h"
 
 
-@implementation dj
+@implementation DJ
 
 
 -(id) init
@@ -25,13 +25,14 @@
 // Gets handed a base note and finds the 
 -(void) setBase:(NSString *)baseNote
 {
-	base = [noteBank indexOfObjectPassingTest:
+	NSUInteger root = [noteBank indexOfObjectPassingTest:
 			 ^(id obj, NSUInteger idx, BOOL *stop) {
 				 return ([[obj noteName] isEqualToString:baseNote]);
 			 }];
 	// I'm putting 12 as the range for now, and we'll limit our app to an octave.
-	NSRange range = NSMakeRange(base, [NSNumber numberWithInt:12]));
+	NSRange range = NSMakeRange(root, [NSNumber numberWithInt:12]));
 	viableNotes = [NSIndexSet indexSetWithIndexesInRange:range];
 	
 }
+
 @end
