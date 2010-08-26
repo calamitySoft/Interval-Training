@@ -12,8 +12,9 @@
 @interface dj : NSObject {
 
 	NSArray *noteBank;
-	
+	NSIndexSet *viableNotes;
 	NSUInteger base;
+	
 }
 
 -(id) init;
