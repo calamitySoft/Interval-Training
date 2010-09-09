@@ -27,12 +27,13 @@
 	if(!self)
 		return nil;
 	
-	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"wav"];
+	// Get the filepath to _noteName (whole note).
+	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"aif"];
 	
 	if(soundPath)
 	{
+		// Create a sound ID at var wholeSample.
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-		
 		OSStatus err = AudioServicesCreateSystemSoundID((CFURLRef)soundURL, &wholeSample);
 		
 		if(err != kAudioServicesNoError)
