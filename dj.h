@@ -15,11 +15,11 @@
 	NSIndexSet *viableNotes;	
 }
 
--(id) init;
+- (id)init;
 
--(void)playNote:(NSString *)theNote; // conducts linear search for the note
+- (void)playNote:(NSString *)theNote; // conducts linear search for the note
 
--(void) setBase:(NSString *)baseNote; // Sets a note to the base
+- (void)setBase:(NSString *)baseNote; // Sets a note to the base
 
 
 @end

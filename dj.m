@@ -12,7 +12,7 @@
 @implementation DJ
 
 
--(id) init
+- (id)init
 {
 	self = [super init];
 	if (!self)
@@ -24,7 +24,7 @@
 	return self;
 }
 
--(void) playNote:(NSString *)theNote
+- (void)playNote:(NSString *)theNote
 {
 	NSLog(@"Hello from DJ");
 	Note* noteToPlay = [noteBank objectAtIndex:0];
@@ -32,7 +32,7 @@
 }
 
 // Gets handed a base note and finds the 
--(void) setBase:(NSString *)baseNote
+- (void)setBase:(NSString *)baseNote
 {
 	NSUInteger root = [noteBank indexOfObjectPassingTest:
 			 ^(id obj, NSUInteger idx, BOOL *stop) {

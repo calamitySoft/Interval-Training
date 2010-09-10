@@ -13,14 +13,14 @@
 
 @synthesize hertz, noteName;
 
--(id)init
+- (id)init
 {
 	Note *newNote = [[Note alloc] initWithNoteName:@"A" withHertz:440];
 
 	return newNote;
 }
 
--(id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz
+- (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz
 {
 	self = [super init];
 	
@@ -46,7 +46,7 @@
 	return self;
 }
 
--(void) playNote:(NSString *)theNote
+- (void)playNote:(NSString *)theNote
 {
 	// This function will determine and call the proper play function in future apps
 	[self playWhole];
@@ -54,27 +54,27 @@
 
 
 
--(void) playWhole
+- (void)playWhole
 {
 	AudioServicesPlaySystemSound(wholeSample);
 }
 
--(void) playHalf
+- (void)playHalf
 {
 	AudioServicesPlaySystemSound(halfSample);
 }
 
--(void) playQuarter
+- (void)playQuarter
 {
 	AudioServicesPlaySystemSound(quarterSample);
 }
 
--(void) playEighth
+- (void)playEighth
 {
 	AudioServicesPlaySystemSound(eighthSample);
 }
 
--(void) playSixteenth
+- (void)playSixteenth
 {
 	AudioServicesPlaySystemSound(sixteenthSample);
 }

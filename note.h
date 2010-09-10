@@ -26,15 +26,15 @@
 @property (nonatomic) float hertz;
 @property (nonatomic, copy) NSString *noteName;
 
--(id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz;
+- (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz;
 
--(void) playNote:(NSString *)theNote; // does a switch to pick the right note playback
+- (void)playNote:(NSString *)theNote; // does a switch to pick the right note playback
 
 // Functions to play the samples
--(void) playWhole;
--(void) playHalf;
--(void) playQuarter;
--(void) playEighth;
--(void) playSixteenth;
+- (void)playWhole;
+- (void)playHalf;
+- (void)playQuarter;
+- (void)playEighth;
+- (void)playSixteenth;
 
 @end

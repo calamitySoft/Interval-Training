@@ -28,7 +28,25 @@
     [window makeKeyAndVisible];
 	[self init];
 	
+	[self initMyVars];
+	
     return YES;
+}
+
+- (void)initMyVars {
+	// Initialize myDJ
+	DJ *tempDJ = [[DJ alloc] init];
+	[self setMyDJ:tempDJ];
+	[tempDJ release];
+	
+	[myDJ playNote:@"A"];	// Here for experimental purposes. Should be removed once myDJ is known to work.
+	
+	// Initialize aNoteStrings
+	NSString *tempStr = [[NSString alloc] initWithString:@"A"];
+	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStr, nil];
+	[self setANoteStrings:tempNoteStrings];
+	[tempNoteStrings release];
+	[tempStr release];
 }
 
 
@@ -69,9 +87,11 @@
      */
 }
 
-- (void) init{
+/*
+ - (void)init {
 	aNoteStrings = [[NSArray alloc] initWithObjects:[[NSString alloc ]initWithString:@"A"], nil];
-}
+}*/
+
 #pragma mark -
 #pragma mark Memory management
 
@@ -84,6 +104,10 @@
 
 - (void)dealloc {
 	[myDJ release];
+	[aNoteStrings release];
+	[iCurRoot release];
+	[iCurTarget release];
+	
     [mainViewController release];
     [window release];
     [super dealloc];
@@ -92,13 +116,16 @@
 #pragma mark -
 #pragma mark App Delegation
 
-- (void)replayNote{
+- (void)replayNote {
 	NSLog(@"Hello from delegate, replayNote.");
 	[myDJ playNote:@"A"];
 }
 
-- (void) selectNextNote{
+- (void)selectNextNote {
 	[self setICurRoot:[NSNumber numberWithInt:random() % [aNoteStrings count]]];
+}
+
+- (void)selectNextTarget {
 }
 		
 
