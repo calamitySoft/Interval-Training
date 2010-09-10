@@ -14,8 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ;
-
+@synthesize myDJ, aNoteStrings, iCurRoot, iCurTarget;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -97,5 +96,10 @@
 	NSLog(@"Hello from delegate, replayNote.");
 	[myDJ playNote:@"A"];
 }
+
+- (void) selectNextNote{
+	[self setICurRoot:[NSNumber numberWithInt:random() % [aNoteStrings count]]];
+}
+		
 
 @end

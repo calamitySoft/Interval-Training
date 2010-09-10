@@ -17,13 +17,20 @@
     MainViewController *mainViewController;
 	DJ *myDJ;
 	NSArray *aNoteStrings;
+	NSNumber *iCurRoot;
+	NSNumber *iCurTarget;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
 @property (nonatomic, retain) DJ *myDJ;
+@property (nonatomic, retain) NSArray *aNoteStrings;
+@property (nonatomic, retain) NSNumber *iCurRoot;
+@property (nonatomic, retain) NSNumber *iCurTarget;
 
 - (void)init;
 - (void)replayNote;
+- (void) selectNextNote;	// Returns an NSNumber for the index of the note we'll be using
+- (void) selectNextTarget;
 @end
 
