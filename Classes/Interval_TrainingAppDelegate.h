@@ -16,13 +16,14 @@
     UIWindow *window;
     MainViewController *mainViewController;
 	DJ *myDJ;
+	NSArray *aNoteStrings;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
 @property (nonatomic, retain) DJ *myDJ;
 
+- (void)init;
 - (void)replayNote;
-
 @end
 

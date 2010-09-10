@@ -27,6 +27,7 @@
     // Add the main view controller's view to the window and display.
     [window addSubview:mainViewController.view];
     [window makeKeyAndVisible];
+	[self init];
 	
     return YES;
 }
@@ -69,7 +70,9 @@
      */
 }
 
-
+- (void) init{
+	aNoteStrings = [[NSArray alloc] initWithObjects:[[NSString alloc ]initWithString:@"A"], nil];
+}
 #pragma mark -
 #pragma mark Memory management
 
