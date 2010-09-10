@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "note.h"
+#import "Note.h"
 
 @interface DJ : NSObject {
 

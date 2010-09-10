@@ -14,6 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
+@synthesize myDJ;
 
 
 #pragma mark -
@@ -26,7 +27,7 @@
     // Add the main view controller's view to the window and display.
     [window addSubview:mainViewController.view];
     [window makeKeyAndVisible];
-
+	
     return YES;
 }
 
@@ -80,9 +81,18 @@
 
 
 - (void)dealloc {
+	[myDJ release];
     [mainViewController release];
     [window release];
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark App Delegation
+
+- (void)replayNote{
+	NSLog(@"Hello from delegate, replayNote.");
+	[myDJ playNote:@"A"];
 }
 
 @end

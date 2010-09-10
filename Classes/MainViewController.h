@@ -8,9 +8,21 @@
 
 #import "FlipsideViewController.h"
 
+@protocol ITApplicationDelegate;
+
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
+	id <ITApplicationDelegate> delegate;
 }
 
-- (IBAction)showInfo:(id)sender;
+@property (nonatomic, assign) <ITApplicationDelegate> delegate;
 
+- (IBAction)showInfo:(id)sender;
+- (IBAction)replayNote:(id)sender;
+
+@end
+
+
+
+@protocol ITApplicationDelegate
+- (void)replayNote;
 @end
