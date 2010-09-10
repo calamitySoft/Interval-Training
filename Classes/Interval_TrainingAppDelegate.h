@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
+#import "DJ.h"
 
 @class MainViewController;
 
-@interface Interval_TrainingAppDelegate : NSObject <UIApplicationDelegate> {
+@interface Interval_TrainingAppDelegate : NSObject <UIApplicationDelegate, ITApplicationDelegate> {
     UIWindow *window;
     MainViewController *mainViewController;
+	DJ *myDJ;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
+@property (nonatomic, retain) DJ *myDJ;
+
+- (void)replayNote;
 
 @end
 

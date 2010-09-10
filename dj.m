@@ -7,19 +7,28 @@
 //
 
 #import "DJ.h"
-
+#import "Note.h"
 
 @implementation DJ
 
 
 -(id) init
 {
+	self = [super init];
+	if (!self)
+		return nil;
+	
+	Note *tempNote = [[Note alloc] init];
+	[noteBank arrayByAddingObject:tempNote];
+	
 	return self;
 }
 
 -(void) playNote:(NSString *)theNote
 {
-	
+	NSLog(@"Hello from DJ");
+	Note* noteToPlay = [noteBank objectAtIndex:0];
+	[noteToPlay playNote:@"W"];
 }
 
 // Gets handed a base note and finds the 
