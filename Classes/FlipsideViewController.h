@@ -17,10 +17,17 @@
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 - (IBAction)done:(id)sender;
+
+-(IBAction) diffEasy;
+-(IBAction) diffMed;
+-(IBAction) diffHard;
+
 @end
+
 
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
+- (void) setDifficulty:(char)theDiff;
 @end
 

@@ -14,7 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, iCurRoot, iCurTarget;
+@synthesize myDJ, aNoteStrings, iCurRoot, iCurTarget, cDifficulty;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -25,8 +25,11 @@
 
     // Add the main view controller's view to the window and display.
     [window addSubview:mainViewController.view];
-    [window makeKeyAndVisible];
-	//[self init];
+    //[window addSubview:FlipsideViewController.view];
+	
+	[window makeKeyAndVisible];
+	
+	[mainViewController showInfo:self];
 	
 	[self initMyVars];
 	
@@ -137,5 +140,9 @@
 	
 }
 		
+- (void)setDifficulty:(char)theDiff{
+	[self setCDifficulty:theDiff];
+	NSLog(@"Just changed the difficulty to %c", theDiff);
+}
 
 @end

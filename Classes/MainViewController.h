@@ -18,7 +18,7 @@
 
 - (IBAction)showInfo:(id)sender;
 - (IBAction)replayNote:(id)sender;
-
+- (void) setDifficulty:(char)theDiff;
 @end
 
 

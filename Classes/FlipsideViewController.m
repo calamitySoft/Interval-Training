@@ -52,5 +52,24 @@
     [super dealloc];
 }
 
+#pragma mark difficulties
+
+- (IBAction) diffEasy{
+	NSLog(@"Setting difficulty to easy");
+	[self.delegate setDifficulty:'e'];
+	[self.delegate flipsideViewControllerDidFinish:self];	
+}
+
+-(IBAction) diffMed{
+	NSLog(@"Setting difficulty to medium");
+	[self.delegate setDifficulty:'m'];
+	[self.delegate flipsideViewControllerDidFinish:self];	
+}
+
+-(IBAction) diffHard{
+	NSLog(@"Setting difficulty to hard");
+	[self.delegate setDifficulty:'h'];
+	[self.delegate flipsideViewControllerDidFinish:self];	
+}
 
 @end

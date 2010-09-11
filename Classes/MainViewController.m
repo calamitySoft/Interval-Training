@@ -69,5 +69,9 @@
     [super dealloc];
 }
 
+- (void) setDifficulty:(char)theDiff
+{
+	[delegate setDifficulty:theDiff];
+}
 
 @end

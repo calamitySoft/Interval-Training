@@ -12,13 +12,19 @@
 
 @class MainViewController;
 
+typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFourth, tritone, 
+	perFifth, minSixth, majSixth, minSeventh, majSeventh, octave} interval;
+
 @interface Interval_TrainingAppDelegate : NSObject <UIApplicationDelegate, ITApplicationDelegate> {
     UIWindow *window;
     MainViewController *mainViewController;
+	FlipsideViewController *flipsideViewController;
 	DJ *myDJ;
 	NSArray *aNoteStrings;
 	NSNumber *iCurRoot;
 	NSNumber *iCurTarget;
+	char cDifficulty;
+	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -27,11 +33,13 @@
 @property (nonatomic, retain) NSArray *aNoteStrings;
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
+@property char cDifficulty;
 
 - (void)initMyVars;	// Initialize my instance variables here. Called from -application:DidFinishLaunchingWithOptions:
 
 - (void)replayNote;	// Play the root again
 - (void)selectNextNote;	// Returns an NSNumber for the index of the note we'll be using
 - (void)selectNextTarget;
+- (void)setDifficulty:(char)theDiff;
 @end
 
