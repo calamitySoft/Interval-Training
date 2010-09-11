@@ -122,7 +122,7 @@
 
 - (void)replayNote {
 	NSLog(@"Hello from delegate, replayNote.");
-	[myDJ playNote:[self iCurRoot]];
+	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
 }
 
 - (void)selectNextNote {
