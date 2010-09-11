@@ -15,11 +15,13 @@
 	NSIndexSet *viableNotes;	
 }
 
+@property (nonatomic, retain) NSArray *noteBank;
+@property (nonatomic, retain) NSIndexSet *viableNotes;
+
 - (id)init;
-
-- (void)playNote:(NSString *)theNote; // conducts linear search for the note
-
+- (void)playNote:(NSString *)theNote; // Conducts linear search for the note
 - (void)setBase:(NSString *)baseNote; // Sets a note to the base
 
+- (void)echo; // Used to test if I exist.
 
 @end

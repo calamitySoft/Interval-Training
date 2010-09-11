@@ -15,7 +15,7 @@
 
 - (id)init
 {
-	Note *newNote = [[Note alloc] initWithNoteName:@"A" withHertz:440];
+	Note *newNote = [[Note alloc] initWithNoteName:@"A4" withHertz:440];
 
 	return newNote;
 }
@@ -26,6 +26,8 @@
 	
 	if(!self)
 		return nil;
+	
+	NSLog(@"Initializing note with noteName=%@", _noteName);
 	
 	// Get the filepath to _noteName (whole note).
 	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"aif"];
@@ -46,13 +48,14 @@
 	return self;
 }
 
+#pragma mark -
+#pragma mark Playing Sounds
+
 - (void)playNote:(NSString *)theNote
 {
 	// This function will determine and call the proper play function in future apps
 	[self playWhole];
 }
-
-
 
 - (void)playWhole
 {
@@ -78,5 +81,13 @@
 {
 	AudioServicesPlaySystemSound(sixteenthSample);
 }
-	
+
+
+#pragma mark -
+#pragma mark Helpers
+
+- (void)echo {
+	NSLog(@"Hello from Note with noteName=%@", noteName);
+}
+
 @end

@@ -39,7 +39,7 @@
 	[self setMyDJ:tempDJ];
 	[tempDJ release];
 	
-	[myDJ playNote:@"A"];	// Here for experimental purposes. Should be removed once myDJ is known to work.
+	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
 	// Initialize aNoteStrings
 	NSString *tempStr = [[NSString alloc] initWithString:@"A"];

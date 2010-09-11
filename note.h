@@ -37,4 +37,6 @@
 - (void)playEighth;
 - (void)playSixteenth;
 
+- (void)echo; // Used to test if I exist.
+
 @end

@@ -11,6 +11,7 @@
 
 @implementation DJ
 
+@synthesize noteBank, viableNotes;
 
 - (id)init
 {
@@ -18,15 +19,19 @@
 	if (!self)
 		return nil;
 	
+	// Initialize noteBank with 1 Note (defaults to A 440)
 	Note *tempNote = [[Note alloc] init];
-	[noteBank arrayByAddingObject:tempNote];
+	NSArray *tempNoteArray = [[NSArray alloc] initWithObjects:tempNote, nil];
+	[self setNoteBank:tempNoteArray];
+	[tempNote release];
+	[tempNoteArray release];
 	
 	return self;
 }
 
 - (void)playNote:(NSString *)theNote
 {
-	NSLog(@"Hello from DJ");
+//	[[noteBank objectAtIndex:0] echo];
 	Note* noteToPlay = [noteBank objectAtIndex:0];
 	[noteToPlay playNote:@"W"];
 }
@@ -42,6 +47,10 @@
 	NSRange range = NSMakeRange(root, 12);
 	viableNotes = [NSIndexSet indexSetWithIndexesInRange:range];
 	
+}
+
+- (void)echo {
+	NSLog(@"Hello from DJ");
 }
 
 @end
