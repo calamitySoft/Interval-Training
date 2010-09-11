@@ -26,9 +26,13 @@
     // Add the main view controller's view to the window and display.
     [window addSubview:mainViewController.view];
     [window makeKeyAndVisible];
-	[self init];
+	//[self init];
 	
 	[self initMyVars];
+	
+	[self selectNextNote];
+	
+	[self replayNote];
 	
     return YES;
 }
@@ -118,7 +122,7 @@
 
 - (void)replayNote {
 	NSLog(@"Hello from delegate, replayNote.");
-	[myDJ playNote:@"A"];
+	[myDJ playNote:[self iCurRoot]];
 }
 
 - (void)selectNextNote {
@@ -126,6 +130,11 @@
 }
 
 - (void)selectNextTarget {
+	[self setICurTarget:[NSNumber numberWithInt:random() % [aNoteStrings count]]];
+	while([iCurTarget compare:iCurRoot] == 1 ) {
+		[self setICurTarget:[NSNumber numberWithInt:random () % [aNoteStrings count]]];
+	}
+	
 }
 		
 
