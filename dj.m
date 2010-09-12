@@ -3,7 +3,7 @@
 //  Interval-Training
 //
 //  Created by Sam on 8/24/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 CalamitySoft. All rights reserved.
 //
 
 #import "DJ.h"
