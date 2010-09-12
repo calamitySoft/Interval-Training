@@ -31,6 +31,8 @@
 	
 	[mainViewController showInfo:self];
 	
+	[mainViewController displayInterval:@"Tritone"];
+	
 	[self initMyVars];
 	
 	[self selectNextNote];

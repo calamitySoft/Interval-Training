@@ -74,4 +74,8 @@
 	[delegate setDifficulty:theDiff];
 }
 
+- (void) displayInterval:(NSString *)theInterval{
+	[intervalLabel setText:theInterval];
+}
+
 @end
