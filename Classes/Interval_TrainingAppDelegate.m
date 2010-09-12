@@ -51,11 +51,13 @@
 	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
 	// Initialize aNoteStrings
-	NSString *tempStr = [[NSString alloc] initWithString:@"A"];
-	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStr, nil];
+	NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
+	NSString *tempStrA4 = [[NSString alloc] initWithString:@"A4"];
+	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStrA3, tempStrA4, nil];
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
-	[tempStr release];
+	[tempStrA3 release];
+	[tempStrA4 release];
 	
 	// Initialize default difficulty - easy.
 	[self setCDifficulty:'e'];
@@ -129,7 +131,7 @@
 #pragma mark App Delegation
 
 - (void)replayNote {
-	NSLog(@"Hello from delegate, replayNote.");
+	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
 }
 

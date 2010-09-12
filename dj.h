@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSIndexSet *viableNotes;
 
 - (id)init;
+- (void)initNoteBank;	// Initializes all notes and places them in the noteBank
 - (void)playNote:(NSString *)theNote; // Conducts linear search for the note
 - (void)setBase:(NSString *)baseNote; // Sets a note to the base
 

@@ -90,4 +90,22 @@
 	NSLog(@"Hello from Note with noteName=%@", noteName);
 }
 
+
+/*
+ *	isEqual:
+ *
+ *	Purpose:	Overrides NSObject isEqual: to make it specific to noteName.
+ *	Strategy:	[noteName isEqualToString:arg]
+ *	Arguments:	(NSString *object) Comparison object.
+ *	Returns:	(BOOL) YES if they're equal, otherwise NO.
+ */
+- (BOOL)isEqual:(NSString *)argStr {
+	if ([[self noteName] isEqualToString:argStr]) {
+		return YES;
+	}
+	else {
+		return NO;
+	}
+}
+
 @end
