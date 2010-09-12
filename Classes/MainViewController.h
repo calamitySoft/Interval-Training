@@ -27,4 +27,5 @@
 
 @protocol ITApplicationDelegate
 - (void)replayNote;
+- (void)setDifficulty:(char)theDiff;
 @end
