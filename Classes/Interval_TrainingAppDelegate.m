@@ -28,16 +28,16 @@
     //[window addSubview:FlipsideViewController.view];
 	
 	[window makeKeyAndVisible];
-	
-	[mainViewController showInfo:self];
-	
-	[mainViewController displayInterval:@"Tritone"];
-	
+		
 	[self initMyVars];
 	
 	[self selectNextNote];
 	
 	[self replayNote];
+	
+	// These two need to be in this order to display "Tritone" text before we flip.
+	[mainViewController displayInterval:@"Tritone"];
+	[mainViewController showInfo:self];
 	
     return YES;
 }
@@ -56,6 +56,9 @@
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
 	[tempStr release];
+	
+	// Initialize default difficulty - easy.
+	[self setCDifficulty:'e'];
 }
 
 
