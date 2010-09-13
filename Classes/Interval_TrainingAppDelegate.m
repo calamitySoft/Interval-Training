@@ -133,6 +133,8 @@
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
+	
+	[mainViewController displayInterval:@"replayNote"];	// This sets the big label of the main view.
 }
 
 - (void)selectNextNote {

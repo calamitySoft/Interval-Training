@@ -26,22 +26,6 @@
 }
 
 
-- (IBAction)showInfo:(id)sender {    
-	
-	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
-	controller.delegate = self;
-	
-	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentModalViewController:controller animated:YES];
-	
-	[controller release];
-}
-
-- (IBAction)replayNote:(id)sender{
-	[delegate replayNote];
-}
-
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -69,13 +53,39 @@
     [super dealloc];
 }
 
-- (void) setDifficulty:(char)theDiff
-{
-	[delegate setDifficulty:theDiff];
+#pragma mark -
+#pragma mark Interface Elements
+
+- (IBAction)showInfo:(id)sender {    
+	
+	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+	controller.delegate = self;
+	
+	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentModalViewController:controller animated:YES];
+	
+	[controller release];
 }
+
+- (IBAction)giveUp:(id)sender {
+	[self displayInterval:@"Give up? :("];
+}
+
+- (IBAction)replayNote:(id)sender {
+	[delegate replayNote];
+}
+
+#pragma mark View Controlling
 
 - (void) displayInterval:(NSString *)theInterval{
 	[intervalLabel setText:theInterval];
+}
+
+#pragma mark -
+
+- (void) setDifficulty:(char)theDiff
+{
+	[delegate setDifficulty:theDiff];
 }
 
 @end

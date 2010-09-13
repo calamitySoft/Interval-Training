@@ -18,9 +18,13 @@
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
 
 - (IBAction)showInfo:(id)sender;
+- (IBAction)giveUp:(id)sender;
 - (IBAction)replayNote:(id)sender;
-- (void) setDifficulty:(char)theDiff;
-- (void) displayInterval:(NSString *)theInterval;
+
+- (void)displayInterval:(NSString *)theInterval;
+
+- (void)setDifficulty:(char)theDiff;
+
 @end
 
 
