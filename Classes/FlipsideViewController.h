@@ -18,9 +18,9 @@
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 - (IBAction)done:(id)sender;
 
--(IBAction) diffEasy;
--(IBAction) diffMed;
--(IBAction) diffHard;
+-(IBAction) diffEasy;	// tells the delegate to set difficulty to 'e'
+-(IBAction) diffMed;	// tells the delegate to set difficulty to 'm'
+-(IBAction) diffHard;	// tells the delegate to set difficulty to 'h'
 
 @end
 

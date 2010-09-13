@@ -40,6 +40,6 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (void)replayNote;	// Play the root again
 - (void)selectNextNote;	// Returns an NSNumber for the index of the note we'll be using
 - (void)selectNextTarget;
-- (void)setDifficulty:(char)theDiff;
+- (void)setDifficulty:(char)theDiff;	// Sets the cDifficulty
 @end
 

@@ -17,13 +17,13 @@
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
 
-- (IBAction)showInfo:(id)sender;
-- (IBAction)giveUp:(id)sender;
-- (IBAction)replayNote:(id)sender;
+- (IBAction)showInfo:(id)sender;	// flips to the settings view
+- (IBAction)giveUp:(id)sender;		// plays the target note for you
+- (IBAction)replayNote:(id)sender;	// replays the root note of the interval
 
-- (void)displayInterval:(NSString *)theInterval;
+- (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
 
-- (void)setDifficulty:(char)theDiff;
+- (void)setDifficulty:(char)theDiff;	// tells the delegate to setDifficulty:
 
 @end
 
