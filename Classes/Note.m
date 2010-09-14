@@ -100,12 +100,7 @@
  *	Returns:	(BOOL) YES if they're equal, otherwise NO.
  */
 - (BOOL)isEqual:(NSString *)argStr {
-	if ([[self noteName] isEqualToString:argStr]) {
-		return YES;
-	}
-	else {
-		return NO;
-	}
+	return [[self noteName] isEqualToString:argStr];
 }
 
 @end
