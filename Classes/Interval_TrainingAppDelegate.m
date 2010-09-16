@@ -133,8 +133,8 @@
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
-	
-	[mainViewController displayInterval:@"replayNote"];	// This sets the big label of the main view.
+	//[mainViewController displayInterval:@"replayNote"];	// This sets the big label of the main view.
+	[mainViewController displayInterval:[self intervalDifferenceBetween:iCurRoot And:iCurTarget]];
 }
 
 - (void)selectNextNote {
@@ -152,6 +152,54 @@
 - (void)setDifficulty:(char)theDiff{
 	[self setCDifficulty:theDiff];
 	NSLog(@"Just changed the difficulty to %c", theDiff);
+}
+
+-(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second
+{
+	interval theInterval = [second intValue] - [first intValue];
+	
+	switch (theInterval) {
+		case unison:
+			return [NSString stringWithFormat:@"Unison"];
+			break;
+		case minSecond:
+			return [NSString stringWithFormat:@"Minor\nSecond"];
+			break;
+		case majSecond:
+			return [NSString stringWithFormat:@"Major\nSecond"];
+			break;
+		case minThird:
+			return [NSString stringWithFormat:@"Minor\nThird"];
+			break;
+		case majThird:
+			return [NSString stringWithFormat:@"Major\nThird"];
+			break;
+		case perFourth:
+			return [NSString stringWithFormat:@"Perfect\nFourth"];
+			break;
+		case tritone:
+			return [NSString stringWithFormat:@"Tritone"];
+			break;
+		case perFifth:
+			return [NSString stringWithFormat:@"Perfect\nFifth"];
+			break;
+		case minSixth:	
+			return [NSString stringWithFormat:@"Minor\nSixth"];
+			break;
+		case majSixth:
+			return [NSString stringWithFormat:@"Major\nSixth"];
+			break;
+		case minSeventh:
+			return [NSString stringWithFormat:@"Minor\nSeventh"];
+			break;
+		case majSeventh:
+			return [NSString stringWithFormat:@"Major\nSeventh"];
+			break;
+
+		default:
+			break;
+	}
+	return [NSString stringWithFormat:@"OOPS"];
 }
 
 @end

@@ -41,5 +41,9 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (void)selectNextNote;	// Returns an NSNumber for the index of the note we'll be using
 - (void)selectNextTarget;
 - (void)setDifficulty:(char)theDiff;	// Sets the cDifficulty
+	// IntervalDifference will return a string of the interval between the root
+	// and target
+- (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
+
 @end
 
