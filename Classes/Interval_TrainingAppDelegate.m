@@ -53,7 +53,8 @@
 	// Initialize aNoteStrings
 	NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
 	NSString *tempStrA4 = [[NSString alloc] initWithString:@"A4"];
-	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStrA3, tempStrA4, nil];
+	NSString *tempStrB4 = [[NSString alloc] initWithString:@"B4"];
+	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStrA3, tempStrA4, tempStrB4, nil];
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
 	[tempStrA3 release];
@@ -133,19 +134,21 @@
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
-	//[mainViewController displayInterval:@"replayNote"];	// This sets the big label of the main view.
 	[mainViewController displayInterval:[self intervalDifferenceBetween:iCurRoot And:iCurTarget]];
 }
 
 - (void)selectNextNote {
-	[self setICurRoot:[NSNumber numberWithInt:random() % [aNoteStrings count]]];
+	[self setICurRoot:[NSNumber numberWithInt:(random() % [aNoteStrings count])]];
+	NSLog(@"selectNextNote found array memeber %i", [iCurRoot intValue]);
+	[self selectNextTarget];
 }
 
 - (void)selectNextTarget {
 	[self setICurTarget:[NSNumber numberWithInt:random() % [aNoteStrings count]]];
-	while([iCurTarget compare:iCurRoot] == 1 ) {
+	while([iCurTarget compare:iCurRoot] == -1 ) {
 		[self setICurTarget:[NSNumber numberWithInt:random () % [aNoteStrings count]]];
 	}
+	NSLog(@"selectNextTarget found array member %i", [iCurTarget intValue]);
 	
 }
 		
@@ -157,13 +160,13 @@
 -(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second
 {
 	interval theInterval = [second intValue] - [first intValue];
-	
+	NSLog(@"the target is: %i the root is: %i", [second intValue], [first intValue]);
 	switch (theInterval) {
 		case unison:
 			return [NSString stringWithFormat:@"Unison"];
 			break;
 		case minSecond:
-			return [NSString stringWithFormat:@"Minor\nSecond"];
+			return [NSString stringWithFormat:@"Minor /nSecond"];
 			break;
 		case majSecond:
 			return [NSString stringWithFormat:@"Major\nSecond"];
