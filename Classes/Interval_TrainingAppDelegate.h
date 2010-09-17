@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
 #import "DJ.h"
+#import <stdlib.h>
 
 @class MainViewController;
 

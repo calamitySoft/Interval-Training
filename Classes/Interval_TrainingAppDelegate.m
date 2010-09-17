@@ -36,8 +36,7 @@
 	[self replayNote];
 	
 	// These two need to be in this order to display "Tritone" text before we flip.
-	[mainViewController displayInterval:@"Tritone"];
-	[mainViewController showInfo:self];
+	[mainViewController displayInterval:@"Listen"];
 	
     return YES;
 }
@@ -53,8 +52,7 @@
 	// Initialize aNoteStrings
 	NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
 	NSString *tempStrA4 = [[NSString alloc] initWithString:@"A4"];
-	NSString *tempStrB4 = [[NSString alloc] initWithString:@"B4"];
-	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStrA3, tempStrA4, tempStrB4, nil];
+	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStrA3, tempStrA4, nil];
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
 	[tempStrA3 release];
@@ -137,16 +135,19 @@
 	[mainViewController displayInterval:[self intervalDifferenceBetween:iCurRoot And:iCurTarget]];
 }
 
+
+
 - (void)selectNextNote {
-	[self setICurRoot:[NSNumber numberWithInt:(random() % [aNoteStrings count])]];
-	NSLog(@"selectNextNote found array memeber %i", [iCurRoot intValue]);
+	[self setICurRoot:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
+	NSLog(@"selectNextNote found array memeber %i modded with %i", [iCurRoot intValue], [aNoteStrings count]);
 	[self selectNextTarget];
+	
 }
 
 - (void)selectNextTarget {
-	[self setICurTarget:[NSNumber numberWithInt:random() % [aNoteStrings count]]];
+	[self setICurTarget:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
 	while([iCurTarget compare:iCurRoot] == -1 ) {
-		[self setICurTarget:[NSNumber numberWithInt:random () % [aNoteStrings count]]];
+		[self setICurTarget:[NSNumber numberWithInt:arc4random () % [aNoteStrings count]]];
 	}
 	NSLog(@"selectNextTarget found array member %i", [iCurTarget intValue]);
 	

@@ -69,6 +69,7 @@
 
 - (IBAction)giveUp:(id)sender {
 	[self displayInterval:@"Give up? :("];
+	[nextButton setTitle:@"Next" forState:UIControlStateNormal];
 }
 
 - (IBAction)replayNote:(id)sender {
