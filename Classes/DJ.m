@@ -27,14 +27,33 @@
 
 - (void)initNoteBank {
 	// Initialize noteBank with 1 Note (defaults to A 440)
+	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",
+						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
+	NSArray *noteOctaves = [[NSArray alloc] initWithObjects:@"2",@"3",@"4",nil];
+	NSArray *noteHertz = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:32.7],
+						  [NSNumber numberWithFloat:34.65], [NSNumber numberWithFloat:36.71],
+						  [NSNumber numberWithFloat:38.89], [NSNumber numberWithFloat:41.20],
+						  [NSNumber numberWithFloat:43.65], [NSNumber numberWithFloat:46.25],
+						  [NSNumber numberWithFloat:49.0], [NSNumber numberWithFloat:51.91],
+						[NSNumber numberWithFloat:55.0], [NSNumber numberWithFloat:58.27],
+						  [NSNumber numberWithFloat:61.74],nil];
+	int octaveMultiplier = 1;
+	for(NSUInteger i = 0; i < [noteOctaves count]; i++)
+		{ 
+		octaveMultiplier = octaveMultiplier * 2;
+		for (NSUInteger k = 0; i < [noteNames count]; i++) 
+		{
+		Note *tempNote = [[Note alloc] initWithNoteName:[[noteNames objectAtIndex:k] 
+							stringByAppendingString:[noteOctaves objectAtIndex:i]]
+							withHertz:[[noteHertz objectAtIndex:k] floatValue] * octaveMultiplier];
+								}
+		}
 	Note *tempNoteA3 = [[Note alloc] initWithNoteName:@"A3" withHertz:220];
 	Note *tempNoteA4 = [[Note alloc] initWithNoteName:@"A4" withHertz:440];
-	NSArray *tempNoteArray = [[NSArray alloc] initWithObjects:tempNoteA4, nil];
 	NSArray *tempNoteArray2 = [[NSArray alloc] initWithObjects:tempNoteA3, tempNoteA4, nil];
 	[self setNoteBank:tempNoteArray2];
 	[tempNoteA4 release];
 	[tempNoteA3 release];
-	[tempNoteArray release];	
 }
 
 

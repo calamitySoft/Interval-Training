@@ -33,4 +33,9 @@
 @protocol ITApplicationDelegate
 - (void)replayNote;
 - (void)setDifficulty:(char)theDiff;
+- (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
+
+@property (nonatomic, retain) NSNumber *iCurRoot;
+@property (nonatomic, retain) NSNumber *iCurTarget;
+
 @end
