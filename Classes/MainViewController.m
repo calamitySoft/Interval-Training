@@ -68,7 +68,7 @@
 }
 
 - (IBAction)giveUp:(id)sender {
-	[self displayInterval:@"Give up? :("];
+	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
 	[nextButton setTitle:@"Next" forState:UIControlStateNormal];
 }
 
