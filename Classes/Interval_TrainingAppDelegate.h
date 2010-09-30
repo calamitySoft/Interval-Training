@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
 #import "DJ.h"
+#import "Tuner.h"
 
 @class MainViewController;
 
@@ -20,6 +21,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
     MainViewController *mainViewController;
 	FlipsideViewController *flipsideViewController;
 	DJ *myDJ;
+	Tuner *myTuner;
 	NSArray *aNoteStrings;
 	NSNumber *iCurRoot;
 	NSNumber *iCurTarget;
@@ -30,6 +32,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
 @property (nonatomic, retain) DJ *myDJ;
+@property (nonatomic, retain) Tuner *myTuner;
 @property (nonatomic, retain) NSArray *aNoteStrings;
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;

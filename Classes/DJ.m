@@ -13,6 +13,7 @@
 
 @synthesize noteBank, viableNotes;
 
+#pragma mark -
 #pragma mark Setup
 
 - (id)init {

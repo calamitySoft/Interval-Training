@@ -14,7 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, iCurRoot, iCurTarget, cDifficulty;
+@synthesize myDJ, myTuner, aNoteStrings, iCurRoot, iCurTarget, cDifficulty;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -43,12 +43,18 @@
 }
 
 - (void)initMyVars {
+	
 	// Initialize myDJ
 	DJ *tempDJ = [[DJ alloc] init];
 	[self setMyDJ:tempDJ];
 	[tempDJ release];
-	
 	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
+	
+	// Initialize myTuner
+	Tuner *tempTuner = [[Tuner alloc] init];
+	[self setMyTuner:tempTuner];
+	[tempTuner release];
+	[myTuner echo];
 	
 	// Initialize aNoteStrings
 	NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
@@ -118,6 +124,7 @@
 
 - (void)dealloc {
 	[myDJ release];
+	[myTuner release];
 	[aNoteStrings release];
 	[iCurRoot release];
 	[iCurTarget release];
