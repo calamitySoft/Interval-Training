@@ -48,13 +48,13 @@
 	DJ *tempDJ = [[DJ alloc] init];
 	[self setMyDJ:tempDJ];
 	[tempDJ release];
-	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
+	[myDJ echo];		// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
 	// Initialize myTuner
 	Tuner *tempTuner = [[Tuner alloc] init];
 	[self setMyTuner:tempTuner];
 	[tempTuner release];
-	[myTuner echo];
+	[myTuner echo];		// Verify myTuner has been initialized correctly. (Print to NSLog)
 	
 	// Initialize aNoteStrings
 	NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
