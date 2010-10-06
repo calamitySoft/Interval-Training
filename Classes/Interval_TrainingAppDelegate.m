@@ -50,13 +50,21 @@
 	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
 	// Initialize aNoteStrings
-	NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
-	NSString *tempStrA4 = [[NSString alloc] initWithString:@"A4"];
-	NSArray *tempNoteStrings = [[NSArray alloc] initWithObjects:tempStrA3, tempStrA4, nil];
+	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",
+						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
+	NSArray *noteOctaves = [[NSArray alloc] initWithObjects:@"2",@"3",@"4",nil];
+	NSArray *tempNoteStrings = [[NSArray alloc] init];
+	for(NSUInteger i = 0; i < [noteOctaves count]; i++)
+	{
+		for (NSUInteger k = 0; k < [noteNames count]; k++) 
+		{
+			NSString *tempStr = [[NSString alloc] initWithString:[[noteNames objectAtIndex:k] stringByAppendingString:[noteOctaves objectAtIndex:i]]];
+								tempNoteStrings = [tempNoteStrings arrayByAddingObject:tempStr];
+		}
+	}
+	//NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
-	[tempStrA3 release];
-	[tempStrA4 release];
 	
 	// Initialize default difficulty - easy.
 	[self setCDifficulty:'e'];
@@ -132,11 +140,13 @@
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
+	NSLog(@"Successfully played note");
 }
 
 
 
 - (void)selectNextNote {
+	NSLog(@"aNoteStrings count = %i", [aNoteStrings count]);
 	[self setICurRoot:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
 	NSLog(@"selectNextNote found array memeber %i modded with %i", [iCurRoot intValue], [aNoteStrings count]);
 	[self selectNextTarget];

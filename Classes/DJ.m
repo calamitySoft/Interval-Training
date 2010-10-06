@@ -52,6 +52,7 @@
 				tempNoteArray = [tempNoteArray arrayByAddingObject:tempNote];
 			}
 		}
+	// Just keeping this around for reference.
 	//Note *tempNoteA3 = [[Note alloc] initWithNoteName:@"A3" withHertz:220];
 	[self setNoteBank:tempNoteArray];
 	[tempNoteArray release];
