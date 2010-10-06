@@ -38,25 +38,23 @@
 						[NSNumber numberWithFloat:55.0], [NSNumber numberWithFloat:58.27],
 						  [NSNumber numberWithFloat:61.74],nil];
 	int octaveMultiplier = 1;
-	NSArray *tempNoteArray = [[NSArray alloc] array];
+	NSArray *tempNoteArray = [[NSArray alloc] init];
 	for(NSUInteger i = 0; i < [noteOctaves count]; i++)
-		{ 
+		{
+			NSLog(@"Outer For loop top %i", i);
 		octaveMultiplier = octaveMultiplier * 2;
-		for (NSUInteger k = 0; i < [noteNames count]; i++) 
+		for (NSUInteger k = 0; k < [noteNames count]; k++) 
 			{
+				NSLog(@"Inner Loop top %i", k);
 				Note *tempNote = [[Note alloc] initWithNoteName:[[noteNames objectAtIndex:k] 
 							stringByAppendingString:[noteOctaves objectAtIndex:i]]
 							withHertz:[[noteHertz objectAtIndex:k] floatValue] * octaveMultiplier];
 				tempNoteArray = [tempNoteArray arrayByAddingObject:tempNote];
 			}
-		
 		}
-	Note *tempNoteA3 = [[Note alloc] initWithNoteName:@"A3" withHertz:220];
-	Note *tempNoteA4 = [[Note alloc] initWithNoteName:@"A4" withHertz:440];
-	NSArray *tempNoteArray2 = [[NSArray alloc] initWithObjects:tempNoteA3, tempNoteA4, nil];
+	//Note *tempNoteA3 = [[Note alloc] initWithNoteName:@"A3" withHertz:220];
 	[self setNoteBank:tempNoteArray];
-	[tempNoteA4 release];
-	[tempNoteA3 release];
+	[tempNoteArray release];
 }
 
 
