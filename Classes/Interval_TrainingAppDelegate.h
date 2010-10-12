@@ -36,6 +36,8 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) NSNumber *iCurTarget;
 @property char cDifficulty;
 
+- (void)generateQuestion; // An organizer function to put the main workflow in one centralized place
+
 - (void)initMyVars;	// Initialize my instance variables here. Called from -application:DidFinishLaunchingWithOptions:
 
 - (void)replayNote;	// Play the root again

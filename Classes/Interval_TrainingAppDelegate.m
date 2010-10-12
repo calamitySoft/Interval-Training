@@ -31,12 +31,7 @@
 		
 	[self initMyVars];
 	
-	[self selectNextNote];
-	
-	[self replayNote];
-	
-	// These two need to be in this order to display "Tritone" text before we flip.
-	[mainViewController displayInterval:@"Listen"];
+	[self generateQuestion];
 	
     return YES;
 }
@@ -136,6 +131,14 @@
 
 #pragma mark -
 #pragma mark App Delegation
+
+- (void)generateQuestion{
+	[self selectNextNote];
+	
+	[self replayNote];
+
+	[mainViewController displayInterval:@"Listen"];
+}	
 
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);

@@ -72,6 +72,11 @@
 	[nextButton setTitle:@"Next" forState:UIControlStateNormal];
 }
 
+-(IBAction)nextNote:(id)sender {
+	[nextButton setTitle:@"giveUp" forState:UIControlStateNormal];
+	[delegate generateQuestion];
+}
+
 - (IBAction)replayNote:(id)sender {
 	[delegate replayNote];
 }
