@@ -16,11 +16,11 @@
 		<string>Icon-Small-50</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>net.calamitysoft.intervaltrainer</string>
+	<string>net.calamitysoft.intervaltraining</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Inverval Trainer</string>
+	<string>Inverval Training</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
@@ -28,7 +28,7 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
-	<false/>
+	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 </dict>
