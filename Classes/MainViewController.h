@@ -13,15 +13,17 @@
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
 	id <ITApplicationDelegate> delegate;
 	IBOutlet UILabel *intervalLabel;
-	IBOutlet UIButton *nextButton;
+	IBOutlet UIButton *replayButton;
+	IBOutlet UIButton *nextOrGiveUpButton;
 }
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
 
 - (IBAction)showInfo:(id)sender;	// flips to the settings view
-- (IBAction)giveUp:(id)sender;		// plays the target note for you
 - (IBAction)replayNote:(id)sender;	// replays the root note of the interval
-- (IBAction)nextNote:(id)sender;    // Tells delegate to generate another interval question
+- (IBAction)giveUp:(id)sender;		// displays the interval
+- (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question
+
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
 
 - (void)setDifficulty:(char)theDiff;	// tells the delegate to setDifficulty:

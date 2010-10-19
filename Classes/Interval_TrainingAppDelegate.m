@@ -184,7 +184,7 @@
 			return [NSString stringWithFormat:@"Unison"];
 			break;
 		case minSecond:
-			return [NSString stringWithFormat:@"Minor /nSecond"];
+			return [NSString stringWithFormat:@"Minor\nSecond"];
 			break;
 		case majSecond:
 			return [NSString stringWithFormat:@"Major\nSecond"];
@@ -218,9 +218,10 @@
 			break;
 
 		default:
+			return [NSString stringWithFormat:@"(interval unknown)"];
 			break;
 	}
-	return [NSString stringWithFormat:@"OOPS"];
+	return [NSString stringWithFormat:@"Interval nil?"];
 }
 
 @end
