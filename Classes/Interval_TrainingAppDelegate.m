@@ -48,13 +48,17 @@
 	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",
 						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
 	NSArray *noteOctaves = [[NSArray alloc] initWithObjects:@"2",@"3",@"4",nil];
-	NSArray *tempNoteStrings = [[NSArray alloc] init];
+		// This is mutable because we want to be changing it. Previous solution was
+		// NSArray alloc init'd pointer that was pointing to larger and larger arrays.
+		// That may have only been part of the crashing problem, but I think this is
+		// more proper anyway.
+	NSMutableArray *tempNoteStrings = [[NSMutableArray alloc] initWithCapacity:1];
 	for(NSUInteger i = 0; i < [noteOctaves count]; i++)
 	{
 		for (NSUInteger k = 0; k < [noteNames count]; k++) 
 		{
 			NSString *tempStr = [[NSString alloc] initWithString:[[noteNames objectAtIndex:k] stringByAppendingString:[noteOctaves objectAtIndex:i]]];
-								tempNoteStrings = [tempNoteStrings arrayByAddingObject:tempStr];
+			[tempNoteStrings addObject:tempStr];
 		}
 	}
 	//NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
@@ -144,6 +148,7 @@
 	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
 	NSLog(@"Successfully played note");
+	[aNoteStrings retain];
 }
 
 

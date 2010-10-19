@@ -38,20 +38,24 @@
 						[NSNumber numberWithFloat:55.0], [NSNumber numberWithFloat:58.27],
 						  [NSNumber numberWithFloat:61.74],nil];
 	int octaveMultiplier = 1;
-	NSArray *tempNoteArray = [[NSArray alloc] init];
+		// This is mutable because we want to be changing it. Previous solution was
+		// NSArray alloc init'd pointer that was pointing to larger and larger arrays.
+		// That may have only been part of the crashing problem, but I think this is
+		// more proper anyway.
+	NSMutableArray *tempNoteArray = [[NSMutableArray alloc] initWithCapacity:1];
 	for(NSUInteger i = 0; i < [noteOctaves count]; i++)
-		{
-			NSLog(@"Outer For loop top %i", i);
+	{
+		NSLog(@"Outer For loop top %i", i);
 		octaveMultiplier = octaveMultiplier * 2;
 		for (NSUInteger k = 0; k < [noteNames count]; k++) 
-			{
-				NSLog(@"Inner Loop top %i", k);
-				Note *tempNote = [[Note alloc] initWithNoteName:[[noteNames objectAtIndex:k] 
-							stringByAppendingString:[noteOctaves objectAtIndex:i]]
-							withHertz:[[noteHertz objectAtIndex:k] floatValue] * octaveMultiplier];
-				tempNoteArray = [tempNoteArray arrayByAddingObject:tempNote];
-			}
+		{
+			NSLog(@"Inner Loop top %i", k);
+			Note *tempNote = [[Note alloc] initWithNoteName:[[noteNames objectAtIndex:k] 
+															 stringByAppendingString:[noteOctaves objectAtIndex:i]]
+												  withHertz:[[noteHertz objectAtIndex:k] floatValue] * octaveMultiplier];
+			[tempNoteArray addObject:tempNote];
 		}
+	}
 	// Just keeping this around for reference.
 	//Note *tempNoteA3 = [[Note alloc] initWithNoteName:@"A3" withHertz:220];
 	[self setNoteBank:tempNoteArray];
