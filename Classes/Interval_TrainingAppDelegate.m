@@ -170,7 +170,7 @@
 
 - (void)selectNextTarget {
 	[self setICurTarget:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
-	while([iCurTarget compare:iCurRoot] == -1 ) {
+	while([iCurTarget compare:iCurRoot] == -1 || (([iCurTarget intValue] - [iCurRoot intValue]) > 12)) {
 		[self setICurTarget:[NSNumber numberWithInt:arc4random () % [aNoteStrings count]]];
 	}
 	NSLog(@"selectNextTarget found array member %i", [iCurTarget intValue]);
