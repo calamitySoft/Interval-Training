@@ -41,6 +41,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (void)initMyVars;	// Initialize my instance variables here. Called from -application:DidFinishLaunchingWithOptions:
 
 - (void)replayNote;	// Play the root again
+- (void)playTarget; // Plays the target note the user was supposed to sing
 - (void)selectNextNote;	// Returns an NSNumber for the index of the note we'll be using
 - (void)selectNextTarget;
 - (void)setDifficulty:(char)theDiff;	// Sets the cDifficulty

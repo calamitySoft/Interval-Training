@@ -72,23 +72,27 @@
 	{
 		[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
 		[nextButton setTitle:@"Next" forState:UIControlStateNormal];
+		[replayButton setTitle:@"Answer" forState:UIControlStateNormal];
 		bGaveUp = true;
 	}
 	else {
 		[nextButton setTitle:@"giveUp" forState:UIControlStateNormal];
+		[replayButton setTitle:@"Replay" forState:UIControlStateNormal];
 		[delegate generateQuestion];
 		bGaveUp = false;
 	}
 
 }
 
--(IBAction)nextNote:(id)sender {
-	[nextButton setTitle:@"giveUp" forState:UIControlStateNormal];
-	[delegate generateQuestion];
-}
 
 - (IBAction)replayNote:(id)sender {
-	[delegate replayNote];
+	if (!bGaveUp) {
+		[delegate replayNote];
+	}
+	else {
+		[delegate playTarget];
+	}
+
 }
 
 #pragma mark View Controlling

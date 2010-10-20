@@ -154,7 +154,11 @@
 	[aNoteStrings retain];
 }
 
-
+- (void)playTarget{
+	NSLog(@"(Delegate) playTarget: current target = %d", [iCurTarget intValue]);
+	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurTarget intValue]]];
+	NSLog(@"Successfully played target note");
+}
 
 - (void)selectNextNote {
 	NSLog(@"aNoteStrings count = %i", [aNoteStrings count]);
