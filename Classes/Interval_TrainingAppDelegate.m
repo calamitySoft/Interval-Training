@@ -143,8 +143,7 @@
 	[self selectNextNote];
 	
 	[self replayNote];
-
-	[mainViewController displayInterval:@"Listen"];
+	[mainViewController displayInterval:[self intervalDifferenceBetween:[self iCurRoot] And:[self iCurTarget]]];
 }	
 
 - (void)replayNote {

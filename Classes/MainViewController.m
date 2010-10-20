@@ -70,7 +70,6 @@
 - (IBAction)giveUp:(id)sender {
 	if(!bGaveUp)
 	{
-		[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
 		[nextButton setTitle:@"Next" forState:UIControlStateNormal];
 		[replayButton setTitle:@"Answer" forState:UIControlStateNormal];
 		bGaveUp = true;
