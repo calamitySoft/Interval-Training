@@ -41,8 +41,8 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (void)initMyVars;	// Initialize my instance variables here. Called from -application:DidFinishLaunchingWithOptions:
 
 - (void)replayNote;	// Play the root again
-- (void)selectNextNote;	// Returns an NSNumber for the index of the note we'll be using
-- (void)selectNextTarget;
+- (void)selectNextRoot;	// Sets iCurRoot for the index of the root note we'll be using
+- (void)selectNextTarget;	// Sets iCurTarget for the index of the target note
 - (void)setDifficulty:(char)theDiff;	// Sets the cDifficulty
 	// IntervalDifference will return a string of the interval between the root
 	// and target

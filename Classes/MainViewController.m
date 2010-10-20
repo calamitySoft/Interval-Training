@@ -69,17 +69,24 @@
 }
 
 - (IBAction)giveUp:(id)sender {
+	// Show the answer.
 	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
+	
+	// Set UI stuff.
 	[nextOrGiveUpButton setTitle:@"Next" forState:UIControlStateNormal];
 	[nextOrGiveUpButton addTarget:self action:@selector(nextNote:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(IBAction)nextNote:(id)sender {
+	// Indicate new interval.
+	[self displayInterval:@"Listen"];
+	
+	// Pick and play new interval.
+	[delegate generateQuestion];
+
+	// Set UI stuff.
 	[nextOrGiveUpButton setTitle:@"Give Up" forState:UIControlStateNormal];
 	[nextOrGiveUpButton addTarget:self action:@selector(giveUp:) forControlEvents:UIControlEventTouchUpInside];
-	[self displayInterval:@"Next interval:"];
-
-	[delegate generateQuestion];
 }
 
 - (IBAction)replayNote:(id)sender {

@@ -137,26 +137,30 @@
 #pragma mark App Delegation
 
 - (void)generateQuestion{
-	[self selectNextNote];
-	
+	NSLog(@"**** New Question ****");
+	[self selectNextRoot];
 	[self replayNote];
-
-	[mainViewController displayInterval:@"Listen"];
 }	
 
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: current root = %d", [iCurRoot intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
 	NSLog(@"Successfully played note");
-	[aNoteStrings retain];
 }
 
 
-
-- (void)selectNextNote {
-	NSLog(@"aNoteStrings count = %i", [aNoteStrings count]);
+/*
+ *	selectNextRoot
+ *
+ *	Purpose:	
+ */
+- (void)selectNextRoot {
+	NSLog(@"(Delegate) aNoteStrings count = %i", [aNoteStrings count]);
 	[self setICurRoot:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
-	NSLog(@"selectNextNote found array memeber %i modded with %i", [iCurRoot intValue], [aNoteStrings count]);
+	NSLog(@"(Delegate) selectNextRoot: %i (%@) (random() mod %i)",
+		  [iCurRoot intValue],
+		  [aNoteStrings objectAtIndex:[iCurRoot intValue]],
+		  [aNoteStrings count]);
 	[self selectNextTarget];
 	
 }
@@ -166,19 +170,21 @@
 	while([iCurTarget compare:iCurRoot] == -1 ) {
 		[self setICurTarget:[NSNumber numberWithInt:arc4random () % [aNoteStrings count]]];
 	}
-	NSLog(@"selectNextTarget found array member %i", [iCurTarget intValue]);
+	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
+		  [iCurTarget intValue],
+		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);
 	
 }
 		
 - (void)setDifficulty:(char)theDiff{
 	[self setCDifficulty:theDiff];
-	NSLog(@"Just changed the difficulty to %c", theDiff);
+	NSLog(@"(Delegate) Just changed the difficulty to %c", theDiff);
 }
 
 -(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second
 {
 	interval theInterval = [second intValue] - [first intValue];
-	NSLog(@"the target is: %i the root is: %i", [second intValue], [first intValue]);
+	NSLog(@"(Delegate) The target is: %i the root is: %i", [second intValue], [first intValue]);
 	switch (theInterval) {
 		case unison:
 			return [NSString stringWithFormat:@"Unison"];
