@@ -12,13 +12,15 @@
 @implementation MainViewController
 
 @synthesize delegate;
+NSArray *nextBtnActions;
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	nextBtnActions = [NSArray alloc];
 }
-*/
+/**/
 
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
@@ -74,7 +76,11 @@
 	
 	// Set UI stuff.
 	[nextOrGiveUpButton setTitle:@"Next" forState:UIControlStateNormal];
+	[nextOrGiveUpButton removeTarget:self action:@selector(giveUp:) forControlEvents:UIControlEventTouchUpInside];
 	[nextOrGiveUpButton addTarget:self action:@selector(nextNote:) forControlEvents:UIControlEventTouchUpInside];
+
+	// Used for seeing which actions will occur.
+	// nextBtnActions = [nextOrGiveUpButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside];
 }
 
 -(IBAction)nextNote:(id)sender {
@@ -86,6 +92,7 @@
 
 	// Set UI stuff.
 	[nextOrGiveUpButton setTitle:@"Give Up" forState:UIControlStateNormal];
+	[nextOrGiveUpButton removeTarget:self action:@selector(nextNote:) forControlEvents:UIControlEventTouchUpInside];
 	[nextOrGiveUpButton addTarget:self action:@selector(giveUp:) forControlEvents:UIControlEventTouchUpInside];
 }
 
