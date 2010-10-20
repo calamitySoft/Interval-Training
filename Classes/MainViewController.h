@@ -13,8 +13,8 @@
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
 	id <ITApplicationDelegate> delegate;
 	IBOutlet UILabel *intervalLabel;
-	IBOutlet UIButton *replayButton;
-	IBOutlet UIButton *nextOrGiveUpButton;
+	IBOutlet UIBarButtonItem *replayBarBtn;
+	IBOutlet UIBarButtonItem *nextOrGiveUpBarBtn;
 }
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
