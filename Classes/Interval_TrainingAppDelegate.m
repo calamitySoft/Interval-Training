@@ -67,6 +67,9 @@
 	
 	// Initialize default difficulty - easy.
 	[self setCDifficulty:'e'];
+	
+	// Set the Main View's mode to not given up
+	[mainViewController setBGaveUp:false];
 }
 
 

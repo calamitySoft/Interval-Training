@@ -14,9 +14,11 @@
 	id <ITApplicationDelegate> delegate;
 	IBOutlet UILabel *intervalLabel;
 	IBOutlet UIButton *nextButton;
+	bool bGaveUp;
 }
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
+@property (nonatomic, assign) bool bGaveUp;
 
 - (IBAction)showInfo:(id)sender;	// flips to the settings view
 - (IBAction)giveUp:(id)sender;		// plays the target note for you

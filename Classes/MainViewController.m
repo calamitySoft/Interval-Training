@@ -11,7 +11,7 @@
 
 @implementation MainViewController
 
-@synthesize delegate;
+@synthesize delegate, bGaveUp;
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -68,8 +68,18 @@
 }
 
 - (IBAction)giveUp:(id)sender {
-	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
-	[nextButton setTitle:@"Next" forState:UIControlStateNormal];
+	if(!bGaveUp)
+	{
+		[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
+		[nextButton setTitle:@"Next" forState:UIControlStateNormal];
+		bGaveUp = true;
+	}
+	else {
+		[nextButton setTitle:@"giveUp" forState:UIControlStateNormal];
+		[delegate generateQuestion];
+		bGaveUp = false;
+	}
+
 }
 
 -(IBAction)nextNote:(id)sender {
