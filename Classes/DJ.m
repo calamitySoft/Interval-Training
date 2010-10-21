@@ -45,11 +45,9 @@
 	NSMutableArray *tempNoteArray = [[NSMutableArray alloc] initWithCapacity:1];
 	for(NSUInteger i = 0; i < [noteOctaves count]; i++)
 	{
-		NSLog(@"Outer For loop top %i", i);
 		octaveMultiplier = octaveMultiplier * 2;
 		for (NSUInteger k = 0; k < [noteNames count]; k++) 
 		{
-			NSLog(@"Inner Loop top %i", k);
 			Note *tempNote = [[Note alloc] initWithNoteName:[[noteNames objectAtIndex:k] 
 															 stringByAppendingString:[noteOctaves objectAtIndex:i]]
 												  withHertz:[[noteHertz objectAtIndex:k] floatValue] * octaveMultiplier];

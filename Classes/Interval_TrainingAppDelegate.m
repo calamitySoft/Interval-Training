@@ -14,7 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, iCurRoot, iCurTarget, cDifficulty;
+@synthesize myDJ, theScoreKeeper, aNoteStrings, iCurRoot, iCurTarget, cDifficulty;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -70,6 +70,11 @@
 	
 	// Set the Main View's mode to not given up
 	[mainViewController setBGaveUp:false];
+	
+	Scorekeeper *tempScore = [[Scorekeeper alloc] init];
+	[self setTheScoreKeeper:tempScore];
+	[tempScore release];
+	[theScoreKeeper initScore];
 }
 
 

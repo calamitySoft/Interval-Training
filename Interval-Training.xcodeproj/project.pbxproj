@@ -14,6 +14,7 @@
 		22206A651223715E0050D13F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 22206A641223715E0050D13F /* Note.m */; };
 		22206A6A12237D1C0050D13F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22206A6912237D1C0050D13F /* AudioToolbox.framework */; };
 		2226F97C1223968E00670702 /* DJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2226F97B1223968E00670702 /* DJ.m */; };
+		226493BC126FC8C900B64263 /* Scorekeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 226493BB126FC8C900B64263 /* Scorekeeper.m */; };
 		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
 		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
@@ -75,6 +76,8 @@
 		22206A6912237D1C0050D13F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2226F97A1223968E00670702 /* DJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DJ.h; path = Classes/DJ.h; sourceTree = "<group>"; };
 		2226F97B1223968E00670702 /* DJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DJ.m; path = Classes/DJ.m; sourceTree = "<group>"; };
+		226493BA126FC8C900B64263 /* Scorekeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scorekeeper.h; sourceTree = "<group>"; };
+		226493BB126FC8C900B64263 /* Scorekeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scorekeeper.m; sourceTree = "<group>"; };
 		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
 		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				2226F97B1223968E00670702 /* DJ.m */,
 				22206A631223715E0050D13F /* Note.h */,
 				22206A641223715E0050D13F /* Note.m */,
+				226493BA126FC8C900B64263 /* Scorekeeper.h */,
+				226493BB126FC8C900B64263 /* Scorekeeper.m */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
 				22206A651223715E0050D13F /* Note.m in Sources */,
 				2226F97C1223968E00670702 /* DJ.m in Sources */,
+				226493BC126FC8C900B64263 /* Scorekeeper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
