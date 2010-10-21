@@ -13,9 +13,16 @@
 
 @synthesize delegate;
 
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
+					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
+					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
+					   @"Major\nSeventh", nil];
+	intervalPickerIndex = 5;
 }
 /**/
 
@@ -91,6 +98,20 @@
 - (IBAction)replayNote:(id)sender {
 	[delegate replayNote];
 }
+
+- (IBAction)switchAnswerLeft:(id)sender {
+	if (intervalPickerIndex-1 >= 0) {
+		intervalPickerIndex--;
+		[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalPickerIndex] forState:UIControlStateNormal];
+	}
+}
+- (IBAction)switchAnswerRight:(id)sender {
+	if (intervalPickerIndex+1 < [intervalStrings count]) {
+		intervalPickerIndex++;
+		[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalPickerIndex] forState:UIControlStateNormal];
+	}
+}
+
 
 #pragma mark View Controlling
 

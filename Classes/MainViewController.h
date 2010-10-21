@@ -12,9 +12,17 @@
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
 	id <ITApplicationDelegate> delegate;
+	
 	IBOutlet UILabel *intervalLabel;
 	IBOutlet UIBarButtonItem *replayBarBtn;
 	IBOutlet UIBarButtonItem *nextOrGiveUpBarBtn;
+	
+	IBOutlet UIButton *switchAnswerLeftBtn;
+	IBOutlet UIButton *switchAnswerRightBtn;
+	IBOutlet UIButton *currentAnswerLabel;	// actually a UIButton because they look better
+	
+	NSArray *intervalStrings;
+	int intervalPickerIndex;
 }
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
@@ -23,6 +31,9 @@
 - (IBAction)replayNote:(id)sender;	// replays the root note of the interval
 - (IBAction)giveUp:(id)sender;		// displays the interval
 - (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question
+
+- (IBAction)switchAnswerLeft:(id)sender;	// sets the user's tentative answer
+- (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
 
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
 
