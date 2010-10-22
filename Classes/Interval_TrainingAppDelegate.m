@@ -14,7 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, iCurRoot, iCurTarget, cDifficulty;
+@synthesize myDJ, aNoteStrings, aEnabledNotes, iCurRoot, iCurTarget, cDifficulty;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -67,8 +67,19 @@
 	
 	// Initialize default difficulty - easy.
 	[self setCDifficulty:'e'];
+	aEnabledNotes = [[NSMutableArray alloc] init];
+	for (NSUInteger i = 1; i < 12; i++) {
+		[aEnabledNotes addObject:false];
+	}
+	[self setAllNotes:[[NSNumber alloc] numberWithInt:0]];
 }
 
+-(void) setAllNotes:(NSNumber *)mode
+{
+	for (NSUInteger i = 0; i < 12; i++) {
+		[aEnabledNotes replaceObjectAtIndex:i withObject:[mode boolValue]];
+	}
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -177,8 +188,38 @@
 }
 		
 - (void)setDifficulty:(char)theDiff{
-	[self setCDifficulty:theDiff];
+	if (cDifficulty != theDiff) {
+		[self setAllNotes:[NSNumber numberWithInt:0]];
+		NSNumber* trueValue = [NSNumber numberWithInt:1];
+		[self setCDifficulty:theDiff];
+		
+		switch (theDiff) {
+			case 'e':
+				[aEnabledNotes replaceObjectAtIndex:0 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:3 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:4 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:7 withObject:trueValue];
+				break;
+			case 'm':
+				[aEnabledNotes replaceObjectAtIndex:0 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:2 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:3 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:4 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:5 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:7 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:8 withObject:trueValue];
+				[aEnabledNotes replaceObjectAtIndex:9 withObject:trueValue];
+				break;
+			case 'h':
+				[self setAllNotes:trueValue];
+				break;
+
+			default:
+				break;
+		}
+	}
 	NSLog(@"(Delegate) Just changed the difficulty to %c", theDiff);
+	
 }
 
 -(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second

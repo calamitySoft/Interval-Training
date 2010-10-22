@@ -22,6 +22,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	FlipsideViewController *flipsideViewController;
 	DJ *myDJ;
 	NSArray *aNoteStrings;
+	NSMutableArray *aEnabledNotes;
 	NSNumber *iCurRoot;
 	NSNumber *iCurTarget;
 	char cDifficulty;
@@ -32,6 +33,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
 @property (nonatomic, retain) DJ *myDJ;
 @property (nonatomic, retain) NSArray *aNoteStrings;
+@property (nonatomic, retain) NSMutableArray *aEnabledNotes;
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
 @property char cDifficulty;
@@ -39,7 +41,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (void)generateQuestion; // An organizer function to put the main workflow in one centralized place
 
 - (void)initMyVars;	// Initialize my instance variables here. Called from -application:DidFinishLaunchingWithOptions:
-
+- (void)setAllNotes:(NSNumber *)mode;
 - (void)replayNote;	// Play the root again
 - (void)selectNextRoot;	// Sets iCurRoot for the index of the root note we'll be using
 - (void)selectNextTarget;	// Sets iCurTarget for the index of the target note
