@@ -65,19 +65,22 @@
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
 	
-	// Initialize default difficulty - easy.
-	[self setCDifficulty:'e'];
+	// Creates array for determining which notes have been enabled
 	aEnabledNotes = [[NSMutableArray alloc] init];
-	for (NSUInteger i = 1; i < 12; i++) {
-		[aEnabledNotes addObject:false];
+	for (NSUInteger i = 0; i < 13; i++) {
+		[aEnabledNotes addObject:[NSNumber numberWithInt:0]];
 	}
-	[self setAllNotes:[[NSNumber alloc] numberWithInt:0]];
+	[self setAllNotes:[NSNumber numberWithInt:0]];
+	
+	// Initialize default difficulty - easy.
+	[self setCDifficulty:'m'];
+	[self setDifficulty:'e'];
 }
 
 -(void) setAllNotes:(NSNumber *)mode
 {
-	for (NSUInteger i = 0; i < 12; i++) {
-		[aEnabledNotes replaceObjectAtIndex:i withObject:[mode boolValue]];
+	for (NSUInteger i = 0; i < 13; i++) {
+		[aEnabledNotes replaceObjectAtIndex:i withObject:mode];
 	}
 }
 
@@ -178,7 +181,7 @@
 
 - (void)selectNextTarget {
 	[self setICurTarget:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
-	while([iCurTarget compare:iCurRoot] == -1 ) {
+	while([iCurTarget compare:iCurRoot] == -1 || ![self noteIsEnabled:[NSNumber numberWithInt:[iCurTarget intValue] - [iCurRoot intValue]]]) {
 		[self setICurTarget:[NSNumber numberWithInt:arc4random () % [aNoteStrings count]]];
 	}
 	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
@@ -221,6 +224,22 @@
 	NSLog(@"(Delegate) Just changed the difficulty to %c", theDiff);
 	
 }
+
+-(BOOL)noteIsEnabled:(NSNumber *)distance
+{
+	if ([distance intValue] > 12) {
+		return false;
+	}
+	if([aEnabledNotes objectAtIndex:[distance boolValue]])
+	{
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
+
 
 -(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second
 {
