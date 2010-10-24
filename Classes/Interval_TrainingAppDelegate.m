@@ -14,7 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, aEnabledNotes, iCurRoot, iCurTarget, cDifficulty;
+@synthesize myDJ, aNoteStrings, aEnabledIntervals, iCurRoot, iCurTarget, cDifficulty;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -66,21 +66,21 @@
 	[tempNoteStrings release];
 	
 	// Creates array for determining which notes have been enabled
-	aEnabledNotes = [[NSMutableArray alloc] init];
+	aEnabledIntervals = [[NSMutableArray alloc] init];
 	for (NSUInteger i = 0; i < 13; i++) {
-		[aEnabledNotes addObject:[NSNumber numberWithInt:0]];
+		[aEnabledIntervals addObject:[NSNumber numberWithInt:0]];
 	}
-	[self setAllNotes:[NSNumber numberWithInt:0]];
+	[self setAllIntervals:[NSNumber numberWithInt:0]];
 	
 	// Initialize default difficulty - easy.
 	[self setCDifficulty:'m'];
 	[self setDifficulty:'e'];
 }
 
--(void) setAllNotes:(NSNumber *)mode
+-(void) setAllIntervals:(NSNumber *)mode
 {
 	for (NSUInteger i = 0; i < 13; i++) {
-		[aEnabledNotes replaceObjectAtIndex:i withObject:mode];
+		[aEnabledIntervals replaceObjectAtIndex:i withObject:mode];
 	}
 }
 
@@ -181,7 +181,7 @@
 
 - (void)selectNextTarget {
 	[self setICurTarget:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
-	while([iCurTarget compare:iCurRoot] == -1 || ![self noteIsEnabled:[NSNumber numberWithInt:[iCurTarget intValue] - [iCurRoot intValue]]]) {
+	while(![self intervalIsEnabled:[NSNumber numberWithInt:[iCurTarget intValue] - [iCurRoot intValue]]]) {
 		[self setICurTarget:[NSNumber numberWithInt:arc4random () % [aNoteStrings count]]];
 	}
 	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
@@ -192,46 +192,48 @@
 		
 - (void)setDifficulty:(char)theDiff{
 	if (cDifficulty != theDiff) {
-		[self setAllNotes:[NSNumber numberWithInt:0]];
+		[self setAllIntervals:[NSNumber numberWithInt:0]];
 		NSNumber* trueValue = [NSNumber numberWithInt:1];
 		[self setCDifficulty:theDiff];
 		
 		switch (theDiff) {
 			case 'e':
-				[aEnabledNotes replaceObjectAtIndex:0 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:3 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:4 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:7 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:12 withObject:trueValue];
 				break;
 			case 'm':
-				[aEnabledNotes replaceObjectAtIndex:0 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:2 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:3 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:4 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:5 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:7 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:8 withObject:trueValue];
-				[aEnabledNotes replaceObjectAtIndex:9 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:2 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:5 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:8 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:9 withObject:trueValue];
 				break;
 			case 'h':
-				[self setAllNotes:trueValue];
+				[self setAllIntervals:trueValue];
 				break;
 
 			default:
 				break;
 		}
+		[trueValue release];
 	}
 	NSLog(@"(Delegate) Just changed the difficulty to %c", theDiff);
-	
 }
 
--(BOOL)noteIsEnabled:(NSNumber *)distance
+-(BOOL)intervalIsEnabled:(NSNumber *)distance
 {
-	if ([distance intValue] > 12) {
+	if ([distance intValue] > 12 || [distance intValue]< 0) {
 		return false;
 	}
-	if([aEnabledNotes objectAtIndex:[distance boolValue]])
+	if([[aEnabledIntervals objectAtIndex:[distance intValue]]boolValue])
 	{
+		NSLog(@"The interval %d is enabled!",[distance intValue]);
 		return true;
 	}
 	else {
