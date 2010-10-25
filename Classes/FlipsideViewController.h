@@ -13,9 +13,14 @@
 
 @interface FlipsideViewController : UIViewController {
 	id <FlipsideViewControllerDelegate> delegate;
+	
+	IBOutlet UIButton *easyBtn;
+	IBOutlet UIButton *mediumBtn;
+	IBOutlet UIButton *hardBtn;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
+
 - (IBAction)done:(id)sender;
 
 -(IBAction) diffEasy;	// tells the delegate to set difficulty to 'e'
@@ -28,6 +33,7 @@
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
-- (void) setDifficulty:(char)theDiff;
+- (void)setDifficulty:(char)theDiff;
+- (char)getDifficulty;
 @end
 

@@ -17,6 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
+
+	// FIXME: This UI looks bad.
+	/*** Indicates the current difficulty ***/
+	char cDifficulty = [delegate getDifficulty];
+	if (cDifficulty == 'e') {
+		[easyBtn setHighlighted:TRUE];
+	} else if (cDifficulty == 'm') {
+		[mediumBtn setHighlighted:TRUE];
+	} else if (cDifficulty == 'h') {
+		[hardBtn setHighlighted:TRUE];
+	}
 }
 
 
@@ -55,19 +66,19 @@
 #pragma mark difficulties
 
 - (IBAction) diffEasy{
-	NSLog(@"Setting difficulty to easy");
+	NSLog(@"(Flipside) Setting difficulty to easy");
 	[self.delegate setDifficulty:'e'];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
 -(IBAction) diffMed{
-	NSLog(@"Setting difficulty to medium");
+	NSLog(@"(Flipside) Setting difficulty to medium");
 	[self.delegate setDifficulty:'m'];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
 -(IBAction) diffHard{
-	NSLog(@"Setting difficulty to hard");
+	NSLog(@"(Flipside) Setting difficulty to hard");
 	[self.delegate setDifficulty:'h'];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }

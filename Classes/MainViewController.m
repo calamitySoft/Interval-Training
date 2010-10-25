@@ -115,15 +115,18 @@
 
 #pragma mark View Controlling
 
-- (void) displayInterval:(NSString *)theInterval{
+- (void) displayInterval:(NSString *)theInterval {
 	[intervalLabel setText:theInterval];
 }
 
 #pragma mark -
 
-- (void) setDifficulty:(char)theDiff
-{
+-(void) setDifficulty:(char)theDiff {
 	[delegate setDifficulty:theDiff];
+}
+
+-(char)getDifficulty {
+	return [delegate cDifficulty];
 }
 
 @end
