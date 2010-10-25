@@ -27,6 +27,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	NSNumber *iCurTarget;
 	char cDifficulty;
 	
+	NSArray *intervalStrings;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

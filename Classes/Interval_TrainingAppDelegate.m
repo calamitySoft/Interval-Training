@@ -37,14 +37,15 @@
 }
 
 - (void)initMyVars {
-	// Initialize myDJ
+	/*** Initialize myDJ ***/
 	DJ *tempDJ = [[DJ alloc] init];
 	[self setMyDJ:tempDJ];
 	[tempDJ release];
 	
 	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
-	// Initialize aNoteStrings
+	
+	/*** Initialize aNoteStrings ***/
 	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",
 						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
 	NSArray *noteOctaves = [[NSArray alloc] initWithObjects:@"2",@"3",@"4",nil];
@@ -75,6 +76,16 @@
 	// Initialize default difficulty - easy.
 	[self setCDifficulty:'m'];
 	[self setDifficulty:'e'];
+	
+	/*** Initialize interval array ***/
+	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
+					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
+					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
+					   @"Major\nSeventh", nil];
+	
+	
+	/*** Initialize default difficulty - easy. ***/
+	[self setCDifficulty:'e'];
 }
 
 -(void) setAllIntervals:(NSNumber *)mode
@@ -180,6 +191,9 @@
 }
 
 - (void)selectNextTarget {
+	// FIXME: This could be more concise and understandable as tar=root+rand%12;.
+	
+	// Generate a target note.
 	[self setICurTarget:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
 	while(![self intervalIsEnabled:[NSNumber numberWithInt:[iCurTarget intValue] - [iCurRoot intValue]]]) {
 		[self setICurTarget:[NSNumber numberWithInt:arc4random () % [aNoteStrings count]]];
@@ -244,9 +258,13 @@
 
 
 -(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second
-{
+{	
 	interval theInterval = [second intValue] - [first intValue];
 	NSLog(@"(Delegate) The target is: %i the root is: %i", [second intValue], [first intValue]);
+	
+	return [intervalStrings objectAtIndex:theInterval];
+	NSLog(@"(ERROR) Couldn't use the array...");
+	
 	switch (theInterval) {
 		case unison:
 			return [NSString stringWithFormat:@"Unison"];
