@@ -192,6 +192,7 @@
 
 - (void)selectNextTarget {
 	// FIXME: This could be more concise and understandable as tar=root+rand%12;.
+	//		Can currently pick a diff >= 12, which is bad.
 	
 	// Generate a target note.
 	[self setICurTarget:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
@@ -202,6 +203,12 @@
 		  [iCurTarget intValue],
 		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);
 	
+}
+
+- (int)getCurrentInterval {
+	NSLog(@"(Delegate) tar=%d\troot=%d\tdiff=%d", [iCurTarget intValue], [iCurRoot intValue],
+		  [iCurTarget intValue]-[iCurRoot intValue]);
+	return [iCurTarget intValue]-[iCurRoot intValue];
 }
 		
 - (void)setDifficulty:(char)theDiff{

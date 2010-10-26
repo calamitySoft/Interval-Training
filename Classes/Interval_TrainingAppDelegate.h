@@ -46,6 +46,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (void)replayNote;	// Play the root again
 - (void)selectNextRoot;	// Sets iCurRoot for the index of the root note we'll be using
 - (void)selectNextTarget;	// Sets iCurTarget for the index of the target note
+- (int)getCurrentInterval;	// returns an int of the interval being played
 - (void)setDifficulty:(char)theDiff;	// Sets the cDifficulty
 	// IntervalDifference will return a string of the interval between the root
 	// and target

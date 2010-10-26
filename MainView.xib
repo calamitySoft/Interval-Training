@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="94"/>
+			<integer value="34"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -81,10 +81,10 @@
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="1040464849">
+								<string key="IBUITitle">Done</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
+								<int key="IBUIStyle">2</int>
 								<reference key="IBUIToolbar" ref="928821298"/>
-								<int key="IBUISystemItemIdentifier">0</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="661234209">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -146,7 +146,7 @@
 					<object class="IBUILabel" id="85445020">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">1316</int>
-						<string key="NSFrame">{{20, 97}, {280, 135}}</string>
+						<string key="NSFrame">{{20, 76}, {280, 176}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -260,15 +260,6 @@
 					<int key="connectionID">35</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">showInfo:</string>
-						<reference key="source" ref="558454645"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">38</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">intervalLabel</string>
 						<reference key="source" ref="372490531"/>
@@ -350,6 +341,39 @@
 					</object>
 					<int key="connectionID">105</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">giveAnswer:</string>
+						<reference key="source" ref="1040464849"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">107</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">showSettings:</string>
+						<reference key="source" ref="558454645"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">108</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">doneBarBtn</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1040464849"/>
+					</object>
+					<int key="connectionID">109</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">devHelpLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="757877920"/>
+					</object>
+					<int key="connectionID">110</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -409,11 +433,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="533096312"/>
 							<reference ref="501410880"/>
-							<reference ref="1040464849"/>
 							<reference ref="63636980"/>
 							<reference ref="661234209"/>
 							<reference ref="26194620"/>
 							<reference ref="930206066"/>
+							<reference ref="1040464849"/>
 						</object>
 						<reference key="parent" ref="883825266"/>
 					</object>
@@ -428,12 +452,6 @@
 						<reference key="object" ref="501410880"/>
 						<reference key="parent" ref="928821298"/>
 						<string key="objectName">Replay Btn</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">67</int>
-						<reference key="object" ref="1040464849"/>
-						<reference key="parent" ref="928821298"/>
-						<string key="objectName">Submit Btn</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">81</int>
@@ -465,8 +483,8 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="816840787"/>
-							<reference ref="261717514"/>
 							<reference ref="702423460"/>
+							<reference ref="261717514"/>
 						</object>
 						<reference key="parent" ref="883825266"/>
 						<string key="objectName">Answer Selection View</string>
@@ -488,6 +506,12 @@
 						<reference key="object" ref="261717514"/>
 						<reference key="parent" ref="99678093"/>
 						<string key="objectName">Current Answer Label</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">67</int>
+						<reference key="object" ref="1040464849"/>
+						<reference key="parent" ref="928821298"/>
+						<string key="objectName">Submit Btn</string>
 					</object>
 				</object>
 			</object>
@@ -586,7 +610,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">105</int>
+			<int key="maxID">110</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -598,15 +622,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>giveAnswer:</string>
 							<string>giveUp:</string>
 							<string>nextNote:</string>
 							<string>replayNote:</string>
-							<string>showInfo:</string>
+							<string>showSettings:</string>
 							<string>switchAnswerLeft:</string>
 							<string>switchAnswerRight:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -619,15 +645,20 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>giveAnswer:</string>
 							<string>giveUp:</string>
 							<string>nextNote:</string>
 							<string>replayNote:</string>
-							<string>showInfo:</string>
+							<string>showSettings:</string>
 							<string>switchAnswerLeft:</string>
 							<string>switchAnswerRight:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">giveAnswer:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">giveUp:</string>
 								<string key="candidateClassName">id</string>
@@ -641,7 +672,7 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">showInfo:</string>
+								<string key="name">showSettings:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -660,6 +691,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>currentAnswerLabel</string>
 							<string>delegate</string>
+							<string>devHelpLabel</string>
+							<string>doneBarBtn</string>
 							<string>intervalLabel</string>
 							<string>nextOrGiveUpBarBtn</string>
 							<string>replayBarBtn</string>
@@ -670,6 +703,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIButton</string>
 							<string>id</string>
+							<string>UILabel</string>
+							<string>UIBarButtonItem</string>
 							<string>UILabel</string>
 							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
@@ -683,6 +718,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>currentAnswerLabel</string>
 							<string>delegate</string>
+							<string>devHelpLabel</string>
+							<string>doneBarBtn</string>
 							<string>intervalLabel</string>
 							<string>nextOrGiveUpBarBtn</string>
 							<string>replayBarBtn</string>
@@ -698,6 +735,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">delegate</string>
 								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">devHelpLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">doneBarBtn</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">intervalLabel</string>

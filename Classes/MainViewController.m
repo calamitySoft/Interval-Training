@@ -63,7 +63,7 @@
 #pragma mark -
 #pragma mark Interface Elements
 
-- (IBAction)showInfo:(id)sender {    
+- (IBAction)showSettings:(id)sender {    
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
@@ -75,32 +75,58 @@
 }
 
 - (IBAction)giveUp:(id)sender {
+	// Set UI stuff.
+	[nextOrGiveUpBarBtn setEnabled:FALSE];
+	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveAnswer:)
+	[doneBarBtn setAction:@selector(nextNote:)];
+	
 	// Show the answer.
 	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
-	
-	// Set UI stuff.
-	[nextOrGiveUpBarBtn setTitle:@"Next"];
-	[nextOrGiveUpBarBtn setAction:@selector(nextNote:)];
 }
 
--(IBAction)nextNote:(id)sender {
+- (IBAction)nextNote:(id)sender {
+	// Set UI stuff.
+	[nextOrGiveUpBarBtn setEnabled:TRUE];	// ensure the Give Up button is enabled
+	[doneBarBtn setEnabled:TRUE];	// make the Done button the Done button again
+	[doneBarBtn setTitle:@"Done"];
+	[doneBarBtn setAction:@selector(giveAnswer:)];
+	
 	// Indicate new interval.
 	[self displayInterval:@"Listen"];
 	
 	// Pick and play new interval.
 	[delegate generateQuestion];
-
-	// Set UI stuff.
-	[nextOrGiveUpBarBtn setTitle:@"Give Up"];
-	[nextOrGiveUpBarBtn setAction:@selector(giveUp:)];
+	[devHelpLabel setText:[NSString stringWithFormat:@"%d",
+						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
 }
 
 - (IBAction)replayNote:(id)sender {
 	[delegate replayNote];
 }
 
+- (IBAction)giveAnswer:(id)sender {
+	// Set UI stuff.
+	[nextOrGiveUpBarBtn setEnabled:FALSE];	// disable the Give Up button
+	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
+	[doneBarBtn setAction:@selector(nextNote:)];
+
+	[delegate replayNote];
+	
+	if ([delegate getCurrentInterval] == intervalPickerIndex) {		// if our choice matches the interval being played
+		[self displayInterval:[NSString stringWithFormat:@"You got it!\n%@",
+							   [intervalStrings objectAtIndex:intervalPickerIndex]]];
+	}
+	else {
+		[self displayInterval:[NSString stringWithFormat:@"Nope, it was\n%@",
+							   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
+	}
+
+}
+
+#pragma mark -
+
 - (IBAction)switchAnswerLeft:(id)sender {
-	if (intervalPickerIndex-1 >= 0) {
+	if (intervalPickerIndex >= 1) {
 		intervalPickerIndex--;
 		[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalPickerIndex] forState:UIControlStateNormal];
 	}
@@ -113,6 +139,7 @@
 }
 
 
+#pragma mark -
 #pragma mark View Controlling
 
 - (void) displayInterval:(NSString *)theInterval {
