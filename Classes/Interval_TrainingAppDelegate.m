@@ -182,16 +182,19 @@
 }
 
 - (void)selectNextTarget {
-	// Generate a target note.
+	// Generate a target interval.
 	NSUInteger tempInterval;	// we don't have to use an NSNumber here
 	do {
 		tempInterval = arc4random() % INTERVAL_RANGE;	// mod 13 for the size of an octave+1
 														// we're constraining from unison to octave
 	} while (![self intervalIsEnabled:tempInterval]);
 	
-	tempInterval += [iCurRoot intValue];			// add the temp dude to root to get the target
-	[self setICurTarget:[NSNumber numberWithUnsignedInteger:tempInterval]];	// which is set here
+	
+	// Add the temp dude to root to get the target
+	tempInterval += [iCurRoot intValue];
+	[self setICurTarget:[NSNumber numberWithUnsignedInteger:tempInterval]];
 		
+	
 	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
 		  [iCurTarget intValue],
 		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);

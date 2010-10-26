@@ -101,6 +101,8 @@
 	[doneBarBtn setEnabled:TRUE];	// make the Done button the Done button again
 	[doneBarBtn setTitle:@"Done"];
 	[doneBarBtn setAction:@selector(submitAnswer:)];
+	[scoreTextItem setTitle:@"Score"];
+	[scoreBar setTintColor:[UIColor blackColor]];
 	
 	// Pick and play new interval.
 	[delegate generateQuestion];
@@ -129,12 +131,14 @@
 	
 	// Show the answer and whether the user got it right.
 	if ([delegate getCurrentInterval] == intervalPickerIndex) {		// if our choice matches the interval being played
-		[self displayInterval:[NSString stringWithFormat:@"You got it!\n%@",
-							   [intervalStrings objectAtIndex:intervalPickerIndex]]];
+		[self displayInterval:[intervalStrings objectAtIndex:intervalPickerIndex]];
+		[scoreTextItem setTitle:@"Correct!"];
+		[scoreBar setTintColor:[UIColor greenColor]];
 	}
 	else {
-		[self displayInterval:[NSString stringWithFormat:@"Nope, it was\n%@",
-							   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
+		[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
+		[scoreTextItem setTitle:@"Nope"];
+		[scoreBar setTintColor:[UIColor redColor]];
 	}
 
 }

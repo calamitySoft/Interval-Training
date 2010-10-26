@@ -13,8 +13,12 @@
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
 	id <ITApplicationDelegate> delegate;
 	
+	IBOutlet UINavigationBar *scoreBar;
+	IBOutlet UINavigationItem *scoreTextItem;
+	
 	IBOutlet UILabel *intervalLabel;
 	IBOutlet UILabel *devHelpLabel;
+	
 	IBOutlet UIBarButtonItem *replayBarBtn;
 	IBOutlet UIBarButtonItem *nextOrGiveUpBarBtn;
 	IBOutlet UIBarButtonItem *doneBarBtn;
