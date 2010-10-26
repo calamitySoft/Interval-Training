@@ -21,10 +21,10 @@
 	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
 					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
 					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
-					   @"Major\nSeventh", nil];
+					   @"Major\nSeventh", @"Octave", nil];
 	intervalPickerIndex = 5;
 	
-	// REMOVE ME
+	// REMOVE ME before launch
 	// Show the answer in the top left
 	[devHelpLabel setText:[NSString stringWithFormat:@"%@",		// help a dev out
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
@@ -105,7 +105,7 @@
 	// Indicate new interval.
 	[self displayInterval:@"Listen"];
 	
-	// REMOVE ME
+	// REMOVE ME before launch
 	// Show the answer in the top left
 	[devHelpLabel setText:[NSString stringWithFormat:@"%@",		// help a dev out
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
@@ -139,13 +139,13 @@
 #pragma mark -
 
 - (IBAction)switchAnswerLeft:(id)sender {
-	if (intervalPickerIndex >= 1) {
+	if (intervalPickerIndex >= 1) {		// answer option must not go below 0
 		intervalPickerIndex--;
 		[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalPickerIndex] forState:UIControlStateNormal];
 	}
 }
 - (IBAction)switchAnswerRight:(id)sender {
-	if (intervalPickerIndex+1 < [intervalStrings count]) {
+	if (intervalPickerIndex+1 < [intervalStrings count]) {		// answer option must not go above the last option available
 		intervalPickerIndex++;
 		[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalPickerIndex] forState:UIControlStateNormal];
 	}

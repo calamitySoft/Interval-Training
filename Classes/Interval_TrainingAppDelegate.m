@@ -16,22 +16,22 @@
 @synthesize mainViewController;
 @synthesize myDJ, aNoteStrings, aEnabledIntervals, iCurRoot, iCurTarget, cDifficulty;
 
+#define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
+
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.  
+	[self initMyVars];
+	[self generateQuestion];
 
     // Add the main view controller's view to the window and display.
     [window addSubview:mainViewController.view];
     //[window addSubview:FlipsideViewController.view];
 	
 	[window makeKeyAndVisible];
-		
-	[self initMyVars];
-	
-	[self generateQuestion];
 	
     return YES;
 }
@@ -66,33 +66,24 @@
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
 	
-	// Creates array for determining which notes have been enabled
+	/*** Creates array for determining which notes have been enabled ***/
+	// initially all disabled
 	aEnabledIntervals = [[NSMutableArray alloc] init];
-	for (NSUInteger i = 0; i < 13; i++) {
+	for (NSUInteger i = 0; i < INTERVAL_RANGE; i++) {
 		[aEnabledIntervals addObject:[NSNumber numberWithInt:0]];
 	}
 	[self setAllIntervals:[NSNumber numberWithInt:0]];
-	
-	// Initialize default difficulty - easy.
-	[self setCDifficulty:'m'];
-	[self setDifficulty:'e'];
-	
+		
 	/*** Initialize interval array ***/
 	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
 					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
 					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
-					   @"Major\nSeventh", nil];
+					   @"Major\nSeventh", @"Octave", nil];
 	
 	
 	/*** Initialize default difficulty - easy. ***/
 	[self setCDifficulty:'e'];
-}
-
--(void) setAllIntervals:(NSNumber *)mode
-{
-	for (NSUInteger i = 0; i < 13; i++) {
-		[aEnabledIntervals replaceObjectAtIndex:i withObject:mode];
-	}
+	[self setDifficulty:'e'];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -181,8 +172,8 @@
  */
 - (void)selectNextRoot {
 	NSLog(@"(Delegate) aNoteStrings count = %i", [aNoteStrings count]);
-		// count-12 because the target could be anywhere within the octave above the root
-	[self setICurRoot:[NSNumber numberWithInt:arc4random() % ([aNoteStrings count]-12)]];
+		// count minus range because the target could be anywhere within the range above the root
+	[self setICurRoot:[NSNumber numberWithInt:arc4random() % ([aNoteStrings count] - INTERVAL_RANGE)]];
 	NSLog(@"(Delegate) selectNextRoot: %i (%@) (random() mod %i)",
 		  [iCurRoot intValue],
 		  [aNoteStrings objectAtIndex:[iCurRoot intValue]],
@@ -195,21 +186,17 @@
 	// Generate a target note.
 	int tempInterval;	// so we don't have to use an NSNumber here
 	do {
-		tempInterval = arc4random()%12;	// mod 12 for the size of an octave
-										// we're constraining to one octave
+		tempInterval = arc4random() % INTERVAL_RANGE;	// mod 13 for the size of an octave
+														// we're constraining to one octave
 	} while (![self intervalIsEnabled:[NSNumber numberWithInt:tempInterval]]);
 	
-	tempInterval += [iCurRoot intValue];	// add the dude to root to get the target
+	tempInterval += [iCurRoot intValue];	// add the temp dude to root to get the target
 	[self setICurTarget:[NSNumber numberWithInt:tempInterval]];	// which is set here
 
 	
 	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
 		  [iCurTarget intValue],
 		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);
-}
-
-- (int)getCurrentInterval {
-	return [iCurTarget intValue]-[iCurRoot intValue];
 }
 		
 - (void)setDifficulty:(char)theDiff{
@@ -220,21 +207,21 @@
 		
 		switch (theDiff) {
 			case 'e':
-				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:12 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];	// Unison
+				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];	// Minor Third
+				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];	// Major Third
+				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];	// Perfect Fifth
+				[aEnabledIntervals replaceObjectAtIndex:12 withObject:trueValue];	// Octave
 				break;
 			case 'm':
-				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:2 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:5 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:8 withObject:trueValue];
-				[aEnabledIntervals replaceObjectAtIndex:9 withObject:trueValue];
+				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];	// Unison
+				[aEnabledIntervals replaceObjectAtIndex:2 withObject:trueValue];	// Major Second
+				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];	// Minor Third
+				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];	// Major Third
+				[aEnabledIntervals replaceObjectAtIndex:5 withObject:trueValue];	// Perfect Fourth
+				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];	// Perfect Fifth
+				[aEnabledIntervals replaceObjectAtIndex:8 withObject:trueValue];	// Minor Sixth
+				[aEnabledIntervals replaceObjectAtIndex:9 withObject:trueValue];	// Major Sixth
 				break;
 			case 'h':
 				[self setAllIntervals:trueValue];
@@ -248,74 +235,45 @@
 	NSLog(@"(Delegate) Just changed the difficulty to %c", theDiff);
 }
 
--(BOOL)intervalIsEnabled:(NSNumber *)distance
-{
-	if ([distance intValue] > 12 || [distance intValue]< 0) {
+
+#pragma mark -
+#pragma mark Interval Control
+
+- (int)getCurrentInterval {
+	return [iCurTarget intValue]-[iCurRoot intValue];
+}
+
+-(void) setAllIntervals:(NSNumber *)mode {
+	for (NSUInteger i = 0; i < 13; i++) {
+		[aEnabledIntervals replaceObjectAtIndex:i withObject:mode];
+	}
+}
+
+
+-(BOOL)intervalIsEnabled:(NSNumber *)distance {
+	if ([distance intValue] < 0 || [distance intValue] >= INTERVAL_RANGE) {  // must be >= 0 or < range (because 0 is valid)
 		return false;
 	}
-	if([[aEnabledIntervals objectAtIndex:[distance intValue]]boolValue])
-	{
+	
+//	if([[aEnabledIntervals objectAtIndex:[distance intValue]]boolValue]) {	// Not sure why this makes a difference, but this
+																			// would never evaluate true.
+	if([aEnabledIntervals objectAtIndex:[distance intValue]]) {				// This works just fine, though.
 		NSLog(@"The interval %d is enabled!",[distance intValue]);
 		return true;
 	}
 	else {
 		return false;
 	}
-
 }
 
 
--(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second
-{	
+-(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second {
 	interval theInterval = [second intValue] - [first intValue];
 	NSLog(@"(Delegate) The target is: %i the root is: %i", [second intValue], [first intValue]);
 	
+	if (theInterval<0 || theInterval>=INTERVAL_RANGE)	// must be >= 0 or < range (because 0 is valid)
+		return @"Invalid interval";
 	return [intervalStrings objectAtIndex:theInterval];
-	NSLog(@"(ERROR) Couldn't use the array...");
-	
-	switch (theInterval) {
-		case unison:
-			return [NSString stringWithFormat:@"Unison"];
-			break;
-		case minSecond:
-			return [NSString stringWithFormat:@"Minor\nSecond"];
-			break;
-		case majSecond:
-			return [NSString stringWithFormat:@"Major\nSecond"];
-			break;
-		case minThird:
-			return [NSString stringWithFormat:@"Minor\nThird"];
-			break;
-		case majThird:
-			return [NSString stringWithFormat:@"Major\nThird"];
-			break;
-		case perFourth:
-			return [NSString stringWithFormat:@"Perfect\nFourth"];
-			break;
-		case tritone:
-			return [NSString stringWithFormat:@"Tritone"];
-			break;
-		case perFifth:
-			return [NSString stringWithFormat:@"Perfect\nFifth"];
-			break;
-		case minSixth:	
-			return [NSString stringWithFormat:@"Minor\nSixth"];
-			break;
-		case majSixth:
-			return [NSString stringWithFormat:@"Major\nSixth"];
-			break;
-		case minSeventh:
-			return [NSString stringWithFormat:@"Minor\nSeventh"];
-			break;
-		case majSeventh:
-			return [NSString stringWithFormat:@"Major\nSeventh"];
-			break;
-
-		default:
-			return [NSString stringWithFormat:@"(interval unknown)"];
-			break;
-	}
-	return [NSString stringWithFormat:@"Interval nil?"];
 }
 
 @end
