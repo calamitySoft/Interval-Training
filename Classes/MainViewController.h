@@ -24,7 +24,7 @@
 	IBOutlet UIButton *currentAnswerLabel;	// actually a UIButton because they look better
 	
 	NSArray *intervalStrings;
-	int intervalPickerIndex;	// accompanies currentAnswerLabel. This is an int of the current interval answer.
+	NSUInteger intervalPickerIndex;	// accompanies currentAnswerLabel. This is an int of the current interval answer.
 }
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
@@ -33,10 +33,11 @@
 - (IBAction)replayNote:(id)sender;	// replays the root note of the interval
 - (IBAction)giveUp:(id)sender;		// displays the interval
 - (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question
-- (IBAction)giveAnswer:(id)sender;	// answers with the interval displayed
+- (IBAction)submitAnswer:(id)sender;	// answers with the interval displayed
 
 - (IBAction)switchAnswerLeft:(id)sender;	// sets the user's tentative answer
 - (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
+- (void)setOptionText:(NSUInteger)intervalIndex;	// wrapper for easy answer option setting
 
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
 
@@ -55,6 +56,7 @@
 - (int)getCurrentInterval;
 - (void)setDifficulty:(char)theDiff;
 - (void)printDifficulty;
+- (BOOL)intervalIsEnabled:(NSUInteger)distance;
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
 
 @property (nonatomic, retain) NSNumber *iCurRoot;

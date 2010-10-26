@@ -13,6 +13,7 @@
 
 @synthesize delegate;
 
+#define DEFAULT_ANSWER 4
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -22,7 +23,7 @@
 					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
 					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
 					   @"Major\nSeventh", @"Octave", nil];
-	intervalPickerIndex = 5;
+	intervalPickerIndex = DEFAULT_ANSWER;
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
@@ -79,10 +80,12 @@
 	[controller release];
 }
 
+#pragma mark -
+
 - (IBAction)giveUp:(id)sender {
 	// Set UI stuff.
 	[nextOrGiveUpBarBtn setEnabled:FALSE];
-	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveAnswer:)
+	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==submitAnswer:)
 	[doneBarBtn setAction:@selector(nextNote:)];
 	
 	// Reinforce the sound while showing answer.
@@ -97,7 +100,7 @@
 	[nextOrGiveUpBarBtn setEnabled:TRUE];	// ensure the Give Up button is enabled
 	[doneBarBtn setEnabled:TRUE];	// make the Done button the Done button again
 	[doneBarBtn setTitle:@"Done"];
-	[doneBarBtn setAction:@selector(giveAnswer:)];
+	[doneBarBtn setAction:@selector(submitAnswer:)];
 	
 	// Pick and play new interval.
 	[delegate generateQuestion];
@@ -115,7 +118,7 @@
 	[delegate replayNote];
 }
 
-- (IBAction)giveAnswer:(id)sender {
+- (IBAction)submitAnswer:(id)sender {
 	// Set UI stuff.
 	[nextOrGiveUpBarBtn setEnabled:FALSE];	// disable the Give Up button
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
@@ -139,16 +142,36 @@
 #pragma mark -
 
 - (IBAction)switchAnswerLeft:(id)sender {
-	if (intervalPickerIndex >= 1) {		// answer option must not go below 0
+	NSUInteger placeholderIndex = intervalPickerIndex;	// in case no new option is set. index changed in loop below.
+	
+	while (intervalPickerIndex >= 1) {			// answer option must not go below 0
 		intervalPickerIndex--;
-		[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalPickerIndex] forState:UIControlStateNormal];
+		if ([delegate intervalIsEnabled:intervalPickerIndex]) {
+			[self setOptionText:intervalPickerIndex];
+			return;
+		}
 	}
+
+	intervalPickerIndex = placeholderIndex;
 }
+
 - (IBAction)switchAnswerRight:(id)sender {
-	if (intervalPickerIndex+1 < [intervalStrings count]) {		// answer option must not go above the last option available
+	NSUInteger placeholderIndex = intervalPickerIndex;	// in case no new option is set. index changed in loop below.
+	
+	while (intervalPickerIndex+1 < [intervalStrings count]) {	// answer option must not go above the last option available
 		intervalPickerIndex++;
-		[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalPickerIndex] forState:UIControlStateNormal];
+		if ([delegate intervalIsEnabled:intervalPickerIndex]) {
+			[self setOptionText:intervalPickerIndex];
+			return;
+		}
 	}
+
+	intervalPickerIndex = placeholderIndex;
+}
+
+- (void)setOptionText:(NSUInteger)intervalIndex {
+	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
+	[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalIndex] forState:UIControlStateNormal];
 }
 
 
@@ -163,6 +186,7 @@
 
 -(void) setDifficulty:(char)theDiff {
 	[delegate setDifficulty:theDiff];
+	[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
 }
 
 -(char)getDifficulty {

@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="34"/>
+			<integer value="90"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -224,7 +224,7 @@
 									<int key="NSfFlags">16</int>
 								</object>
 								<int key="IBUIButtonType">1</int>
-								<string key="IBUINormalTitle">Perfect Fourth</string>
+								<string key="IBUINormalTitle">Major Third</string>
 								<reference key="IBUIHighlightedTitleColor" ref="11699838"/>
 								<reference key="IBUINormalTitleColor" ref="702169630"/>
 								<reference key="IBUINormalTitleShadowColor" ref="43653855"/>
@@ -343,14 +343,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">giveAnswer:</string>
-						<reference key="source" ref="1040464849"/>
-						<reference key="destination" ref="372490531"/>
-					</object>
-					<int key="connectionID">107</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">showSettings:</string>
 						<reference key="source" ref="558454645"/>
 						<reference key="destination" ref="372490531"/>
@@ -382,6 +374,14 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">112</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">submitAnswer:</string>
+						<reference key="source" ref="1040464849"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">113</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -619,7 +619,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">112</int>
+			<int key="maxID">113</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -631,12 +631,12 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>giveAnswer:</string>
 							<string>giveUp:</string>
 							<string>nextNote:</string>
 							<string>printDifficulty:</string>
 							<string>replayNote:</string>
 							<string>showSettings:</string>
+							<string>submitAnswer:</string>
 							<string>switchAnswerLeft:</string>
 							<string>switchAnswerRight:</string>
 						</object>
@@ -656,21 +656,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>giveAnswer:</string>
 							<string>giveUp:</string>
 							<string>nextNote:</string>
 							<string>printDifficulty:</string>
 							<string>replayNote:</string>
 							<string>showSettings:</string>
+							<string>submitAnswer:</string>
 							<string>switchAnswerLeft:</string>
 							<string>switchAnswerRight:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">giveAnswer:</string>
-								<string key="candidateClassName">id</string>
-							</object>
 							<object class="IBActionInfo">
 								<string key="name">giveUp:</string>
 								<string key="candidateClassName">id</string>
@@ -689,6 +685,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">showSettings:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">submitAnswer:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
