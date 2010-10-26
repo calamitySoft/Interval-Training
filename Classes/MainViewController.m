@@ -169,4 +169,9 @@
 	return [delegate cDifficulty];
 }
 
+- (IBAction)printDifficulty:(id)sender {
+	[delegate printDifficulty];
+}
+
+
 @end

@@ -374,6 +374,15 @@
 					</object>
 					<int key="connectionID">110</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">printDifficulty:</string>
+						<reference key="source" ref="558454645"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">112</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -610,7 +619,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">110</int>
+			<int key="maxID">112</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -625,6 +634,7 @@
 							<string>giveAnswer:</string>
 							<string>giveUp:</string>
 							<string>nextNote:</string>
+							<string>printDifficulty:</string>
 							<string>replayNote:</string>
 							<string>showSettings:</string>
 							<string>switchAnswerLeft:</string>
@@ -632,6 +642,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -648,6 +659,7 @@
 							<string>giveAnswer:</string>
 							<string>giveUp:</string>
 							<string>nextNote:</string>
+							<string>printDifficulty:</string>
 							<string>replayNote:</string>
 							<string>showSettings:</string>
 							<string>switchAnswerLeft:</string>
@@ -665,6 +677,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">nextNote:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">printDifficulty:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

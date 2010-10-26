@@ -82,7 +82,6 @@
 	
 	
 	/*** Initialize default difficulty - easy. ***/
-	[self setCDifficulty:'e'];
 	[self setDifficulty:'e'];
 }
 
@@ -184,22 +183,21 @@
 
 - (void)selectNextTarget {
 	// Generate a target note.
-	int tempInterval;	// so we don't have to use an NSNumber here
+	NSUInteger tempInterval;	// we don't have to use an NSNumber here
 	do {
-		tempInterval = arc4random() % INTERVAL_RANGE;	// mod 13 for the size of an octave
-														// we're constraining to one octave
-	} while (![self intervalIsEnabled:[NSNumber numberWithInt:tempInterval]]);
+		tempInterval = arc4random() % INTERVAL_RANGE;	// mod 13 for the size of an octave+1
+														// we're constraining from unison to octave
+	} while (![self intervalIsEnabled:tempInterval]);
 	
-	tempInterval += [iCurRoot intValue];	// add the temp dude to root to get the target
-	[self setICurTarget:[NSNumber numberWithInt:tempInterval]];	// which is set here
-
-	
+	tempInterval += [iCurRoot intValue];			// add the temp dude to root to get the target
+	[self setICurTarget:[NSNumber numberWithUnsignedInteger:tempInterval]];	// which is set here
+		
 	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
 		  [iCurTarget intValue],
 		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);
 }
 		
-- (void)setDifficulty:(char)theDiff{
+- (void)setDifficulty:(char)theDiff {
 	if (cDifficulty != theDiff) {
 		[self setAllIntervals:[NSNumber numberWithInt:0]];
 		NSNumber* trueValue = [NSNumber numberWithInt:1];
@@ -235,6 +233,17 @@
 	NSLog(@"(Delegate) Just changed the difficulty to %c", theDiff);
 }
 
+- (void)printDifficulty {
+	NSLog(@"******************");
+	NSLog(@"** cDifficulty: %c\n", cDifficulty);
+	NSLog(@"** index\tenabled?");
+	int i=0;
+	for (NSNumber *num in aEnabledIntervals) {
+		NSLog(@"** %i\t\t%i", i, [num intValue]);
+		i++;
+	}
+}
+
 
 #pragma mark -
 #pragma mark Interval Control
@@ -243,22 +252,21 @@
 	return [iCurTarget intValue]-[iCurRoot intValue];
 }
 
--(void) setAllIntervals:(NSNumber *)mode {
+- (void)setAllIntervals:(NSNumber *)mode {
 	for (NSUInteger i = 0; i < 13; i++) {
 		[aEnabledIntervals replaceObjectAtIndex:i withObject:mode];
 	}
 }
 
 
--(BOOL)intervalIsEnabled:(NSNumber *)distance {
-	if ([distance intValue] < 0 || [distance intValue] >= INTERVAL_RANGE) {  // must be >= 0 or < range (because 0 is valid)
+-(BOOL)intervalIsEnabled:(NSUInteger)distance {
+	// NSUInteger will always be >=0
+	if (distance >= INTERVAL_RANGE) {  // must be >= 0 or < range (because 0 is valid)
 		return false;
 	}
 	
-//	if([[aEnabledIntervals objectAtIndex:[distance intValue]]boolValue]) {	// Not sure why this makes a difference, but this
-																			// would never evaluate true.
-	if([aEnabledIntervals objectAtIndex:[distance intValue]]) {				// This works just fine, though.
-		NSLog(@"The interval %d is enabled!",[distance intValue]);
+	if([[aEnabledIntervals objectAtIndex:distance]boolValue]) {	// don't know why this wasn't working before.
+		NSLog(@"The interval %d is enabled!",distance);
 		return true;
 	}
 	else {

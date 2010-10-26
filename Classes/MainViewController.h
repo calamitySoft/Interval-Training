@@ -42,6 +42,7 @@
 
 - (void)setDifficulty:(char)theDiff;	// tells the delegate to setDifficulty:
 - (char)getDifficulty;	// get the difficulty from the delegate
+- (IBAction)printDifficulty:(id)sender;
 
 @end
 
@@ -53,6 +54,7 @@
 - (void)replayNote;
 - (int)getCurrentInterval;
 - (void)setDifficulty:(char)theDiff;
+- (void)printDifficulty;
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
 
 @property (nonatomic, retain) NSNumber *iCurRoot;
