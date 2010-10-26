@@ -181,7 +181,8 @@
  */
 - (void)selectNextRoot {
 	NSLog(@"(Delegate) aNoteStrings count = %i", [aNoteStrings count]);
-	[self setICurRoot:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
+		// count-12 because the target could be anywhere within the octave above the root
+	[self setICurRoot:[NSNumber numberWithInt:arc4random() % ([aNoteStrings count]-12)]];
 	NSLog(@"(Delegate) selectNextRoot: %i (%@) (random() mod %i)",
 		  [iCurRoot intValue],
 		  [aNoteStrings objectAtIndex:[iCurRoot intValue]],
@@ -191,23 +192,23 @@
 }
 
 - (void)selectNextTarget {
-	// FIXME: This could be more concise and understandable as tar=root+rand%12;.
-	//		Can currently pick a diff >= 12, which is bad.
-	
 	// Generate a target note.
-	[self setICurTarget:[NSNumber numberWithInt:arc4random() % [aNoteStrings count]]];
-	while(![self intervalIsEnabled:[NSNumber numberWithInt:[iCurTarget intValue] - [iCurRoot intValue]]]) {
-		[self setICurTarget:[NSNumber numberWithInt:arc4random () % [aNoteStrings count]]];
-	}
+	int tempInterval;	// so we don't have to use an NSNumber here
+	do {
+		tempInterval = arc4random()%12;	// mod 12 for the size of an octave
+										// we're constraining to one octave
+	} while (![self intervalIsEnabled:[NSNumber numberWithInt:tempInterval]]);
+	
+	tempInterval += [iCurRoot intValue];	// add the dude to root to get the target
+	[self setICurTarget:[NSNumber numberWithInt:tempInterval]];	// which is set here
+
+	
 	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
 		  [iCurTarget intValue],
 		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);
-	
 }
 
 - (int)getCurrentInterval {
-	NSLog(@"(Delegate) tar=%d\troot=%d\tdiff=%d", [iCurTarget intValue], [iCurRoot intValue],
-		  [iCurTarget intValue]-[iCurRoot intValue]);
 	return [iCurTarget intValue]-[iCurRoot intValue];
 }
 		

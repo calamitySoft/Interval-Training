@@ -23,6 +23,11 @@
 					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
 					   @"Major\nSeventh", nil];
 	intervalPickerIndex = 5;
+	
+	// REMOVE ME
+	// Show the answer in the top left
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@",		// help a dev out
+						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
 }
 /**/
 
@@ -80,6 +85,7 @@
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveAnswer:)
 	[doneBarBtn setAction:@selector(nextNote:)];
 	
+	// Reinforce the sound while showing answer.
 	[delegate replayNote];
 	
 	// Show the answer.
@@ -93,12 +99,15 @@
 	[doneBarBtn setTitle:@"Done"];
 	[doneBarBtn setAction:@selector(giveAnswer:)];
 	
+	// Pick and play new interval.
+	[delegate generateQuestion];
+	
 	// Indicate new interval.
 	[self displayInterval:@"Listen"];
 	
-	// Pick and play new interval.
-	[delegate generateQuestion];
-	[devHelpLabel setText:[NSString stringWithFormat:@"%d",
+	// REMOVE ME
+	// Show the answer in the top left
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@",		// help a dev out
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
 }
 
@@ -112,8 +121,10 @@
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
 	[doneBarBtn setAction:@selector(nextNote:)];
 
+	// Reinforce the sound while showing the answer.
 	[delegate replayNote];
 	
+	// Show the answer and whether the user got it right.
 	if ([delegate getCurrentInterval] == intervalPickerIndex) {		// if our choice matches the interval being played
 		[self displayInterval:[NSString stringWithFormat:@"You got it!\n%@",
 							   [intervalStrings objectAtIndex:intervalPickerIndex]]];
