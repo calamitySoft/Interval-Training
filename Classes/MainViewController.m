@@ -80,6 +80,8 @@
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveAnswer:)
 	[doneBarBtn setAction:@selector(nextNote:)];
 	
+	[delegate replayNote];
+	
 	// Show the answer.
 	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
 }
