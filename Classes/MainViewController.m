@@ -198,8 +198,10 @@
 #pragma mark -
 
 -(void)setDifficulty:(char)theDiff {
-	[delegate setDifficulty:theDiff];
-	[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
+	if ([self cDifficulty] != theDiff) {
+		[delegate setDifficulty:theDiff];
+		[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
+	}
 }
 
 -(char)cDifficulty {
