@@ -133,7 +133,7 @@
 	if ([delegate getCurrentInterval] == intervalPickerIndex) {		// if our choice matches the interval being played
 		[self displayInterval:[intervalStrings objectAtIndex:intervalPickerIndex]];
 		[scoreTextItem setTitle:@"Correct!"];
-		[scoreBar setTintColor:[UIColor greenColor]];
+		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
 	}
 	else {
 		[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
