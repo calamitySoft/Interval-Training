@@ -12,13 +12,20 @@
 @implementation FlipsideViewController
 
 @synthesize delegate;
-
+@synthesize noteNames, currentRootSetting;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 
 	[self setDifficultyDisplay];
+	
+	noteNames = [[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
+						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
+	[rootControl setNumberOfPages:[noteNames count]];
+	// FIXME: Should get currentRootSetting from a delegate
+	[self setCurrentRootSetting:0];
+	[self updateRootDisplay];
 }
 
 
@@ -51,12 +58,13 @@
 
 
 - (void)dealloc {
+	[noteNames release];
     [super dealloc];
 }
 
 
 #pragma mark -
-#pragma mark Difficulty Picker
+#pragma mark Difficulty Control
 
 //	Sets the trainer's difficulty.
 //	See AppDelegate for details.
@@ -95,6 +103,21 @@
 			NSLog(@"(Flipside) Current difficulty unrecognized.");
 			break;
 	}
+}
+
+
+#pragma mark -
+#pragma mark Root Control
+
+// 
+- (IBAction)updateRootSelection {
+	[self setCurrentRootSetting:[rootControl currentPage]];
+	[self updateRootDisplay];
+}
+
+- (void)updateRootDisplay {
+	[rootControl setCurrentPage:currentRootSetting];
+	[rootName setText:[noteNames objectAtIndex:currentRootSetting]];	
 }
 
 
