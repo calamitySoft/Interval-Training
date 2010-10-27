@@ -14,7 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, aEnabledIntervals, iCurRoot, iCurTarget, cDifficulty;
+@synthesize myDJ, aNoteStrings, aEnabledIntervals, enabledRoot, iCurRoot, iCurTarget, cDifficulty;
 
 #define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
 
@@ -41,7 +41,6 @@
 	DJ *tempDJ = [[DJ alloc] init];
 	[self setMyDJ:tempDJ];
 	[tempDJ release];
-	
 	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
 	
@@ -66,23 +65,29 @@
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
 	
-	/*** Creates array for determining which notes have been enabled ***/
+	
+	/*** Create array for determining which notes have been enabled ***/
 	// initially all disabled
 	aEnabledIntervals = [[NSMutableArray alloc] init];
 	for (NSUInteger i = 0; i < INTERVAL_RANGE; i++) {
 		[aEnabledIntervals addObject:[NSNumber numberWithInt:0]];
 	}
 	[self setAllIntervals:[NSNumber numberWithInt:0]];
-		
-	/*** Initialize interval array ***/
+	
+	
+	/*** Initialize array of interval names ***/
 	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
 					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
 					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
 					   @"Major\nSeventh", @"Octave", nil];
 	
 	
-	/*** Initialize default difficulty - easy. ***/
+	/*** Set default difficulty - easy. ***/
 	[self setDifficulty:'e'];
+	
+	
+	/*** Set default root - any. ***/
+	[self setEnabledRoot:@"any"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -140,6 +145,7 @@
 - (void)dealloc {
 	[myDJ release];
 	[aNoteStrings release];
+	[enabledRoot release];
 	[iCurRoot release];
 	[iCurTarget release];
 	
@@ -171,14 +177,21 @@
  */
 - (void)selectNextRoot {
 	NSLog(@"(Delegate) aNoteStrings count = %i", [aNoteStrings count]);
-		// count minus range because the target could be anywhere within the range above the root
-	[self setICurRoot:[NSNumber numberWithInt:arc4random() % ([aNoteStrings count] - INTERVAL_RANGE)]];
+	
+	
+	// Generate a valid root.
+	NSUInteger tempRootInt;
+	do {
+		tempRootInt = arc4random() % ([aNoteStrings count] - INTERVAL_RANGE);	// pick random note that'd be within our array
+	} while (![self rootIsEnabled:tempRootInt]);
+	[self setICurRoot:[NSNumber numberWithUnsignedInteger:tempRootInt]];	// once the loop finding is complete, use it
+	
+	
 	NSLog(@"(Delegate) selectNextRoot: %i (%@) (random() mod %i)",
 		  [iCurRoot intValue],
 		  [aNoteStrings objectAtIndex:[iCurRoot intValue]],
 		  [aNoteStrings count]);
 	[self selectNextTarget];
-	
 }
 
 - (void)selectNextTarget {
@@ -262,7 +275,7 @@
 }
 
 
--(BOOL)intervalIsEnabled:(NSUInteger)distance {
+- (BOOL)intervalIsEnabled:(NSUInteger)distance {
 	// NSUInteger will always be >=0
 	if (distance >= INTERVAL_RANGE) {  // must be >= 0 or < range (because 0 is valid)
 		return false;
@@ -278,7 +291,7 @@
 }
 
 
--(NSString *) intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second {
+- (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second {
 	interval theInterval = [second intValue] - [first intValue];
 	NSLog(@"(Delegate) The target is: %i the root is: %i", [second intValue], [first intValue]);
 	
@@ -286,5 +299,28 @@
 		return @"Invalid interval";
 	return [intervalStrings objectAtIndex:theInterval];
 }
+
+
+#pragma mark -
+#pragma mark Root Control
+
+//	Is aNoteStrings[root] an allowed root to use?
+//	use enabledRoot to determine
+- (BOOL)rootIsEnabled:(NSUInteger)root {
+	
+	// if ANY root is acceptable
+	if ([enabledRoot isEqualToString:@"any"]) { return TRUE; }
+	
+	// if enabledRoot is specified, check if given root is valid
+	else {
+		NSString *tempRootStr = [aNoteStrings objectAtIndex:root];		// convert rand() to usable str for checking
+			// removes octave num from the end, so any note that's, say, "C" will do.
+		if ([enabledRoot isEqualToString:[tempRootStr substringToIndex:[tempRootStr length]-1]])
+			return TRUE;
+	}
+	
+	return FALSE;
+}
+
 
 @end

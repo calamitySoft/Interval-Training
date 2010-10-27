@@ -18,13 +18,18 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 
+	
+	// Difficulty setup
 	[self setDifficultyDisplay];
 	
+	
+	// Root setup
 	noteNames = [[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
 						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
-	[rootControl setNumberOfPages:[noteNames count]];
-	// FIXME: Should get currentRootSetting from a delegate
-	[self setCurrentRootSetting:0];
+	[rootControl setNumberOfPages:[noteNames count]];	// rootControl serves up the note list, so make it fit
+		// intermediate str->int step means this list can be in whatever order we want
+	NSString *currentRootSettingStr = [delegate enabledRoot];
+	[self setCurrentRootSetting:[noteNames indexOfObject:currentRootSettingStr]];
 	[self updateRootDisplay];
 }
 
@@ -89,7 +94,7 @@
 //	Side effect: This will invoke [setDifficulty:] (above), due to setting the
 //		selection. (~It doesn't just respond to hardware UI events.)
 - (void)setDifficultyDisplay {
-	switch ([delegate getDifficulty]) {
+	switch ([delegate cDifficulty]) {
 		case 'e':
 			[difficultySegmentedControl setSelectedSegmentIndex:0];
 			break;
@@ -111,13 +116,14 @@
 
 // 
 - (IBAction)updateRootSelection {
-	[self setCurrentRootSetting:[rootControl currentPage]];
-	[self updateRootDisplay];
+	[self setCurrentRootSetting:[rootControl currentPage]];		// set local var for storage
+	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
+	[self updateRootDisplay];									// update display
 }
 
 - (void)updateRootDisplay {
-	[rootControl setCurrentPage:currentRootSetting];
-	[rootName setText:[noteNames objectAtIndex:currentRootSetting]];	
+	[rootControl setCurrentPage:currentRootSetting];	// update the little dots. necessary when setting display upon nib load
+	[rootName setText:[noteNames objectAtIndex:currentRootSetting]];	// update name to match dots. always.
 }
 
 

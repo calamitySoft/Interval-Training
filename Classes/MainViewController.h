@@ -46,8 +46,11 @@
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
 
 - (void)setDifficulty:(char)theDiff;	// tells the delegate to setDifficulty:
-- (char)getDifficulty;	// get the difficulty from the delegate
+- (char)cDifficulty;	// get the difficulty from the delegate
 - (IBAction)printDifficulty:(id)sender;
+
+- (void)setEnabledRoot:(NSString*)str;	// passes along to AppDelegate
+- (NSString*)enabledRoot;	// gets from AppDelegate
 
 @end
 
@@ -66,5 +69,6 @@
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
 @property char cDifficulty;
+@property (nonatomic, retain) NSString *enabledRoot;
 
 @end

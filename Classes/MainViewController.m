@@ -27,8 +27,10 @@
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@",		// help a dev out
-						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%c,\t\t%@",		// help a dev out
+						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
+						   [self cDifficulty],
+						   [self enabledRoot]]];
 }
 /**/
 
@@ -112,8 +114,10 @@
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@",		// help a dev out
-						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]]]];
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%c,\t\t%@",		// help a dev out
+						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
+						   [self cDifficulty],
+						   [self enabledRoot]]];
 }
 
 - (IBAction)replayNote:(id)sender {
@@ -193,7 +197,7 @@
 	[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
 }
 
--(char)getDifficulty {
+-(char)cDifficulty {
 	return [delegate cDifficulty];
 }
 
@@ -201,5 +205,18 @@
 	[delegate printDifficulty];
 }
 
+
+#pragma mark -
+#pragma mark Wrapper
+
+// Pass along to AppDelegate
+- (void)setEnabledRoot:(NSString*)str {
+	[delegate setEnabledRoot:str];
+}
+
+// Gets from AppDelegate
+- (NSString*)enabledRoot {
+	return [delegate enabledRoot];
+}
 
 @end

@@ -41,6 +41,8 @@
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
 - (void)setDifficulty:(char)theDiff;
-- (char)getDifficulty;
+- (char)cDifficulty;
+- (void)setEnabledRoot:(NSString*)str;	// passes along to AppDelegate
+- (NSString*)enabledRoot;	// gets from AppDelegate
 @end
 

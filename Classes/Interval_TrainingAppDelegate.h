@@ -23,6 +23,10 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	DJ *myDJ;
 	NSArray *aNoteStrings;
 	NSMutableArray *aEnabledIntervals;
+	NSString *enabledRoot;		// ** This is a string so it can be compared to any octave. **
+								// Maybe it could be done with some ints and math, but then the ordering of
+								// Setting's list (seen by user) would be bound to aNoteStrings (programmatic).
+								// That'd mean loss of UI/data independence.  :(  i think...
 	NSNumber *iCurRoot;
 	NSNumber *iCurTarget;
 	char cDifficulty;
@@ -35,6 +39,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) DJ *myDJ;
 @property (nonatomic, retain) NSArray *aNoteStrings;
 @property (nonatomic, retain) NSMutableArray *aEnabledIntervals;
+@property (nonatomic, retain) NSString *enabledRoot;
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
 @property char cDifficulty;
@@ -52,8 +57,11 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (void)printDifficulty;	// lets us see the difficulty settings
 
 - (int)getCurrentInterval;	// returns an int of the interval being played
-- (BOOL)intervalIsEnabled:(NSUInteger)distance;
+- (BOOL)intervalIsEnabled:(NSUInteger)distance;	// intervals enabled are dependent on difficulty setting
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
+
+- (BOOL)rootIsEnabled:(NSUInteger)root;	// root enabled is dependent on the whim of the user
+
 
 @end
 
