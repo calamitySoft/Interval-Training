@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="34"/>
+			<integer value="90"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -128,8 +128,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIButton" id="702423460">
 								<reference key="NSNextResponder" ref="99678093"/>
-								<int key="NSvFlags">1316</int>
-								<string key="NSFrame">{{274, 40}, {29, 31}}</string>
+								<int key="NSvFlags">1325</int>
+								<string key="NSFrame">{{271, 24}, {39, 60}}</string>
 								<reference key="NSSuperview" ref="99678093"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -140,7 +140,6 @@
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<int key="IBUIButtonType">2</int>
 								<object class="NSColor" key="IBUIHighlightedTitleColor" id="11699838">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -153,24 +152,31 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">Right Arrow.png</string>
+								</object>
 							</object>
 							<object class="IBUIButton" id="816840787">
 								<reference key="NSNextResponder" ref="99678093"/>
 								<int key="NSvFlags">1316</int>
-								<string key="NSFrame">{{17, 40}, {29, 31}}</string>
+								<string key="NSFrame">{{10, 24}, {39, 60}}</string>
 								<reference key="NSSuperview" ref="99678093"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="301582487"/>
-								<int key="IBUIButtonType">2</int>
 								<reference key="IBUIHighlightedTitleColor" ref="11699838"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="43653855"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">Left Arrow.png</string>
+								</object>
 							</object>
 							<object class="IBUIButton" id="261717514">
 								<reference key="NSNextResponder" ref="99678093"/>
@@ -487,9 +493,9 @@
 						<reference key="object" ref="99678093"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="816840787"/>
-							<reference ref="702423460"/>
 							<reference ref="261717514"/>
+							<reference ref="702423460"/>
+							<reference ref="816840787"/>
 						</object>
 						<reference key="parent" ref="883825266"/>
 						<string key="objectName">Answer Selection View</string>
@@ -678,11 +684,11 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDiQAAwooAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDhQAAwqYAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUOJAABCIAAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBcAAAwqQAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -1138,8 +1144,19 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">Interval-Training.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">6 spoke settings white.png</string>
-			<string key="NS.object.0">{20, 20}</string>
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>6 spoke settings white.png</string>
+				<string>Left Arrow.png</string>
+				<string>Right Arrow.png</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{20, 20}</string>
+				<string>{26, 40}</string>
+				<string>{26, 40}</string>
+			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">123</string>
 	</data>
