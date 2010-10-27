@@ -14,18 +14,15 @@
 @interface FlipsideViewController : UIViewController {
 	id <FlipsideViewControllerDelegate> delegate;
 	
-	IBOutlet UIButton *easyBtn;
-	IBOutlet UIButton *mediumBtn;
-	IBOutlet UIButton *hardBtn;
+	IBOutlet UISegmentedControl *difficultySegmentedControl;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 
 - (IBAction)done:(id)sender;
 
--(IBAction) diffEasy;	// tells the delegate to set difficulty to 'e'
--(IBAction) diffMed;	// tells the delegate to set difficulty to 'm'
--(IBAction) diffHard;	// tells the delegate to set difficulty to 'h'
+- (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the delegate to set difficulties
+- (void)setDifficultyDisplay;	// adjust Settings' display to reflect current difficulty
 
 @end
 

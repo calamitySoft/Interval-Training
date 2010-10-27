@@ -188,7 +188,7 @@
 
 #pragma mark -
 
--(void) setDifficulty:(char)theDiff {
+-(void)setDifficulty:(char)theDiff {
 	[delegate setDifficulty:theDiff];
 	[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
 }

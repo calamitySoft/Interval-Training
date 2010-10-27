@@ -18,16 +18,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 
-	// FIXME: This UI looks bad.
-	/*** Indicates the current difficulty ***/
-	char cDifficulty = [delegate getDifficulty];
-	if (cDifficulty == 'e') {
-		[easyBtn setHighlighted:TRUE];
-	} else if (cDifficulty == 'm') {
-		[mediumBtn setHighlighted:TRUE];
-	} else if (cDifficulty == 'h') {
-		[hardBtn setHighlighted:TRUE];
-	}
+	[self setDifficultyDisplay];
 }
 
 
@@ -63,24 +54,48 @@
     [super dealloc];
 }
 
-#pragma mark difficulties
 
-- (IBAction) diffEasy{
-	NSLog(@"(Flipside) Setting difficulty to easy");
-	[self.delegate setDifficulty:'e'];
-	[self.delegate flipsideViewControllerDidFinish:self];	
+#pragma mark -
+#pragma mark Difficulty Picker
+
+//	Sets the trainer's difficulty.
+//	See AppDelegate for details.
+- (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl {
+	switch ([segmentedControl selectedSegmentIndex]) {
+		case 0:
+			[self.delegate setDifficulty:'e'];
+			break;
+		case 1:
+			[self.delegate setDifficulty:'m'];
+			break;
+		case 2:
+			[self.delegate setDifficulty:'h'];
+			break;
+		default:
+			NSLog(@"(Flipside) Attempting to set unrecognized difficulty.");
+			break;
+	}
 }
 
--(IBAction) diffMed{
-	NSLog(@"(Flipside) Setting difficulty to medium");
-	[self.delegate setDifficulty:'m'];
-	[self.delegate flipsideViewControllerDidFinish:self];	
+//	Sets indication of the current difficulty
+//	Side effect: This will invoke [setDifficulty:] (above), due to setting the
+//		selection. (~It doesn't just respond to hardware UI events.)
+- (void)setDifficultyDisplay {
+	switch ([delegate getDifficulty]) {
+		case 'e':
+			[difficultySegmentedControl setSelectedSegmentIndex:0];
+			break;
+		case 'm':
+			[difficultySegmentedControl setSelectedSegmentIndex:1];
+			break;
+		case 'h':
+			[difficultySegmentedControl setSelectedSegmentIndex:2];
+			break;			
+		default:
+			NSLog(@"(Flipside) Current difficulty unrecognized.");
+			break;
+	}
 }
 
--(IBAction) diffHard{
-	NSLog(@"(Flipside) Setting difficulty to hard");
-	[self.delegate setDifficulty:'h'];
-	[self.delegate flipsideViewControllerDidFinish:self];	
-}
 
 @end
