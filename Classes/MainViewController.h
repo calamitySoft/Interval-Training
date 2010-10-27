@@ -15,9 +15,11 @@
 	
 	IBOutlet UINavigationBar *scoreBar;
 	IBOutlet UINavigationItem *scoreTextItem;
+
+	IBOutlet UILabel *devHelpLabel;		// ** dev help ** //
+	IBOutlet UIButton *printDiffBtn;	// ** dev help ** //
 	
 	IBOutlet UILabel *intervalLabel;
-	IBOutlet UILabel *devHelpLabel;
 	
 	IBOutlet UIBarButtonItem *replayBarBtn;
 	IBOutlet UIBarButtonItem *nextOrGiveUpBarBtn;

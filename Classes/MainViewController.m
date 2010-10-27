@@ -31,6 +31,11 @@
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
 						   [self cDifficulty],
 						   [self enabledRoot]]];
+	
+#ifndef DEBUG
+	[devHelpLabel setHidden:TRUE];
+	[printDiffBtn setHidden:TRUE];
+#endif
 }
 /**/
 

@@ -427,6 +427,14 @@
 					</object>
 					<int key="connectionID">150</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">printDiffBtn</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="558454645"/>
+					</object>
+					<int key="connectionID">151</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -698,7 +706,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">150</int>
+			<int key="maxID">151</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -790,6 +798,7 @@
 							<string>doneBarBtn</string>
 							<string>intervalLabel</string>
 							<string>nextOrGiveUpBarBtn</string>
+							<string>printDiffBtn</string>
 							<string>replayBarBtn</string>
 							<string>scoreBar</string>
 							<string>scoreTextItem</string>
@@ -804,6 +813,7 @@
 							<string>UIBarButtonItem</string>
 							<string>UILabel</string>
 							<string>UIBarButtonItem</string>
+							<string>UIButton</string>
 							<string>UIBarButtonItem</string>
 							<string>UINavigationBar</string>
 							<string>UINavigationItem</string>
@@ -821,6 +831,7 @@
 							<string>doneBarBtn</string>
 							<string>intervalLabel</string>
 							<string>nextOrGiveUpBarBtn</string>
+							<string>printDiffBtn</string>
 							<string>replayBarBtn</string>
 							<string>scoreBar</string>
 							<string>scoreTextItem</string>
@@ -852,6 +863,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">nextOrGiveUpBarBtn</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">printDiffBtn</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">replayBarBtn</string>
