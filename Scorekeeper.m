@@ -20,38 +20,36 @@
 		return nil;
 	
 	NSLog(@"Hello from Scorekeeper!");
-	iNumAttempts = [NSNumber numberWithInt:1];
-	iNumSuccesses = [NSNumber numberWithInt:1];
+	self.iNumAttempts = [NSNumber numberWithInt:1];
+	self.iNumSuccesses = [NSNumber numberWithInt:1];
 	
 	[self reset];
 
-	NSLog(@"(Scorekeeper) iNumAttempts is set to %d and iNumSuccesses is set to %d", [iNumAttempts intValue], [iNumSuccesses intValue]);
+	NSLog(@"(Scorekeeper) iNumAttempts is set to %d and iNumSuccesses is set to %d", [self.iNumAttempts intValue], [self.iNumSuccesses intValue]);
 
 	return self;	
 }
 	
 -(void) success
 {
-	iNumAttempts = [NSNumber numberWithInt:[iNumAttempts intValue] + 1];
-	iNumSuccesses = [NSNumber numberWithInt:[iNumSuccesses intValue] + 1];
-	NSLog(@"\nsuccess\t\t%i %i", [iNumAttempts intValue], [iNumSuccesses intValue]);
+	self.iNumAttempts = [NSNumber numberWithInt:[self.iNumAttempts intValue] + 1];
+	self.iNumSuccesses = [NSNumber numberWithInt:[self.iNumSuccesses intValue] + 1];
 }
 
 -(void) failure
 {
-	iNumAttempts = [NSNumber numberWithInt:[iNumAttempts intValue] + 1];
-	NSLog(@"\nsuccess\t\t%i %i", [iNumAttempts intValue], [iNumSuccesses intValue]);
+	self.iNumAttempts = [NSNumber numberWithInt:[self.iNumAttempts intValue] + 1];
 }
 
 -(void) reset
 {
-	iNumAttempts = [NSNumber numberWithInt:0];
-	iNumSuccesses = [NSNumber numberWithInt:0];
+	self.iNumAttempts = [NSNumber numberWithInt:0];
+	self.iNumSuccesses = [NSNumber numberWithInt:0];
 }
 
 -(NSString *) percentage
 {
-	NSNumber* temp = [NSNumber numberWithFloat:([iNumSuccesses floatValue] / [iNumAttempts floatValue] * 100)];
+	NSNumber* temp = [NSNumber numberWithFloat:([self.iNumSuccesses floatValue] / [self.iNumAttempts floatValue] * 100)];
 	
 	NSString *thePercentage;	// don't alloc init here, [NSString stringWithX:] does all that.
 	if ([temp floatValue]>0)	// if temp is a valid percentage.  i.e. if iNumAttempts>0
