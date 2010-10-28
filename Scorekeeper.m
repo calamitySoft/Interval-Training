@@ -51,11 +51,11 @@
 
 -(NSString *) percentage
 {
-	NSNumber* temp = [NSNumber numberWithFloat:([iNumSuccesses floatValue] / [iNumAttempts floatValue])];
+	NSNumber* temp = [NSNumber numberWithFloat:([iNumSuccesses floatValue] / [iNumAttempts floatValue] * 100)];
 	
 	NSString *thePercentage;	// don't alloc init here, [NSString stringWithX:] does all that.
 	if ([temp floatValue]>0)	// if temp is a valid percentage.  i.e. if iNumAttempts>0
-		thePercentage = [NSString stringWithFormat:@"%@%%",[temp stringValue]];
+		thePercentage = [NSString stringWithFormat:@"%i%%",[temp intValue]];
 	else
 		thePercentage = [NSString stringWithString:@"0%"];
 
