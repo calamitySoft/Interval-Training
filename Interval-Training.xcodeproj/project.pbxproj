@@ -84,8 +84,8 @@
 		22206A6912237D1C0050D13F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2226F97A1223968E00670702 /* DJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DJ.h; path = Classes/DJ.h; sourceTree = "<group>"; };
 		2226F97B1223968E00670702 /* DJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DJ.m; path = Classes/DJ.m; sourceTree = "<group>"; };
-		22AD9E881277B28A00060BE3 /* Scorekeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scorekeeper.h; sourceTree = "<group>"; };
-		22AD9E891277B28A00060BE3 /* Scorekeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scorekeeper.m; sourceTree = "<group>"; };
+		22AD9E881277B28A00060BE3 /* Scorekeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scorekeeper.h; path = Classes/Scorekeeper.h; sourceTree = "<group>"; };
+		22AD9E891277B28A00060BE3 /* Scorekeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Scorekeeper.m; path = Classes/Scorekeeper.m; sourceTree = "<group>"; };
 		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
 		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
