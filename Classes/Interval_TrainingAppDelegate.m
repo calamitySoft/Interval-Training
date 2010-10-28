@@ -276,6 +276,28 @@
 	return temp;
 }
 
+/*
+ *	submitAnswer:
+ *
+ *	Takes an interval, does scorekeeping, then tells the caller
+ *	whether the interval was correct.
+ *
+ *	Usually methods that return something say it in the name,
+ *	e.g. [NSString stringWithString:], but that'd be saying it
+ *	doesn't do the scorekeeping.  Stuck with more general name.
+ */
+- (BOOL)submitAnswer:(NSUInteger)intervalGuessed{
+	if ([self getCurrentInterval] == intervalGuessed) {	// if it's the right answer
+		[self.scoreBoard success];
+		return TRUE;
+	}
+	
+	else {		// if it's the wrong answer
+		[self.scoreBoard failure];
+		return FALSE;
+	}
+}
+
 
 #pragma mark -
 #pragma mark Interval Control

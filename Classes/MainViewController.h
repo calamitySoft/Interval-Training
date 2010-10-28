@@ -68,6 +68,7 @@
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
 - (NSString *)getScoreString;
+- (BOOL)submitAnswer:(NSUInteger)intervalGuessed;
 
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;

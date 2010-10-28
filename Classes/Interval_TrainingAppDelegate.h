@@ -59,6 +59,8 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 										// and target
 - (void)printDifficulty;	// lets us see the difficulty settings
 - (NSString *)getScoreString;	// Generates the score string to be handed off to MainVC
+- (BOOL)submitAnswer:(NSUInteger)intervalGuessed;	// determines if answer is correct for MainVC; appropriately Scorekeeps
+
 - (int)getCurrentInterval;	// returns an int of the interval being played
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;	// intervals enabled are dependent on difficulty setting
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;

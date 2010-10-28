@@ -103,11 +103,13 @@
 }
 
 - (IBAction)nextNote:(id)sender {
-	// Set UI stuff.
+	// Set Answer option bar stuff.
 	[nextOrGiveUpBarBtn setEnabled:TRUE];	// ensure the Give Up button is enabled
 	[doneBarBtn setEnabled:TRUE];						// make the Done button the Done button again
 	[doneBarBtn setTitle:@"Done"];						// * more
 	[doneBarBtn setAction:@selector(submitAnswer:)];	// * more
+	
+	// Show current score.
 	[scoreTextItem setTitle:[self.delegate getScoreString]];	// set score display in top bar
 	[scoreBar setTintColor:[UIColor blackColor]];	// set the top bar color back to black
 	
@@ -130,7 +132,7 @@
 }
 
 - (IBAction)submitAnswer:(id)sender {
-	// Set UI stuff.
+	// Set Answer option bar stuff.
 	[nextOrGiveUpBarBtn setEnabled:FALSE];	// disable the Give Up button
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
 	[doneBarBtn setAction:@selector(nextNote:)];
@@ -138,14 +140,15 @@
 	// Reinforce the sound while showing the answer.
 	[delegate replayNote];
 	
-	// Show the answer and whether the user got it right.
-	if ([delegate getCurrentInterval] == intervalPickerIndex) {		// if our choice matches the interval being played
-		[self displayInterval:[intervalStrings objectAtIndex:intervalPickerIndex]];
+	// Show the answer.
+	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
+
+	// Show whether the user got it right.
+	if ([delegate submitAnswer:intervalPickerIndex]) {		// if our choice matches the interval being played
 		[scoreTextItem setTitle:@"Correct!"];
 		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
 	}
 	else {
-		[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
 		[scoreTextItem setTitle:@"Nope"];
 		[scoreBar setTintColor:[UIColor redColor]];
 	}
