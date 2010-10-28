@@ -3,7 +3,7 @@
 //  Interval-Training
 //
 //  Created by Sam on 10/20/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 CalamitySoft. All rights reserved.
 //
 
 #import "Scorekeeper.h"
@@ -25,7 +25,7 @@
 	
 	[self reset];
 
-	NSLog(@"iNumAttempts is set to %d and iNumSuccesses is set to %d", [iNumAttempts intValue], [iNumSuccesses intValue]);
+	NSLog(@"(Scorekeeper) iNumAttempts is set to %d and iNumSuccesses is set to %d", [iNumAttempts intValue], [iNumSuccesses intValue]);
 
 	return self;	
 }
@@ -34,11 +34,13 @@
 {
 	iNumAttempts = [NSNumber numberWithInt:[iNumAttempts intValue] + 1];
 	iNumSuccesses = [NSNumber numberWithInt:[iNumSuccesses intValue] + 1];
+	NSLog(@"\nsuccess\t\t%i %i", [iNumAttempts intValue], [iNumSuccesses intValue]);
 }
 
 -(void) failure
 {
 	iNumAttempts = [NSNumber numberWithInt:[iNumAttempts intValue] + 1];
+	NSLog(@"\nsuccess\t\t%i %i", [iNumAttempts intValue], [iNumSuccesses intValue]);
 }
 
 -(void) reset
@@ -49,8 +51,14 @@
 
 -(NSString *) percentage
 {
-	NSNumber* temp = [NSNumber numberWithFloat:[iNumSuccesses floatValue] / [iNumAttempts floatValue]];
-	NSString* thePercentage = [NSString stringWithString:[temp stringValue]];
+	NSNumber* temp = [NSNumber numberWithFloat:([iNumSuccesses floatValue] / [iNumAttempts floatValue])];
+	
+	NSString *thePercentage;	// don't alloc init here, [NSString stringWithX:] does all that.
+	if ([temp floatValue]>0)	// if temp is a valid percentage.  i.e. if iNumAttempts>0
+		thePercentage = [NSString stringWithFormat:@"%@%%",[temp stringValue]];
+	else
+		thePercentage = [NSString stringWithString:@"0%"];
+
 	return thePercentage;
 }
 

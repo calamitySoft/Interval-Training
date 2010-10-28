@@ -31,7 +31,7 @@
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
 						   [self cDifficulty],
 						   [self enabledRoot]]];
-	
+
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
 	[printDiffBtn setHidden:TRUE];
@@ -105,12 +105,11 @@
 - (IBAction)nextNote:(id)sender {
 	// Set UI stuff.
 	[nextOrGiveUpBarBtn setEnabled:TRUE];	// ensure the Give Up button is enabled
-	[doneBarBtn setEnabled:TRUE];	// make the Done button the Done button again
-	[doneBarBtn setTitle:@"Done"];
-	[doneBarBtn setAction:@selector(submitAnswer:)];
-	[scoreTextItem setTitle:@"work"];//[delegate getScoreString]];
-	NSLog(@"Just got the score string");
-	[scoreBar setTintColor:[UIColor blackColor]];
+	[doneBarBtn setEnabled:TRUE];						// make the Done button the Done button again
+	[doneBarBtn setTitle:@"Done"];						// * more
+	[doneBarBtn setAction:@selector(submitAnswer:)];	// * more
+	[scoreTextItem setTitle:[self.delegate getScoreString]];	// set score display in top bar
+	[scoreBar setTintColor:[UIColor blackColor]];	// set the top bar color back to black
 	
 	// Pick and play new interval.
 	[delegate generateQuestion];

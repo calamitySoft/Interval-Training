@@ -266,10 +266,10 @@
 
 -(NSString*) getScoreString
 {
-	NSString *temp = [NSString stringWithString:[[scoreBoard iNumSuccesses] stringValue]];
-	temp = [temp stringByAppendingString:@" out of "];
-	temp = [temp stringByAppendingString:[[scoreBoard iNumAttempts] stringValue]];
-	NSLog(@"\n%@",temp);
+	NSString *temp = [NSString stringWithFormat:@"%@ out of %@ (%@)",
+					  [[scoreBoard iNumSuccesses] stringValue],
+					  [[scoreBoard iNumAttempts] stringValue],
+					  [scoreBoard percentage]];
 //	[temp autorelease];		// This was the cause of the crash. I believe [NSString stringWithString:] returns
 							//  a string which is already marked for "autorelease".  This either duped that
 							//  functionality-->crash or it actually released it from memory-->crash.
