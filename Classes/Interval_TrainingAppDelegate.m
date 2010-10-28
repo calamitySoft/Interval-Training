@@ -198,15 +198,6 @@
 	[self selectNextTarget];
 }
 
--(NSString*) getScoreString
-{
-	NSString *temp = [NSString stringWithString:[[scoreBoard iNumSuccesses] stringValue]];
-	temp = [temp stringByAppendingString:@" out of "];
-	temp = [temp stringByAppendingString:[[scoreBoard iNumAttempts] stringValue]];
-	NSLog(temp);
-	[temp autorelease];
-	return temp;
-}
 - (void)selectNextTarget {
 	// Generate a target interval.
 	NSUInteger tempInterval;	// we don't have to use an NSNumber here
@@ -271,6 +262,18 @@
 		NSLog(@"** %i\t\t%i", i, [num intValue]);
 		i++;
 	}
+}
+
+-(NSString*) getScoreString
+{
+	NSString *temp = [NSString stringWithString:[[scoreBoard iNumSuccesses] stringValue]];
+	temp = [temp stringByAppendingString:@" out of "];
+	temp = [temp stringByAppendingString:[[scoreBoard iNumAttempts] stringValue]];
+	NSLog(@"\n%@",temp);
+//	[temp autorelease];		// This was the cause of the crash. I believe [NSString stringWithString:] returns
+							//  a string which is already marked for "autorelease".  This either duped that
+							//  functionality-->crash or it actually released it from memory-->crash.
+	return temp;
 }
 
 
