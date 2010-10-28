@@ -14,7 +14,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, aEnabledIntervals, enabledRoot, iCurRoot, iCurTarget, cDifficulty;
+@synthesize myDJ, aNoteStrings, aEnabledIntervals, enabledRoot, iCurRoot, iCurTarget, cDifficulty, scoreBoard;
 
 #define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
 
@@ -43,6 +43,9 @@
 	[tempDJ release];
 	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
+	Scorekeeper *tempScore = [[Scorekeeper alloc] initScore];
+	[self setScoreBoard:tempScore];
+	[tempScore release];
 	
 	/*** Initialize aNoteStrings ***/
 	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",
@@ -88,6 +91,7 @@
 	
 	/*** Set default root - any. ***/
 	[self setEnabledRoot:@"any"];
+	
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -194,6 +198,15 @@
 	[self selectNextTarget];
 }
 
+-(NSString*) getScoreString
+{
+	NSString *temp = [NSString stringWithString:[[scoreBoard iNumSuccesses] stringValue]];
+	temp = [temp stringByAppendingString:@" out of "];
+	temp = [temp stringByAppendingString:[[scoreBoard iNumAttempts] stringValue]];
+	NSLog(temp);
+	[temp autorelease];
+	return temp;
+}
 - (void)selectNextTarget {
 	// Generate a target interval.
 	NSUInteger tempInterval;	// we don't have to use an NSNumber here

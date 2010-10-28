@@ -8,20 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ITApplicationDelegate;
 
 @interface Scorekeeper : NSObject {
 	NSNumber *iNumAttempts;
 	NSNumber *iNumSuccesses;
-
 }
 
 @property(nonatomic,retain) NSNumber *iNumAttempts;
 @property(nonatomic,retain) NSNumber *iNumSuccesses;
 
--(void) initScore;
+-(id) initScore;
 -(void) success;	// Increments successes and attempts
 -(void) failure;	// Increments only Attempts
 -(void) reset;		// Set attempts and successes to 0;
 -(NSString*) percentage; // Returns a string with the percent success rate
 
 @end
+
+/*
+@protocol ITApplicationDelegate
+
+
+@property(nonatomic, retain) NSNumber *iNumAttempts;
+@property(nonatomic, retain) NSNumber *iNumSuccesses;
+
+@end*/

@@ -108,7 +108,8 @@
 	[doneBarBtn setEnabled:TRUE];	// make the Done button the Done button again
 	[doneBarBtn setTitle:@"Done"];
 	[doneBarBtn setAction:@selector(submitAnswer:)];
-	[scoreTextItem setTitle:@"Score"];
+	[scoreTextItem setTitle:@"work"];//[delegate getScoreString]];
+	NSLog(@"Just got the score string");
 	[scoreBar setTintColor:[UIColor blackColor]];
 	
 	// Pick and play new interval.

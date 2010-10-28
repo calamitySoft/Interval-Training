@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
 #import "DJ.h"
+#import "Scorekeeper.h"
 #import <stdlib.h>
 
 @class MainViewController;
@@ -31,6 +32,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	NSNumber *iCurTarget;
 	char cDifficulty;
 	
+	Scorekeeper *scoreBoard;
 	NSArray *intervalStrings;
 }
 
@@ -43,6 +45,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
 @property char cDifficulty;
+@property (nonatomic, retain) Scorekeeper *scoreBoard;
 
 - (void)generateQuestion; // An organizer function to put the main workflow in one centralized place
 
@@ -55,7 +58,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 										// IntervalDifference will return a string of the interval between the root
 										// and target
 - (void)printDifficulty;	// lets us see the difficulty settings
-
+- (NSString *)getScoreString;	// Generates the score string to be handed off to MainVC
 - (int)getCurrentInterval;	// returns an int of the interval being played
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;	// intervals enabled are dependent on difficulty setting
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;

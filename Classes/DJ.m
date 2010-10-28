@@ -25,6 +25,13 @@
 	return self;
 }
 
+-(void)dealloc
+{
+	[noteBank release];
+	[viableNotes release];
+	[super dealloc];
+}
+
 - (void)initNoteBank {
 	// Initialize noteBank with 1 Note (defaults to A 440)
 	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",

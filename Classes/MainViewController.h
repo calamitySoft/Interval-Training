@@ -67,6 +67,7 @@
 - (void)printDifficulty;
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
+- (NSString *)getScoreString;
 
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;

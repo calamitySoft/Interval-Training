@@ -20,6 +20,18 @@
 	return newNote;
 }
 
+-(void)dealloc
+{
+	[noteName release];
+	[wholeSample release];
+	[halfSample release];
+	[quarterSample release];
+	[eighthSample release];
+	[sixteenthSample release];
+	
+	[super dealloc];
+}
+
 - (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz
 {
 	self = [super init];

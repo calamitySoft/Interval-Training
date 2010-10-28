@@ -13,15 +13,21 @@
 
 @synthesize iNumAttempts, iNumSuccesses;
 
--(void) initScore
+-(id) initScore
 {
+	self = [super init];
+	if (!self)
+		return nil;
+	
 	NSLog(@"Hello from Scorekeeper!");
-	iNumAttempts = [[NSNumber alloc] init];
-	iNumSuccesses = [[NSNumber alloc] init];
+	iNumAttempts = [NSNumber numberWithInt:1];
+	iNumSuccesses = [NSNumber numberWithInt:1];
 	
 	[self reset];
-	
+
 	NSLog(@"iNumAttempts is set to %d and iNumSuccesses is set to %d", [iNumAttempts intValue], [iNumSuccesses intValue]);
+
+	return self;	
 }
 	
 -(void) success
@@ -47,5 +53,12 @@
 	NSString* thePercentage = [NSString stringWithString:[temp stringValue]];
 	return thePercentage;
 }
-	
+
+-(void)dealloc
+{
+	[iNumAttempts release];
+	[iNumSuccesses release];
+	[super dealloc];
+}
+
 @end
