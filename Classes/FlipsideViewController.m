@@ -35,6 +35,7 @@
 	// Apple style page control
 	// Init the root paging delegate with our strings.
 	[rootSettingDelegate initWithStrings:noteNames];
+	[rootSettingDelegate startAtPage:currentRootSetting];
 }
 
 
@@ -118,7 +119,7 @@
 #pragma mark -
 #pragma mark Root Control
 
-- (void)changedPageTo:(int)newPage {
+- (void)changedPageTo:(NSUInteger)newPage {
 	currentRootSetting = newPage;
 	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
 }

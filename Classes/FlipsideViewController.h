@@ -21,20 +21,20 @@
 	// Root
 	PageControlDelegate *rootSettingDelegate;
 	NSArray *noteNames;
-	int currentRootSetting;
+	NSUInteger currentRootSetting;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic, retain) IBOutlet PageControlDelegate *rootSettingDelegate;
 @property (nonatomic, retain) NSArray *noteNames;
-@property int currentRootSetting;
+@property NSUInteger currentRootSetting;
 
 - (IBAction)done:(id)sender;
 
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the delegate to set difficulties
 - (void)setDifficultyDisplay;		// adjust Settings' display to reflect current difficulty
 
-- (void)changedPageTo:(int)newPage;	// invoked by the PageControlDelegate upon page changing
+- (void)changedPageTo:(NSUInteger)newPage;	// invoked by the PageControlDelegate upon page changing
 
 @end
 

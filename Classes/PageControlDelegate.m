@@ -21,6 +21,10 @@
     [super dealloc];
 }
 
+
+#pragma mark -
+#pragma mark Startup Handling
+
 - (id)initWithStrings:(NSArray*)_stringArray {	
 	self = [super init];
 	if (!self)
@@ -60,6 +64,22 @@
 	return self;
 }
 
+- (void)startAtPage:(NSUInteger)page {
+	// clamp page to our max number of pages in page control
+	if (page >= numberOfPages) page = numberOfPages-1;
+	
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+	[self loadScrollViewWithPage:page - 1];
+	[self loadScrollViewWithPage:page];
+	[self loadScrollViewWithPage:page + 1];
+	
+	// update the scroll view to the appropriate page
+    CGRect frame = scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    [scrollView scrollRectToVisible:frame animated:NO];
+}
+
 - (void)loadScrollViewWithPage:(int)page {
     if (page < 0) return;
     if (page >= numberOfPages) return;
@@ -81,6 +101,10 @@
         [scrollView addSubview:controller.view];
     }
 }
+
+
+#pragma mark -
+#pragma mark Page-Change Handling
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
     // We don't want a "feedback loop" between the UIPageControl and the scroll delegate in

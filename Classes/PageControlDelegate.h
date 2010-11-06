@@ -38,6 +38,7 @@
 @property (nonatomic, retain) NSArray *rootStrArray;
 
 - (id)initWithStrings:(NSArray*)stringArray;
+- (void)startAtPage:(NSUInteger)page;
 - (IBAction)changePage:(id)sender;
 
 @end
