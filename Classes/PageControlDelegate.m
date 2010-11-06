@@ -25,7 +25,7 @@
 #pragma mark -
 #pragma mark Startup Handling
 
-- (id)initWithStrings:(NSArray*)_stringArray {	
+	- (id)initWithStrings:(NSArray*)_stringArray {	
 	self = [super init];
 	if (!self)
 		return nil;
