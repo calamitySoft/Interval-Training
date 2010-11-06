@@ -10,12 +10,13 @@
 
 
 @interface PagingViewController : UIViewController {
-    UILabel *pageNumberLabel;
-    int pageNumber;
+	UILabel *rootStringLabel;
+	NSString *rootStr;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *pageNumberLabel;
+@property (nonatomic, retain) IBOutlet UILabel *rootStringLabel;
+@property (nonatomic, retain) NSString *rootStr;
 
-- (id)initWithPageNumber:(int)page;
+- (id)initWithString:(NSString*)_string;
 
 @end

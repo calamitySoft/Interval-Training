@@ -70,8 +70,8 @@
 				<string key="NSFrameSize">{320, 64}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MSAwAA</bytes>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MCAxIDAgMAA</bytes>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
@@ -89,11 +89,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">pageNumberLabel</string>
+						<string key="label">rootStringLabel</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="332402760"/>
 					</object>
-					<int key="connectionID">10</int>
+					<int key="connectionID">11</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -171,7 +171,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">10</int>
+			<int key="maxID">11</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -180,13 +180,13 @@
 					<string key="className">PagingViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">pageNumberLabel</string>
+						<string key="NS.key.0">rootStringLabel</string>
 						<string key="NS.object.0">UILabel</string>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">pageNumberLabel</string>
+						<string key="NS.key.0">rootStringLabel</string>
 						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">pageNumberLabel</string>
+							<string key="name">rootStringLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 					</object>

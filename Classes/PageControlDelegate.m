@@ -2,8 +2,6 @@
 #import "PageControlDelegate.h"
 #import "PagingViewController.h"
 
-static NSUInteger kNumberOfPages = 7;
-
 @interface PageControlDelegate (PrivateMethods)
 
 - (void)loadScrollViewWithPage:(int)page;
@@ -14,6 +12,7 @@ static NSUInteger kNumberOfPages = 7;
 @implementation PageControlDelegate
 
 @synthesize scrollView, pageControl, viewControllers;
+@synthesize rootStrArray;
 
 - (void)dealloc {
     [viewControllers release];
@@ -22,15 +21,20 @@ static NSUInteger kNumberOfPages = 7;
     [super dealloc];
 }
 
-- (id)init {
+- (id)initWithStrings:(NSArray*)_stringArray {	
 	self = [super init];
 	if (!self)
 		return nil;
 	
+	// Take the init string away and make it mine.
+	// Also store count for easy access.
+	rootStrArray = [[NSArray alloc] initWithArray:_stringArray];
+	numberOfPages = [rootStrArray count];
+
     // view controllers are created lazily
     // in the meantime, load the array with placeholders which will be replaced on demand
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < kNumberOfPages; i++) {
+    for (unsigned i = 0; i < numberOfPages; i++) {
         [controllers addObject:[NSNull null]];
     }
     self.viewControllers = controllers;
@@ -38,13 +42,13 @@ static NSUInteger kNumberOfPages = 7;
 	
     // a page is the width of the scroll view
     scrollView.pagingEnabled = YES;
-    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, scrollView.frame.size.height);
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * numberOfPages, scrollView.frame.size.height);
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.scrollsToTop = NO;
     scrollView.delegate = self;
 	
-    pageControl.numberOfPages = kNumberOfPages;
+    pageControl.numberOfPages = numberOfPages;
     pageControl.currentPage = 0;
 	
     // pages are created on demand
@@ -58,12 +62,12 @@ static NSUInteger kNumberOfPages = 7;
 
 - (void)loadScrollViewWithPage:(int)page {
     if (page < 0) return;
-    if (page >= kNumberOfPages) return;
+    if (page >= numberOfPages) return;
 	
     // replace the placeholder if necessary
     PagingViewController *controller = [viewControllers objectAtIndex:page];
     if ((NSNull *)controller == [NSNull null]) {
-        controller = [[PagingViewController alloc] initWithPageNumber:page];
+        controller = [[PagingViewController alloc] initWithString:[rootStrArray objectAtIndex:page]];
         [viewControllers replaceObjectAtIndex:page withObject:controller];
         [controller release];
     }

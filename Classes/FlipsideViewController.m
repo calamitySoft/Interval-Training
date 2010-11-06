@@ -7,6 +7,7 @@
 //
 
 #import "FlipsideViewController.h"
+#import "PageControlDelegate.h"
 
 
 @implementation FlipsideViewController
@@ -32,7 +33,8 @@
 	
 	
 	// Apple style page control
-	[rootSettingDelegate init];
+	// Init the root paging delegate with our strings.
+	[rootSettingDelegate initWithStrings:noteNames];
 }
 
 
