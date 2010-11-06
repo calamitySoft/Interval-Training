@@ -7,22 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PageControlDelegate.h"
+
 
 @protocol FlipsideViewControllerDelegate;
-
 
 @interface FlipsideViewController : UIViewController {
 	id <FlipsideViewControllerDelegate> delegate;
 	
+	// Difficulty
 	IBOutlet UISegmentedControl *difficultySegmentedControl;
-	IBOutlet UIPageControl *rootControl;
-	IBOutlet UILabel *rootName;
 	
+	// Root
+	PageControlDelegate *rootSettingDelegate;
 	NSArray *noteNames;
 	int currentRootSetting;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
+@property (nonatomic, retain) IBOutlet PageControlDelegate *rootSettingDelegate;
 @property (nonatomic, retain) NSArray *noteNames;
 @property int currentRootSetting;
 
@@ -32,7 +35,6 @@
 - (void)setDifficultyDisplay;		// adjust Settings' display to reflect current difficulty
 
 - (IBAction)updateRootSelection;	// invoked by the UIPageControl upon its value changing
-- (void)updateRootDisplay;			// tells the delegate which note should be root; updates display
 
 @end
 

@@ -12,7 +12,7 @@
 @implementation FlipsideViewController
 
 @synthesize delegate;
-@synthesize noteNames, currentRootSetting;
+@synthesize rootSettingDelegate, noteNames, currentRootSetting;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,11 +26,13 @@
 	// Root setup
 	noteNames = [[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
 						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
-	[rootControl setNumberOfPages:[noteNames count]];	// rootControl serves up the note list, so make it fit
 		// intermediate str->int step means this list can be in whatever order we want
 	NSString *currentRootSettingStr = [delegate enabledRoot];
 	[self setCurrentRootSetting:[noteNames indexOfObject:currentRootSettingStr]];
-	[self updateRootDisplay];
+	
+	
+	// Apple style page control
+	[rootSettingDelegate init];
 }
 
 
@@ -116,14 +118,7 @@
 
 // 
 - (IBAction)updateRootSelection {
-	[self setCurrentRootSetting:[rootControl currentPage]];		// set local var for storage
 	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
-	[self updateRootDisplay];									// update display
-}
-
-- (void)updateRootDisplay {
-	[rootControl setCurrentPage:currentRootSetting];	// update the little dots. necessary when setting display upon nib load
-	[rootName setText:[noteNames objectAtIndex:currentRootSetting]];	// update name to match dots. always.
 }
 
 

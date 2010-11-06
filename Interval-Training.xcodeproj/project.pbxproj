@@ -61,6 +61,9 @@
 		702EEF001282B1210092AA9A /* OTG Intervals blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 702EEEFD1282B1210092AA9A /* OTG Intervals blue.png */; };
 		702EEF011282B1210092AA9A /* OTG Intervals magenta.png in Resources */ = {isa = PBXBuildFile; fileRef = 702EEEFE1282B1210092AA9A /* OTG Intervals magenta.png */; };
 		702EEF021282B1210092AA9A /* OTG Intervals red.png in Resources */ = {isa = PBXBuildFile; fileRef = 702EEEFF1282B1210092AA9A /* OTG Intervals red.png */; };
+		7065E0B01284C32700F03E16 /* PageControlDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7065E0AF1284C32700F03E16 /* PageControlDelegate.m */; };
+		706D42E7128397C300BE6A45 /* PagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706D42E5128397C300BE6A45 /* PagingViewController.m */; };
+		706D42E8128397C300BE6A45 /* PagingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 706D42E6128397C300BE6A45 /* PagingView.xib */; };
 		70902CB7127A64D9004C92A1 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 70902CB6127A64D9004C92A1 /* iTunesArtwork */; };
 		7097D9AA123F5229002E9D6F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7097D9A0123F5229002E9D6F /* Icon@2x.png */; };
 		7097D9AB123F5229002E9D6F /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7097D9A1123F5229002E9D6F /* Icon-Small.png */; };
@@ -142,7 +145,12 @@
 		702EEEFD1282B1210092AA9A /* OTG Intervals blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OTG Intervals blue.png"; sourceTree = "<group>"; };
 		702EEEFE1282B1210092AA9A /* OTG Intervals magenta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OTG Intervals magenta.png"; sourceTree = "<group>"; };
 		702EEEFF1282B1210092AA9A /* OTG Intervals red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OTG Intervals red.png"; sourceTree = "<group>"; };
+		7065E0AE1284C32700F03E16 /* PageControlDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageControlDelegate.h; path = Classes/PageControlDelegate.h; sourceTree = "<group>"; };
+		7065E0AF1284C32700F03E16 /* PageControlDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageControlDelegate.m; path = Classes/PageControlDelegate.m; sourceTree = "<group>"; };
 		706D417312836FAE00BE6A45 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		706D42E4128397C300BE6A45 /* PagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PagingViewController.h; path = Classes/PagingViewController.h; sourceTree = "<group>"; };
+		706D42E5128397C300BE6A45 /* PagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PagingViewController.m; path = Classes/PagingViewController.m; sourceTree = "<group>"; };
+		706D42E6128397C300BE6A45 /* PagingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagingView.xib; sourceTree = "<group>"; };
 		70902CB6127A64D9004C92A1 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		7097D9A0123F5229002E9D6F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		7097D9A1123F5229002E9D6F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				7065E2A81284DD0900F03E16 /* Page Control */,
 				289233A00DB2D0730083E9F9 /* Custom Classes */,
 				281C6CD70DB2D82200F60ACC /* View Controllers */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
@@ -249,8 +258,9 @@
 			children = (
 				7097D99F123F5229002E9D6F /* icons */,
 				7022AE441239B9AD009895B1 /* sounds */,
-				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
+				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
+				706D42E6128397C300BE6A45 /* PagingView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Interval_Training-Info.plist */,
 				702EEEF51282AD520092AA9A /* Default.png */,
@@ -309,6 +319,17 @@
 				7022AE681239B9AD009895B1 /* G4W.aif */,
 			);
 			path = sounds;
+			sourceTree = "<group>";
+		};
+		7065E2A81284DD0900F03E16 /* Page Control */ = {
+			isa = PBXGroup;
+			children = (
+				7065E0AE1284C32700F03E16 /* PageControlDelegate.h */,
+				7065E0AF1284C32700F03E16 /* PageControlDelegate.m */,
+				706D42E4128397C300BE6A45 /* PagingViewController.h */,
+				706D42E5128397C300BE6A45 /* PagingViewController.m */,
+			);
+			name = "Page Control";
 			sourceTree = "<group>";
 		};
 		7097D99F123F5229002E9D6F /* icons */ = {
@@ -449,6 +470,7 @@
 				702EEF011282B1210092AA9A /* OTG Intervals magenta.png in Resources */,
 				702EEF021282B1210092AA9A /* OTG Intervals red.png in Resources */,
 				709DA8401282B2820021974F /* OTG Intervals green.png in Resources */,
+				706D42E8128397C300BE6A45 /* PagingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +488,8 @@
 				22206A651223715E0050D13F /* Note.m in Sources */,
 				2226F97C1223968E00670702 /* DJ.m in Sources */,
 				22AD9E8A1277B28A00060BE3 /* Scorekeeper.m in Sources */,
+				706D42E7128397C300BE6A45 /* PagingViewController.m in Sources */,
+				7065E0B01284C32700F03E16 /* PageControlDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
