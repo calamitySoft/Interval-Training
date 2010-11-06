@@ -102,6 +102,9 @@
     [self loadScrollViewWithPage:page + 1];
 	
     // A possible optimization would be to unload the views+controllers which are no longer visible
+	
+	// Tell delegate to update page tracker
+	[delegate changedPageTo:pageControl.currentPage];
 }
 
 // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
@@ -130,6 +133,9 @@
     
 	// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
     pageControlUsed = YES;
+	
+	// Tell delegate to update page tracker
+	[delegate changedPageTo:pageControl.currentPage];
 }
 
 @end

@@ -118,8 +118,8 @@
 #pragma mark -
 #pragma mark Root Control
 
-// 
-- (IBAction)updateRootSelection {
+- (void)changedPageTo:(int)newPage {
+	currentRootSetting = newPage;
 	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
 }
 

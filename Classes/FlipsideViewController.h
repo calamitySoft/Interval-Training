@@ -12,7 +12,7 @@
 
 @protocol FlipsideViewControllerDelegate;
 
-@interface FlipsideViewController : UIViewController {
+@interface FlipsideViewController : UIViewController <PageControlDelegateDelegate> {
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	// Difficulty
@@ -34,7 +34,7 @@
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the delegate to set difficulties
 - (void)setDifficultyDisplay;		// adjust Settings' display to reflect current difficulty
 
-- (IBAction)updateRootSelection;	// invoked by the UIPageControl upon its value changing
+- (void)changedPageTo:(int)newPage;	// invoked by the PageControlDelegate upon page changing
 
 @end
 

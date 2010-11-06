@@ -16,7 +16,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PageControlDelegateDelegate;
+
 @interface PageControlDelegate : NSObject <UIScrollViewDelegate> {
+	id <PageControlDelegateDelegate> delegate;
+
 	UIScrollView *scrollView;
 	UIPageControl *pageControl;
     NSMutableArray *viewControllers;
@@ -36,4 +40,10 @@
 - (id)initWithStrings:(NSArray*)stringArray;
 - (IBAction)changePage:(id)sender;
 
+@end
+
+
+
+@protocol PageControlDelegateDelegate
+	- (void)changedPageTo:(int)newPage;
 @end
