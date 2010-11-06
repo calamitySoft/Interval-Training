@@ -7,11 +7,12 @@
 //
 
 #import "MainViewController.h"
-
+#import "PageControlDelegate.h"
 
 @implementation MainViewController
 
 @synthesize delegate;
+@synthesize answerPickingDelegate;
 
 #define DEFAULT_ANSWER 4
 
@@ -31,7 +32,10 @@
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
 						   [self cDifficulty],
 						   [self enabledRoot]]];
-
+	
+	[answerPickingDelegate initWithStrings:intervalStrings];
+	[answerPickingDelegate startAtPage:DEFAULT_ANSWER];
+	
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
 	[printDiffBtn setHidden:TRUE];
@@ -157,37 +161,8 @@
 
 #pragma mark -
 
-- (IBAction)switchAnswerLeft:(id)sender {
-	NSUInteger placeholderIndex = intervalPickerIndex;	// in case no new option is set. index changed in loop below.
-	
-	while (intervalPickerIndex >= 1) {			// answer option must not go below 0
-		intervalPickerIndex--;
-		if ([delegate intervalIsEnabled:intervalPickerIndex]) {
-			[self setOptionText:intervalPickerIndex];
-			return;
-		}
-	}
-
-	intervalPickerIndex = placeholderIndex;
-}
-
-- (IBAction)switchAnswerRight:(id)sender {
-	NSUInteger placeholderIndex = intervalPickerIndex;	// in case no new option is set. index changed in loop below.
-	
-	while (intervalPickerIndex+1 < [intervalStrings count]) {	// answer option must not go above the last option available
-		intervalPickerIndex++;
-		if ([delegate intervalIsEnabled:intervalPickerIndex]) {
-			[self setOptionText:intervalPickerIndex];
-			return;
-		}
-	}
-
-	intervalPickerIndex = placeholderIndex;
-}
-
-- (void)setOptionText:(NSUInteger)intervalIndex {
-	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
-	[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalIndex] forState:UIControlStateNormal];
+- (void)changedPageTo:(NSUInteger)newPage {
+	intervalPickerIndex = newPage;			// maintain the user's current interval answer
 }
 
 
@@ -203,7 +178,7 @@
 -(void)setDifficulty:(char)theDiff {
 	if ([self cDifficulty] != theDiff) {
 		[delegate setDifficulty:theDiff];
-		[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
+		[answerPickingDelegate startAtPage:DEFAULT_ANSWER];		// coming back from settings screen, reset answer option
 	}
 }
 
