@@ -21,11 +21,25 @@
     [super dealloc];
 }
 
+/*
+ *	After switching difficulty, the old one isn't going away.
+ *
+ *	Remove all views from scrollView, then fill with new pages like in [init].
+ */
+- (void)clearPages {
+	[[scrollView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+		
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+	[self loadScrollViewWithPage:pageControl.currentPage - 1];
+	[self loadScrollViewWithPage:pageControl.currentPage];
+	[self loadScrollViewWithPage:pageControl.currentPage + 1];
+}
+
 
 #pragma mark -
 #pragma mark Startup Handling
 
-	- (id)initWithStrings:(NSArray*)_stringArray {	
+- (id)initWithStrings:(NSArray*)_stringArray {	
 	self = [super init];
 	if (!self)
 		return nil;
@@ -128,7 +142,7 @@
     // A possible optimization would be to unload the views+controllers which are no longer visible
 	
 	// Tell delegate to update page tracker
-	[delegate changedPageTo:pageControl.currentPage];
+	[delegate changedPageTo:pageControl.currentPage];	
 }
 
 // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl

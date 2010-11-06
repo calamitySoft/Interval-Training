@@ -40,6 +40,7 @@
 @property (nonatomic, retain) NSMutableArray *viewControllers;
 @property (nonatomic, retain) NSArray *rootStrArray;
 
+- (void)clearPages;
 - (id)initWithStrings:(NSArray*)stringArray;
 - (void)startAtPage:(NSUInteger)page;
 - (IBAction)changePage:(id)sender;

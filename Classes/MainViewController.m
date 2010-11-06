@@ -33,8 +33,7 @@
 						   [self cDifficulty],
 						   [self enabledRoot]]];
 	
-	[answerPickingDelegate initWithStrings:intervalStrings];
-	[answerPickingDelegate startAtPage:DEFAULT_ANSWER];
+	[self answerPickerHasDifficulty:[self cDifficulty]];
 	
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
@@ -45,7 +44,9 @@
 
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-    
+	
+	[answerPickingDelegate clearPages];		// clear previous text before setting next text
+	
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -80,7 +81,7 @@
 #pragma mark -
 #pragma mark Interface Elements
 
-- (IBAction)showSettings:(id)sender {    
+- (IBAction)showSettings:(id)sender {
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
@@ -161,6 +162,26 @@
 
 #pragma mark -
 
+- (void)answerPickerHasDifficulty:(char)difficulty {
+	NSMutableArray *enabledIntervals = [delegate aEnabledIntervals];
+	
+	NSMutableArray *availableAnswers = [[NSMutableArray alloc] init];
+//	NSEnumerator *e = [intervalStrings objectEnumerator];	// NSArray of all strings.
+//	NSString *someStr;
+//	while (someStr = [e nextObject]) {
+//	}
+	
+	for (NSUInteger i = 0; i < [enabledIntervals count]; i++) {
+		NSNumber *num = [enabledIntervals objectAtIndex:i];
+		if ([num boolValue]) {
+			[availableAnswers addObject:[intervalStrings objectAtIndex:i]];
+		}
+	}
+	
+	[answerPickingDelegate initWithStrings:availableAnswers];
+	[answerPickingDelegate startAtPage:0];
+}
+
 - (void)changedPageTo:(NSUInteger)newPage {
 	intervalPickerIndex = newPage;			// maintain the user's current interval answer
 }
@@ -178,6 +199,7 @@
 -(void)setDifficulty:(char)theDiff {
 	if ([self cDifficulty] != theDiff) {
 		[delegate setDifficulty:theDiff];
+		[self answerPickerHasDifficulty:theDiff];
 		[answerPickingDelegate startAtPage:DEFAULT_ANSWER];		// coming back from settings screen, reset answer option
 	}
 }

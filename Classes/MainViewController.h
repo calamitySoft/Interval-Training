@@ -48,6 +48,7 @@
 - (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question
 - (IBAction)submitAnswer:(id)sender;	// answers with the interval displayed
 
+- (void)answerPickerHasDifficulty:(char)difficulty;
 // This and [startAtPage:] in my setDifficulty: take care of answer picking.
 - (void)changedPageTo:(NSUInteger)newPage;	// invoked by the PageControlDelegate upon page changing
 

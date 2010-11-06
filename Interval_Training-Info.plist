@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>OTG Intervals magenta.png</string>
+	<string>OTG Intervals red.png</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>CFBundleIdentifier</key>
