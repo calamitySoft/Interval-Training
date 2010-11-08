@@ -20,6 +20,7 @@
 	IBOutlet UIButton *printDiffBtn;	// ** dev help ** //
 	
 	IBOutlet UILabel *intervalLabel;
+	IBOutlet UILabel *instructionsLabel;
 	
 	IBOutlet UIBarButtonItem *replayBarBtn;
 	IBOutlet UIBarButtonItem *nextOrGiveUpBarBtn;
@@ -45,7 +46,8 @@
 - (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
 - (void)setOptionText:(NSUInteger)intervalIndex;	// wrapper for easy answer option setting
 
-- (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
+// sets the big label of MainView.xib
+- (void)displayInterval:(NSString *)theInterval withHiddenInstructions:(BOOL)showInstructions;
 
 - (void)setDifficulty:(char)theDiff;	// tells the delegate to setDifficulty:
 - (char)cDifficulty;	// get the difficulty from the delegate

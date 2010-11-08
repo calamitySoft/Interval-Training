@@ -33,6 +33,15 @@
 	
 	[window makeKeyAndVisible];
 	
+	UIAlertView *alert = [[UIAlertView alloc]
+						  initWithTitle: nil
+						  message: @"Use the bottom half to choose your answer."
+						  delegate: nil
+						  cancelButtonTitle:@"OK"
+						  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+	
     return YES;
 }
 

@@ -99,7 +99,8 @@
 	[delegate replayNote];
 	
 	// Show the answer.
-	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
+	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]
+   withHiddenInstructions:TRUE];
 }
 
 - (IBAction)nextNote:(id)sender {
@@ -117,7 +118,7 @@
 	[delegate generateQuestion];
 	
 	// Indicate new interval.
-	[self displayInterval:@"Listen"];
+	[self displayInterval:@"Listen" withHiddenInstructions:FALSE];
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
@@ -141,7 +142,8 @@
 	[delegate replayNote];
 	
 	// Show the answer.
-	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
+	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]
+   withHiddenInstructions:TRUE];
 
 	// Show whether the user got it right.
 	if ([delegate submitAnswer:intervalPickerIndex]) {		// if our choice matches the interval being played
@@ -194,8 +196,9 @@
 #pragma mark -
 #pragma mark View Controlling
 
-- (void) displayInterval:(NSString *)theInterval {
+- (void)displayInterval:(NSString *)theInterval withHiddenInstructions:(BOOL)showInstructions {
 	[intervalLabel setText:theInterval];
+	[instructionsLabel setHidden:showInstructions];
 }
 
 #pragma mark -
