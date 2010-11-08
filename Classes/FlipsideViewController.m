@@ -26,7 +26,6 @@
 	// Root setup
 	noteNames = [[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
 						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
-	[rootControl setNumberOfPages:[noteNames count]];	// rootControl serves up the note list, so make it fit
 		// intermediate str->int step means this list can be in whatever order we want
 	NSString *currentRootSettingStr = [delegate enabledRoot];
 	[self setCurrentRootSetting:[noteNames indexOfObject:currentRootSettingStr]];
@@ -129,8 +128,23 @@
 }
 
 - (void)updateRootDisplay {
-	[rootControl setCurrentPage:currentRootSetting];	// update the little dots. necessary when setting display upon nib load
-	[rootName setText:[noteNames objectAtIndex:currentRootSetting]];	// update name to match dots. always.
+	[rootName setText:[noteNames objectAtIndex:currentRootSetting]];	// always update name
+	
+	/*
+	 *	Set visibility for unnecessary options. (i.e. left when at first in list)
+	 *	Note:	This only works if the 0th and [count]-1th options are always
+	 *			the first and last options. MainVC switchAnswerLeft/Right solution
+	 *			provides an alternative, but it's still a bit sub-optimal.
+	 *			(It needs to be in two functions -- left, right.)
+	 */
+	if (currentRootSetting <= 0) {							/* farthest left option */
+		[switchRootLeftBtn setHidden:TRUE];
+	} else if (currentRootSetting >= [noteNames count]-1) {	/* farthest right option */
+		[switchRootRightBtn setHidden:TRUE];
+	} else {												/* somewhere in between */
+		[switchRootLeftBtn setHidden:FALSE];
+		[switchRootRightBtn setHidden:FALSE];
+	}
 }
 
 

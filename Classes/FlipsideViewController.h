@@ -15,9 +15,10 @@
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	IBOutlet UISegmentedControl *difficultySegmentedControl;
-	IBOutlet UIPageControl *rootControl;
+
 	IBOutlet UILabel *rootName;
-	
+	IBOutlet UIButton *switchRootLeftBtn;
+	IBOutlet UIButton *switchRootRightBtn;
 	NSArray *noteNames;
 	int currentRootSetting;
 }
@@ -31,9 +32,9 @@
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the delegate to set difficulties
 - (void)setDifficultyDisplay;		// adjust Settings' display to reflect current difficulty
 
-- (IBAction)switchRootLeft;				// invoked by the "Set Root" left arrow
-- (IBAction)switchRootRight;			// invoked by the "Set Root" right arrow
-- (void)updateRootDisplay;			// tells the delegate which note should be root; updates display
+- (IBAction)switchRootLeft;				// invoked by the "Set Root" left arrow; tells the delegate
+- (IBAction)switchRootRight;			// invoked by the "Set Root" right arrow; tells the delegate
+- (void)updateRootDisplay;			// updates display
 
 @end
 

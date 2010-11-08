@@ -148,31 +148,53 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 #pragma mark -
 
 - (IBAction)switchAnswerLeft:(id)sender {
-	NSUInteger placeholderIndex = intervalPickerIndex;	// in case no new option is set. index changed in loop below.
 	
-	while (intervalPickerIndex >= 1) {			// answer option must not go below 0
-		intervalPickerIndex--;
-		if ([delegate intervalIsEnabled:intervalPickerIndex]) {
-			[self setOptionText:intervalPickerIndex];
-			return;
+	NSUInteger newIndex = intervalPickerIndex;	// collect new index specimens
+	NSUInteger numNextPossibilies = 0;		// 1 possibility => new option is the last (so hide)
+	
+	// We're going to start this loop at the far end, so that the last
+	//   newIndex assigned is the first one past the current index.
+	for (NSUInteger i = 0; i < intervalPickerIndex; i++) {
+		if ([delegate intervalIsEnabled:i]) {
+			newIndex = i;
+			numNextPossibilies++;
 		}
 	}
-
-	intervalPickerIndex = placeholderIndex;
+	
+	// hide if switching to the only remaining option
+	if (numNextPossibilies<=1) { [switchAnswerLeftBtn setHidden:TRUE];	}
+	
+	// if we can move left, it implies there's >=1 option to the right
+	if (intervalPickerIndex != newIndex) {
+		[switchAnswerRightBtn setHidden:FALSE];
+		intervalPickerIndex = newIndex;
+		[self setOptionText:newIndex];
+	}
 }
 
 - (IBAction)switchAnswerRight:(id)sender {
-	NSUInteger placeholderIndex = intervalPickerIndex;	// in case no new option is set. index changed in loop below.
 	
-	while (intervalPickerIndex+1 < [intervalStrings count]) {	// answer option must not go above the last option available
-		intervalPickerIndex++;
-		if ([delegate intervalIsEnabled:intervalPickerIndex]) {
-			[self setOptionText:intervalPickerIndex];
-			return;
+	NSUInteger newIndex = intervalPickerIndex;	// collect new index specimens
+	NSUInteger numNextPossibilies = 0;		// 1 possibility => new option is the last (so hide)
+	
+	// We're going to start this loop at the far end, so that the last
+	//   newIndex assigned is the first one past the current index.
+	for (NSUInteger i = [intervalStrings count]-1; i > intervalPickerIndex; i--) {
+		if ([delegate intervalIsEnabled:i]) {
+			newIndex = i;
+			numNextPossibilies++;
 		}
 	}
-
-	intervalPickerIndex = placeholderIndex;
+	
+	// hide if switching to the only remaining option
+	if (numNextPossibilies<=1) { [switchAnswerRightBtn setHidden:TRUE];	}
+	
+	// if we can move right, it implies there's >=1 option to the left
+	if (intervalPickerIndex != newIndex) {
+		[switchAnswerLeftBtn setHidden:FALSE];
+		intervalPickerIndex = newIndex;
+		[self setOptionText:newIndex];
+	}
 }
 
 - (void)setOptionText:(NSUInteger)intervalIndex {
@@ -219,6 +241,9 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 	if ([self cDifficulty] != theDiff) {
 		[delegate setDifficulty:theDiff];
 		[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
+		
+		[switchAnswerLeftBtn setHidden:FALSE];
+		[switchAnswerRightBtn setHidden:FALSE];
 	}
 }
 
