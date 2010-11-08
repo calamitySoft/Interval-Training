@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="115"/>
+			<integer value="90"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -144,7 +144,7 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
-								<object class="NSColor" key="IBUINormalTitleColor" id="702169630">
+								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
@@ -178,26 +178,37 @@
 									<string key="NSResourceName">Left Arrow.png</string>
 								</object>
 							</object>
-							<object class="IBUIButton" id="261717514">
+							<object class="IBUILabel" id="157064249">
 								<reference key="NSNextResponder" ref="99678093"/>
 								<int key="NSvFlags">1316</int>
-								<string key="NSFrame">{{62, 25}, {196, 59}}</string>
+								<string key="NSFrame">{{57, 10}, {206, 89}}</string>
 								<reference key="NSSuperview" ref="99678093"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MCAwAA</bytes>
+								</object>
 								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
-								<int key="IBUIContentVerticalAlignment">0</int>
+								<string key="IBUIText">Major Third</string>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica-Bold</string>
-									<double key="NSSize">25</double>
+									<double key="NSSize">36</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<int key="IBUIButtonType">1</int>
-								<string key="IBUINormalTitle">Major Third</string>
-								<reference key="IBUIHighlightedTitleColor" ref="11699838"/>
-								<reference key="IBUINormalTitleColor" ref="702169630"/>
-								<reference key="IBUINormalTitleShadowColor" ref="43653855"/>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MSAxIDEAA</bytes>
+									<object class="NSColorSpace" key="NSCustomColorSpace">
+										<int key="NSID">1</int>
+									</object>
+								</object>
+								<reference key="IBUIHighlightedColor" ref="11699838"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
 						<string key="NSFrame">{{0, 341}, {320, 119}}</string>
@@ -351,14 +362,6 @@
 					<int key="connectionID">102</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">currentAnswerLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="261717514"/>
-					</object>
-					<int key="connectionID">103</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">switchAnswerLeft:</string>
 						<reference key="source" ref="816840787"/>
@@ -441,6 +444,14 @@
 					</object>
 					<int key="connectionID">151</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">currentAnswerLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="157064249"/>
+					</object>
+					<int key="connectionID">153</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -493,9 +504,9 @@
 						<reference key="object" ref="99678093"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="261717514"/>
 							<reference ref="702423460"/>
 							<reference ref="816840787"/>
+							<reference ref="157064249"/>
 						</object>
 						<reference key="parent" ref="883825266"/>
 						<string key="objectName">Answer Selection View</string>
@@ -511,12 +522,6 @@
 						<reference key="object" ref="816840787"/>
 						<reference key="parent" ref="99678093"/>
 						<string key="objectName">Go Left</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">97</int>
-						<reference key="object" ref="261717514"/>
-						<reference key="parent" ref="99678093"/>
-						<string key="objectName">Current Answer Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">114</int>
@@ -605,6 +610,12 @@
 						<reference key="parent" ref="622470543"/>
 						<string key="objectName">Settings Btn</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">152</int>
+						<reference key="object" ref="157064249"/>
+						<reference key="parent" ref="99678093"/>
+						<string key="objectName">Answer Label</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -617,6 +628,7 @@
 					<string>114.IBViewBoundsToFrameTransform</string>
 					<string>115.IBPluginDependency</string>
 					<string>118.IBPluginDependency</string>
+					<string>152.IBPluginDependency</string>
 					<string>34.IBEditorWindowLastContentRect</string>
 					<string>34.IBPluginDependency</string>
 					<string>36.IBPluginDependency</string>
@@ -640,8 +652,6 @@
 					<string>94.IBViewBoundsToFrameTransform</string>
 					<string>95.IBPluginDependency</string>
 					<string>95.IBViewBoundsToFrameTransform</string>
-					<string>97.IBPluginDependency</string>
-					<string>97.IBViewBoundsToFrameTransform</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -653,7 +663,8 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{310, 273}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>{{317, 272}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -690,10 +701,6 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABBcAAAwqQAAA</bytes>
 					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUJ4AABByAAAA</bytes>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -712,7 +719,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">151</int>
+			<int key="maxID">153</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -813,7 +820,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UIButton</string>
+							<string>UILabel</string>
 							<string>id</string>
 							<string>UILabel</string>
 							<string>UIBarButtonItem</string>
@@ -848,7 +855,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">currentAnswerLabel</string>
-								<string key="candidateClassName">UIButton</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">delegate</string>

@@ -187,7 +187,7 @@
 
 - (void)setOptionText:(NSUInteger)intervalIndex {
 	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
-	[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalIndex] forState:UIControlStateNormal];
+	[currentAnswerLabel setText:[intervalStrings objectAtIndex:intervalIndex]];
 }
 
 
