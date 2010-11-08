@@ -31,14 +31,14 @@
     // To be used when scrolls originate from the UIPageControl
     BOOL pageControlUsed;
 	
-	NSArray *rootStrArray;
+	NSArray *optionsStrArray;
 	int numberOfPages;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, retain) NSMutableArray *viewControllers;
-@property (nonatomic, retain) NSArray *rootStrArray;
+@property (nonatomic, retain) NSArray *optionsStrArray;
 
 - (void)clearPages;
 - (id)initWithStrings:(NSArray*)stringArray;

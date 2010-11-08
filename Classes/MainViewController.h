@@ -30,9 +30,6 @@
 	IBOutlet UIBarButtonItem *doneBarBtn;
 	
 	// Answering
-	IBOutlet UIButton *switchAnswerLeftBtn;
-	IBOutlet UIButton *switchAnswerRightBtn;
-	IBOutlet UIButton *currentAnswerLabel;	// actually a UIButton because they look better
 	PageControlDelegate *answerPickingDelegate;
 	
 	NSArray *intervalStrings;
@@ -48,7 +45,7 @@
 - (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question
 - (IBAction)submitAnswer:(id)sender;	// answers with the interval displayed
 
-- (void)answerPickerHasDifficulty:(char)difficulty;
+- (void)setAnswerPickerToDifficulty:(char)difficulty;
 // This and [startAtPage:] in my setDifficulty: take care of answer picking.
 - (void)changedPageTo:(NSUInteger)newPage;	// invoked by the PageControlDelegate upon page changing
 
@@ -81,5 +78,6 @@
 @property (nonatomic, retain) NSNumber *iCurTarget;
 @property char cDifficulty;
 @property (nonatomic, retain) NSString *enabledRoot;
+@property (nonatomic, retain) NSMutableArray *aEnabledIntervals;
 
 @end

@@ -12,7 +12,7 @@
 @implementation PageControlDelegate
 
 @synthesize scrollView, pageControl, viewControllers;
-@synthesize rootStrArray;
+@synthesize optionsStrArray;
 
 - (void)dealloc {
     [viewControllers release];
@@ -46,8 +46,8 @@
 	
 	// Take the init string away and make it mine.
 	// Also store count for easy access.
-	rootStrArray = [[NSArray alloc] initWithArray:_stringArray];
-	numberOfPages = [rootStrArray count];
+	optionsStrArray = [[NSArray alloc] initWithArray:_stringArray];
+	numberOfPages = [optionsStrArray count];
 
     // view controllers are created lazily
     // in the meantime, load the array with placeholders which will be replaced on demand
@@ -101,7 +101,7 @@
     // replace the placeholder if necessary
     PagingViewController *controller = [viewControllers objectAtIndex:page];
     if ((NSNull *)controller == [NSNull null]) {
-        controller = [[PagingViewController alloc] initWithString:[rootStrArray objectAtIndex:page]];
+        controller = [[PagingViewController alloc] initWithString:[optionsStrArray objectAtIndex:page]];
         [viewControllers replaceObjectAtIndex:page withObject:controller];
         [controller release];
     }

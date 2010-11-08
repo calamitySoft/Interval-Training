@@ -14,7 +14,7 @@
 @synthesize delegate;
 @synthesize answerPickingDelegate;
 
-#define DEFAULT_ANSWER 4
+#define DEFAULT_ANSWER 0
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -33,7 +33,7 @@
 						   [self cDifficulty],
 						   [self enabledRoot]]];
 	
-	[self answerPickerHasDifficulty:[self cDifficulty]];
+	[self setAnswerPickerToDifficulty:[self cDifficulty]];
 	
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
@@ -158,19 +158,18 @@
 		[scoreBar setTintColor:[UIColor redColor]];
 	}
 
+	NSLog(@"(MainVC) intervalPickerIndex: %u", intervalPickerIndex);
 }
 
 #pragma mark -
 
-- (void)answerPickerHasDifficulty:(char)difficulty {
+- (void)setAnswerPickerToDifficulty:(char)difficulty {
 	NSMutableArray *enabledIntervals = [delegate aEnabledIntervals];
 	
 	NSMutableArray *availableAnswers = [[NSMutableArray alloc] init];
-//	NSEnumerator *e = [intervalStrings objectEnumerator];	// NSArray of all strings.
-//	NSString *someStr;
-//	while (someStr = [e nextObject]) {
-//	}
 	
+	// Construct picker's available answers from the arrays of
+	//   enabled intervals and interval strings.
 	for (NSUInteger i = 0; i < [enabledIntervals count]; i++) {
 		NSNumber *num = [enabledIntervals objectAtIndex:i];
 		if ([num boolValue]) {
@@ -182,8 +181,18 @@
 	[answerPickingDelegate startAtPage:0];
 }
 
+/*
+ *	changedPageTo:
+ *
+ *	Purpose:	Maintain the user's current interval answer.
+ *	Argument:	newPage is the index in the current Page Control (changes with difficulty).
+ *	Strategy:	Get the string shown for the page (answer) seen.
+ *				Get the correct interval number for that string.
+ *
+ */
 - (void)changedPageTo:(NSUInteger)newPage {
-	intervalPickerIndex = newPage;			// maintain the user's current interval answer
+	NSString *answerChosen = [[answerPickingDelegate optionsStrArray] objectAtIndex:newPage];	/* get shown str */
+	intervalPickerIndex = [intervalStrings indexOfObject:answerChosen];		/* get interval index for said string */	
 }
 
 
@@ -199,7 +208,7 @@
 -(void)setDifficulty:(char)theDiff {
 	if ([self cDifficulty] != theDiff) {
 		[delegate setDifficulty:theDiff];
-		[self answerPickerHasDifficulty:theDiff];
+		[self setAnswerPickerToDifficulty:theDiff];
 		[answerPickingDelegate startAtPage:DEFAULT_ANSWER];		// coming back from settings screen, reset answer option
 	}
 }
