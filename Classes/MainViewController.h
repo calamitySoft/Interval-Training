@@ -20,7 +20,6 @@
 	IBOutlet UIButton *printDiffBtn;	// ** dev help ** //
 	
 	IBOutlet UILabel *intervalLabel;
-	IBOutlet UILabel *instructionsLabel;
 	
 	IBOutlet UIBarButtonItem *replayBarBtn;
 	IBOutlet UIBarButtonItem *nextOrGiveUpBarBtn;

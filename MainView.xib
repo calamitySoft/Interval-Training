@@ -183,7 +183,7 @@
 								<int key="NSvFlags">1316</int>
 								<string key="NSFrame">{{57, 10}, {206, 89}}</string>
 								<reference key="NSSuperview" ref="99678093"/>
-								<object class="NSColor" key="IBUIBackgroundColor" id="1070773876">
+								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
 								</object>
@@ -279,29 +279,6 @@
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">48</float>
 						<int key="IBUINumberOfLines">0</int>
-						<int key="IBUITextAlignment">1</int>
-					</object>
-					<object class="IBUILabel" id="757246715">
-						<reference key="NSNextResponder" ref="883825266"/>
-						<int key="NSvFlags">1316</int>
-						<string key="NSFrame">{{0, 212}, {320, 23}}</string>
-						<reference key="NSSuperview" ref="883825266"/>
-						<reference key="IBUIBackgroundColor" ref="1070773876"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Then select an answer below.</string>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica</string>
-							<double key="NSSize">18</double>
-							<int key="NSfFlags">16</int>
-						</object>
-						<reference key="IBUIHighlightedColor" ref="11699838"/>
-						<reference key="IBUIShadowColor" ref="1070773876"/>
-						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
 				</object>
@@ -475,14 +452,6 @@
 					</object>
 					<int key="connectionID">153</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">instructionsLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="757246715"/>
-					</object>
-					<int key="connectionID">159</int>
-				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -515,7 +484,6 @@
 							<reference ref="99678093"/>
 							<reference ref="558454645"/>
 							<reference ref="757877920"/>
-							<reference ref="757246715"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -648,12 +616,6 @@
 						<reference key="parent" ref="99678093"/>
 						<string key="objectName">Answer Label</string>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">158</int>
-						<reference key="object" ref="757246715"/>
-						<reference key="parent" ref="883825266"/>
-						<string key="objectName">Instructions</string>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -667,8 +629,6 @@
 					<string>115.IBPluginDependency</string>
 					<string>118.IBPluginDependency</string>
 					<string>152.IBPluginDependency</string>
-					<string>158.IBPluginDependency</string>
-					<string>158.IBViewBoundsToFrameTransform</string>
 					<string>34.IBEditorWindowLastContentRect</string>
 					<string>34.IBPluginDependency</string>
 					<string>36.IBPluginDependency</string>
@@ -704,10 +664,6 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw28AAA</bytes>
-					</object>
 					<string>{{317, 272}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
