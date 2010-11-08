@@ -17,7 +17,7 @@
 typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFourth, tritone, 
 	perFifth, minSixth, majSixth, minSeventh, majSeventh, octave} interval;
 
-@interface Interval_TrainingAppDelegate : NSObject <UIApplicationDelegate, ITApplicationDelegate> {
+@interface Interval_TrainingAppDelegate : NSObject <UIApplicationDelegate, ITApplicationDelegate, UIAlertViewDelegate> {
     UIWindow *window;
     MainViewController *mainViewController;
 	FlipsideViewController *flipsideViewController;

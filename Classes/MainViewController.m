@@ -177,14 +177,14 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 
 - (void)setOptionText:(NSUInteger)intervalIndex {
 	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
-	[currentAnswerLabel setTitle:[intervalStrings objectAtIndex:intervalIndex] forState:UIControlStateNormal];
+	[currentAnswerLabel setText:[intervalStrings objectAtIndex:intervalIndex]];
 }
 
 
 #pragma mark -
 #pragma mark View Controlling
 
-- (void) displayInterval:(NSString *)theInterval {
+- (void)displayInterval:(NSString *)theInterval {
 	[intervalLabel setText:theInterval];
 }
 

@@ -31,7 +31,8 @@
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the delegate to set difficulties
 - (void)setDifficultyDisplay;		// adjust Settings' display to reflect current difficulty
 
-- (IBAction)updateRootSelection;	// invoked by the UIPageControl upon its value changing
+- (IBAction)switchRootLeft;				// invoked by the "Set Root" left arrow
+- (IBAction)switchRootRight;			// invoked by the "Set Root" right arrow
 - (void)updateRootDisplay;			// tells the delegate which note should be root; updates display
 
 @end

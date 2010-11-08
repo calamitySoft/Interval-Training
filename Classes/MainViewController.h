@@ -27,7 +27,7 @@
 	
 	IBOutlet UIButton *switchAnswerLeftBtn;
 	IBOutlet UIButton *switchAnswerRightBtn;
-	IBOutlet UIButton *currentAnswerLabel;	// actually a UIButton because they look better
+	IBOutlet UILabel *currentAnswerLabel;	// actually a UIButton because they look better
 	
 	NSArray *intervalStrings;
 	NSUInteger intervalPickerIndex;	// accompanies currentAnswerLabel. This is an int of the current interval answer.

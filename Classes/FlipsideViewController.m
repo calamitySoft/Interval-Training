@@ -114,11 +114,18 @@
 #pragma mark -
 #pragma mark Root Control
 
-// 
-- (IBAction)updateRootSelection {
-	[self setCurrentRootSetting:[rootControl currentPage]];		// set local var for storage
+- (IBAction)switchRootLeft {
+	[self setCurrentRootSetting:
+	 currentRootSetting>0 ? currentRootSetting-1 : currentRootSetting];				// set local var for storage
 	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
-	[self updateRootDisplay];									// update display
+	[self updateRootDisplay];	// update display
+}
+
+- (IBAction)switchRootRight {
+	[self setCurrentRootSetting:
+	 currentRootSetting<[noteNames count]-1 ? currentRootSetting+1 : currentRootSetting];	// set local var for storage
+	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];		// tell AppDelegate
+	[self updateRootDisplay];	// update display
 }
 
 - (void)updateRootDisplay {
