@@ -191,8 +191,8 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 - (void) goToNextQuestion {
 	// Set Answer option bar stuff.
 	[nextOrGiveUpBarBtn setEnabled:TRUE];	// ensure the Give Up button is enabled
-	[doneBarBtn setEnabled:TRUE];						// make the Done button the Done button again
-	[doneBarBtn setTitle:@"Done"];						// * more
+	[doneBarBtn setEnabled:TRUE];						// make the Select button the Select button again
+	[doneBarBtn setTitle:@"Select"];					// * more
 	[doneBarBtn setAction:@selector(submitAnswer:)];	// * more
 	
 	// Show current score.
