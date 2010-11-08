@@ -8,6 +8,9 @@
 
 #import "MainViewController.h"
 
+char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
+
+
 
 @implementation MainViewController
 
@@ -43,6 +46,12 @@
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
     
 	[self dismissModalViewControllerAnimated:YES];
+	
+	// Go to next question only if the difficulty has changed.
+	if (oldDifficulty != [self cDifficulty]) {
+		oldDifficulty = [self cDifficulty];
+		[self goToNextQuestion];
+	}
 }
 
 
@@ -78,6 +87,8 @@
 
 - (IBAction)showSettings:(id)sender {    
 	
+	oldDifficulty = [self cDifficulty];
+	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
 	
@@ -103,28 +114,7 @@
 }
 
 - (IBAction)nextNote:(id)sender {
-	// Set Answer option bar stuff.
-	[nextOrGiveUpBarBtn setEnabled:TRUE];	// ensure the Give Up button is enabled
-	[doneBarBtn setEnabled:TRUE];						// make the Done button the Done button again
-	[doneBarBtn setTitle:@"Done"];						// * more
-	[doneBarBtn setAction:@selector(submitAnswer:)];	// * more
-	
-	// Show current score.
-	[scoreTextItem setTitle:[self.delegate getScoreString]];	// set score display in top bar
-	[scoreBar setTintColor:[UIColor blackColor]];	// set the top bar color back to black
-	
-	// Pick and play new interval.
-	[delegate generateQuestion];
-	
-	// Indicate new interval.
-	[self displayInterval:@"Listen"];
-	
-	// REMOVE ME before launch
-	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%c,\t\t%@",		// help a dev out
-						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
-						   [self cDifficulty],
-						   [self enabledRoot]]];
+	[self goToNextQuestion];
 }
 
 - (IBAction)replayNote:(id)sender {
@@ -196,6 +186,31 @@
 
 - (void) displayInterval:(NSString *)theInterval {
 	[intervalLabel setText:theInterval];
+}
+
+- (void) goToNextQuestion {
+	// Set Answer option bar stuff.
+	[nextOrGiveUpBarBtn setEnabled:TRUE];	// ensure the Give Up button is enabled
+	[doneBarBtn setEnabled:TRUE];						// make the Done button the Done button again
+	[doneBarBtn setTitle:@"Done"];						// * more
+	[doneBarBtn setAction:@selector(submitAnswer:)];	// * more
+	
+	// Show current score.
+	[scoreTextItem setTitle:[self.delegate getScoreString]];	// set score display in top bar
+	[scoreBar setTintColor:[UIColor blackColor]];	// set the top bar color back to black
+	
+	// Pick and play new interval.
+	[delegate generateQuestion];
+	
+	// Indicate new interval.
+	[self displayInterval:@"Listen"];
+	
+	// REMOVE ME before launch
+	// Show the answer in the top left
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%c,\t\t%@",		// help a dev out
+						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
+						   [self cDifficulty],
+						   [self enabledRoot]]];
 }
 
 #pragma mark -
