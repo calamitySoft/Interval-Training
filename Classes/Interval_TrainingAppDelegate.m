@@ -35,7 +35,7 @@
 	
 	UIAlertView *alert = [[UIAlertView alloc]
 						  initWithTitle: nil
-						  message: @"Use the bottom half to choose your answer."
+						  message: @"Use the bottom half to select\nyour interval answer."
 						  delegate: nil
 						  cancelButtonTitle:@"OK"
 						  otherButtonTitles:nil];
@@ -329,7 +329,7 @@
 	}
 	
 	if([[aEnabledIntervals objectAtIndex:distance]boolValue]) {	// don't know why this wasn't working before.
-		NSLog(@"The interval %d is enabled!",distance);
+//		NSLog(@"The interval %d is enabled!",distance);
 		return true;
 	}
 	else {
