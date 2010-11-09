@@ -46,12 +46,6 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
     
 	[self dismissModalViewControllerAnimated:YES];
-	
-	// Go to next question only if the difficulty has changed.
-	if (oldDifficulty != [self cDifficulty]) {
-		oldDifficulty = [self cDifficulty];
-		[self goToNextQuestion];
-	}
 }
 
 
@@ -66,6 +60,14 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	// Go to next question only if the difficulty has changed.
+	if (oldDifficulty != [self cDifficulty]) {
+		oldDifficulty = [self cDifficulty];
+		[self goToNextQuestion];
+	}
 }
 
 
