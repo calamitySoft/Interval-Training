@@ -11,7 +11,7 @@
 
 @implementation DJ
 
-@synthesize noteBank, viableNotes;
+@synthesize noteBank, viableNotes, notesToPlay;
 
 #pragma mark Setup
 
@@ -93,6 +93,31 @@
 	[noteToPlay playNote:@"W"];
 }
 
+/*
+ * playNotes:
+ *
+ * Purpose: Allows delegate to play a series of notes
+ * Strategy:
+ */
+-(void)playNotes:(NSArray *)theNotes{
+	[self setNotesToPlay:theNotes];
+	curNote = 0;
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self selector:@selector(playNextNote:) name:@"NotePlayed" object:nil];
+	[self playNote:[theNotes objectAtIndex:0]];
+}
+
+-(void)playNextNote:(NSNotification *)note
+{
+	curNote = curNote + 1;
+	if (curNote < [[self notesToPlay] count]) {
+		[self playNote:[notesToPlay objectAtIndex:curNote]];
+	}
+	else {
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
+	}
+}
+	
 
 // Gets handed a base note and finds the 
 - (void)setBase:(NSString *)baseNote {

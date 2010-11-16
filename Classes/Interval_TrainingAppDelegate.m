@@ -178,10 +178,16 @@
 
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: root = %d, tar = %d", [iCurRoot intValue], [iCurTarget intValue]);
-	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
-	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurTarget intValue]]];
+	//[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
+	//[myDJ playNote:[aNoteStrings objectAtIndex:[iCurTarget intValue]]];
+	[self arrpegiate];
 }
 
+- (void)arrpegiate{
+	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
+	[myDJ playNotes:temp];
+}
+	
 
 /*
  *	selectNextRoot

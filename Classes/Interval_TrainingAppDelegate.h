@@ -65,6 +65,8 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;	// intervals enabled are dependent on difficulty setting
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
 
+- (void)arrpegiate;	// Plays both the root and the target
+
 - (BOOL)rootIsEnabled:(NSUInteger)root;	// root enabled is dependent on the whim of the user
 
 

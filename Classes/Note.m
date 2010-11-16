@@ -63,6 +63,9 @@
 {
 	// This function will determine and call the proper play function in future apps
 	[self playWhole];
+	NSNotification *note = [NSNotification notificationWithName:@"NotePlayed" object:self
+														userInfo:nil];
+	[[NSNotificationCenter defaultCenter] postNotification:note];
 }
 
 - (void)playWhole
