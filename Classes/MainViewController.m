@@ -109,7 +109,7 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 	[doneBarBtn setAction:@selector(nextNote:)];
 	
 	[nextOrGiveUpBarBtn setTitle:@"Seperate"];
-	
+	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
 	// Reinforce the sound while showing answer.
 	[delegate replayNote];
 	
@@ -125,12 +125,17 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 	[delegate replayNote];
 }
 
+- (IBAction)separate:(id)sender{
+	[delegate arrpegiate];
+}
+
 - (IBAction)submitAnswer:(id)sender {
 	// Set Answer option bar stuff.
 	//[nextOrGiveUpBarBtn setEnabled:FALSE];	// disable the Give Up button
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
 	[doneBarBtn setAction:@selector(nextNote:)];
 	[nextOrGiveUpBarBtn setTitle:@"Seperate"];
+	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
 	
 	// Reinforce the sound while showing the answer.
 	[delegate replayNote];
@@ -222,6 +227,7 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 	[doneBarBtn setTitle:@"Select"];					// * more
 	[doneBarBtn setAction:@selector(submitAnswer:)];	// * more
 	[nextOrGiveUpBarBtn setTitle:@"Give Up"];
+	[nextOrGiveUpBarBtn setAction:@selector(giveUp:)];
 	
 	// Show current score.
 	[scoreTextItem setTitle:[self.delegate getScoreString]];	// set score display in top bar

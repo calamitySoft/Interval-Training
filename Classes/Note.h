@@ -26,6 +26,8 @@
 @property (nonatomic) float hertz;
 @property (nonatomic, copy) NSString *noteName;
 
+void completionCallBack(SystemSoundID  mySSID, void* myself);
+
 - (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz;
 
 - (void)playNote:(NSString *)theNote; // does a switch to pick the right note playback

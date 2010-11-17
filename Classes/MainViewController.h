@@ -41,7 +41,7 @@
 - (IBAction)giveUp:(id)sender;		// displays the interval
 - (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question
 - (IBAction)submitAnswer:(id)sender;	// answers with the interval displayed
-
+- (IBAction)separate:(id)sender;	// Plays the notes seperately
 - (IBAction)switchAnswerLeft:(id)sender;	// sets the user's tentative answer
 - (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
 - (void)setOptionText:(NSUInteger)intervalIndex;	// wrapper for easy answer option setting
@@ -67,6 +67,7 @@
 - (int)getCurrentInterval;
 - (void)setDifficulty:(char)theDiff;
 - (void)printDifficulty;
+- (void)arrpegiate;
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;
 - (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second;
 - (NSString *)getScoreString;
