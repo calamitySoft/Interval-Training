@@ -180,7 +180,6 @@
 	NSLog(@"(Delegate) replayNote: root = %d, tar = %d", [iCurRoot intValue], [iCurTarget intValue]);
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
 	[myDJ playNote:[aNoteStrings objectAtIndex:[iCurTarget intValue]]];
-	[self arrpegiate];
 }
 
 - (void)arrpegiate{

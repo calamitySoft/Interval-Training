@@ -37,6 +37,7 @@
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
 
 - (IBAction)showSettings:(id)sender;	// flips to the settings view
+- (IBAction)showInstructions:(id)sender;	// Repops the instruction alert
 - (IBAction)replayNote:(id)sender;	// replays the root note of the interval
 - (IBAction)giveUp:(id)sender;		// displays the interval
 - (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question

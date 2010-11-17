@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="34"/>
+			<integer value="115"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -54,6 +54,12 @@
 							<object class="IBUINavigationItem" id="622470543">
 								<reference key="IBUINavigationBar" ref="911848102"/>
 								<string key="IBUITitle">Score</string>
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="692252018">
+									<string key="IBUITitle">?</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<int key="IBUIStyle">1</int>
+									<reference key="IBUINavigationItem" ref="622470543"/>
+								</object>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="217495225">
 									<object class="NSCustomResource" key="IBUIImage">
 										<string key="NSClassName">NSImage</string>
@@ -474,6 +480,14 @@
 					</object>
 					<int key="connectionID">161</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">showInstructions:</string>
+						<reference key="source" ref="692252018"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">164</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -612,6 +626,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="217495225"/>
+							<reference ref="692252018"/>
 						</object>
 						<reference key="parent" ref="911848102"/>
 					</object>
@@ -645,6 +660,12 @@
 						<reference key="parent" ref="883825266"/>
 						<string key="objectName">Invis Replay Btn</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">162</int>
+						<reference key="object" ref="692252018"/>
+						<reference key="parent" ref="622470543"/>
+						<string key="objectName">Instructions Btn</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -660,6 +681,7 @@
 					<string>152.IBPluginDependency</string>
 					<string>160.IBPluginDependency</string>
 					<string>160.IBViewBoundsToFrameTransform</string>
+					<string>162.IBPluginDependency</string>
 					<string>34.IBEditorWindowLastContentRect</string>
 					<string>34.IBPluginDependency</string>
 					<string>36.IBPluginDependency</string>
@@ -699,6 +721,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AQAAAABCMAAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{317, 272}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -754,7 +777,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">161</int>
+			<int key="maxID">164</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -770,6 +793,8 @@
 							<string>nextNote:</string>
 							<string>printDifficulty:</string>
 							<string>replayNote:</string>
+							<string>separate:</string>
+							<string>showInstructions:</string>
 							<string>showSettings:</string>
 							<string>submitAnswer:</string>
 							<string>switchAnswerLeft:</string>
@@ -777,6 +802,8 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -795,6 +822,8 @@
 							<string>nextNote:</string>
 							<string>printDifficulty:</string>
 							<string>replayNote:</string>
+							<string>separate:</string>
+							<string>showInstructions:</string>
 							<string>showSettings:</string>
 							<string>submitAnswer:</string>
 							<string>switchAnswerLeft:</string>
@@ -816,6 +845,14 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">replayNote:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">separate:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showInstructions:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

@@ -100,6 +100,17 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 	[controller release];
 }
 
+- (IBAction)showInstructions:(id)sender{
+	UIAlertView *alert = [[UIAlertView alloc]
+						  initWithTitle: nil
+						  message: @"Use the bottom half to select\nyour interval answer."
+						  delegate: nil
+						  cancelButtonTitle:@"OK"
+						  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
 #pragma mark -
 
 - (IBAction)giveUp:(id)sender {
