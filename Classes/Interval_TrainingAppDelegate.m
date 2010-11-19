@@ -184,6 +184,7 @@
 
 - (void)arrpegiate{
 	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
+	[myDJ stop];
 	[myDJ playNotes:temp];
 }
 	

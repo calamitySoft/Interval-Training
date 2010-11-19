@@ -107,6 +107,10 @@
 	[self playNote:[theNotes objectAtIndex:0]];
 }
 
+-(void)stop
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 -(void)playNextNote:(NSNotification *)note
 {
 	curNote = curNote + 1;

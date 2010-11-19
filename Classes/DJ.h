@@ -26,6 +26,7 @@
 - (void)playNote:(NSString *)theNote; // Conducts linear search for the note
 - (void)playNotes:(NSArray *)theNotes; // Plays a series of notes by setting up a notification center
 - (void)playNextNote:(NSNotification *)note;
+- (void)stop;	// Stops playing notes in sequence
 - (void)setBase:(NSString *)baseNote; // Sets a note to the base
 
 - (void)echo; // Used to test if I exist.
