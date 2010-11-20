@@ -44,12 +44,9 @@
 	{
 		// Create a sound ID at var wholeSample.
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-		OSStatus err = AudioServicesCreateSystemSoundID((CFURLRef)soundURL, &wholeSample);
-		
-		if(err != kAudioServicesNoError)
-			NSLog(@"Could not load %@, error code: %d", soundURL, err);
+		wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+		[wholeSample setDelegate:self];
 	}
-	
 	[self setNoteName:_noteName];
 	[self setHertz:_hertz];
 
@@ -63,41 +60,37 @@
 {
 	// This function will determine and call the proper play function in future apps
 	[self playWhole];
-	}
+}
 
-void completionCallback (SystemSoundID  mySSID, void* myself) {
-	AudioServicesRemoveSystemSoundCompletion (mySSID);
-	NSNotification *note = [NSNotification notificationWithName:@"NotePlayed" object:myself
+-(void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+	NSNotification *note = [NSNotification notificationWithName:@"NotePlayed" object:player
 													   userInfo:nil];
 	[[NSNotificationCenter defaultCenter] postNotification:note];
 }
 
 - (void)playWhole
 {
-	AudioServicesAddSystemSoundCompletion (wholeSample,NULL,NULL,
-										   completionCallback,
-										   (void*) self);
-	AudioServicesPlaySystemSound(wholeSample);
+	[wholeSample play];
 }
 
 - (void)playHalf
 {
-	AudioServicesPlaySystemSound(halfSample);
+	[halfSample play];
 }
 
 - (void)playQuarter
 {
-	AudioServicesPlaySystemSound(quarterSample);
+	[quarterSample play];
 }
 
 - (void)playEighth
 {
-	AudioServicesPlaySystemSound(eighthSample);
+	[eighthSample play];
 }
 
 - (void)playSixteenth
 {
-	AudioServicesPlaySystemSound(sixteenthSample);
+	[sixteenthSample play];
 }
 
 

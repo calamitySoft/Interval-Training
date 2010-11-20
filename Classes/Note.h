@@ -7,26 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface Note : NSObject {
+@interface Note : NSObject <AVAudioPlayerDelegate>{
 	
 	float hertz;
 	NSString *noteName;
 	
 	// The actual samples
-	SystemSoundID wholeSample;
+	AVAudioPlayer *wholeSample;
+	
 	// The rest of these we probably won't use for this app
-	SystemSoundID halfSample;
-	SystemSoundID quarterSample;
-	SystemSoundID eighthSample;
-	SystemSoundID sixteenthSample;
+	AVAudioPlayer *halfSample;
+	AVAudioPlayer *quarterSample;
+	AVAudioPlayer *eighthSample;
+	AVAudioPlayer *sixteenthSample;
 }
 
 @property (nonatomic) float hertz;
 @property (nonatomic, copy) NSString *noteName;
 
-void completionCallBack(SystemSoundID  mySSID, void* myself);
 
 - (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz;
 
