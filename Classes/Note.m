@@ -62,6 +62,12 @@
 	[self playWhole];
 }
 
+// I'll fill this function out more later.
+-(void)stop
+{
+	[wholeSample stop];
+}
+
 -(void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
 	NSNotification *note = [NSNotification notificationWithName:@"NotePlayed" object:player
 													   userInfo:nil];

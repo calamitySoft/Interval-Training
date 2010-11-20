@@ -12,9 +12,9 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		22206A651223715E0050D13F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 22206A641223715E0050D13F /* Note.m */; };
-		22206A6A12237D1C0050D13F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22206A6912237D1C0050D13F /* AudioToolbox.framework */; };
 		2226F97C1223968E00670702 /* DJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2226F97B1223968E00670702 /* DJ.m */; };
 		22AD9E8A1277B28A00060BE3 /* Scorekeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD9E891277B28A00060BE3 /* Scorekeeper.m */; };
+		22DB3B2212984F1000FBFB28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DB3B2112984F1000FBFB28 /* AVFoundation.framework */; };
 		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
 		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
@@ -85,11 +85,11 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		22206A631223715E0050D13F /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = Classes/Note.h; sourceTree = "<group>"; };
 		22206A641223715E0050D13F /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = Classes/Note.m; sourceTree = "<group>"; };
-		22206A6912237D1C0050D13F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2226F97A1223968E00670702 /* DJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DJ.h; path = Classes/DJ.h; sourceTree = "<group>"; };
 		2226F97B1223968E00670702 /* DJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DJ.m; path = Classes/DJ.m; sourceTree = "<group>"; };
 		22AD9E881277B28A00060BE3 /* Scorekeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scorekeeper.h; path = Classes/Scorekeeper.h; sourceTree = "<group>"; };
 		22AD9E891277B28A00060BE3 /* Scorekeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Scorekeeper.m; path = Classes/Scorekeeper.m; sourceTree = "<group>"; };
+		22DB3B2112984F1000FBFB28 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
 		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
-				22206A6A12237D1C0050D13F /* AudioToolbox.framework in Frameworks */,
+				22DB3B2212984F1000FBFB28 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +225,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				22206A6912237D1C0050D13F /* AudioToolbox.framework */,
 				706D417312836FAE00BE6A45 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
@@ -259,6 +258,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
+				22DB3B2112984F1000FBFB28 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

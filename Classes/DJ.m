@@ -109,8 +109,13 @@
 
 -(void)stop
 {
+	if (notesToPlay) {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:[notesToPlay objectAtIndex:curNote]]; // see function comment "Note"
+	[[noteBank objectAtIndex:noteBankIndexForGivenNote] stop];
+	}
 }
+
 -(void)playNextNote:(NSNotification *)note
 {
 	curNote = curNote + 1;
@@ -119,6 +124,7 @@
 	}
 	else {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
+		notesToPlay = [[NSArray alloc] initWithObjects:nil];
 	}
 }
 	
