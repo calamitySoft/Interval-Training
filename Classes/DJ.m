@@ -124,7 +124,7 @@
 	}
 	else {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
-		notesToPlay = [[NSArray alloc] initWithObjects:nil];
+		notesToPlay = nil;
 	}
 }
 	
