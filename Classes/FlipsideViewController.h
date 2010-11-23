@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomDiffViewController.h"
 
 @protocol FlipsideViewControllerDelegate;
 
 
-@interface FlipsideViewController : UIViewController {
+@interface FlipsideViewController : UIViewController <CustomDiffViewControllerDelegate> {
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	IBOutlet UISegmentedControl *difficultySegmentedControl;
@@ -31,6 +32,7 @@
 
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the delegate to set difficulties
 - (void)setDifficultyDisplay;		// adjust Settings' display to reflect current difficulty
+- (void)setCustomDifficulty;		// allow the player to set his own intervals to practice
 
 - (IBAction)switchRootLeft;				// invoked by the "Set Root" left arrow; tells the delegate
 - (IBAction)switchRootRight;			// invoked by the "Set Root" right arrow; tells the delegate

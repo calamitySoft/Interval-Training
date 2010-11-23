@@ -110,9 +110,9 @@
 -(void)stop
 {
 	if (notesToPlay) {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:[notesToPlay objectAtIndex:curNote]]; // see function comment "Note"
-	[[noteBank objectAtIndex:noteBankIndexForGivenNote] stop];
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
+		NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:[notesToPlay objectAtIndex:curNote]]; // see function comment "Note"
+		[[noteBank objectAtIndex:noteBankIndexForGivenNote] stop];
 	}
 }
 
@@ -127,7 +127,7 @@
 		notesToPlay = nil;
 	}
 }
-	
+
 
 // Gets handed a base note and finds the 
 - (void)setBase:(NSString *)baseNote {

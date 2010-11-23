@@ -21,6 +21,9 @@
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		70177196129B2D3000D4EE5C /* CustomDiffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70177195129B2D3000D4EE5C /* CustomDiffView.xib */; };
+		70177199129B2D3600D4EE5C /* CustomDiffTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */; };
+		701771C8129B340100D4EE5C /* CustomDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701771C7129B340100D4EE5C /* CustomDiffViewController.m */; };
 		7022AE691239B9AD009895B1 /* A#2W.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7022AE451239B9AD009895B1 /* A#2W.aif */; };
 		7022AE6A1239B9AD009895B1 /* A#3W.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7022AE461239B9AD009895B1 /* A#3W.aif */; };
 		7022AE6B1239B9AD009895B1 /* A#4W.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7022AE471239B9AD009895B1 /* A#4W.aif */; };
@@ -100,6 +103,11 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Interval_Training_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interval_Training_Prefix.pch; sourceTree = "<group>"; };
+		70177195129B2D3000D4EE5C /* CustomDiffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomDiffView.xib; sourceTree = "<group>"; };
+		70177197129B2D3600D4EE5C /* CustomDiffTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomDiffTableViewController.h; path = Classes/CustomDiffTableViewController.h; sourceTree = "<group>"; };
+		70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDiffTableViewController.m; path = Classes/CustomDiffTableViewController.m; sourceTree = "<group>"; };
+		701771C6129B340100D4EE5C /* CustomDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDiffViewController.h; sourceTree = "<group>"; };
+		701771C7129B340100D4EE5C /* CustomDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDiffViewController.m; sourceTree = "<group>"; };
 		7022AE451239B9AD009895B1 /* A#2W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A#2W.aif"; sourceTree = "<group>"; };
 		7022AE461239B9AD009895B1 /* A#3W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A#3W.aif"; sourceTree = "<group>"; };
 		7022AE471239B9AD009895B1 /* A#4W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A#4W.aif"; sourceTree = "<group>"; };
@@ -194,6 +202,10 @@
 		281C6CD70DB2D82200F60ACC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				701771C6129B340100D4EE5C /* CustomDiffViewController.h */,
+				701771C7129B340100D4EE5C /* CustomDiffViewController.m */,
+				70177197129B2D3600D4EE5C /* CustomDiffTableViewController.h */,
+				70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */,
 				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
 				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
 				289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */,
@@ -244,6 +256,7 @@
 			children = (
 				70A917131288C937006FC622 /* images */,
 				7022AE441239B9AD009895B1 /* sounds */,
+				70177195129B2D3000D4EE5C /* CustomDiffView.xib */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
@@ -441,6 +454,7 @@
 				70A9173D1288C937006FC622 /* OTG Intervals red.png in Resources */,
 				70A9173E1288C937006FC622 /* Right Arrow.png in Resources */,
 				70A9173F1288C937006FC622 /* Right Arrow@2x.png in Resources */,
+				70177196129B2D3000D4EE5C /* CustomDiffView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +472,8 @@
 				22206A651223715E0050D13F /* Note.m in Sources */,
 				2226F97C1223968E00670702 /* DJ.m in Sources */,
 				22AD9E8A1277B28A00060BE3 /* Scorekeeper.m in Sources */,
+				70177199129B2D3600D4EE5C /* CustomDiffTableViewController.m in Sources */,
+				701771C8129B340100D4EE5C /* CustomDiffViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,6 +37,9 @@
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
+- (void)customDiffViewControllerDidFinish:(CustomDiffViewController *)controller {
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -83,10 +86,25 @@
 		case 2:
 			[self.delegate setDifficulty:'h'];
 			break;
+		case 3:
+			[self setCustomDifficulty];
 		default:
 			NSLog(@"(Flipside) Attempting to set unrecognized difficulty.");
 			break;
 	}
+}
+
+//	Allow the player to set his own set of intervals to practice.
+//	Flips to a CustomDiffView.
+- (void)setCustomDifficulty {
+	
+	CustomDiffViewController *controller = [[CustomDiffViewController alloc] initWithNibName:@"CustomDiffView" bundle:nil];
+	controller.delegate = self;
+	
+	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentModalViewController:controller animated:YES];
+	
+	[controller release];
 }
 
 //	Sets indication of the current difficulty
