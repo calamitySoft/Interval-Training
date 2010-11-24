@@ -16,7 +16,7 @@
 @interface CustomDiffViewController : UIViewController {
 	id <CustomDiffViewControllerDelegate> delegate;
 	
-	IBOutlet CustomDiffTableViewController* table;
+	IBOutlet CustomDiffTableViewController* tableController;
 }
 
 @property (nonatomic, assign) id <CustomDiffViewControllerDelegate> delegate;

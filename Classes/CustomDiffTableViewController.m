@@ -7,6 +7,7 @@
 //
 
 #import "CustomDiffTableViewController.h"
+#import "MainViewController.h"
 
 
 @implementation CustomDiffTableViewController
@@ -85,13 +86,12 @@
 
 	// Make it not highlight
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	
-	// Setup the switch-eroo
-	CGRect frame = CGRectMake(198.0, 12.0, 94.0, 27.0);
-	UISwitch *tempSwitch = [[UISwitch alloc] initWithFrame:frame];	// UISwitch actually ignores the CGRect size parameters
-	UIControl *control = tempSwitch;
+		
+	// Setup the UISwitch-eroo	
+	UIControl *control = [self.switches objectAtIndex:indexPath.row];
+	[control addTarget:self action:@selector(printJunk:) forControlEvents:UIControlEventValueChanged];
 	[cell.contentView addSubview:control];
-	    
+	
     return cell;
 }
 
@@ -104,6 +104,10 @@
 }
 */
 
+-(void)printJunk:(id)sender {
+	NSLog(@"switchAction: value == %d, %d", [sender isOn], [[self.switches objectAtIndex:2] isOn]);
+	NSLog(@"appdelegate cDifficulty == %c", [[UIApplication sharedApplication].delegate cDifficulty]);
+}
 
 /*
 // Override to support editing the table view.
@@ -154,16 +158,33 @@
 #pragma mark -
 #pragma mark Lazy creation of controls
 
-- (NSArray *)dataSourceArray
-{
-    if (dataSourceArray == nil) 
-    {
+- (NSArray *)dataSourceArray {
+    if (dataSourceArray == nil) {
+		
 		dataSourceArray = [[NSArray alloc] initWithObjects:@"Unison",  @"Minor Second", @"Major Second",
 						   @"Minor Third", @"Major Third", @"Perfect Fourth", @"Tritone",
 						   @"Perfect Fifth", @"Minor Sixth", @"Major Sixth", @"Minor Seventh",
 						   @"Major Seventh", @"Octave", nil];
     }
     return dataSourceArray;
+}
+
+- (NSArray*)switches {
+	if (switches == nil) {
+		
+		NSMutableArray *tempArray = [[NSMutableArray alloc] initWithObjects:nil];
+		
+		for (uint i=0; i<[dataSourceArray count]; i++) {
+			CGRect frame = CGRectMake(198.0, 8.0, 94.0, 27.0);
+			UISwitch *tempSwitch = [[UISwitch alloc] initWithFrame:frame];	// UISwitch actually ignores the CGRect size parameters
+			[tempSwitch setOn:YES animated:YES];
+			
+			[tempArray addObject:tempSwitch];
+		}
+		
+		switches = [[NSArray alloc] initWithArray:tempArray];
+	}
+	return switches;
 }
 
 
@@ -185,10 +206,10 @@
 
 - (void)dealloc {
 	[dataSourceArray release];
+	[switches release];
 	
     [super dealloc];
 }
 
 
 @end
-

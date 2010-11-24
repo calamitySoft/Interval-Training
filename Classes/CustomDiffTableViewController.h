@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomDiffTableViewController : UITableViewController {
-	NSArray		*dataSourceArray;
+	NSArray					*dataSourceArray;
+	NSArray					*switches;
+	IBOutlet UITableView	*table;
 }
 
 @property (nonatomic, retain, readonly) NSArray *dataSourceArray;
+@property (nonatomic, retain, readonly) NSArray *switches;
 
 @end
