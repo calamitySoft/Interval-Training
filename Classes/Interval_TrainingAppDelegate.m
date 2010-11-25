@@ -15,7 +15,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, aEnabledIntervals, enabledRoot, iCurRoot, iCurTarget, cDifficulty, scoreBoard;
+@synthesize myDJ, aNoteStrings, enabledRoot, iCurRoot, iCurTarget, scoreBoard;
 
 #define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
 
@@ -79,24 +79,11 @@
 	[tempNoteStrings release];
 	
 	
-	/*** Create array for determining which notes have been enabled ***/
-	// initially all disabled
-	aEnabledIntervals = [[NSMutableArray alloc] init];
-	for (NSUInteger i = 0; i < INTERVAL_RANGE; i++) {
-		[aEnabledIntervals addObject:[NSNumber numberWithInt:0]];
-	}
-	[self setAllIntervals:[NSNumber numberWithInt:0]];
-	
-	
 	/*** Initialize array of interval names ***/
 	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
 					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
 					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
 					   @"Major\nSeventh", @"Octave", nil];
-	
-	
-	/*** Set default difficulty - easy. ***/
-	[self setDifficulty:'e'];
 	
 	
 	/*** Set default root - any. ***/
@@ -233,48 +220,33 @@
 		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);
 }
 		
-- (void)setDifficulty:(char)theDiff {
-	if (cDifficulty != theDiff) {
-		[self setAllIntervals:[NSNumber numberWithInt:0]];
-		NSNumber* trueValue = [NSNumber numberWithInt:1];
-		[self setCDifficulty:theDiff];
-		
-		switch (theDiff) {
-			case 'e':
-				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];	// Unison
-				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];	// Minor Third
-				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];	// Major Third
-				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];	// Perfect Fifth
-				[aEnabledIntervals replaceObjectAtIndex:12 withObject:trueValue];	// Octave
-				break;
-			case 'm':
-				[aEnabledIntervals replaceObjectAtIndex:0 withObject:trueValue];	// Unison
-				[aEnabledIntervals replaceObjectAtIndex:2 withObject:trueValue];	// Major Second
-				[aEnabledIntervals replaceObjectAtIndex:3 withObject:trueValue];	// Minor Third
-				[aEnabledIntervals replaceObjectAtIndex:4 withObject:trueValue];	// Major Third
-				[aEnabledIntervals replaceObjectAtIndex:5 withObject:trueValue];	// Perfect Fourth
-				[aEnabledIntervals replaceObjectAtIndex:7 withObject:trueValue];	// Perfect Fifth
-				[aEnabledIntervals replaceObjectAtIndex:8 withObject:trueValue];	// Minor Sixth
-				[aEnabledIntervals replaceObjectAtIndex:9 withObject:trueValue];	// Major Sixth
-				break;
-			case 'h':
-				[self setAllIntervals:trueValue];
-				break;
-
-			default:
-				break;
-		}
-		[trueValue release];
+- (void)setDifficulty:(char)theDiff {			
+	switch (theDiff) {
+		case 'e':
+			[[Settings sharedSettings] setCurrentDifficulty:kEasyDifficulty];
+			break;
+		case 'm':
+			[[Settings sharedSettings] setCurrentDifficulty:kMediumDifficulty];
+			break;
+		case 'h':
+			[[Settings sharedSettings] setCurrentDifficulty:kHardDifficulty];
+			break;
+		case 'c':
+			[[Settings sharedSettings] setCurrentDifficulty:kCustomDifficulty];
+			break;
+		default:
+			break;
 	}
+
 	NSLog(@"(Delegate) Just changed the difficulty to %c", theDiff);
 }
 
 - (void)printDifficulty {
 	NSLog(@"******************");
-	NSLog(@"** cDifficulty: %c\n", cDifficulty);
+	NSLog(@"** cDifficulty: %@\n", [[Settings sharedSettings] currentDifficulty]);
 	NSLog(@"** index\tenabled?");
 	int i=0;
-	for (NSNumber *num in aEnabledIntervals) {
+	for (NSNumber *num in [[Settings sharedSettings] enabledIntervals]) {
 		NSLog(@"** %i\t\t%i", i, [num intValue]);
 		i++;
 	}
@@ -322,12 +294,6 @@
 	return [iCurTarget intValue]-[iCurRoot intValue];
 }
 
-- (void)setAllIntervals:(NSNumber *)mode {
-	for (NSUInteger i = 0; i < 13; i++) {
-		[aEnabledIntervals replaceObjectAtIndex:i withObject:mode];
-	}
-}
-
 
 - (BOOL)intervalIsEnabled:(NSUInteger)distance {
 	// NSUInteger will always be >=0
@@ -335,7 +301,7 @@
 		return false;
 	}
 	
-	if([[aEnabledIntervals objectAtIndex:distance]boolValue]) {	// don't know why this wasn't working before.
+	if ( [[[Settings sharedSettings].enabledIntervals objectAtIndex:distance] boolValue] ) {
 //		NSLog(@"The interval %d is enabled!",distance);
 		return true;
 	}

@@ -16,26 +16,28 @@
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	IBOutlet UISegmentedControl *difficultySegmentedControl;
+	NSUInteger tempDifficultySetting;
 
-	IBOutlet UILabel *rootName;
-	IBOutlet UIButton *switchRootLeftBtn;
-	IBOutlet UIButton *switchRootRightBtn;
-	NSArray *noteNames;
-	int currentRootSetting;
+	IBOutlet UILabel	*rootName;
+	IBOutlet UIButton	*switchRootLeftBtn;
+	IBOutlet UIButton	*switchRootRightBtn;
+	NSArray				*noteNames;
+	int					currentRootSetting;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
+@property (nonatomic) NSUInteger tempDifficultySetting;
 @property (nonatomic, retain) NSArray *noteNames;
 @property int currentRootSetting;
 
 - (IBAction)done:(id)sender;
 
-- (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the delegate to set difficulties
-- (void)setDifficultyDisplay;		// adjust Settings' display to reflect current difficulty
+- (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the Settings to set difficulties
 - (void)setCustomDifficulty;		// allow the player to set his own intervals to practice
+- (void)setDifficultyDisplay;		// adjust Settings page's display to reflect current difficulty
 
-- (IBAction)switchRootLeft;				// invoked by the "Set Root" left arrow; tells the delegate
-- (IBAction)switchRootRight;			// invoked by the "Set Root" right arrow; tells the delegate
+- (IBAction)switchRootLeft;			// invoked by the "Set Root" left arrow; tells the delegate
+- (IBAction)switchRootRight;		// invoked by the "Set Root" right arrow; tells the delegate
 - (void)updateRootDisplay;			// updates display
 
 @end
@@ -44,8 +46,6 @@
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
-- (void)setDifficulty:(char)theDiff;
-- (char)cDifficulty;
 - (void)setEnabledRoot:(NSString*)str;	// passes along to AppDelegate
 - (NSString*)enabledRoot;	// gets from AppDelegate
 @end

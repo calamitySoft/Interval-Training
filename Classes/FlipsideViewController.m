@@ -7,11 +7,13 @@
 //
 
 #import "FlipsideViewController.h"
+#import "Settings.h"
 
 
 @implementation FlipsideViewController
 
 @synthesize delegate;
+@synthesize tempDifficultySetting;
 @synthesize noteNames, currentRootSetting;
 
 - (void)viewDidLoad {
@@ -20,6 +22,7 @@
 
 	
 	// Difficulty setup
+	self.tempDifficultySetting = [[Settings sharedSettings] getDifficultyAsUInt];
 	[self setDifficultyDisplay];
 	
 	
@@ -34,6 +37,8 @@
 
 
 - (IBAction)done:(id)sender {
+	[[Settings sharedSettings] setDifficultyWithUInt:self.tempDifficultySetting];
+	
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -74,23 +79,12 @@
 #pragma mark Difficulty Control
 
 //	Sets the trainer's difficulty.
-//	See AppDelegate for details.
+//	See Settings.h for details.
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl {
-	switch ([segmentedControl selectedSegmentIndex]) {
-		case 0:
-			[self.delegate setDifficulty:'e'];
-			break;
-		case 1:
-			[self.delegate setDifficulty:'m'];
-			break;
-		case 2:
-			[self.delegate setDifficulty:'h'];
-			break;
-		case 3:
-			[self setCustomDifficulty];
-		default:
-			NSLog(@"(Flipside) Attempting to set unrecognized difficulty.");
-			break;
+	self.tempDifficultySetting = [segmentedControl selectedSegmentIndex];
+	
+	if (self.tempDifficultySetting == 3) {
+		[self setCustomDifficulty];
 	}
 }
 
@@ -109,22 +103,9 @@
 
 //	Sets indication of the current difficulty
 //	Side effect: This will invoke [setDifficulty:] (above), due to setting the
-//		selection. (~It doesn't just respond to hardware UI events.)
+//		selection. (~It doesn't only respond to hardware UI events.)
 - (void)setDifficultyDisplay {
-	switch ([delegate cDifficulty]) {
-		case 'e':
-			[difficultySegmentedControl setSelectedSegmentIndex:0];
-			break;
-		case 'm':
-			[difficultySegmentedControl setSelectedSegmentIndex:1];
-			break;
-		case 'h':
-			[difficultySegmentedControl setSelectedSegmentIndex:2];
-			break;			
-		default:
-			NSLog(@"(Flipside) Current difficulty unrecognized.");
-			break;
-	}
+	[difficultySegmentedControl setSelectedSegmentIndex:self.tempDifficultySetting];
 }
 
 

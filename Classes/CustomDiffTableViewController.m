@@ -107,7 +107,6 @@
 
 -(void)printJunk {
 	NSLog(@"testInt == %c", [[Settings sharedSettings] currentDifficulty]);
-	[Settings sharedSettings].currentDifficulty = 'm';
 	NSLog(@"testInt == %c", [[Settings sharedSettings] currentDifficulty]);
 }
 

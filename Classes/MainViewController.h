@@ -50,8 +50,6 @@
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
 - (void) goToNextQuestion;	// goes to the next question. can be used from anywhere - ex. nextNote:, flipsideViewControllerDidFinish:
 
-- (void)setDifficulty:(char)theDiff;	// tells the delegate to setDifficulty:
-- (char)cDifficulty;	// get the difficulty from the delegate
 - (IBAction)printDifficulty:(id)sender;
 
 - (void)setEnabledRoot:(NSString*)str;	// passes along to AppDelegate
@@ -66,7 +64,6 @@
 - (void)generateQuestion;
 - (void)replayNote;
 - (int)getCurrentInterval;
-- (void)setDifficulty:(char)theDiff;
 - (void)printDifficulty;
 - (void)arrpegiate;
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;
@@ -76,7 +73,6 @@
 
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
-@property char cDifficulty;
 @property (nonatomic, retain) NSString *enabledRoot;
 
 @end

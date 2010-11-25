@@ -15,17 +15,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 @synthesize currentDifficulty;
 
-typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFourth, tritone, 
-	perFifth, minSixth, majSixth, minSeventh, majSeventh, octave} interval;
-
-static NSString *kEasyDifficulty = @"EasyDifficulty";
-static NSString *kMediumDifficulty = @"MediumDifficulty";
-static NSString *kHardDifficulty = @"HardDifficulty";
-
 
 - (id)init {
-	currentDifficulty = 'e';
-	
 	return self;
 }
 
@@ -59,6 +50,82 @@ static NSString *kHardDifficulty = @"HardDifficulty";
 	
 	
 	return tempArray;
+}
+
+
+#pragma mark -
+#pragma mark Inter-file Methods
+
+- (char)getDifficulty {
+	char *chars;
+	[self.currentDifficulty characterAtIndex:0];
+	NSLog(@"\t\t(Settings)\t\t%c", chars[0]);
+	
+	return chars[0];
+}
+
+- (NSUInteger)getDifficultyAsUInt {
+	// easy
+	if ([self.currentDifficulty isEqualToString:kEasyDifficulty]) {
+		return 0;
+	}
+	
+	// medium
+	else if ([self.currentDifficulty isEqualToString:kMediumDifficulty]) {
+		return 1;
+	}
+	
+	// hard
+	else if ([self.currentDifficulty isEqualToString:kHardDifficulty]) {
+		return 2;
+	}
+	
+	// custom
+	else if ([self.currentDifficulty isEqualToString:kCustomDifficulty]) {
+		return 3;
+	}
+	
+	else {
+		return 4;
+	}
+}
+
+- (void)setDifficulty:(char)_difficulty {
+	switch (_difficulty) {
+		case 'e':
+			[self setCurrentDifficulty:kEasyDifficulty];
+			break;
+		case 'm':
+			[self setCurrentDifficulty:kMediumDifficulty];
+			break;
+		case 'h':
+			[self setCurrentDifficulty:kHardDifficulty];
+			break;
+		case 'c':
+			[self setCurrentDifficulty:kCustomDifficulty];
+			break;
+		default:
+			break;
+	}	
+}
+
+- (void)setDifficultyWithUInt:(NSUInteger)_difficulty {
+	switch (_difficulty) {
+		case 0:
+			[self setCurrentDifficulty:kEasyDifficulty];
+			break;
+		case 1:
+			[self setCurrentDifficulty:kMediumDifficulty];
+			break;
+		case 2:
+			[self setCurrentDifficulty:kHardDifficulty];
+			break;
+		case 3:
+			[self setCurrentDifficulty:kCustomDifficulty];
+			break;
+		default:
+			break;
+	}
 }
 
 
@@ -105,13 +172,64 @@ static NSString *kHardDifficulty = @"HardDifficulty";
 - (NSArray*)customDifficulty {
     if (customDifficulty == nil) {
 		
-		customDifficulty = [[NSArray alloc] initWithObjects: nil];
+		customDifficulty = self.hardDifficulty;
     }
     return customDifficulty;	
 }
 
 - (void)setCustomDifficulty:(NSArray *)_customDifficulty {
 	self.customDifficulty = _customDifficulty;
+}
+
+- (NSString*)currentDifficulty {
+	if (currentDifficulty == nil) {
+		currentDifficulty = kEasyDifficulty;
+	}
+	return currentDifficulty;
+}
+
+- (void)setCurrentDifficulty:(NSString*)_difficulty {
+	currentDifficulty = _difficulty;
+	
+	// easy
+	if ([_difficulty isEqualToString:kEasyDifficulty]) {
+		[self setEnabledIntervals:self.easyDifficulty];
+	}
+	
+	// medium
+	else if ([_difficulty isEqualToString:kMediumDifficulty]) {
+		[self setEnabledIntervals:self.mediumDifficulty];
+	}
+	
+	// hard
+	else if ([_difficulty isEqualToString:kHardDifficulty]) {
+		[self setEnabledIntervals:self.hardDifficulty];
+	}
+	
+	// custom
+	else if ([_difficulty isEqualToString:kCustomDifficulty]) {
+		[self setEnabledIntervals:self.customDifficulty];
+	}
+	
+	// default
+	else {
+		[self setEnabledIntervals:self.easyDifficulty];
+	}
+	
+	NSLog(@"(Settings)Difficulty is now %@", currentDifficulty);
+}
+
+#pragma mark -
+
+- (NSArray*)enabledIntervals {
+	if (enabledIntervals == nil) {
+		enabledIntervals = self.easyDifficulty;
+	}
+	return enabledIntervals;
+}
+
+- (void)setEnabledIntervals:(NSArray*)_enabledIntervals; {
+	enabledIntervals = _enabledIntervals;
 }
 
 

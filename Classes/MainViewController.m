@@ -7,8 +7,9 @@
 //
 
 #import "MainViewController.h"
+#import "Settings.h"
 
-char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
+static NSString *oldDifficulty = @"EasyDifficulty";		/* helps determine if we should switch questions. */
 
 
 
@@ -30,9 +31,9 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%c,\t\t%@",		// help a dev out
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%@,\t\t%@",		// help a dev out
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
-						   [self cDifficulty],
+						   [[Settings sharedSettings] currentDifficulty],
 						   [self enabledRoot]]];
 
 #ifndef DEBUG
@@ -63,10 +64,22 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	// Go to next question only if the difficulty has changed.
-	if (oldDifficulty != [self cDifficulty]) {
-		oldDifficulty = [self cDifficulty];
+	//
+	//	Only if the difficulty has changed:
+	//		Go to the next question.
+	//		Reset answer picker.
+	//
+	if (![oldDifficulty isEqualToString:[[Settings sharedSettings] currentDifficulty]]) {
+		NSString *tempDiff = [[NSString alloc] initWithString:[[Settings sharedSettings] currentDifficulty]];
+		oldDifficulty = tempDiff;
+		[tempDiff release];
+		
 		[self goToNextQuestion];
+		
+		[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
+	
+		[switchAnswerLeftBtn setHidden:FALSE];
+		[switchAnswerRightBtn setHidden:FALSE];
 	}
 }
 
@@ -89,7 +102,9 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 
 - (IBAction)showSettings:(id)sender {    
 	
-	oldDifficulty = [self cDifficulty];
+	NSString *tempDiff = [[NSString alloc] initWithString:[[Settings sharedSettings] currentDifficulty]];
+	oldDifficulty = tempDiff;
+	[tempDiff release];
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
@@ -252,27 +267,13 @@ char oldDifficulty = 'e';	/* helps determine if we should switch questions. */
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%c,\t\t%@",		// help a dev out
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%@,\t\t%@",		// help a dev out
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
-						   [self cDifficulty],
+						   [[Settings sharedSettings] currentDifficulty],
 						   [self enabledRoot]]];
 }
 
 #pragma mark -
-
--(void)setDifficulty:(char)theDiff {
-	if ([self cDifficulty] != theDiff) {
-		[delegate setDifficulty:theDiff];
-		[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
-		
-		[switchAnswerLeftBtn setHidden:FALSE];
-		[switchAnswerRightBtn setHidden:FALSE];
-	}
-}
-
--(char)cDifficulty {
-	return [delegate cDifficulty];
-}
 
 - (IBAction)printDifficulty:(id)sender {
 	[delegate printDifficulty];
