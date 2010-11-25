@@ -43,6 +43,7 @@
 }
 
 - (void)customDiffViewControllerDidFinish:(CustomDiffViewController *)controller {
+	[self setDifficultyDisplay];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -82,6 +83,7 @@
 //	See Settings.h for details.
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl {
 	self.tempDifficultySetting = [segmentedControl selectedSegmentIndex];
+	[self setDifficultyDisplay];
 	
 	if (self.tempDifficultySetting == 3) {
 		[self setCustomDifficulty];
@@ -101,11 +103,45 @@
 	[controller release];
 }
 
-//	Sets indication of the current difficulty
+//	Sets indication of the current difficulty, and of the text view
+//		explaining the currently tested intervals.
 //	Side effect: This will invoke [setDifficulty:] (above), due to setting the
 //		selection. (~It doesn't only respond to hardware UI events.)
 - (void)setDifficultyDisplay {
 	[difficultySegmentedControl setSelectedSegmentIndex:self.tempDifficultySetting];
+
+	NSArray *selectedDifficulty;
+	switch (difficultySegmentedControl.selectedSegmentIndex) {
+		case 0:
+			selectedDifficulty = [[NSArray alloc] initWithArray:[Settings sharedSettings].easyDifficulty];
+			break;
+		case 1:
+			selectedDifficulty = [[NSArray alloc] initWithArray:[Settings sharedSettings].mediumDifficulty];
+			break;
+		case 2:
+			selectedDifficulty = [[NSArray alloc] initWithArray:[Settings sharedSettings].hardDifficulty];
+			break;
+		case 3:
+			selectedDifficulty = [[NSArray alloc] initWithArray:[Settings sharedSettings].customDifficulty];
+			break;
+		default:
+			return;
+	}
+
+	NSString *tempTestingString = [[NSString alloc] initWithString:@""];
+	BOOL first = TRUE;
+	for (NSUInteger i=0; i<[selectedDifficulty count]; i++) {
+		if ([[selectedDifficulty objectAtIndex:i] boolValue]) {
+			tempTestingString = first ?
+								[tempTestingString stringByAppendingFormat:@"%@",
+								 [[Settings sharedSettings].intervalNames objectAtIndex:i]] :
+								[tempTestingString stringByAppendingFormat:@", %@",
+								 [[Settings sharedSettings].intervalNames objectAtIndex:i]];
+			first = FALSE;
+		}
+	}
+	
+	[intervalSettingsDisplay setText:tempTestingString];
 }
 
 

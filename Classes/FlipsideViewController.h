@@ -16,13 +16,14 @@
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	IBOutlet UISegmentedControl *difficultySegmentedControl;
-	NSUInteger tempDifficultySetting;
+	NSUInteger					tempDifficultySetting;
+	IBOutlet UITextView			*intervalSettingsDisplay;
 
-	IBOutlet UILabel	*rootName;
-	IBOutlet UIButton	*switchRootLeftBtn;
-	IBOutlet UIButton	*switchRootRightBtn;
-	NSArray				*noteNames;
-	int					currentRootSetting;
+	IBOutlet UILabel			*rootName;
+	IBOutlet UIButton			*switchRootLeftBtn;
+	IBOutlet UIButton			*switchRootRightBtn;
+	NSArray						*noteNames;
+	int							currentRootSetting;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;

@@ -21,7 +21,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 - (void)dealloc {
-	[noteNames release];
+	[intervalNames release];
 	[easyDifficulty release];
 	[mediumDifficulty release];
 	[hardDifficulty release];
@@ -42,8 +42,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
 	NSDictionary *difficultyDict = [[NSDictionary alloc] initWithDictionary:[rawConfigDict objectForKey:_difficulty]];
 	
-	for (NSUInteger i=0; i<[self.noteNames count]; i++) {
-		NSString *intervalName = [self.noteNames objectAtIndex:i];
+	for (NSUInteger i=0; i<[self.intervalNames count]; i++) {
+		NSString *intervalName = [self.intervalNames objectAtIndex:i];
 		Boolean isEnabled = [[difficultyDict valueForKey:intervalName] boolValue];		
 		[tempArray addObject:[NSNumber numberWithBool:isEnabled]];
 	}
@@ -142,13 +142,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  *	lazy init of our vars
  */
 
-- (NSArray*)noteNames {
-	if (noteNames == nil) {
+- (NSArray*)intervalNames {
+	if (intervalNames == nil) {
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		noteNames = [rawConfigDict objectForKey:@"IntervalNames"];
+		intervalNames = [rawConfigDict objectForKey:@"IntervalNames"];
 	}
-	return noteNames;
+	return intervalNames;
 }
 
 #pragma mark -

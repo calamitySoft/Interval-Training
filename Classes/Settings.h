@@ -19,7 +19,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 
 @interface Settings : NSObject {
-	NSArray			*noteNames;
+	NSArray			*intervalNames;
 	
 	NSArray			*easyDifficulty;
 	NSArray			*mediumDifficulty;
@@ -30,7 +30,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	NSArray			*enabledIntervals;
 }
 
-@property (nonatomic, retain, readonly) NSArray *noteNames;
+@property (nonatomic, retain, readonly) NSArray *intervalNames;
 
 @property (nonatomic, retain, readonly) NSArray *easyDifficulty;
 @property (nonatomic, retain, readonly) NSArray *mediumDifficulty;
