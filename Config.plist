@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EasyDifficulty</key>
+	<dict>
+		<key>Unison</key>
+		<string>1</string>
+		<key>Minor Second</key>
+		<string>0</string>
+		<key>Major Second</key>
+		<string>0</string>
+		<key>Minor Third</key>
+		<string>1</string>
+		<key>Major Third</key>
+		<string>1</string>
+		<key>Perfect Fourth</key>
+		<string>0</string>
+		<key>Tritone</key>
+		<string>0</string>
+		<key>Perfect Fifth</key>
+		<string>1</string>
+		<key>Minor Sixth</key>
+		<string>0</string>
+		<key>Major Sixth</key>
+		<string>0</string>
+		<key>Minor Seventh</key>
+		<string>0</string>
+		<key>Major Seventh</key>
+		<string>0</string>
+		<key>Octave</key>
+		<string>1</string>
+	</dict>
+	<key>MediumDifficulty</key>
+	<dict>
+		<key>Unison</key>
+		<string>1</string>
+		<key>Minor Second</key>
+		<string>0</string>
+		<key>Major Second</key>
+		<string>1</string>
+		<key>Minor Third</key>
+		<string>1</string>
+		<key>Major Third</key>
+		<string>1</string>
+		<key>Perfect Fourth</key>
+		<string>1</string>
+		<key>Tritone</key>
+		<string>0</string>
+		<key>Perfect Fifth</key>
+		<string>1</string>
+		<key>Minor Sixth</key>
+		<string>1</string>
+		<key>Major Sixth</key>
+		<string>1</string>
+		<key>Minor Seventh</key>
+		<string>0</string>
+		<key>Major Seventh</key>
+		<string>0</string>
+		<key>Octave</key>
+		<string>0</string>
+	</dict>
+	<key>HardDifficulty</key>
+	<dict>
+		<key>Unison</key>
+		<string>1</string>
+		<key>Minor Second</key>
+		<string>1</string>
+		<key>Major Second</key>
+		<string>1</string>
+		<key>Minor Third</key>
+		<string>1</string>
+		<key>Major Third</key>
+		<string>1</string>
+		<key>Perfect Fourth</key>
+		<string>1</string>
+		<key>Tritone</key>
+		<string>1</string>
+		<key>Perfect Fifth</key>
+		<string>1</string>
+		<key>Minor Sixth</key>
+		<string>1</string>
+		<key>Major Sixth</key>
+		<string>1</string>
+		<key>Minor Seventh</key>
+		<string>1</string>
+		<key>Major Seventh</key>
+		<string>1</string>
+		<key>Octave</key>
+		<string>1</string>
+	</dict>
+	<key>IntervalNames</key>
+	<array>
+		<string>Unison</string>
+		<string>Minor Second</string>
+		<string>Major Second</string>
+		<string>Minor Third</string>
+		<string>Major Third</string>
+		<string>Perfect Fourth</string>
+		<string>Tritone</string>
+		<string>Perfect Fifth</string>
+		<string>Minor Sixth</string>
+		<string>Major Sixth</string>
+		<string>Minor Seventh</string>
+		<string>Major Seventh</string>
+		<string>Octave</string>
+	</array>
+</dict>
+</plist>

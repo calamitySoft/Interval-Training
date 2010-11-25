@@ -8,6 +8,7 @@
 
 #import "CustomDiffTableViewController.h"
 #import "MainViewController.h"
+#import "Settings.h"
 
 
 @implementation CustomDiffTableViewController
@@ -89,7 +90,7 @@
 		
 	// Setup the UISwitch-eroo	
 	UIControl *control = [self.switches objectAtIndex:indexPath.row];
-	[control addTarget:self action:@selector(printJunk:) forControlEvents:UIControlEventValueChanged];
+	[control addTarget:self action:@selector(printJunk) forControlEvents:UIControlEventValueChanged];
 	[cell.contentView addSubview:control];
 	
     return cell;
@@ -104,9 +105,10 @@
 }
 */
 
--(void)printJunk:(id)sender {
-	NSLog(@"switchAction: value == %d, %d", [sender isOn], [[self.switches objectAtIndex:2] isOn]);
-	NSLog(@"appdelegate cDifficulty == %c", [[UIApplication sharedApplication].delegate cDifficulty]);
+-(void)printJunk {
+	NSLog(@"testInt == %c", [[Settings sharedSettings] currentDifficulty]);
+	[Settings sharedSettings].currentDifficulty = 'm';
+	NSLog(@"testInt == %c", [[Settings sharedSettings] currentDifficulty]);
 }
 
 /*

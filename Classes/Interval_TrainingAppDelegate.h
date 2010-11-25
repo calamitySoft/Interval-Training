@@ -44,7 +44,6 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) NSString *enabledRoot;
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
-@property char cDifficulty;
 @property (nonatomic, retain) Scorekeeper *scoreBoard;
 
 - (void)generateQuestion; // An organizer function to put the main workflow in one centralized place

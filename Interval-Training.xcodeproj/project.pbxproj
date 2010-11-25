@@ -24,6 +24,8 @@
 		70177196129B2D3000D4EE5C /* CustomDiffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70177195129B2D3000D4EE5C /* CustomDiffView.xib */; };
 		70177199129B2D3600D4EE5C /* CustomDiffTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */; };
 		701771C8129B340100D4EE5C /* CustomDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701771C7129B340100D4EE5C /* CustomDiffViewController.m */; };
+		70177467129DA13B00D4EE5C /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 70177466129DA13B00D4EE5C /* Settings.m */; };
+		701774EC129DC9B900D4EE5C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701774EB129DC9B900D4EE5C /* Config.plist */; };
 		7022AE691239B9AD009895B1 /* A#2W.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7022AE451239B9AD009895B1 /* A#2W.aif */; };
 		7022AE6A1239B9AD009895B1 /* A#3W.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7022AE461239B9AD009895B1 /* A#3W.aif */; };
 		7022AE6B1239B9AD009895B1 /* A#4W.aif in Resources */ = {isa = PBXBuildFile; fileRef = 7022AE471239B9AD009895B1 /* A#4W.aif */; };
@@ -108,6 +110,10 @@
 		70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDiffTableViewController.m; path = Classes/CustomDiffTableViewController.m; sourceTree = "<group>"; };
 		701771C6129B340100D4EE5C /* CustomDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDiffViewController.h; sourceTree = "<group>"; };
 		701771C7129B340100D4EE5C /* CustomDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDiffViewController.m; sourceTree = "<group>"; };
+		7017745D129D9EE700D4EE5C /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		70177465129DA13B00D4EE5C /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Classes/Settings.h; sourceTree = "<group>"; };
+		70177466129DA13B00D4EE5C /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Classes/Settings.m; sourceTree = "<group>"; };
+		701774EB129DC9B900D4EE5C /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		7022AE451239B9AD009895B1 /* A#2W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A#2W.aif"; sourceTree = "<group>"; };
 		7022AE461239B9AD009895B1 /* A#3W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A#3W.aif"; sourceTree = "<group>"; };
 		7022AE471239B9AD009895B1 /* A#4W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A#4W.aif"; sourceTree = "<group>"; };
@@ -217,6 +223,8 @@
 		289233A00DB2D0730083E9F9 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				70177465129DA13B00D4EE5C /* Settings.h */,
+				70177466129DA13B00D4EE5C /* Settings.m */,
 				22AD9E881277B28A00060BE3 /* Scorekeeper.h */,
 				22AD9E891277B28A00060BE3 /* Scorekeeper.m */,
 				2226F97A1223968E00670702 /* DJ.h */,
@@ -245,6 +253,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7017745D129D9EE700D4EE5C /* SynthesizeSingleton.h */,
 				32CA4F630368D1EE00C91783 /* Interval_Training_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -261,6 +270,7 @@
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Interval_Training-Info.plist */,
+				701774EB129DC9B900D4EE5C /* Config.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -455,6 +465,7 @@
 				70A9173E1288C937006FC622 /* Right Arrow.png in Resources */,
 				70A9173F1288C937006FC622 /* Right Arrow@2x.png in Resources */,
 				70177196129B2D3000D4EE5C /* CustomDiffView.xib in Resources */,
+				701774EC129DC9B900D4EE5C /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +485,7 @@
 				22AD9E8A1277B28A00060BE3 /* Scorekeeper.m in Sources */,
 				70177199129B2D3600D4EE5C /* CustomDiffTableViewController.m in Sources */,
 				701771C8129B340100D4EE5C /* CustomDiffViewController.m in Sources */,
+				70177467129DA13B00D4EE5C /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

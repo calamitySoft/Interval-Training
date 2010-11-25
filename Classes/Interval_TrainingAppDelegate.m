@@ -8,6 +8,7 @@
 
 #import "Interval_TrainingAppDelegate.h"
 #import "MainViewController.h"
+#import "Settings.h"
 
 @implementation Interval_TrainingAppDelegate
 
