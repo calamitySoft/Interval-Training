@@ -89,6 +89,35 @@
 		<key>Octave</key>
 		<string>1</string>
 	</dict>
+	<key>CustomDifficulty</key>
+	<dict>
+		<key>Unison</key>
+		<string>1</string>
+		<key>Minor Second</key>
+		<string>0</string>
+		<key>Major Second</key>
+		<string>1</string>
+		<key>Minor Third</key>
+		<string>1</string>
+		<key>Major Third</key>
+		<string>1</string>
+		<key>Perfect Fourth</key>
+		<string>1</string>
+		<key>Tritone</key>
+		<string>0</string>
+		<key>Perfect Fifth</key>
+		<string>1</string>
+		<key>Minor Sixth</key>
+		<string>1</string>
+		<key>Major Sixth</key>
+		<string>1</string>
+		<key>Minor Seventh</key>
+		<string>0</string>
+		<key>Major Seventh</key>
+		<string>0</string>
+		<key>Octave</key>
+		<string>0</string>
+	</dict>
 	<key>IntervalNames</key>
 	<array>
 		<string>Unison</string>

@@ -56,6 +56,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 #pragma mark -
 #pragma mark Inter-file Methods
 
+- (void)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value {
+	NSNumber *tempValue = [[NSNumber alloc] initWithBool:_value];
+	[self.customDifficulty replaceObjectAtIndex:_index withObject:tempValue];
+	[tempValue release];
+}
+
 - (char)getDifficulty {
 	char *chars;
 	[self.currentDifficulty characterAtIndex:0];
@@ -141,7 +147,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
 		noteNames = [rawConfigDict objectForKey:@"IntervalNames"];
-		
 	}
 	return noteNames;
 }
@@ -169,15 +174,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	return hardDifficulty;
 }
 
-- (NSArray*)customDifficulty {
+- (NSMutableArray*)customDifficulty {
     if (customDifficulty == nil) {
-		
-		customDifficulty = self.hardDifficulty;
+		customDifficulty = [self loadDifficulty:kCustomDifficulty];
     }
     return customDifficulty;	
 }
 
-- (void)setCustomDifficulty:(NSArray *)_customDifficulty {
+- (void)setCustomDifficulty:(NSMutableArray *)_customDifficulty {
 	self.customDifficulty = _customDifficulty;
 }
 

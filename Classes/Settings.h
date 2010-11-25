@@ -19,15 +19,15 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 
 @interface Settings : NSObject {
-	NSArray		*noteNames;
+	NSArray			*noteNames;
 	
-	NSArray		*easyDifficulty;
-	NSArray		*mediumDifficulty;
-	NSArray		*hardDifficulty;
-	NSArray		*customDifficulty;
-	NSString	*currentDifficulty;
+	NSArray			*easyDifficulty;
+	NSArray			*mediumDifficulty;
+	NSArray			*hardDifficulty;
+	NSMutableArray	*customDifficulty;
+	NSString		*currentDifficulty;
 	
-	NSArray		*enabledIntervals;
+	NSArray			*enabledIntervals;
 }
 
 @property (nonatomic, retain, readonly) NSArray *noteNames;
@@ -35,7 +35,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain, readonly) NSArray *easyDifficulty;
 @property (nonatomic, retain, readonly) NSArray *mediumDifficulty;
 @property (nonatomic, retain, readonly) NSArray *hardDifficulty;
-@property (nonatomic, retain) NSArray *customDifficulty;
+@property (nonatomic, retain) NSMutableArray *customDifficulty;
 @property (nonatomic, retain) NSString *currentDifficulty;
 
 @property (nonatomic, retain) NSArray *enabledIntervals;
@@ -43,6 +43,10 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 
 + (Settings *)sharedSettings;	// necessary for singelton-ness. DO NOT REMOVE.
+
+// Change particulars of customDifficulty.
+// Used in CustomDiffTableViewController.
+- (void)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value;
 
 - (char)getDifficulty;									// need this to easily get diff from other code. for now.
 - (NSUInteger)getDifficultyAsUInt;						// need this to easily get diff from other code. for now.

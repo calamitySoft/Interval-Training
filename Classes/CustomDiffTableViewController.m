@@ -90,7 +90,7 @@
 		
 	// Setup the UISwitch-eroo	
 	UIControl *control = [self.switches objectAtIndex:indexPath.row];
-	[control addTarget:self action:@selector(printJunk) forControlEvents:UIControlEventValueChanged];
+	[control addTarget:self action:@selector(printJunk:) forControlEvents:UIControlEventValueChanged];
 	[cell.contentView addSubview:control];
 	
     return cell;
@@ -105,9 +105,11 @@
 }
 */
 
--(void)printJunk {
-	NSLog(@"testInt == %c", [[Settings sharedSettings] currentDifficulty]);
-	NSLog(@"testInt == %c", [[Settings sharedSettings] currentDifficulty]);
+-(void)printJunk:(id)sender {
+	[[Settings sharedSettings] setCurrentDifficulty:kCustomDifficulty];
+	[[Settings sharedSettings] 
+	 setCustomDifficultyAtIndex:[switches indexOfObject:sender]
+	 toValue:[sender isOn]];
 }
 
 /*
@@ -173,17 +175,23 @@
 - (NSArray*)switches {
 	if (switches == nil) {
 		
-		NSMutableArray *tempArray = [[NSMutableArray alloc] initWithObjects:nil];
+		NSMutableArray *tempSwitches = [[NSMutableArray alloc] initWithObjects:nil];
+		NSArray *tempCustomDiff = [[Settings sharedSettings] customDifficulty];
 		
-		for (uint i=0; i<[dataSourceArray count]; i++) {
+		for (uint i=0; i<[self.dataSourceArray count]; i++) {
 			CGRect frame = CGRectMake(198.0, 8.0, 94.0, 27.0);
 			UISwitch *tempSwitch = [[UISwitch alloc] initWithFrame:frame];	// UISwitch actually ignores the CGRect size parameters
-			[tempSwitch setOn:YES animated:YES];
 			
-			[tempArray addObject:tempSwitch];
+			if ([[tempCustomDiff objectAtIndex:i] boolValue]) {
+				[tempSwitch setOn:YES];
+			} else {
+				[tempSwitch setOn:NO];
+			}
+			
+			[tempSwitches addObject:tempSwitch];
 		}
 		
-		switches = [[NSArray alloc] initWithArray:tempArray];
+		switches = [[NSArray alloc] initWithArray:tempSwitches];
 	}
 	return switches;
 }
