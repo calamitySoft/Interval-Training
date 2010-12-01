@@ -21,13 +21,12 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @interface Settings : NSObject {
 	NSArray			*intervalNames;
 	
-	NSArray			*easyDifficulty;
-	NSArray			*mediumDifficulty;
-	NSArray			*hardDifficulty;
-	NSMutableArray	*customDifficulty;
-	NSString		*currentDifficulty;
-	
-	NSArray			*enabledIntervals;
+	NSArray			*easyDifficulty;		// NSArray of NSNumbers
+	NSArray			*mediumDifficulty;		// NSArray of NSNumbers
+	NSArray			*hardDifficulty;		// NSArray of NSNumbers
+	NSMutableArray	*customDifficulty;		// NSArray of NSNumbers
+	NSString		*currentDifficulty;		// kEasyDifficulty, or kMediumDifficulty, etc
+	NSArray			*enabledIntervals;		// always points to easyDifficulty, or mediumDifficulty, etc
 }
 
 @property (nonatomic, retain, readonly) NSArray *intervalNames;
@@ -46,7 +45,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 // Change particulars of customDifficulty.
 // Used in CustomDiffTableViewController.
-- (void)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value;
+- (BOOL)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value;
 
 - (char)getDifficulty;									// need this to easily get diff from other code. for now.
 - (NSUInteger)getDifficultyAsUInt;						// need this to easily get diff from other code. for now.

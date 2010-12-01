@@ -52,14 +52,47 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	return tempArray;
 }
 
+- (NSUInteger)numIntervalsEnabledInCustomDifficulty {
+	NSUInteger numEnabled = 0;
+	NSEnumerator *e = [customDifficulty objectEnumerator];
+	NSNumber *obj;
+	while (obj = [e nextObject]) {
+		if ([obj boolValue]) {
+			numEnabled++;
+		}
+	}
+	
+	return numEnabled;
+}
 
 #pragma mark -
 #pragma mark Inter-file Methods
 
-- (void)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value {
-	NSNumber *tempValue = [[NSNumber alloc] initWithBool:_value];
-	[self.customDifficulty replaceObjectAtIndex:_index withObject:tempValue];
-	[tempValue release];
+/*
+ *	setCustomDifficultyAtIndex: toValue:
+ *
+ *	Purpose:	Allows other classes/views to change the settings one at a time.
+ *	Arguments:	(NSUInteger)_index:	index of self.customDifficulty
+ *				(BOOL)_value:		interval is ON/OFF
+ *	Returns:	(BOOL):				1 if the change leaves >=1 interval enabled
+ *									0 if there would be 0 intervals enabled
+ *										(the last interval is NOT disabled)
+ *
+ */
+- (BOOL)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value {
+	
+	// If making the change would mean 0 intervals enabled
+	if (_value == FALSE && [self numIntervalsEnabledInCustomDifficulty] == 1) {
+		return 0;
+	}
+	
+	// All other situations should be acceptable
+	else {
+		NSNumber *tempValue = [[NSNumber alloc] initWithBool:_value];
+		[self.customDifficulty replaceObjectAtIndex:_index withObject:tempValue];
+		[tempValue release];
+		return 1;
+	}
 }
 
 - (char)getDifficulty {

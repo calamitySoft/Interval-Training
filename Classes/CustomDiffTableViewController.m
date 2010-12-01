@@ -90,7 +90,7 @@
 		
 	// Setup the UISwitch-eroo	
 	UIControl *control = [self.switches objectAtIndex:indexPath.row];
-	[control addTarget:self action:@selector(printJunk:) forControlEvents:UIControlEventValueChanged];
+	[control addTarget:self action:@selector(flipSwitch:) forControlEvents:UIControlEventValueChanged];
 	[cell.contentView addSubview:control];
 	
     return cell;
@@ -105,11 +105,24 @@
 }
 */
 
--(void)printJunk:(id)sender {
+-(void)flipSwitch:(id)sender {
 	[[Settings sharedSettings] setCurrentDifficulty:kCustomDifficulty];
-	[[Settings sharedSettings] 
-	 setCustomDifficultyAtIndex:[switches indexOfObject:sender]
-	 toValue:[sender isOn]];
+	
+	// If changing that value would leave zero
+	//    custom difficulty intervals enabled
+	if (![[Settings sharedSettings] setCustomDifficultyAtIndex:[switches indexOfObject:sender] 
+													   toValue:[sender isOn]] ) {		
+		UIAlertView *alert = [[UIAlertView alloc]
+							  initWithTitle: nil
+							  message: @"The Custom difficulty must have at least one interval enabled."
+							  delegate: nil
+							  cancelButtonTitle:@"OK"
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		
+		[sender setOn:YES animated:YES];
+	}
 }
 
 /*
