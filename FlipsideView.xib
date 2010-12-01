@@ -244,7 +244,10 @@
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
+							<integer value="256" key="IBUIAccessibilityTraits"/>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">&lt;testing intervals&gt; sdlf  lksad sflkddskld s sd flskd dkl dslk dslk sdd slksd alkdaslk fdsljk fasdljk fsadfklj sadfljk s daklfdlk slksd lfkjasdflkas dfas laksdjf sd sdlkj;klj dlksjf sdlk</string>
 						<object class="NSColor" key="IBUITextColor">
