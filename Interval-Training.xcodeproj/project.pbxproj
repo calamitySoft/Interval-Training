@@ -150,7 +150,7 @@
 		7022AE661239B9AD009895B1 /* G2W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = G2W.aif; sourceTree = "<group>"; };
 		7022AE671239B9AD009895B1 /* G3W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = G3W.aif; sourceTree = "<group>"; };
 		7022AE681239B9AD009895B1 /* G4W.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = G4W.aif; sourceTree = "<group>"; };
-		706D417312836FAE00BE6A45 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		709F08C612A719E4002C46B4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		70A917161288C937006FC622 /* 6 spoke settings black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black.png"; sourceTree = "<group>"; };
 		70A917171288C937006FC622 /* 6 spoke settings black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black@2x.png"; sourceTree = "<group>"; };
 		70A917181288C937006FC622 /* 6 spoke settings white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings white.png"; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				706D417312836FAE00BE6A45 /* Entitlements.plist */,
+				709F08C612A719E4002C46B4 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -496,6 +496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/Interval-Training/Entitlements.plist";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Logan Moseley (BW5L72G88N)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -514,6 +515,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/Interval-Training/Entitlements.plist";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Logan Moseley (BW5L72G88N)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -546,7 +548,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/Interval-Training/Entitlements.plist";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CalamitySoft";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -562,6 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CalamitySoft";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -579,7 +582,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/Interval-Training/Entitlements.plist";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CalamitySoft";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
