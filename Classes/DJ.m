@@ -99,13 +99,25 @@
  * Purpose: Allows delegate to play a series of notes
  * Strategy:
  */
--(void)playNotes:(NSArray *)theNotes{
+-(void)playNotes:(NSArray *)theNotes isArpeggiated:(BOOL)isArpeggiated{
+	if(isArpeggiated)
+	{
 	[self setNotesToPlay:theNotes];
 	curNote = 0;
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self selector:@selector(playNextNote:) name:@"NotePlayed" object:nil];
 	[self playNote:[theNotes objectAtIndex:0]];
-}
+	}
+	else {
+		NSEnumerator *enumerator = [theNotes objectEnumerator];
+		id anObject;
+		
+		while (anObject = [enumerator nextObject]) {
+			[self playNote:anObject];
+		}
+	}
+
+	}
 
 -(void)stop
 {
