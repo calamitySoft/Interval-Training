@@ -9,13 +9,13 @@
 #import "MainViewController.h"
 #import "Settings.h"
 
-static NSString *oldDifficulty = @"EasyDifficulty";		/* helps determine if we should switch questions. */
+
 
 
 
 @implementation MainViewController
 
-@synthesize delegate;
+@synthesize delegate, oldDifficulty;
 
 #define DEFAULT_ANSWER 4
 
@@ -69,14 +69,23 @@ static NSString *oldDifficulty = @"EasyDifficulty";		/* helps determine if we sh
 	//		Go to the next question.
 	//		Reset answer picker.
 	//
-	if (![oldDifficulty isEqualToString:[[Settings sharedSettings] currentDifficulty]]) {
-		NSString *tempDiff = [[NSString alloc] initWithString:[[Settings sharedSettings] currentDifficulty]];
-		oldDifficulty = tempDiff;
-		[tempDiff release];
+	if (![oldDifficulty isEqualToArray:[[Settings sharedSettings] enabledIntervals]]) {
+
+		// store the old difficulty so we know if we need to get a new quesiton when we come back
+		//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
+		//		the two array always equal
+		oldDifficulty = [[Settings sharedSettings] enabledIntervals];
 		
 		[self goToNextQuestion];
 		
-		[self setOptionText:DEFAULT_ANSWER];	// coming back from settings screen, reset answer option
+		NSUInteger randomAnswer;
+		do {
+			// get a new random answer in integer form
+			// while that answer is not enabled
+			randomAnswer = arc4random()%[[[Settings sharedSettings] intervalNames] count];
+		} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
+		
+		[self setOptionTextToIntervalIndex:randomAnswer];	// coming back from settings screen, reset answer option
 	
 		[switchAnswerLeftBtn setHidden:FALSE];
 		[switchAnswerRightBtn setHidden:FALSE];
@@ -102,9 +111,10 @@ static NSString *oldDifficulty = @"EasyDifficulty";		/* helps determine if we sh
 
 - (IBAction)showSettings:(id)sender {    
 	
-	NSString *tempDiff = [[NSString alloc] initWithString:[[Settings sharedSettings] currentDifficulty]];
-	oldDifficulty = tempDiff;
-	[tempDiff release];
+	// store the old difficulty so we know if we need to get a new quesiton when we come back
+	//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
+	//		the two array always equal
+	oldDifficulty = [[Settings sharedSettings] enabledIntervals];
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
@@ -204,7 +214,7 @@ static NSString *oldDifficulty = @"EasyDifficulty";		/* helps determine if we sh
 	if (intervalPickerIndex != newIndex) {
 		[switchAnswerRightBtn setHidden:FALSE];
 		intervalPickerIndex = newIndex;
-		[self setOptionText:newIndex];
+		[self setOptionTextToIntervalIndex:newIndex];
 	}
 }
 
@@ -229,11 +239,11 @@ static NSString *oldDifficulty = @"EasyDifficulty";		/* helps determine if we sh
 	if (intervalPickerIndex != newIndex) {
 		[switchAnswerLeftBtn setHidden:FALSE];
 		intervalPickerIndex = newIndex;
-		[self setOptionText:newIndex];
+		[self setOptionTextToIntervalIndex:newIndex];
 	}
 }
 
-- (void)setOptionText:(NSUInteger)intervalIndex {
+- (void)setOptionTextToIntervalIndex:(NSUInteger)intervalIndex {
 	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
 	[currentAnswerLabel setText:[intervalStrings objectAtIndex:intervalIndex]];
 }

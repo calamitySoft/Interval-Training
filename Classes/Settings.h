@@ -43,6 +43,9 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 + (Settings *)sharedSettings;	// necessary for singelton-ness. DO NOT REMOVE.
 
+- (NSArray*)enabledIntervalsByName;	// currently used in MainVC to show the correct answer options
+- (NSUInteger)numIntervalsEnabled;
+
 // Change particulars of customDifficulty.
 // Used in CustomDiffTableViewController.
 - (BOOL)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value;

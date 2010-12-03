@@ -29,12 +29,16 @@
 	IBOutlet UIButton *switchAnswerLeftBtn;
 	IBOutlet UIButton *switchAnswerRightBtn;
 	IBOutlet UILabel *currentAnswerLabel;
+	// helps determine if we should switch questions
+	NSArray *oldDifficulty;
+
 	
 	NSArray *intervalStrings;
 	NSUInteger intervalPickerIndex;	// accompanies currentAnswerLabel. This is an int of the current interval answer.
 }
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
+@property (nonatomic, retain) NSArray *oldDifficulty;
 
 - (IBAction)showSettings:(id)sender;	// flips to the settings view
 - (IBAction)showInstructions:(id)sender;	// Repops the instruction alert
@@ -45,7 +49,7 @@
 - (IBAction)separate:(id)sender;	// Plays the notes seperately
 - (IBAction)switchAnswerLeft:(id)sender;	// sets the user's tentative answer
 - (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
-- (void)setOptionText:(NSUInteger)intervalIndex;	// wrapper for easy answer option setting
+- (void)setOptionTextToIntervalIndex:(NSUInteger)intervalIndex;	// wrapper for easy answer option setting
 
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
 - (void) goToNextQuestion;	// goes to the next question. can be used from anywhere - ex. nextNote:, flipsideViewControllerDidFinish:

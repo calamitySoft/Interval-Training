@@ -17,6 +17,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 
 - (id)init {
+	self.enabledIntervals = self.easyDifficulty;
+	
 	return self;
 }
 
@@ -69,6 +71,51 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 #pragma mark Inter-file Methods
 
 /*
+ *	enabledIntervalsByName
+ *
+ *	Purpose:	Currently used in MainVC to show the correct answer options
+ *	Returns:	NSArray of NSStrings -- ONLY the ones enabled.
+ *				[enabledIntervalsByName count] should == [numIntervalsEnabled]
+ */
+- (NSArray*)enabledIntervalsByName {
+	NSMutableArray *enabledIntervalNames = [[NSMutableArray alloc] init];
+	for (NSUInteger i=0; i<[intervalNames count] && i<[enabledIntervals count]; i++) {
+		if ([[enabledIntervals objectAtIndex:i] boolValue]) {
+			[enabledIntervalNames addObject:[intervalNames objectAtIndex:i]];
+		}
+	}
+	
+	// there should always be at least one interval enabled
+	// but this guards against 0 enabled anyway
+	if ([enabledIntervalNames count]==0) {
+		return nil;
+	}
+	
+	return (NSArray*)enabledIntervalNames;
+}
+
+
+/*
+ *	numIntervalsEnabled
+ *
+ *	Purpose:	Exactly like the private numIntervalsEnabledInCustomDifficulty,
+ *				except it's public and for current difficulty only.
+ */
+- (NSUInteger)numIntervalsEnabled {
+	NSUInteger numEnabled = 0;
+	NSEnumerator *e = [enabledIntervals objectEnumerator];
+	NSNumber *obj;
+	while (obj = [e nextObject]) {
+		if ([obj boolValue]) {
+			numEnabled++;
+		}
+	}
+	
+	return numEnabled;
+}
+
+
+/*
  *	setCustomDifficultyAtIndex: toValue:
  *
  *	Purpose:	Allows other classes/views to change the settings one at a time.
@@ -77,7 +124,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  *	Returns:	(BOOL):				1 if the change leaves >=1 interval enabled
  *									0 if there would be 0 intervals enabled
  *										(the last interval is NOT disabled)
- *
  */
 - (BOOL)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value {
 	
@@ -209,7 +255,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (NSMutableArray*)customDifficulty {
     if (customDifficulty == nil) {
-		customDifficulty = [self loadDifficulty:kCustomDifficulty];
+		customDifficulty = (NSMutableArray*) [self loadDifficulty:kCustomDifficulty];
     }
     return customDifficulty;	
 }

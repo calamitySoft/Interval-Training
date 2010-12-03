@@ -589,7 +589,7 @@
 				GCC_PREFIX_HEADER = Interval_Training_Prefix.pch;
 				INFOPLIST_FILE = "Interval_Training-Info.plist";
 				PRODUCT_NAME = "Interval-Training";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C91A3300-CF2B-42DA-BE5D-D5E2352E83BA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DDA13417-981C-4ACB-BD4A-826D1B9D40BB";
 				VALIDATE_PRODUCT = NO;
 			};
 			name = "App Store Distribution";
