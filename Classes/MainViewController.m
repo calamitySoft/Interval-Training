@@ -23,10 +23,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
-					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
-					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
-					   @"Major\nSeventh", @"Octave", nil];
+	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor Second", @"Major Second",
+					   @"Minor Third", @"Major Third", @"Perfect Fourth", @"Tritone",
+					   @"Perfect Fifth", @"Minor Sixth", @"Major Sixth", @"Minor Seventh",
+					   @"Major Seventh", @"Octave", nil];
 	intervalPickerIndex = DEFAULT_ANSWER;
 	
 	// REMOVE ME before launch
@@ -82,13 +82,12 @@
 		do {
 			// get a new random answer in integer form
 			// while that answer is not enabled
-			randomAnswer = arc4random()%[[[Settings sharedSettings] intervalNames] count];
+			randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
 		} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
 		
 		[self setOptionTextToIntervalIndex:randomAnswer];	// coming back from settings screen, reset answer option
-	
-		[switchAnswerLeftBtn setHidden:FALSE];
-		[switchAnswerRightBtn setHidden:FALSE];
+		
+		[self resetArrowVisibility];
 	}
 }
 
@@ -180,7 +179,9 @@
 	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
 
 	// Show whether the user got it right.
-	if ([delegate submitAnswer:intervalPickerIndex]) {		// if our choice matches the interval being played
+	NSString *tempAnswerString = [[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalPickerIndex];
+	NSUInteger tempAnswerIndex = [intervalStrings indexOfObject:tempAnswerString];
+	if ([delegate submitAnswer:tempAnswerIndex]) {		// if our choice matches the interval being played
 		[scoreTextItem setTitle:@"Correct!"];
 		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
 	}
@@ -195,57 +196,48 @@
 
 - (IBAction)switchAnswerLeft:(id)sender {
 	
-	NSUInteger newIndex = intervalPickerIndex;	// collect new index specimens
-	NSUInteger numNextPossibilies = 0;		// 1 possibility => new option is the last (so hide)
-	
-	// We're going to start this loop at the far end, so that the last
-	//   newIndex assigned is the first one past the current index.
-	for (NSUInteger i = 0; i < intervalPickerIndex; i++) {
-		if ([delegate intervalIsEnabled:i]) {
-			newIndex = i;
-			numNextPossibilies++;
-		}
+	// if we're currently after the first one
+	if (intervalPickerIndex > 0) {
+		intervalPickerIndex--;
+		[self setOptionTextToIntervalIndex:intervalPickerIndex];
 	}
-	
-	// hide if switching to the only remaining option
-	if (numNextPossibilies<=1) { [switchAnswerLeftBtn setHidden:TRUE];	}
-	
-	// if we can move left, it implies there's >=1 option to the right
-	if (intervalPickerIndex != newIndex) {
-		[switchAnswerRightBtn setHidden:FALSE];
-		intervalPickerIndex = newIndex;
-		[self setOptionTextToIntervalIndex:newIndex];
-	}
+	[self resetArrowVisibility];		// outside the IF just in case
 }
 
 - (IBAction)switchAnswerRight:(id)sender {
 	
-	NSUInteger newIndex = intervalPickerIndex;	// collect new index specimens
-	NSUInteger numNextPossibilies = 0;		// 1 possibility => new option is the last (so hide)
+	// if we're currently before the last one
+	if (intervalPickerIndex < [[Settings sharedSettings] numIntervalsEnabled]-1) {
+		intervalPickerIndex++;
+		[self setOptionTextToIntervalIndex:intervalPickerIndex];
+	}
+	[self resetArrowVisibility];		// outside the IF just in case
+}
+
+- (void)resetArrowVisibility {
 	
-	// We're going to start this loop at the far end, so that the last
-	//   newIndex assigned is the first one past the current index.
-	for (NSUInteger i = [intervalStrings count]-1; i > intervalPickerIndex; i--) {
-		if ([delegate intervalIsEnabled:i]) {
-			newIndex = i;
-			numNextPossibilies++;
-		}
+	// if at first answer
+	if (intervalPickerIndex == 0) {
+		[switchAnswerLeftBtn setHidden:TRUE];
+		[switchAnswerRightBtn setHidden:FALSE];
 	}
 	
-	// hide if switching to the only remaining option
-	if (numNextPossibilies<=1) { [switchAnswerRightBtn setHidden:TRUE];	}
-	
-	// if we can move right, it implies there's >=1 option to the left
-	if (intervalPickerIndex != newIndex) {
+	// if at last answer
+	else if (intervalPickerIndex >= [[Settings sharedSettings] numIntervalsEnabled]-1) {
 		[switchAnswerLeftBtn setHidden:FALSE];
-		intervalPickerIndex = newIndex;
-		[self setOptionTextToIntervalIndex:newIndex];
+		[switchAnswerRightBtn setHidden:TRUE];
+	}
+	
+	// if inbetween
+	else {
+		[switchAnswerLeftBtn setHidden:FALSE];
+		[switchAnswerRightBtn setHidden:FALSE];
 	}
 }
 
 - (void)setOptionTextToIntervalIndex:(NSUInteger)intervalIndex {
 	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
-	[currentAnswerLabel setText:[intervalStrings objectAtIndex:intervalIndex]];
+	[currentAnswerLabel setText:[[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalIndex]];
 }
 
 

@@ -35,20 +35,24 @@
 	
 	NSArray *intervalStrings;
 	NSUInteger intervalPickerIndex;	// accompanies currentAnswerLabel. This is an int of the current interval answer.
+									// NOTE:	intervalPickerIndex is the index in the enabledIntervalsByName array.
+									//			The index in relation to intervalStrings (all intervals) is figured
+									//				immediately before submitting the answer.
 }
 
 @property (nonatomic, assign) <ITApplicationDelegate> delegate;
 @property (nonatomic, retain) NSArray *oldDifficulty;
 
-- (IBAction)showSettings:(id)sender;	// flips to the settings view
-- (IBAction)showInstructions:(id)sender;	// Repops the instruction alert
-- (IBAction)replayNote:(id)sender;	// replays the root note of the interval
-- (IBAction)giveUp:(id)sender;		// displays the interval
-- (IBAction)nextNote:(id)sender;    // tells delegate to generate another interval question
-- (IBAction)submitAnswer:(id)sender;	// answers with the interval displayed
-- (IBAction)separate:(id)sender;	// Plays the notes seperately
+- (IBAction)showSettings:(id)sender;		// flips to the settings view
+- (IBAction)showInstructions:(id)sender;	// repops the instruction alert
+- (IBAction)replayNote:(id)sender;			// replays the root note of the interval
+- (IBAction)giveUp:(id)sender;				// displays the interval
+- (IBAction)nextNote:(id)sender;			// tells delegate to generate another interval question
+- (IBAction)submitAnswer:(id)sender;		// answers with the interval displayed
+- (IBAction)separate:(id)sender;			// plays the notes seperately
 - (IBAction)switchAnswerLeft:(id)sender;	// sets the user's tentative answer
 - (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
+- (void)resetArrowVisibility;				// rechecks and sets answer picker arrows
 - (void)setOptionTextToIntervalIndex:(NSUInteger)intervalIndex;	// wrapper for easy answer option setting
 
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
