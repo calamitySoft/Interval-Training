@@ -142,8 +142,12 @@
 	//[nextOrGiveUpBarBtn setEnabled:FALSE];
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==submitAnswer:)
 	[doneBarBtn setAction:@selector(nextNote:)];
-	
-	[nextOrGiveUpBarBtn setTitle:@"Seperate"];
+	if ([[Settings sharedSettings] arpeggiate]) {
+		[nextOrGiveUpBarBtn setTitle:@"Together"];
+	}
+	else {
+		[nextOrGiveUpBarBtn setTitle:@"Seperate"];
+	}
 	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
 	// Reinforce the sound while showing answer.
 	[delegate replayNote];
@@ -169,9 +173,13 @@
 	//[nextOrGiveUpBarBtn setEnabled:FALSE];	// disable the Give Up button
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
 	[doneBarBtn setAction:@selector(nextNote:)];
-	[nextOrGiveUpBarBtn setTitle:@"Seperate"];
+	if ([[Settings sharedSettings] arpeggiate]) {
+		[nextOrGiveUpBarBtn setTitle:@"Together"];
+	}
+	else {
+		[nextOrGiveUpBarBtn setTitle:@"Seperate"];
+	}
 	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
-	
 	// Reinforce the sound while showing the answer.
 	[delegate replayNote];
 	

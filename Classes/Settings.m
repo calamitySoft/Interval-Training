@@ -18,7 +18,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (id)init {
 	self.enabledIntervals = self.easyDifficulty;
-	[self setArpeggiate:FALSE];
+	[self setArpeggiate:TRUE];
 	return self;
 }
 
