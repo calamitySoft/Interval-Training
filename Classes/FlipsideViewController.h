@@ -18,7 +18,7 @@
 	IBOutlet UISegmentedControl *difficultySegmentedControl;
 	NSUInteger					tempDifficultySetting;
 	IBOutlet UITextView			*intervalSettingsDisplay;
-
+	IBOutlet UIButton			*arpeggiateOptionBtn;
 	IBOutlet UILabel			*rootName;
 	IBOutlet UIButton			*switchRootLeftBtn;
 	IBOutlet UIButton			*switchRootRightBtn;
@@ -36,7 +36,7 @@
 - (IBAction)setDifficulty:(UISegmentedControl*)segmentedControl;	// tells the Settings to set difficulties
 - (void)setCustomDifficulty;		// allow the player to set his own intervals to practice
 - (void)setDifficultyDisplay;		// adjust Settings page's display to reflect current difficulty
-
+- (IBAction)toggleArpeggiate;		// Switches arpeggiate mode off and on
 - (IBAction)switchRootLeft;			// invoked by the "Set Root" left arrow; tells the delegate
 - (IBAction)switchRootRight;		// invoked by the "Set Root" right arrow; tells the delegate
 - (void)updateRootDisplay;			// updates display

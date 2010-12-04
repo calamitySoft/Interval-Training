@@ -75,6 +75,21 @@
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark Arpeggiate Control
+
+// Inverts whatever the arpeggiate mode is set too
+// Also updates the button with text to reflect current action
+- (IBAction)toggleArpeggiate{
+	if ([[Settings sharedSettings] arpeggiate]) {
+		[[Settings sharedSettings] setArpeggiate:FALSE];
+		[arpeggiateOptionBtn setTitle:@"Arpeggiate Notes" forState:UIControlStateNormal];
+	}
+	else {
+		[[Settings sharedSettings] setArpeggiate:TRUE];
+		[arpeggiateOptionBtn setTitle:@"Play Notes as Chord" forState:UIControlStateNormal];
+	}
+}
 
 #pragma mark -
 #pragma mark Difficulty Control
