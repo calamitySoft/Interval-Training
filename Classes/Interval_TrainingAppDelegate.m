@@ -166,11 +166,9 @@
 
 - (void)replayNote {
 	NSLog(@"(Delegate) replayNote: root = %d, tar = %d", [iCurRoot intValue], [iCurTarget intValue]);
-	//[myDJ playNote:[aNoteStrings objectAtIndex:[iCurRoot intValue]]];
-	//[myDJ playNote:[aNoteStrings objectAtIndex:[iCurTarget intValue]]];
 	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
 	[myDJ stop];
-	[myDJ playNotes:temp isArpeggiated:NO];
+	[myDJ playNotes:temp isArpeggiated:[[Settings sharedSettings] arpeggiate]];
 }
 
 - (void)arrpegiate{

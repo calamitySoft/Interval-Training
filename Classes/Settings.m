@@ -13,12 +13,12 @@
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NOT REMOVE.
 
-@synthesize currentDifficulty;
+@synthesize currentDifficulty,arpeggiate;
 
 
 - (id)init {
 	self.enabledIntervals = self.easyDifficulty;
-	
+	[self setArpeggiate:FALSE];
 	return self;
 }
 
