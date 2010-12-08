@@ -134,5 +134,21 @@
 		<string>Major Seventh</string>
 		<string>Octave</string>
 	</array>
+	<key>AbbrIntervalNames</key>
+	<array>
+		<string>P1</string>
+		<string>m2</string>
+		<string>M2</string>
+		<string>m3</string>
+		<string>M3</string>
+		<string>P4</string>
+		<string>TT</string>
+		<string>P5</string>
+		<string>m6</string>
+		<string>M6</string>
+		<string>m7</string>
+		<string>M7</string>
+		<string>P8</string>
+	</array>
 </dict>
 </plist>

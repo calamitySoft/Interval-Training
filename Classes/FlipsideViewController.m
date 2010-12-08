@@ -145,9 +145,9 @@
 		if ([[selectedDifficulty objectAtIndex:i] boolValue]) {
 			tempTestingString = first ?
 								[tempTestingString stringByAppendingFormat:@"%@",
-								 [[Settings sharedSettings].intervalNames objectAtIndex:i]] :
+								 [self.abbrIntervalNames objectAtIndex:i]] :
 								[tempTestingString stringByAppendingFormat:@", %@",
-								 [[Settings sharedSettings].intervalNames objectAtIndex:i]];
+								 [self.abbrIntervalNames objectAtIndex:i]];
 			first = FALSE;
 		}
 	}
@@ -194,5 +194,22 @@
 	}
 }
 
+
+#pragma mark -
+#pragma mark Accessor Methods
+
+
+/*
+ *	lazy init of our vars
+ */
+
+- (NSArray*)abbrIntervalNames {
+	if (abbrIntervalNames == nil) {
+		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
+		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
+		abbrIntervalNames = [rawConfigDict objectForKey:@"AbbrIntervalNames"];
+	}
+	return abbrIntervalNames;
+}
 
 @end

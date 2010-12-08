@@ -18,6 +18,7 @@
 	IBOutlet UISegmentedControl *difficultySegmentedControl;
 	NSUInteger					tempDifficultySetting;
 	IBOutlet UITextView			*intervalSettingsDisplay;
+	NSArray						*abbrIntervalNames;
 	IBOutlet UISwitch			*isArpeggiatedSwitch;
 	IBOutlet UILabel			*rootName;
 	IBOutlet UIButton			*switchRootLeftBtn;
@@ -28,6 +29,7 @@
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic) NSUInteger tempDifficultySetting;
+@property (nonatomic, retain, readonly) NSArray *abbrIntervalNames;
 @property (nonatomic, retain) NSArray *noteNames;
 @property int currentRootSetting;
 
