@@ -58,6 +58,8 @@
 
 - (void)playNote:(NSString *)theNote
 {
+	NSLog(@"(Note) Play %@", theNote);
+	
 	// This function will determine and call the proper play function in future apps
 	[self playWhole];
 }

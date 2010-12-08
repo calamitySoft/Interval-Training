@@ -86,7 +86,7 @@
  *					isEqualToString argStr.
  */
 - (void)playNote:(NSString *)theNote {
-	NSLog(@"(DJ) playNote:%@", theNote);
+	//NSLog(@"(DJ) playNote:%@", theNote);
 	
 	NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:theNote]; // see function comment "Note"
 	Note* noteToPlay = [noteBank objectAtIndex:noteBankIndexForGivenNote];

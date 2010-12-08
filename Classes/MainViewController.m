@@ -146,7 +146,7 @@
 		[nextOrGiveUpBarBtn setTitle:@"Together"];
 	}
 	else {
-		[nextOrGiveUpBarBtn setTitle:@"Seperate"];
+		[nextOrGiveUpBarBtn setTitle:@"Separate"];
 	}
 	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
 	// Reinforce the sound while showing answer.
@@ -177,7 +177,7 @@
 		[nextOrGiveUpBarBtn setTitle:@"Together"];
 	}
 	else {
-		[nextOrGiveUpBarBtn setTitle:@"Seperate"];
+		[nextOrGiveUpBarBtn setTitle:@"Separate"];
 	}
 	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
 	// Reinforce the sound while showing the answer.
