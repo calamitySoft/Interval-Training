@@ -11,7 +11,7 @@
 
 @implementation DJ
 
-@synthesize noteBank, viableNotes, notesToPlay;
+@synthesize noteBank, viableNotes, noteStringsToPlay, noteObjectsToPlay, curNote;
 
 #pragma mark Setup
 
@@ -20,7 +20,7 @@
 	if (!self)
 		return nil;
 
-	[self initNoteBank];
+//	[self initNoteBank];
 	
 	return self;
 }
@@ -85,13 +85,24 @@
  *					-isEqual:(NSString *)argStr to test that its noteName
  *					isEqualToString argStr.
  */
-- (void)playNote:(NSString *)theNote {
-	//NSLog(@"(DJ) playNote:%@", theNote);
-	
-	NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:theNote]; // see function comment "Note"
-	Note* noteToPlay = [noteBank objectAtIndex:noteBankIndexForGivenNote];
-	[noteToPlay playNote:@"W"];
+//- (void)playNote:(NSString *)theNote {
+//	NSLog(@"(DJ) playNote:%@", theNote);
+//	
+//	NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:theNote]; // see function comment "Note"
+//	Note* noteToPlay = [noteBank objectAtIndex:noteBankIndexForGivenNote];
+//	[noteToPlay playNote:@"W"];
+//}
+
+
+/*
+ *	playNoteAtIndex:
+ *
+ *	Purpose:	Plays from self.noteObjectsToPlay
+ */
+- (BOOL)playNoteAtIndex:(NSUInteger)_index {
+	return [[self.noteObjectsToPlay objectAtIndex:_index] playNote:@"W"];
 }
+
 
 /*
  * playNotes:
@@ -99,44 +110,79 @@
  * Purpose: Allows delegate to play a series of notes
  * Strategy:
  */
--(void)playNotes:(NSArray *)theNotes isArpeggiated:(BOOL)isArpeggiated{
+-(BOOL)playNotes:(NSArray *)theNotes isArpeggiated:(BOOL)isArpeggiated {
+	
+	//
+	// Always make a new array.
+	// This will restart the notes from the beginning.
+	//
+	// Init the notes that will be played
+	NSMutableArray *tempNoteArray = [NSMutableArray arrayWithCapacity:[theNotes count]];
+	for (NSString *noteName in theNotes) {
+		Note *tempNote = [[Note	alloc] initWithNoteName:noteName];
+		[tempNoteArray addObject:tempNote];
+	}
+	self.noteObjectsToPlay = [NSArray arrayWithArray:(NSArray*)tempNoteArray];
+
+	
+	[self setNoteStringsToPlay:theNotes];
+	
+	
+	// Play arpeggiated
 	if(isArpeggiated)
 	{
-	[self setNotesToPlay:theNotes];
-	curNote = 0;
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:self selector:@selector(playNextNote:) name:@"NotePlayed" object:nil];
-	[self playNote:[theNotes objectAtIndex:0]];
+		curNote = 0;
+		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+		[nc addObserver:self selector:@selector(playNextNote:) name:@"NotePlayed" object:nil];
+		return [self playNoteAtIndex:curNote];
 	}
+	
+	// Play chorded
 	else {
-		NSEnumerator *enumerator = [theNotes objectEnumerator];
-		id anObject;
+//		NSEnumerator *enumerator = [theNotes objectEnumerator];
+//		id anObject;
+//		
+//		while (anObject = [enumerator nextObject]) {
+//			[self playNote:anObject];
+//		}
 		
-		while (anObject = [enumerator nextObject]) {
-			[self playNote:anObject];
+		NSTimeInterval shortStartDelay = 0.01;				// (seconds)
+		NSTimeInterval now = [[self.noteObjectsToPlay objectAtIndex:0] wholeSample].deviceCurrentTime;
+		NSTimeInterval playTime = now + shortStartDelay;
+		BOOL retVal = YES;
+		
+		for (Note *note in self.noteObjectsToPlay) {
+			BOOL ret = [note playNote:@"W" atTime:playTime];
+			retVal = retVal && ret;
 		}
+		
+		return retVal;
 	}
-
-	}
+}
 
 -(void)stop
 {
-	if (notesToPlay) {
+	if (self.noteObjectsToPlay) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
-		NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:[notesToPlay objectAtIndex:curNote]]; // see function comment "Note"
-		[[noteBank objectAtIndex:noteBankIndexForGivenNote] stop];
+//		NSUInteger noteBankIndexForGivenNote = [noteBank indexOfObject:[self.noteStringsToPlay objectAtIndex:curNote]]; // see function comment "Note"
+//		[[noteBank objectAtIndex:noteBankIndexForGivenNote] stop];
+		for (Note *note in self.noteObjectsToPlay) {
+			[note stop];
+		}
+		self.curNote = 0;
 	}
 }
 
 -(void)playNextNote:(NSNotification *)note
 {
-	curNote = curNote + 1;
-	if (curNote < [[self notesToPlay] count]) {
-		[self playNote:[notesToPlay objectAtIndex:curNote]];
+	self.curNote++;
+	if (self.curNote < [self.noteObjectsToPlay count]) {
+//		[self playNote:[self.noteObjectsToPlay objectAtIndex:curNote]];
+		[self playNoteAtIndex:self.curNote];
 	}
 	else {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
-		notesToPlay = nil;
+		self.noteStringsToPlay = nil;
 	}
 }
 

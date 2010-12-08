@@ -56,7 +56,8 @@
 - (void)setOptionTextToIntervalIndex:(NSUInteger)intervalIndex;	// wrapper for easy answer option setting
 
 - (void)displayInterval:(NSString *)theInterval;	// sets the big label of MainView.xib
-- (void) goToNextQuestion;	// goes to the next question. can be used from anywhere - ex. nextNote:, flipsideViewControllerDidFinish:
+- (void)checkIsArpeggiatedForGiveUpBtn;				// makes the btn read "Separate" or "Together", whichever's correct and if it should
+- (void) goToNextQuestion;							// goes to the next question. can be used from anywhere -- ex. nextNote:, flipsideViewControllerDidFinish:
 
 - (IBAction)printDifficulty:(id)sender;
 

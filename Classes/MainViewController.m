@@ -11,8 +11,6 @@
 
 
 
-
-
 @implementation MainViewController
 
 @synthesize delegate, oldDifficulty;

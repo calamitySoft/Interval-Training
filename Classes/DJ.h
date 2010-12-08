@@ -12,19 +12,24 @@
 @interface DJ : NSObject {
 
 	NSArray *noteBank;
-	NSArray *notesToPlay;	// If a series of notes to be played is entered, this is set to it
-	NSUInteger curNote;		// Keeps track of where in the notesToPlay array we are
+	NSArray *noteStringsToPlay;	// If a series of notes to be played is entered, this is set to it
+									// NSArray of NSStrings to play
+	NSArray *noteObjectsToPlay;		// NSArray of Note objects to play
+	NSUInteger curNote;				// Keeps track of where in the notesToPlay array we are
 	NSIndexSet *viableNotes;	
 }
 
 @property (nonatomic, retain) NSArray *noteBank;
 @property (nonatomic, retain) NSIndexSet *viableNotes;
-@property (nonatomic, retain) NSArray *notesToPlay;
+@property (nonatomic, retain) NSArray *noteStringsToPlay;
+@property (nonatomic, retain) NSArray *noteObjectsToPlay;
+@property (nonatomic) NSUInteger curNote;
 
 - (id)init;
 - (void)initNoteBank;	// Initializes all notes and places them in the noteBank
-- (void)playNote:(NSString *)theNote; // Conducts linear search for the note
-- (void)playNotes:(NSArray *)theNotes isArpeggiated:(BOOL)isArpeggiated; // Plays a series of notes by setting up a notification center
+//- (void)playNote:(NSString *)theNote; // Conducts linear search for the note
+- (BOOL)playNoteAtIndex:(NSUInteger)_index;		// plays from self.noteObjectsToPlay
+- (BOOL)playNotes:(NSArray *)theNotes isArpeggiated:(BOOL)isArpeggiated; // Plays a series of notes by setting up a notification center
 - (void)playNextNote:(NSNotification *)note;
 - (void)stop;	// Stops playing notes in sequence
 - (void)setBase:(NSString *)baseNote; // Sets a note to the base

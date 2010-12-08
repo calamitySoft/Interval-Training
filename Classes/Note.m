@@ -11,7 +11,7 @@
 
 @implementation Note
 
-@synthesize hertz, noteName;
+@synthesize hertz, noteName, wholeSample;
 
 - (id)init
 {
@@ -26,6 +26,29 @@
 
 	
 	[super dealloc];
+}
+
+- (id)initWithNoteName:(NSString *)_noteName {
+	self = [super init];
+	if (!self) return nil;
+	
+	NSLog(@"(Note Initializing note with noteName=%@", _noteName);
+	
+	// Get the filepath to _noteName (whole note).
+	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"wav"];
+	
+	if (soundPath) {
+		// Create a sound ID at var wholeSample.
+		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+		self.wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+		[self.wholeSample setDelegate:self];
+	} else {
+		NSLog(@"(Note) Error with soundPath");
+	}
+	
+	[self setNoteName:_noteName];
+	
+	return self;
 }
 
 - (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz
@@ -61,12 +84,16 @@
 #pragma mark -
 #pragma mark Playing Sounds
 
-- (void)playNote:(NSString *)theNote
+- (BOOL)playNote:(NSString *)duration
 {
-	NSLog(@"(Note) Play %@%@.wav", self.noteName, theNote);
+	NSLog(@"(Note) Play %@%@.wav", self.noteName, duration);
 	
 	// This function will determine and call the proper play function in future apps
-	[self playWhole];
+	return [self playWhole];
+}
+
+- (BOOL)playNote:(NSString *)duration atTime:(NSTimeInterval)time {
+	return [self.wholeSample playAtTime:time];
 }
 
 // I'll fill this function out more later.
@@ -81,29 +108,29 @@
 	[[NSNotificationCenter defaultCenter] postNotification:note];
 }
 
-- (void)playWhole
+- (BOOL)playWhole
 {
-	[wholeSample play];
+	return [wholeSample play];
 }
 
-- (void)playHalf
+- (BOOL)playHalf
 {
-	[halfSample play];
+	return [halfSample play];
 }
 
-- (void)playQuarter
+- (BOOL)playQuarter
 {
-	[quarterSample play];
+	return [quarterSample play];
 }
 
-- (void)playEighth
+- (BOOL)playEighth
 {
-	[eighthSample play];
+	return [eighthSample play];
 }
 
-- (void)playSixteenth
+- (BOOL)playSixteenth
 {
-	[sixteenthSample play];
+	return [sixteenthSample play];
 }
 
 

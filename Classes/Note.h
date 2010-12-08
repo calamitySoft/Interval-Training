@@ -26,18 +26,20 @@
 
 @property (nonatomic) float hertz;
 @property (nonatomic, copy) NSString *noteName;
+@property (nonatomic, retain) AVAudioPlayer *wholeSample;
 
-
+- (id)initWithNoteName:(NSString *)_noteName;		// for when we don't care about hertz, like all of OTG Intervals
 - (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz;
 
-- (void)playNote:(NSString *)theNote; // does a switch to pick the right note playback
+- (BOOL)playNote:(NSString *)duration; // does a switch to pick the right note playback
+- (BOOL)playNote:(NSString *)duration atTime:(NSTimeInterval)time;	// wraps AVAudioPlayer's playAtTime: for synchronous playback
 - (void)stop;	// stops the playing note
 // Functions to play the samples
-- (void)playWhole;
-- (void)playHalf;
-- (void)playQuarter;
-- (void)playEighth;
-- (void)playSixteenth;
+- (BOOL)playWhole;
+- (BOOL)playHalf;
+- (BOOL)playQuarter;
+- (BOOL)playEighth;
+- (BOOL)playSixteenth;
 
 - (void)echo; // Used to test if I exist.
 
