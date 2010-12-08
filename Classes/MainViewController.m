@@ -19,6 +19,11 @@
 
 #define DEFAULT_ANSWER 4
 
+// For knowing whether the nextOrGiveUpBarBtn should read
+//	"Give Up" ..or.. "Separate" or "Together".
+BOOL currentlyInGuessingState = YES;
+
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -64,6 +69,11 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	//	Check isArpeggiated for the correct button title
+	[self checkIsArpeggiatedForGiveUpBtn];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -143,17 +153,12 @@
 - (IBAction)giveUp:(id)sender {
 	// Set UI stuff.
 	//[nextOrGiveUpBarBtn setEnabled:FALSE];
-	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==submitAnswer:)
+	[doneBarBtn setTitle:@"Next"];							// let the Done button act as the Next button (==submitAnswer:)
 	[doneBarBtn setAction:@selector(nextNote:)];
-	if ([[Settings sharedSettings] isArpeggiated]) {
-		[nextOrGiveUpBarBtn setTitle:@"Together"];
-	}
-	else {
-		[nextOrGiveUpBarBtn setTitle:@"Separate"];
-	}
+	currentlyInGuessingState = NO;							// no longer guessing
+	[self checkIsArpeggiatedForGiveUpBtn];					// give the GiveUp btn the right title
 	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
-	// Reinforce the sound while showing answer.
-	[delegate replayNote];
+	[delegate replayNote];									// reinforce the sound while showing the answer
 	
 	// Show the answer.
 	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
@@ -161,6 +166,7 @@
 
 - (IBAction)nextNote:(id)sender {
 	[self goToNextQuestion];
+	currentlyInGuessingState = YES;							// back to guessing (quizzing) state
 }
 
 - (IBAction)replayNote:(id)sender {
@@ -173,22 +179,18 @@
 
 - (IBAction)submitAnswer:(id)sender {
 	// Set Answer option bar stuff.
-	//[nextOrGiveUpBarBtn setEnabled:FALSE];	// disable the Give Up button
-	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
+	[doneBarBtn setTitle:@"Next"];							// let the Done button act as the Next button (==giveUp:)
 	[doneBarBtn setAction:@selector(nextNote:)];
-	if ([[Settings sharedSettings] isArpeggiated]) {
-		[nextOrGiveUpBarBtn setTitle:@"Together"];
-	}
-	else {
-		[nextOrGiveUpBarBtn setTitle:@"Separate"];
-	}
+	currentlyInGuessingState = NO;							// no longer guessing
+	[self checkIsArpeggiatedForGiveUpBtn];					// give the GiveUp btn the right title
 	[nextOrGiveUpBarBtn setAction:@selector(separate:)];
-	// Reinforce the sound while showing the answer.
-	[delegate replayNote];
+	[delegate replayNote];									// reinforce the sound while showing the answer
+	
 	
 	// Show the answer.
 	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
 
+	
 	// Show whether the user got it right.
 	NSString *tempAnswerString = [[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalPickerIndex];
 	NSUInteger tempAnswerIndex = [intervalStrings indexOfObject:tempAnswerString];
@@ -257,6 +259,16 @@
 
 - (void)displayInterval:(NSString *)theInterval {
 	[intervalLabel setText:theInterval];
+}
+
+- (void)checkIsArpeggiatedForGiveUpBtn {
+	if (!currentlyInGuessingState) {
+		if ([[Settings sharedSettings] isArpeggiated]) {
+			[nextOrGiveUpBarBtn setTitle:@"Together"];
+		} else {
+			[nextOrGiveUpBarBtn setTitle:@"Separate"];
+		}
+	}
 }
 
 - (void) goToNextQuestion {
