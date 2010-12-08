@@ -37,7 +37,7 @@
 						   [self enabledRoot]]];
 	
 	// Make sure we have the initial difficulty set
-	oldDifficulty = [[Settings sharedSettings] easyDifficulty];
+	oldDifficulty = [[Settings sharedSettings] enabledIntervals];
 
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
