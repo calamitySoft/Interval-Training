@@ -35,6 +35,9 @@
 						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
 						   [[Settings sharedSettings] currentDifficulty],
 						   [self enabledRoot]]];
+	
+	// Make sure we have the initial difficulty set
+	oldDifficulty = [[Settings sharedSettings] easyDifficulty];
 
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];

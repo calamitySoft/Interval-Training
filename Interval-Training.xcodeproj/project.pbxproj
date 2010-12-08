@@ -44,7 +44,6 @@
 		704A411112AF10A2009B9175 /* D#2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40ED12AF10A2009B9175 /* D#2W.wav */; };
 		704A411212AF10A2009B9175 /* D#3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40EE12AF10A2009B9175 /* D#3W.wav */; };
 		704A411312AF10A2009B9175 /* D#4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40EF12AF10A2009B9175 /* D#4W.wav */; };
-		704A411412AF10A2009B9175 /* D2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40F012AF10A2009B9175 /* D2W.wav */; };
 		704A411512AF10A2009B9175 /* D3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40F112AF10A2009B9175 /* D3W.wav */; };
 		704A411612AF10A2009B9175 /* D4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40F212AF10A2009B9175 /* D4W.wav */; };
 		704A411712AF10A2009B9175 /* E2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40F312AF10A2009B9175 /* E2W.wav */; };
@@ -62,6 +61,7 @@
 		704A412312AF10A2009B9175 /* G2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40FF12AF10A2009B9175 /* G2W.wav */; };
 		704A412412AF10A2009B9175 /* G3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A410012AF10A2009B9175 /* G3W.wav */; };
 		704A412512AF10A2009B9175 /* G4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A410112AF10A2009B9175 /* G4W.wav */; };
+		704A413B12AF1393009B9175 /* D2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A413A12AF1393009B9175 /* D2W.wav */; };
 		70A9172C1288C937006FC622 /* 6 spoke settings black.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917161288C937006FC622 /* 6 spoke settings black.png */; };
 		70A9172D1288C937006FC622 /* 6 spoke settings black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917171288C937006FC622 /* 6 spoke settings black@2x.png */; };
 		70A9172E1288C937006FC622 /* 6 spoke settings white.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917181288C937006FC622 /* 6 spoke settings white.png */; };
@@ -132,7 +132,6 @@
 		704A40ED12AF10A2009B9175 /* D#2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "D#2W.wav"; sourceTree = "<group>"; };
 		704A40EE12AF10A2009B9175 /* D#3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "D#3W.wav"; sourceTree = "<group>"; };
 		704A40EF12AF10A2009B9175 /* D#4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "D#4W.wav"; sourceTree = "<group>"; };
-		704A40F012AF10A2009B9175 /* D2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D2W.wav; sourceTree = "<group>"; };
 		704A40F112AF10A2009B9175 /* D3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D3W.wav; sourceTree = "<group>"; };
 		704A40F212AF10A2009B9175 /* D4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D4W.wav; sourceTree = "<group>"; };
 		704A40F312AF10A2009B9175 /* E2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E2W.wav; sourceTree = "<group>"; };
@@ -150,6 +149,7 @@
 		704A40FF12AF10A2009B9175 /* G2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G2W.wav; sourceTree = "<group>"; };
 		704A410012AF10A2009B9175 /* G3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G3W.wav; sourceTree = "<group>"; };
 		704A410112AF10A2009B9175 /* G4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G4W.wav; sourceTree = "<group>"; };
+		704A413A12AF1393009B9175 /* D2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D2W.wav; sourceTree = "<group>"; };
 		709F08C612A719E4002C46B4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		70A917161288C937006FC622 /* 6 spoke settings black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black.png"; sourceTree = "<group>"; };
 		70A917171288C937006FC622 /* 6 spoke settings black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black@2x.png"; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 				704A40ED12AF10A2009B9175 /* D#2W.wav */,
 				704A40EE12AF10A2009B9175 /* D#3W.wav */,
 				704A40EF12AF10A2009B9175 /* D#4W.wav */,
-				704A40F012AF10A2009B9175 /* D2W.wav */,
+				704A413A12AF1393009B9175 /* D2W.wav */,
 				704A40F112AF10A2009B9175 /* D3W.wav */,
 				704A40F212AF10A2009B9175 /* D4W.wav */,
 				704A40F312AF10A2009B9175 /* E2W.wav */,
@@ -448,7 +448,6 @@
 				704A411112AF10A2009B9175 /* D#2W.wav in Resources */,
 				704A411212AF10A2009B9175 /* D#3W.wav in Resources */,
 				704A411312AF10A2009B9175 /* D#4W.wav in Resources */,
-				704A411412AF10A2009B9175 /* D2W.wav in Resources */,
 				704A411512AF10A2009B9175 /* D3W.wav in Resources */,
 				704A411612AF10A2009B9175 /* D4W.wav in Resources */,
 				704A411712AF10A2009B9175 /* E2W.wav in Resources */,
@@ -466,6 +465,7 @@
 				704A412312AF10A2009B9175 /* G2W.wav in Resources */,
 				704A412412AF10A2009B9175 /* G3W.wav in Resources */,
 				704A412512AF10A2009B9175 /* G4W.wav in Resources */,
+				704A413B12AF1393009B9175 /* D2W.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
