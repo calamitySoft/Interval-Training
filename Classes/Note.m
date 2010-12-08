@@ -35,10 +35,10 @@
 	if(!self)
 		return nil;
 	
-	NSLog(@"Initializing note with noteName=%@", _noteName);
+	NSLog(@"(Note) Initializing note with noteName=%@", _noteName);
 	
 	// Get the filepath to _noteName (whole note).
-	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"aif"];
+	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"wav"];
 	
 	if(soundPath)
 	{
@@ -47,6 +47,11 @@
 		wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
 		[wholeSample setDelegate:self];
 	}
+	else
+	{
+		NSLog(@"(Note) Error with soundPath");
+	}
+
 	[self setNoteName:_noteName];
 	[self setHertz:_hertz];
 
@@ -58,7 +63,7 @@
 
 - (void)playNote:(NSString *)theNote
 {
-	NSLog(@"(Note) Play %@", theNote);
+	NSLog(@"(Note) Play %@%@.wav", self.noteName, theNote);
 	
 	// This function will determine and call the proper play function in future apps
 	[self playWhole];
