@@ -116,6 +116,12 @@
 	// Always make a new array.
 	// This will restart the notes from the beginning.
 	//
+	if (self.noteObjectsToPlay) {
+		for (Note *note in self.noteObjectsToPlay) {
+			[note release];
+		}
+		self.noteObjectsToPlay = nil;
+	}
 	// Init the notes that will be played
 	NSMutableArray *tempNoteArray = [NSMutableArray arrayWithCapacity:[theNotes count]];
 	for (NSString *noteName in theNotes) {

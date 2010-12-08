@@ -202,9 +202,11 @@
 			}
 			
 			[tempSwitches addObject:tempSwitch];
+			[tempSwitch release];
 		}
 		
 		switches = [[NSArray alloc] initWithArray:tempSwitches];
+		[tempSwitches release];
 	}
 	return switches;
 }

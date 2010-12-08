@@ -77,6 +77,8 @@
 	//NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
 	[self setANoteStrings:tempNoteStrings];
 	[tempNoteStrings release];
+	[noteNames release];
+	[noteOctaves release];
 	
 	
 	/*** Initialize array of interval names ***/

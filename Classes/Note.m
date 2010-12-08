@@ -23,7 +23,7 @@
 -(void)dealloc
 {
 	[noteName release];
-
+	[wholeSample release];
 	
 	[super dealloc];
 }
@@ -40,8 +40,10 @@
 	if (soundPath) {
 		// Create a sound ID at var wholeSample.
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-		self.wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-		[self.wholeSample setDelegate:self];
+		AVAudioPlayer *tempPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+		tempPlayer.delegate = self;
+		self.wholeSample = tempPlayer;
+		[tempPlayer release];
 	} else {
 		NSLog(@"(Note) Error with soundPath");
 	}

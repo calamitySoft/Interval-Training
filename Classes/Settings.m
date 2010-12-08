@@ -41,8 +41,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	
 	// read the _difficulty data from the plist
 	NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
-	NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-	NSDictionary *difficultyDict = [[NSDictionary alloc] initWithDictionary:[rawConfigDict objectForKey:_difficulty]];
+//	NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
+//	NSDictionary *difficultyDict = [[NSDictionary alloc] initWithDictionary:[rawConfigDict objectForKey:_difficulty]];
+	NSDictionary *rawConfigDict = [NSDictionary dictionaryWithContentsOfFile:thePath];
+	NSDictionary *difficultyDict = [NSDictionary dictionaryWithDictionary:[rawConfigDict objectForKey:_difficulty]];
 	
 	for (NSUInteger i=0; i<[self.intervalNames count]; i++) {
 		NSString *intervalName = [self.intervalNames objectAtIndex:i];
@@ -90,6 +92,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	if ([enabledIntervalNames count]==0) {
 		return nil;
 	}
+	
+	[enabledIntervalNames autorelease];
 	
 	return (NSArray*)enabledIntervalNames;
 }

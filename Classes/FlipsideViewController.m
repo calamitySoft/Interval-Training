@@ -151,6 +151,7 @@
 			first = FALSE;
 		}
 	}
+	[selectedDifficulty release];
 	
 	[intervalSettingsDisplay setText:tempTestingString];
 }
