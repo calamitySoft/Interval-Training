@@ -15,7 +15,7 @@
 @class MainViewController;
 
 
-@interface Interval_TrainingAppDelegate : NSObject <UIApplicationDelegate, ITApplicationDelegate, UIAlertViewDelegate> {
+@interface Interval_TrainingAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate> {
     UIWindow *window;
     MainViewController *mainViewController;
 	FlipsideViewController *flipsideViewController;

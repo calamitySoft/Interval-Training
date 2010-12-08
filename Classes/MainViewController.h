@@ -49,7 +49,7 @@
 - (IBAction)giveUp:(id)sender;				// displays the interval
 - (IBAction)nextNote:(id)sender;			// tells delegate to generate another interval question
 - (IBAction)submitAnswer:(id)sender;		// answers with the interval displayed
-- (IBAction)separate:(id)sender;			// plays the notes separately
+- (IBAction)separate:(id)sender;			// plays the notes seperately
 - (IBAction)switchAnswerLeft:(id)sender;	// sets the user's tentative answer
 - (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
 - (void)resetArrowVisibility;				// rechecks and sets answer picker arrows

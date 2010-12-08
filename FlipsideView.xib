@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="40"/>
+			<integer value="104"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -10284,6 +10284,23 @@ AAEAAQABA</bytes>
 					</object>
 					<int key="connectionID">91</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">isArpeggiatedSwitch</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="197986030"/>
+					</object>
+					<int key="connectionID">122</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">toggleArpeggiate:</string>
+						<reference key="source" ref="197986030"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">123</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -10554,7 +10571,7 @@ AAEAAQABA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">120</int>
+			<int key="maxID">123</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -10570,7 +10587,7 @@ AAEAAQABA</bytes>
 							<string>setDifficulty:</string>
 							<string>switchRootLeft</string>
 							<string>switchRootRight</string>
-							<string>toggleArpeggiate</string>
+							<string>toggleArpeggiate:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -10589,7 +10606,7 @@ AAEAAQABA</bytes>
 							<string>setDifficulty:</string>
 							<string>switchRootLeft</string>
 							<string>switchRootRight</string>
-							<string>toggleArpeggiate</string>
+							<string>toggleArpeggiate:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -10610,7 +10627,7 @@ AAEAAQABA</bytes>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">toggleArpeggiate</string>
+								<string key="name">toggleArpeggiate:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -10619,20 +10636,20 @@ AAEAAQABA</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>arpeggiateOptionBtn</string>
 							<string>delegate</string>
 							<string>difficultySegmentedControl</string>
 							<string>intervalSettingsDisplay</string>
+							<string>isArpeggiatedSwitch</string>
 							<string>rootName</string>
 							<string>switchRootLeftBtn</string>
 							<string>switchRootRightBtn</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UIButton</string>
 							<string>id</string>
 							<string>UISegmentedControl</string>
 							<string>UITextView</string>
+							<string>UISwitch</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
@@ -10642,20 +10659,16 @@ AAEAAQABA</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>arpeggiateOptionBtn</string>
 							<string>delegate</string>
 							<string>difficultySegmentedControl</string>
 							<string>intervalSettingsDisplay</string>
+							<string>isArpeggiatedSwitch</string>
 							<string>rootName</string>
 							<string>switchRootLeftBtn</string>
 							<string>switchRootRightBtn</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">arpeggiateOptionBtn</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">delegate</string>
 								<string key="candidateClassName">id</string>
@@ -10667,6 +10680,10 @@ AAEAAQABA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">intervalSettingsDisplay</string>
 								<string key="candidateClassName">UITextView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">isArpeggiatedSwitch</string>
+								<string key="candidateClassName">UISwitch</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">rootName</string>

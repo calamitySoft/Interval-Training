@@ -20,6 +20,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 
+	// Arpeggiate setup
+	[isArpeggiatedSwitch setOn:[[Settings sharedSettings] isArpeggiated] animated:NO];
+	
 	
 	// Difficulty setup
 	self.tempDifficultySetting = [[Settings sharedSettings] getDifficultyAsUInt];
@@ -80,15 +83,8 @@
 
 // Inverts whatever the arpeggiate mode is set too
 // Also updates the button with text to reflect current action
-- (IBAction)toggleArpeggiate{
-	if ([[Settings sharedSettings] arpeggiate]) {
-		[[Settings sharedSettings] setArpeggiate:FALSE];
-		[arpeggiateOptionBtn setTitle:@"Arpeggiate Notes" forState:UIControlStateNormal];
-	}
-	else {
-		[[Settings sharedSettings] setArpeggiate:TRUE];
-		[arpeggiateOptionBtn setTitle:@"Play Notes as Chord" forState:UIControlStateNormal];
-	}
+- (IBAction)toggleArpeggiate:(id)sender {
+	[[Settings sharedSettings] setIsArpeggiated:[sender isOn]];
 }
 
 #pragma mark -

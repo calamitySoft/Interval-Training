@@ -145,7 +145,7 @@
 	//[nextOrGiveUpBarBtn setEnabled:FALSE];
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==submitAnswer:)
 	[doneBarBtn setAction:@selector(nextNote:)];
-	if ([[Settings sharedSettings] arpeggiate]) {
+	if ([[Settings sharedSettings] isArpeggiated]) {
 		[nextOrGiveUpBarBtn setTitle:@"Together"];
 	}
 	else {
@@ -176,7 +176,7 @@
 	//[nextOrGiveUpBarBtn setEnabled:FALSE];	// disable the Give Up button
 	[doneBarBtn setTitle:@"Next"];	// let the Done button act as the Next button (==giveUp:)
 	[doneBarBtn setAction:@selector(nextNote:)];
-	if ([[Settings sharedSettings] arpeggiate]) {
+	if ([[Settings sharedSettings] isArpeggiated]) {
 		[nextOrGiveUpBarBtn setTitle:@"Together"];
 	}
 	else {
