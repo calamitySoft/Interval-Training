@@ -13,7 +13,7 @@
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NOT REMOVE.
 
-@synthesize currentDifficulty,arpeggiate;
+@synthesize currentDifficulty, arpeggiate;
 
 
 - (id)init {
