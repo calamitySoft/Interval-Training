@@ -30,7 +30,19 @@ BOOL currentlyInGuessingState = YES;
 					   @"Minor Third", @"Major Third", @"Perfect Fourth", @"Tritone",
 					   @"Perfect Fifth", @"Minor Sixth", @"Major Sixth", @"Minor Seventh",
 					   @"Major Seventh", @"Octave", nil];
-	intervalPickerIndex = DEFAULT_ANSWER;
+	
+	
+	NSUInteger randomAnswer;
+	do {
+		// get a new random answer in integer form
+		// while that answer is not enabled
+		randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
+	} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
+	
+	[self setOptionTextToIntervalIndex:randomAnswer];	// coming back from settings screen, reset answer option
+	[self resetArrowVisibility];
+	
+	
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
