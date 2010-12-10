@@ -186,8 +186,8 @@
 }
 
 - (NSArray*)switches {
+	
 	if (switches == nil) {
-		
 		NSMutableArray *tempSwitches = [[NSMutableArray alloc] initWithObjects:nil];
 		NSArray *tempCustomDiff = [[Settings sharedSettings] customDifficulty];
 		

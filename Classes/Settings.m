@@ -17,12 +17,24 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 
 - (id)init {
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	self.enabledIntervals = [prefs arrayForKey:@"enabledIntervals"];
+	if (!enabledIntervals) {
 	self.enabledIntervals = self.easyDifficulty;
-	[self setIsArpeggiated:TRUE];
+	}
+	if ([prefs arrayForKey:@"customDiff"]) {
+		self.customDifficulty = [prefs arrayForKey:@"customDiff"];
+	}
+	[self setIsArpeggiated:[prefs boolForKey:@"arpeggiate"]];
 	return self;
 }
 
 - (void)dealloc {
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	[prefs setBool:isArpeggiated forKey:@"arpeggiate"];
+	[prefs setObject:self.enabledIntervals forKey:@"enabledIntervals"];
+	[prefs setObject:self.customDifficulty forKey:@"customDiff"];
+	[prefs synchronize];
 	[intervalNames release];
 	[easyDifficulty release];
 	[mediumDifficulty release];
