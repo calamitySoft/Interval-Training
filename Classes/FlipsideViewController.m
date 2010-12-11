@@ -85,6 +85,9 @@
 // Also updates the button with text to reflect current action
 - (IBAction)toggleArpeggiate:(id)sender {
 	[[Settings sharedSettings] setIsArpeggiated:[sender isOn]];
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	[prefs setBool:[[Settings sharedSettings] isArpeggiated] forKey:@"arpeggiate"];
+	[prefs synchronize];
 }
 
 #pragma mark -

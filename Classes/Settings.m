@@ -18,23 +18,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (id)init {
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	self.enabledIntervals = [prefs arrayForKey:@"enabledIntervals"];
-	if (!enabledIntervals) {
+	//self.enabledIntervals = [prefs arrayForKey:@"enabledIntervals"];
+	//if (!enabledIntervals) {
 	self.enabledIntervals = self.easyDifficulty;
-	}
-	if ([prefs arrayForKey:@"customDiff"]) {
-		self.customDifficulty = [prefs arrayForKey:@"customDiff"];
-	}
+	[self setCurrentDifficulty:[prefs stringForKey:@"currentDiff"]];
+	//}
+	//if ([prefs arrayForKey:@"customDiff"]) {
+//		self.customDifficulty = [prefs arrayForKey:@"customDiff"];
+//	}
 	[self setIsArpeggiated:[prefs boolForKey:@"arpeggiate"]];
 	return self;
 }
 
 - (void)dealloc {
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	[prefs setBool:isArpeggiated forKey:@"arpeggiate"];
-	[prefs setObject:self.enabledIntervals forKey:@"enabledIntervals"];
-	[prefs setObject:self.customDifficulty forKey:@"customDiff"];
-	[prefs synchronize];
 	[intervalNames release];
 	[easyDifficulty release];
 	[mediumDifficulty release];
@@ -208,6 +204,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		default:
 			break;
 	}	
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	[prefs setObject:[self customDifficulty] forKey:@"currentDiff"];
+	[prefs synchronize];
 }
 
 - (void)setDifficultyWithUInt:(NSUInteger)_difficulty {
@@ -227,6 +226,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		default:
 			break;
 	}
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	[prefs setObject:[self customDifficulty] forKey:@"currentDiff"];
+	[prefs synchronize];
 }
 
 
