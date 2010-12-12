@@ -226,9 +226,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		default:
 			break;
 	}
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	[prefs setObject:[self customDifficulty] forKey:@"currentDiff"];
-	[prefs synchronize];
 }
 
 
@@ -316,6 +313,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	else {
 		[self setEnabledIntervals:self.easyDifficulty];
 	}
+	
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	[prefs setObject:currentDifficulty forKey:@"currentDiff"];
+	[prefs synchronize];
 	
 	NSLog(@"(Settings)Difficulty is now %@", currentDifficulty);
 }
