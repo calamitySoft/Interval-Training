@@ -2,120 +2,232 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NoteNames</key>
+	<dict>
+		<key>Notes</key>
+		<array>
+			<string>C</string>
+			<string>C#</string>
+			<string>D</string>
+			<string>D#</string>
+			<string>E</string>
+			<string>F</string>
+			<string>F#</string>
+			<string>G</string>
+			<string>G#</string>
+			<string>A</string>
+			<string>A#</string>
+			<string>B</string>
+		</array>
+		<key>Octaves</key>
+		<array>
+			<string>2</string>
+			<string>3</string>
+			<string>4</string>
+		</array>
+	</dict>
+	<key>ChordConstructions</key>
+	<dict>
+		<key>Major</key>
+		<array>
+			<string>0</string>
+			<string>4</string>
+			<string>7</string>
+		</array>
+		<key>Minor</key>
+		<array>
+			<string>0</string>
+			<string>3</string>
+			<string>7</string>
+		</array>
+		<key>Augmented</key>
+		<array>
+			<string>0</string>
+			<string>4</string>
+			<string>8</string>
+		</array>
+		<key>Diminished</key>
+		<array>
+			<string>0</string>
+			<string>3</string>
+			<string>6</string>
+		</array>
+		<key>Major 7th</key>
+		<array>
+			<string>0</string>
+			<string>4</string>
+			<string>7</string>
+			<string>11</string>
+		</array>
+		<key>Minor 7th</key>
+		<array>
+			<string>0</string>
+			<string>3</string>
+			<string>7</string>
+			<string>10</string>
+		</array>
+		<key>Dominant 7th</key>
+		<array>
+			<string>0</string>
+			<string>4</string>
+			<string>7</string>
+			<string>10</string>
+		</array>
+		<key>Diminished 7th</key>
+		<array>
+			<string>0</string>
+			<string>3</string>
+			<string>6</string>
+			<string>9</string>
+		</array>
+		<key>Augmented Major 7th</key>
+		<array>
+			<string>0</string>
+			<string>4</string>
+			<string>8</string>
+			<string>11</string>
+		</array>
+		<key>Half Diminished</key>
+		<array>
+			<string>0</string>
+			<string>3</string>
+			<string>6</string>
+			<string>10</string>
+		</array>
+		<key>Augmented 7th</key>
+		<array>
+			<string>0</string>
+			<string>4</string>
+			<string>8</string>
+			<string>10</string>
+		</array>
+	</dict>
+	<key>ChordNames</key>
+	<array>
+		<string>Major</string>
+		<string>Minor</string>
+		<string>Augmented</string>
+		<string>Diminished</string>
+		<string>Major 7th</string>
+		<string>Minor 7th</string>
+		<string>Dominant 7th</string>
+		<string>Diminished 7th</string>
+		<string>Augmented Major 7th</string>
+		<string>Half Diminished</string>
+		<string>Augmented 7th</string>
+	</array>
+	<key>AbbrChordNames</key>
+	<array>
+		<string>Maj</string>
+		<string>Min</string>
+		<string>Aug</string>
+		<string>Dim</string>
+		<string>Maj7</string>
+		<string>Min7</string>
+		<string>Dom7</string>
+		<string>Dim7</string>
+		<string>Aug Maj7</string>
+		<string>Half Dim</string>
+		<string>Aug7</string>
+	</array>
 	<key>EasyDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
-		<string>0</string>
-		<key>Major Second</key>
-		<string>0</string>
-		<key>Minor Third</key>
+		<key>Minor</key>
 		<string>1</string>
-		<key>Major Third</key>
+		<key>Augmented</key>
 		<string>1</string>
-		<key>Perfect Fourth</key>
-		<string>0</string>
-		<key>Tritone</key>
-		<string>0</string>
-		<key>Perfect Fifth</key>
+		<key>Diminished</key>
 		<string>1</string>
-		<key>Minor Sixth</key>
+		<key>Major 7th</key>
 		<string>0</string>
-		<key>Major Sixth</key>
+		<key>Minor 7th</key>
 		<string>0</string>
-		<key>Minor Seventh</key>
+		<key>Dominant 7th</key>
 		<string>0</string>
-		<key>Major Seventh</key>
+		<key>Diminished 7th</key>
 		<string>0</string>
-		<key>Octave</key>
-		<string>1</string>
+		<key>Augmented Major 7th</key>
+		<string>0</string>
+		<key>Half Diminished</key>
+		<string>0</string>
+		<key>Augmented 7th</key>
+		<string>0</string>
 	</dict>
 	<key>MediumDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
+		<key>Minor</key>
+		<string>1</string>
+		<key>Augmented</key>
+		<string>1</string>
+		<key>Diminished</key>
+		<string>1</string>
+		<key>Major 7th</key>
+		<string>1</string>
+		<key>Minor 7th</key>
+		<string>1</string>
+		<key>Dominant 7th</key>
+		<string>1</string>
+		<key>Diminished 7th</key>
 		<string>0</string>
-		<key>Major Second</key>
-		<string>1</string>
-		<key>Minor Third</key>
-		<string>1</string>
-		<key>Major Third</key>
-		<string>1</string>
-		<key>Perfect Fourth</key>
-		<string>1</string>
-		<key>Tritone</key>
+		<key>Augmented Major 7th</key>
 		<string>0</string>
-		<key>Perfect Fifth</key>
-		<string>1</string>
-		<key>Minor Sixth</key>
-		<string>1</string>
-		<key>Major Sixth</key>
-		<string>1</string>
-		<key>Minor Seventh</key>
+		<key>Half Diminished</key>
 		<string>0</string>
-		<key>Major Seventh</key>
-		<string>0</string>
-		<key>Octave</key>
+		<key>Augmented 7th</key>
 		<string>0</string>
 	</dict>
 	<key>HardDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
+		<key>Minor</key>
 		<string>1</string>
-		<key>Major Second</key>
+		<key>Augmented</key>
 		<string>1</string>
-		<key>Minor Third</key>
+		<key>Diminished</key>
 		<string>1</string>
-		<key>Major Third</key>
+		<key>Major 7th</key>
 		<string>1</string>
-		<key>Perfect Fourth</key>
+		<key>Minor 7th</key>
 		<string>1</string>
-		<key>Tritone</key>
+		<key>Dominant 7th</key>
 		<string>1</string>
-		<key>Perfect Fifth</key>
+		<key>Diminished 7th</key>
 		<string>1</string>
-		<key>Minor Sixth</key>
+		<key>Augmented Major 7th</key>
 		<string>1</string>
-		<key>Major Sixth</key>
+		<key>Half Diminished</key>
 		<string>1</string>
-		<key>Minor Seventh</key>
-		<string>1</string>
-		<key>Major Seventh</key>
-		<string>1</string>
-		<key>Octave</key>
+		<key>Augmented 7th</key>
 		<string>1</string>
 	</dict>
 	<key>CustomDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
+		<key>Minor</key>
 		<string>0</string>
-		<key>Major Second</key>
-		<string>1</string>
-		<key>Minor Third</key>
-		<string>1</string>
-		<key>Major Third</key>
-		<string>1</string>
-		<key>Perfect Fourth</key>
-		<string>1</string>
-		<key>Tritone</key>
+		<key>Augmented</key>
 		<string>0</string>
-		<key>Perfect Fifth</key>
+		<key>Diminished</key>
 		<string>1</string>
-		<key>Minor Sixth</key>
+		<key>Major 7th</key>
 		<string>1</string>
-		<key>Major Sixth</key>
-		<string>1</string>
-		<key>Minor Seventh</key>
+		<key>Minor 7th</key>
 		<string>0</string>
-		<key>Major Seventh</key>
+		<key>Dominant 7th</key>
 		<string>0</string>
-		<key>Octave</key>
+		<key>Diminished 7th</key>
+		<string>1</string>
+		<key>Augmented Major 7th</key>
+		<string>0</string>
+		<key>Half Diminished</key>
+		<string>0</string>
+		<key>Augmented 7th</key>
 		<string>0</string>
 	</dict>
 	<key>IntervalNames</key>
