@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="114"/>
+			<integer value="40"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -176,7 +176,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 53}, {320, 153}}</string>
+						<string key="NSFrame">{{0, 62}, {320, 153}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="IBUIBackgroundColor" ref="582401037"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -189,7 +189,7 @@
 							<object class="IBUISwitch" id="197986030">
 								<reference key="NSNextResponder" ref="116063664"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{206, 11}, {94, 27}}</string>
+								<string key="NSFrame">{{206, 20}, {94, 27}}</string>
 								<reference key="NSSuperview" ref="116063664"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -200,7 +200,7 @@
 							<object class="IBUILabel" id="269533709">
 								<reference key="NSNextResponder" ref="116063664"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 11}, {164, 27}}</string>
+								<string key="NSFrame">{{20, 20}, {164, 27}}</string>
 								<reference key="NSSuperview" ref="116063664"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -220,7 +220,7 @@
 							</object>
 							<object class="IBUISwitch" id="255624070">
 								<reference key="NSNextResponder" ref="116063664"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{206, 63}, {94, 27}}</string>
 								<reference key="NSSuperview" ref="116063664"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -231,7 +231,7 @@
 							</object>
 							<object class="IBUILabel" id="242617581">
 								<reference key="NSNextResponder" ref="116063664"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{20, 63}, {164, 27}}</string>
 								<reference key="NSSuperview" ref="116063664"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -248,7 +248,7 @@
 								<float key="IBUIMinimumFontSize">18</float>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 214}, {320, 110}}</string>
+						<string key="NSFrame">{{0, 231}, {320, 110}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="IBUIBackgroundColor" ref="582401037"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -351,7 +351,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 337}, {320, 87}}</string>
+						<string key="NSFrame">{{0, 332}, {320, 87}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="IBUIBackgroundColor" ref="582401037"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -10351,9 +10351,9 @@ AAEAAQABA</bytes>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="871675769"/>
+							<reference ref="132840790"/>
 							<reference ref="259319153"/>
 							<reference ref="116063664"/>
-							<reference ref="132840790"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -10385,10 +10385,10 @@ AAEAAQABA</bytes>
 						<reference key="object" ref="116063664"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="197986030"/>
-							<reference ref="269533709"/>
 							<reference ref="255624070"/>
 							<reference ref="242617581"/>
+							<reference ref="197986030"/>
+							<reference ref="269533709"/>
 						</object>
 						<reference key="parent" ref="249263867"/>
 						<string key="objectName">Play Style section</string>
@@ -10531,23 +10531,23 @@ AAEAAQABA</bytes>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw6OAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw6EAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDTgAAwhwAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDTgAAwmgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAwhwAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAwmgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw9DAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw9MAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw0yAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw0wAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -11020,7 +11020,7 @@ AAEAAQABA</bytes>
 			<integer value="3100" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">../OTG-Chords.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../Interval-Training.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<bool key="EncodedWithXMLCoder">YES</bool>
