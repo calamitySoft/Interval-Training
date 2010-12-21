@@ -30,7 +30,7 @@
 @property (nonatomic, copy) NSString *noteName;
 @property (nonatomic, retain) AVAudioPlayer *wholeSample;
 
-- (id)initWithNoteName:(NSString *)_noteName;		// for when we don't care about hertz, like all of OTG Chords
+- (id)initWithNoteName:(NSString *)_noteName;		// for when we don't care about hertz, like all of OTG Intervals
 - (id)initWithNoteName:(NSString *)_noteName withHertz:(float)_hertz;
 
 - (BOOL)playNote:(NSString *)duration; // does a switch to pick the right note playback

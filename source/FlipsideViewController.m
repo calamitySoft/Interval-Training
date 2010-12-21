@@ -117,7 +117,7 @@
 	}
 }
 
-//	Allow the player to set his own set of chords to practice.
+//	Allow the player to set his own set of intervals to practice.
 //	Flips to a CustomDiffView.
 - (void)setCustomDifficulty {
 	
@@ -131,7 +131,7 @@
 }
 
 //	Sets indication of the current difficulty, and of the text view
-//		explaining the currently tested chords.
+//		explaining the currently tested intervals.
 //	Side effect: This will invoke [setDifficulty:] (above), due to setting the
 //		selection. (~It doesn't only respond to hardware UI events.)
 - (void)setDifficultyDisplay {
@@ -223,7 +223,7 @@
 	if (abbrChordNames == nil) {
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		abbrChordNames = [rawConfigDict objectForKey:@"AbbrChordNames"];
+		abbrChordNames = [rawConfigDict objectForKey:@"AbbrIntervalNames"];
 		[abbrChordNames retain];
 		[rawConfigDict release];		// var must be released, but it's a part of abbrChordNames, so that one would be released as well (I think?)
 	}

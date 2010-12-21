@@ -41,8 +41,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	}
 
 	else {
-		[self setIsArpeggiated:FALSE];
-		[self setAllowInversions:YES];
+		[self setIsArpeggiated:YES];
+		[self setAllowInversions:NO];
 		[self customDifficulty];				// invoke customDifficulty so that we can set the obj below
 		[self setCurrentDifficulty:kEasyDifficulty];
 		
@@ -280,11 +280,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (NSArray*)chordNames {
 	if (chordNames == nil) {
-		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
-		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		chordNames = [rawConfigDict objectForKey:@"ChordNames"];
-		[chordNames retain];
-		[rawConfigDict release];
+		// Initialize chordNames from file
+		NSError *loadError;
+		chordNames = (NSArray*) [LoadFromFile newObjectForKey:@"IntervalNames" error:&loadError];
+		if (chordNames == nil) {
+			NSLog(@"(MainVC) Error in loading interval names: %@", [loadError domain]);
+			return nil;
+		}
 	}
 	return chordNames;
 }

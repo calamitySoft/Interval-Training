@@ -35,7 +35,7 @@
 	
 	UIAlertView *alert = [[UIAlertView alloc]
 						  initWithTitle: nil
-						  message: @"Use the bottom half to select\nyour chord answer."
+						  message: @"Use the bottom half to select\nyour interval answer."
 						  delegate: nil
 						  cancelButtonTitle:@"OK"
 						  otherButtonTitles:nil];
@@ -138,7 +138,7 @@
 	
 	NSArray *chordToPlay = [myChord createChord];
 	if (chordToPlay == nil) {
-		NSLog(@"Chord could not be generated.");
+		NSLog(@"Interval could not be generated.");
 	} else {
 		[self replayNote];
 	}

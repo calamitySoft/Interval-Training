@@ -142,9 +142,9 @@ NSInteger intSort(id num1, id num2, void *context)
 	
 	// Initialize chordNames from file
 	NSError *loadError;
-	NSArray *chordNames = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
+	NSArray *chordNames = (NSArray*) [LoadFromFile newObjectForKey:@"IntervalNames" error:&loadError];
 	if (chordNames == nil) {
-		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
+		NSLog(@"(MainVC) Error in loading interval names: %@", [loadError domain]);
 		return nil;
 	}
 	
@@ -336,9 +336,9 @@ NSInteger intSort(id num1, id num2, void *context)
 - (NSDictionary*)chordTypes {
 	if (chordTypes == nil) {
 		NSError *loadError;
-		chordTypes = (NSDictionary*) [LoadFromFile newObjectForKey:@"ChordConstructions" error:&loadError];
+		chordTypes = (NSDictionary*) [LoadFromFile newObjectForKey:@"IntervalConstructions" error:&loadError];
 		if (!chordTypes) {
-			NSLog(@"(Chord) Error in loading chord constructions: %@", [loadError domain]);
+			NSLog(@"(Chord) Error in loading interval constructions: %@", [loadError domain]);
 		}
 	}
 	return chordTypes;

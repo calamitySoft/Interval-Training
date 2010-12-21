@@ -115,7 +115,7 @@
 													   toValue:[sender isOn]] ) {		
 		UIAlertView *alert = [[UIAlertView alloc]
 							  initWithTitle: nil
-							  message: @"The Custom difficulty must have at least one chord enabled."
+							  message: @"The Custom difficulty must have at least one interval enabled."
 							  delegate: nil
 							  cancelButtonTitle:@"OK"
 							  otherButtonTitles:nil];
@@ -178,11 +178,11 @@
 - (NSArray *)dataSourceArray {
     if (dataSourceArray == nil) {
 
-		// Initialize dataSourceArray (chord names) from file
+		// Initialize dataSourceArray (intervals names) from file
 		NSError *loadError;
-		dataSourceArray = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
+		dataSourceArray = (NSArray*) [LoadFromFile newObjectForKey:@"IntervalNames" error:&loadError];
 		if (!dataSourceArray) {
-			NSLog(@"(CustomDiffTableVC) Error in loading chord names: %@", [loadError domain]);
+			NSLog(@"(CustomDiffTableVC) Error in loading interval names: %@", [loadError domain]);
 		}
     }
     return dataSourceArray;

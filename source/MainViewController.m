@@ -30,9 +30,9 @@ BOOL currentlyInGuessingState = YES;
 	
 	// Initialize chordStrings from file
 	NSError *loadError;
-	self.chordStrings = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
+	self.chordStrings = (NSArray*) [LoadFromFile newObjectForKey:@"IntervalNames" error:&loadError];
 	if (!self.chordStrings) {
-		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
+		NSLog(@"(MainVC) Error in loading interval names: %@", [loadError domain]);
 	}
 	
 	
@@ -161,7 +161,7 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)showInstructions:(id)sender{
 	UIAlertView *alert = [[UIAlertView alloc]
 						  initWithTitle: nil
-						  message: @"Use the bottom half to select\nyour chord answer."
+						  message: @"Use the bottom half to select\nyour interval answer."
 						  delegate: nil
 						  cancelButtonTitle:@"OK"
 						  otherButtonTitles:nil];
@@ -287,7 +287,7 @@ BOOL currentlyInGuessingState = YES;
 
 - (void)displayChord:(NSString *)theChord {
 	if (theChord == nil) {
-		[chordLabel setText:@"Error: no chord"];
+		[chordLabel setText:@"Error: no interval"];
 	} else {
 		[chordLabel setText:theChord];
 	}
