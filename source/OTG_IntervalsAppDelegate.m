@@ -1,17 +1,17 @@
 //
 //  OTG_ChordsAppDelegate.m
-//  OTG-Chords
+//  OTG-Intervals
 //
 //  Created by Logan Moseley on 8/20/10.
 //  Copyright CalamitySoft 2010. All rights reserved.
 //
 
-#import "OTG_ChordsAppDelegate.h"
+#import "OTG_IntervalsAppDelegate.h"
 #import "MainViewController.h"
 #import "Settings.h"
 #import "LoadFromFile.h"
 
-@implementation OTG_ChordsAppDelegate
+@implementation OTG_IntervalsAppDelegate
 
 
 @synthesize window;

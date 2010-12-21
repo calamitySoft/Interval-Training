@@ -1,6 +1,6 @@
 //
 //  Chord.m
-//  OTG-Chords
+//  OTG-Intervals
 //
 //  Created by Logan Moseley on 12/9/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.

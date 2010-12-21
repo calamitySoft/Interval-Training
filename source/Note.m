@@ -1,6 +1,6 @@
 //
 //  Note.m
-//  OTG-Chords
+//  OTG-Intervals
 //
 //  Created by Sam on 7/31/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.

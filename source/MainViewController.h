@@ -1,6 +1,6 @@
 //
 //  MainViewController.h
-//  OTG-Chords
+//  OTG-Intervals
 //
 //  Created by Logan Moseley on 8/20/10.
 //  Copyright CalamitySoft 2010. All rights reserved.
@@ -9,10 +9,10 @@
 #import "FlipsideViewController.h"
 #import "Chord.h"
 
-@protocol ChordsApplicationDelegate;
+@protocol IntervalsApplicationDelegate;
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
-	id <ChordsApplicationDelegate> delegate;
+	id <IntervalsApplicationDelegate> delegate;
 	
 	IBOutlet UINavigationBar *scoreBar;
 	IBOutlet UINavigationItem *scoreTextItem;
@@ -41,7 +41,7 @@
 									//				immediately before submitting the answer.
 }
 
-@property (nonatomic, assign) <ChordsApplicationDelegate> delegate;
+@property (nonatomic, assign) <IntervalsApplicationDelegate> delegate;
 @property (nonatomic, retain) NSArray *oldDifficulty;
 @property (nonatomic, retain) NSArray *chordStrings;
 @property (nonatomic) NSUInteger chordPickerIndex;
@@ -68,7 +68,7 @@
 
 
 
-@protocol ChordsApplicationDelegate
+@protocol IntervalsApplicationDelegate
 
 - (void)generateQuestion;
 - (void)replayNote;

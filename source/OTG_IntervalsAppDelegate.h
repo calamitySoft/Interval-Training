@@ -1,6 +1,6 @@
 //
 //  OTG_ChordsAppDelegate.h
-//  OTG-Chords
+//  OTG-Intervals
 //
 //  Created by Logan Moseley on 8/20/10.
 //  Copyright CalamitySoft 2010. All rights reserved.
@@ -16,7 +16,7 @@
 @class MainViewController;
 
 
-@interface OTG_ChordsAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate, ChordsApplicationDelegate> {
+@interface OTG_IntervalsAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate, IntervalsApplicationDelegate> {
     UIWindow *window;
     MainViewController *mainViewController;
 	FlipsideViewController *flipsideViewController;

@@ -61,7 +61,7 @@
 		704BF79012C07DBD00E27025 /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78C12C07DBD00E27025 /* FlipsideView.xib */; };
 		704BF79112C07DBD00E27025 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78D12C07DBD00E27025 /* MainView.xib */; };
 		704BF79212C07DBD00E27025 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78E12C07DBD00E27025 /* MainWindow.xib */; };
-		704BF7B512C07FC100E27025 /* OTG_ChordsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF7B412C07FC100E27025 /* OTG_ChordsAppDelegate.m */; };
+		704BF7B512C07FC100E27025 /* OTG_IntervalsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF7B412C07FC100E27025 /* OTG_IntervalsAppDelegate.m */; };
 		704BF7C712C0800800E27025 /* Chord.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF7C612C0800800E27025 /* Chord.m */; };
 		704BF7CA12C0800C00E27025 /* LoadFromFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF7C912C0800C00E27025 /* LoadFromFile.m */; };
 		70A9172C1288C937006FC622 /* 6 spoke settings black.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917161288C937006FC622 /* 6 spoke settings black.png */; };
@@ -150,8 +150,8 @@
 		704BF78C12C07DBD00E27025 /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FlipsideView.xib; path = "interface-builder/FlipsideView.xib"; sourceTree = "<group>"; };
 		704BF78D12C07DBD00E27025 /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainView.xib; path = "interface-builder/MainView.xib"; sourceTree = "<group>"; };
 		704BF78E12C07DBD00E27025 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = "interface-builder/MainWindow.xib"; sourceTree = "<group>"; };
-		704BF7B312C07FC100E27025 /* OTG_ChordsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTG_ChordsAppDelegate.h; path = source/OTG_ChordsAppDelegate.h; sourceTree = "<group>"; };
-		704BF7B412C07FC100E27025 /* OTG_ChordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTG_ChordsAppDelegate.m; path = source/OTG_ChordsAppDelegate.m; sourceTree = "<group>"; };
+		704BF7B312C07FC100E27025 /* OTG_IntervalsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTG_IntervalsAppDelegate.h; path = source/OTG_IntervalsAppDelegate.h; sourceTree = "<group>"; };
+		704BF7B412C07FC100E27025 /* OTG_IntervalsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTG_IntervalsAppDelegate.m; path = source/OTG_IntervalsAppDelegate.m; sourceTree = "<group>"; };
 		704BF7C512C0800800E27025 /* Chord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chord.h; path = source/Chord.h; sourceTree = "<group>"; };
 		704BF7C612C0800800E27025 /* Chord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chord.m; path = source/Chord.m; sourceTree = "<group>"; };
 		704BF7C812C0800C00E27025 /* LoadFromFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadFromFile.h; path = source/LoadFromFile.h; sourceTree = "<group>"; };
@@ -332,8 +332,8 @@
 		704BF77D12C07D7600E27025 /* Application Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				704BF7B312C07FC100E27025 /* OTG_ChordsAppDelegate.h */,
-				704BF7B412C07FC100E27025 /* OTG_ChordsAppDelegate.m */,
+				704BF7B312C07FC100E27025 /* OTG_IntervalsAppDelegate.h */,
+				704BF7B412C07FC100E27025 /* OTG_IntervalsAppDelegate.m */,
 			);
 			name = "Application Delegate";
 			sourceTree = "<group>";
@@ -494,7 +494,7 @@
 				704BF76F12C07D5100E27025 /* CustomDiffViewController.m in Sources */,
 				704BF77012C07D5100E27025 /* FlipsideViewController.m in Sources */,
 				704BF77112C07D5100E27025 /* MainViewController.m in Sources */,
-				704BF7B512C07FC100E27025 /* OTG_ChordsAppDelegate.m in Sources */,
+				704BF7B512C07FC100E27025 /* OTG_IntervalsAppDelegate.m in Sources */,
 				704BF7C712C0800800E27025 /* Chord.m in Sources */,
 				704BF7CA12C0800C00E27025 /* LoadFromFile.m in Sources */,
 			);

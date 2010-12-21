@@ -1,6 +1,6 @@
 //
 //  FlipsideViewController.m
-//  OTG-Chords
+//  OTG-Intervals
 //
 //  Created by Logan Moseley on 8/20/10.
 //  Copyright CalamitySoft 2010. All rights reserved.
