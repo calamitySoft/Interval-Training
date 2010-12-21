@@ -39,7 +39,7 @@ BOOL currentlyInGuessingState = YES;
 		randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
 	} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
 	
-	[self setOptionTextToIntervalIndex:randomAnswer];	// coming back from settings screen, reset answer option
+	[self setOptionTextToIntervalIndex:0];	// coming back from settings screen, reset answer option
 	[self resetArrowVisibility];
 	
 	
@@ -82,6 +82,8 @@ BOOL currentlyInGuessingState = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
 	//	Check isArpeggiated for the correct button title
 	[self checkIsArpeggiatedForGiveUpBtn];
 }
@@ -108,7 +110,7 @@ BOOL currentlyInGuessingState = YES;
 			randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
 		} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
 		
-		[self setOptionTextToIntervalIndex:randomAnswer];	// coming back from settings screen, reset answer option
+		[self setOptionTextToIntervalIndex:0];	// coming back from settings screen, reset answer option
 		
 		[self resetArrowVisibility];
 	}
@@ -238,6 +240,12 @@ BOOL currentlyInGuessingState = YES;
 }
 
 - (void)resetArrowVisibility {
+	
+	if ([[Settings sharedSettings] numIntervalsEnabled]==1) {
+		[switchAnswerLeftBtn setHidden:TRUE];
+		[switchAnswerRightBtn setHidden:TRUE];
+		return;
+	}
 	
 	// if at first answer
 	if (intervalPickerIndex == 0) {
