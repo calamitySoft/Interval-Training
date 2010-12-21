@@ -7,24 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* Interval_TrainingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Interval_TrainingAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		22206A651223715E0050D13F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 22206A641223715E0050D13F /* Note.m */; };
-		2226F97C1223968E00670702 /* DJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2226F97B1223968E00670702 /* DJ.m */; };
-		22AD9E8A1277B28A00060BE3 /* Scorekeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AD9E891277B28A00060BE3 /* Scorekeeper.m */; };
 		22DB3B2212984F1000FBFB28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DB3B2112984F1000FBFB28 /* AVFoundation.framework */; };
-		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
-		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
-		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
-		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
-		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
-		70177196129B2D3000D4EE5C /* CustomDiffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70177195129B2D3000D4EE5C /* CustomDiffView.xib */; };
-		70177199129B2D3600D4EE5C /* CustomDiffTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */; };
-		701771C8129B340100D4EE5C /* CustomDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701771C7129B340100D4EE5C /* CustomDiffViewController.m */; };
-		70177467129DA13B00D4EE5C /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 70177466129DA13B00D4EE5C /* Settings.m */; };
 		701774EC129DC9B900D4EE5C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701774EB129DC9B900D4EE5C /* Config.plist */; };
 		704A410212AF10A2009B9175 /* A#2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40DE12AF10A2009B9175 /* A#2W.wav */; };
 		704A410312AF10A2009B9175 /* A#3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A40DF12AF10A2009B9175 /* A#3W.wav */; };
@@ -62,6 +49,19 @@
 		704A412412AF10A2009B9175 /* G3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A410012AF10A2009B9175 /* G3W.wav */; };
 		704A412512AF10A2009B9175 /* G4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A410112AF10A2009B9175 /* G4W.wav */; };
 		704A413B12AF1393009B9175 /* D2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 704A413A12AF1393009B9175 /* D2W.wav */; };
+		704BF76212C07D3600E27025 /* DJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF75B12C07D3600E27025 /* DJ.m */; };
+		704BF76312C07D3600E27025 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF75D12C07D3600E27025 /* Note.m */; };
+		704BF76412C07D3600E27025 /* Scorekeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF75F12C07D3600E27025 /* Scorekeeper.m */; };
+		704BF76512C07D3600E27025 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76112C07D3600E27025 /* Settings.m */; };
+		704BF76E12C07D5100E27025 /* CustomDiffTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76712C07D5100E27025 /* CustomDiffTableViewController.m */; };
+		704BF76F12C07D5100E27025 /* CustomDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76912C07D5100E27025 /* CustomDiffViewController.m */; };
+		704BF77012C07D5100E27025 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76B12C07D5100E27025 /* FlipsideViewController.m */; };
+		704BF77112C07D5100E27025 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76D12C07D5100E27025 /* MainViewController.m */; };
+		704BF78312C07D8500E27025 /* Interval_TrainingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF78212C07D8500E27025 /* Interval_TrainingAppDelegate.m */; };
+		704BF78F12C07DBD00E27025 /* CustomDiffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78B12C07DBD00E27025 /* CustomDiffView.xib */; };
+		704BF79012C07DBD00E27025 /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78C12C07DBD00E27025 /* FlipsideView.xib */; };
+		704BF79112C07DBD00E27025 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78D12C07DBD00E27025 /* MainView.xib */; };
+		704BF79212C07DBD00E27025 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78E12C07DBD00E27025 /* MainWindow.xib */; };
 		70A9172C1288C937006FC622 /* 6 spoke settings black.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917161288C937006FC622 /* 6 spoke settings black.png */; };
 		70A9172D1288C937006FC622 /* 6 spoke settings black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917171288C937006FC622 /* 6 spoke settings black@2x.png */; };
 		70A9172E1288C937006FC622 /* 6 spoke settings white.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917181288C937006FC622 /* 6 spoke settings white.png */; };
@@ -84,35 +84,12 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* Interval_TrainingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interval_TrainingAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* Interval_TrainingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interval_TrainingAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Interval-Training.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Interval-Training.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		22206A631223715E0050D13F /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = Classes/Note.h; sourceTree = "<group>"; };
-		22206A641223715E0050D13F /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = Classes/Note.m; sourceTree = "<group>"; };
-		2226F97A1223968E00670702 /* DJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DJ.h; path = Classes/DJ.h; sourceTree = "<group>"; };
-		2226F97B1223968E00670702 /* DJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DJ.m; path = Classes/DJ.m; sourceTree = "<group>"; };
-		22AD9E881277B28A00060BE3 /* Scorekeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scorekeeper.h; path = Classes/Scorekeeper.h; sourceTree = "<group>"; };
-		22AD9E891277B28A00060BE3 /* Scorekeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Scorekeeper.m; path = Classes/Scorekeeper.m; sourceTree = "<group>"; };
 		22DB3B2112984F1000FBFB28 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		280E754A0DD40C5E005A515E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
-		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
-		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		289233A80DB2D0DB0083E9F9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
-		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
-		289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideViewController.h; path = Classes/FlipsideViewController.h; sourceTree = "<group>"; };
-		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Interval_Training_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interval_Training_Prefix.pch; sourceTree = "<group>"; };
-		70177195129B2D3000D4EE5C /* CustomDiffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomDiffView.xib; sourceTree = "<group>"; };
-		70177197129B2D3600D4EE5C /* CustomDiffTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomDiffTableViewController.h; path = Classes/CustomDiffTableViewController.h; sourceTree = "<group>"; };
-		70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDiffTableViewController.m; path = Classes/CustomDiffTableViewController.m; sourceTree = "<group>"; };
-		701771C6129B340100D4EE5C /* CustomDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDiffViewController.h; sourceTree = "<group>"; };
-		701771C7129B340100D4EE5C /* CustomDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDiffViewController.m; sourceTree = "<group>"; };
-		7017745D129D9EE700D4EE5C /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
-		70177465129DA13B00D4EE5C /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Classes/Settings.h; sourceTree = "<group>"; };
-		70177466129DA13B00D4EE5C /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Classes/Settings.m; sourceTree = "<group>"; };
 		701774EB129DC9B900D4EE5C /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		704A40DE12AF10A2009B9175 /* A#2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "A#2W.wav"; sourceTree = "<group>"; };
 		704A40DF12AF10A2009B9175 /* A#3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "A#3W.wav"; sourceTree = "<group>"; };
@@ -150,6 +127,29 @@
 		704A410012AF10A2009B9175 /* G3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G3W.wav; sourceTree = "<group>"; };
 		704A410112AF10A2009B9175 /* G4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G4W.wav; sourceTree = "<group>"; };
 		704A413A12AF1393009B9175 /* D2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D2W.wav; sourceTree = "<group>"; };
+		704BF75A12C07D3600E27025 /* DJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DJ.h; path = source/DJ.h; sourceTree = "<group>"; };
+		704BF75B12C07D3600E27025 /* DJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DJ.m; path = source/DJ.m; sourceTree = "<group>"; };
+		704BF75C12C07D3600E27025 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = source/Note.h; sourceTree = "<group>"; };
+		704BF75D12C07D3600E27025 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = source/Note.m; sourceTree = "<group>"; };
+		704BF75E12C07D3600E27025 /* Scorekeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scorekeeper.h; path = source/Scorekeeper.h; sourceTree = "<group>"; };
+		704BF75F12C07D3600E27025 /* Scorekeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Scorekeeper.m; path = source/Scorekeeper.m; sourceTree = "<group>"; };
+		704BF76012C07D3600E27025 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = source/Settings.h; sourceTree = "<group>"; };
+		704BF76112C07D3600E27025 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = source/Settings.m; sourceTree = "<group>"; };
+		704BF76612C07D5100E27025 /* CustomDiffTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomDiffTableViewController.h; path = source/CustomDiffTableViewController.h; sourceTree = "<group>"; };
+		704BF76712C07D5100E27025 /* CustomDiffTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDiffTableViewController.m; path = source/CustomDiffTableViewController.m; sourceTree = "<group>"; };
+		704BF76812C07D5100E27025 /* CustomDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomDiffViewController.h; path = source/CustomDiffViewController.h; sourceTree = "<group>"; };
+		704BF76912C07D5100E27025 /* CustomDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDiffViewController.m; path = source/CustomDiffViewController.m; sourceTree = "<group>"; };
+		704BF76A12C07D5100E27025 /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideViewController.h; path = source/FlipsideViewController.h; sourceTree = "<group>"; };
+		704BF76B12C07D5100E27025 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = source/FlipsideViewController.m; sourceTree = "<group>"; };
+		704BF76C12C07D5100E27025 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = source/MainViewController.h; sourceTree = "<group>"; };
+		704BF76D12C07D5100E27025 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = source/MainViewController.m; sourceTree = "<group>"; };
+		704BF78112C07D8500E27025 /* Interval_TrainingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Interval_TrainingAppDelegate.h; path = source/Interval_TrainingAppDelegate.h; sourceTree = "<group>"; };
+		704BF78212C07D8500E27025 /* Interval_TrainingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Interval_TrainingAppDelegate.m; path = source/Interval_TrainingAppDelegate.m; sourceTree = "<group>"; };
+		704BF78412C07D9200E27025 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = source/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		704BF78B12C07DBD00E27025 /* CustomDiffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomDiffView.xib; path = "interface-builder/CustomDiffView.xib"; sourceTree = "<group>"; };
+		704BF78C12C07DBD00E27025 /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FlipsideView.xib; path = "interface-builder/FlipsideView.xib"; sourceTree = "<group>"; };
+		704BF78D12C07DBD00E27025 /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainView.xib; path = "interface-builder/MainView.xib"; sourceTree = "<group>"; };
+		704BF78E12C07DBD00E27025 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = "interface-builder/MainWindow.xib"; sourceTree = "<group>"; };
 		709F08C612A719E4002C46B4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		70A917161288C937006FC622 /* 6 spoke settings black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black.png"; sourceTree = "<group>"; };
 		70A917171288C937006FC622 /* 6 spoke settings black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black@2x.png"; sourceTree = "<group>"; };
@@ -187,16 +187,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Application Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				1D3623240D0F684500981E51 /* Interval_TrainingAppDelegate.h */,
-				1D3623250D0F684500981E51 /* Interval_TrainingAppDelegate.m */,
-			);
-			name = "Application Delegate";
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,14 +198,14 @@
 		281C6CD70DB2D82200F60ACC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				701771C6129B340100D4EE5C /* CustomDiffViewController.h */,
-				701771C7129B340100D4EE5C /* CustomDiffViewController.m */,
-				70177197129B2D3600D4EE5C /* CustomDiffTableViewController.h */,
-				70177198129B2D3600D4EE5C /* CustomDiffTableViewController.m */,
-				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
-				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
-				289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */,
-				289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */,
+				704BF76612C07D5100E27025 /* CustomDiffTableViewController.h */,
+				704BF76712C07D5100E27025 /* CustomDiffTableViewController.m */,
+				704BF76812C07D5100E27025 /* CustomDiffViewController.h */,
+				704BF76912C07D5100E27025 /* CustomDiffViewController.m */,
+				704BF76A12C07D5100E27025 /* FlipsideViewController.h */,
+				704BF76B12C07D5100E27025 /* FlipsideViewController.m */,
+				704BF76C12C07D5100E27025 /* MainViewController.h */,
+				704BF76D12C07D5100E27025 /* MainViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -223,14 +213,14 @@
 		289233A00DB2D0730083E9F9 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
-				70177465129DA13B00D4EE5C /* Settings.h */,
-				70177466129DA13B00D4EE5C /* Settings.m */,
-				22AD9E881277B28A00060BE3 /* Scorekeeper.h */,
-				22AD9E891277B28A00060BE3 /* Scorekeeper.m */,
-				2226F97A1223968E00670702 /* DJ.h */,
-				2226F97B1223968E00670702 /* DJ.m */,
-				22206A631223715E0050D13F /* Note.h */,
-				22206A641223715E0050D13F /* Note.m */,
+				704BF75A12C07D3600E27025 /* DJ.h */,
+				704BF75B12C07D3600E27025 /* DJ.m */,
+				704BF75C12C07D3600E27025 /* Note.h */,
+				704BF75D12C07D3600E27025 /* Note.m */,
+				704BF75E12C07D3600E27025 /* Scorekeeper.h */,
+				704BF75F12C07D3600E27025 /* Scorekeeper.m */,
+				704BF76012C07D3600E27025 /* Settings.h */,
+				704BF76112C07D3600E27025 /* Settings.m */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -240,7 +230,7 @@
 			children = (
 				289233A00DB2D0730083E9F9 /* Custom Classes */,
 				281C6CD70DB2D82200F60ACC /* View Controllers */,
-				080E96DDFE201D6D7F000001 /* Application Delegate */,
+				704BF77D12C07D7600E27025 /* Application Delegate */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -253,7 +243,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7017745D129D9EE700D4EE5C /* SynthesizeSingleton.h */,
+				704BF78412C07D9200E27025 /* SynthesizeSingleton.h */,
 				32CA4F630368D1EE00C91783 /* Interval_Training_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -265,10 +255,10 @@
 			children = (
 				70A917131288C937006FC622 /* images */,
 				7022AE441239B9AD009895B1 /* sounds */,
-				70177195129B2D3000D4EE5C /* CustomDiffView.xib */,
-				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
-				280E754B0DD40C5E005A515E /* MainView.xib */,
-				280E754C0DD40C5E005A515E /* MainWindow.xib */,
+				704BF78B12C07DBD00E27025 /* CustomDiffView.xib */,
+				704BF78C12C07DBD00E27025 /* FlipsideView.xib */,
+				704BF78D12C07DBD00E27025 /* MainView.xib */,
+				704BF78E12C07DBD00E27025 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Interval_Training-Info.plist */,
 				701774EB129DC9B900D4EE5C /* Config.plist */,
 			);
@@ -327,6 +317,15 @@
 				704A410112AF10A2009B9175 /* G4W.wav */,
 			);
 			path = sounds;
+			sourceTree = "<group>";
+		};
+		704BF77D12C07D7600E27025 /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				704BF78112C07D8500E27025 /* Interval_TrainingAppDelegate.h */,
+				704BF78212C07D8500E27025 /* Interval_TrainingAppDelegate.m */,
+			);
+			name = "Application Delegate";
 			sourceTree = "<group>";
 		};
 		70A917131288C937006FC622 /* images */ = {
@@ -407,9 +406,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
-				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
-				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				70A9172C1288C937006FC622 /* 6 spoke settings black.png in Resources */,
 				70A9172D1288C937006FC622 /* 6 spoke settings black@2x.png in Resources */,
 				70A9172E1288C937006FC622 /* 6 spoke settings white.png in Resources */,
@@ -428,7 +424,6 @@
 				70A9173D1288C937006FC622 /* OTG Intervals red.png in Resources */,
 				70A9173E1288C937006FC622 /* Right Arrow.png in Resources */,
 				70A9173F1288C937006FC622 /* Right Arrow@2x.png in Resources */,
-				70177196129B2D3000D4EE5C /* CustomDiffView.xib in Resources */,
 				701774EC129DC9B900D4EE5C /* Config.plist in Resources */,
 				704A410212AF10A2009B9175 /* A#2W.wav in Resources */,
 				704A410312AF10A2009B9175 /* A#3W.wav in Resources */,
@@ -466,6 +461,10 @@
 				704A412412AF10A2009B9175 /* G3W.wav in Resources */,
 				704A412512AF10A2009B9175 /* G4W.wav in Resources */,
 				704A413B12AF1393009B9175 /* D2W.wav in Resources */,
+				704BF78F12C07DBD00E27025 /* CustomDiffView.xib in Resources */,
+				704BF79012C07DBD00E27025 /* FlipsideView.xib in Resources */,
+				704BF79112C07DBD00E27025 /* MainView.xib in Resources */,
+				704BF79212C07DBD00E27025 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,15 +476,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* Interval_TrainingAppDelegate.m in Sources */,
-				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
-				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
-				22206A651223715E0050D13F /* Note.m in Sources */,
-				2226F97C1223968E00670702 /* DJ.m in Sources */,
-				22AD9E8A1277B28A00060BE3 /* Scorekeeper.m in Sources */,
-				70177199129B2D3600D4EE5C /* CustomDiffTableViewController.m in Sources */,
-				701771C8129B340100D4EE5C /* CustomDiffViewController.m in Sources */,
-				70177467129DA13B00D4EE5C /* Settings.m in Sources */,
+				704BF76212C07D3600E27025 /* DJ.m in Sources */,
+				704BF76312C07D3600E27025 /* Note.m in Sources */,
+				704BF76412C07D3600E27025 /* Scorekeeper.m in Sources */,
+				704BF76512C07D3600E27025 /* Settings.m in Sources */,
+				704BF76E12C07D5100E27025 /* CustomDiffTableViewController.m in Sources */,
+				704BF76F12C07D5100E27025 /* CustomDiffViewController.m in Sources */,
+				704BF77012C07D5100E27025 /* FlipsideViewController.m in Sources */,
+				704BF77112C07D5100E27025 /* MainViewController.m in Sources */,
+				704BF78312C07D8500E27025 /* Interval_TrainingAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
