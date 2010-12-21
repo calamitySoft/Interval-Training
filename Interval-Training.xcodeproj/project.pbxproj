@@ -57,11 +57,13 @@
 		704BF76F12C07D5100E27025 /* CustomDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76912C07D5100E27025 /* CustomDiffViewController.m */; };
 		704BF77012C07D5100E27025 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76B12C07D5100E27025 /* FlipsideViewController.m */; };
 		704BF77112C07D5100E27025 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF76D12C07D5100E27025 /* MainViewController.m */; };
-		704BF78312C07D8500E27025 /* Interval_TrainingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF78212C07D8500E27025 /* Interval_TrainingAppDelegate.m */; };
 		704BF78F12C07DBD00E27025 /* CustomDiffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78B12C07DBD00E27025 /* CustomDiffView.xib */; };
 		704BF79012C07DBD00E27025 /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78C12C07DBD00E27025 /* FlipsideView.xib */; };
 		704BF79112C07DBD00E27025 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78D12C07DBD00E27025 /* MainView.xib */; };
 		704BF79212C07DBD00E27025 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704BF78E12C07DBD00E27025 /* MainWindow.xib */; };
+		704BF7B512C07FC100E27025 /* OTG_ChordsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF7B412C07FC100E27025 /* OTG_ChordsAppDelegate.m */; };
+		704BF7C712C0800800E27025 /* Chord.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF7C612C0800800E27025 /* Chord.m */; };
+		704BF7CA12C0800C00E27025 /* LoadFromFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 704BF7C912C0800C00E27025 /* LoadFromFile.m */; };
 		70A9172C1288C937006FC622 /* 6 spoke settings black.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917161288C937006FC622 /* 6 spoke settings black.png */; };
 		70A9172D1288C937006FC622 /* 6 spoke settings black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917171288C937006FC622 /* 6 spoke settings black@2x.png */; };
 		70A9172E1288C937006FC622 /* 6 spoke settings white.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A917181288C937006FC622 /* 6 spoke settings white.png */; };
@@ -143,13 +145,17 @@
 		704BF76B12C07D5100E27025 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = source/FlipsideViewController.m; sourceTree = "<group>"; };
 		704BF76C12C07D5100E27025 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = source/MainViewController.h; sourceTree = "<group>"; };
 		704BF76D12C07D5100E27025 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = source/MainViewController.m; sourceTree = "<group>"; };
-		704BF78112C07D8500E27025 /* Interval_TrainingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Interval_TrainingAppDelegate.h; path = source/Interval_TrainingAppDelegate.h; sourceTree = "<group>"; };
-		704BF78212C07D8500E27025 /* Interval_TrainingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Interval_TrainingAppDelegate.m; path = source/Interval_TrainingAppDelegate.m; sourceTree = "<group>"; };
 		704BF78412C07D9200E27025 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = source/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		704BF78B12C07DBD00E27025 /* CustomDiffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomDiffView.xib; path = "interface-builder/CustomDiffView.xib"; sourceTree = "<group>"; };
 		704BF78C12C07DBD00E27025 /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FlipsideView.xib; path = "interface-builder/FlipsideView.xib"; sourceTree = "<group>"; };
 		704BF78D12C07DBD00E27025 /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainView.xib; path = "interface-builder/MainView.xib"; sourceTree = "<group>"; };
 		704BF78E12C07DBD00E27025 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = "interface-builder/MainWindow.xib"; sourceTree = "<group>"; };
+		704BF7B312C07FC100E27025 /* OTG_ChordsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTG_ChordsAppDelegate.h; path = source/OTG_ChordsAppDelegate.h; sourceTree = "<group>"; };
+		704BF7B412C07FC100E27025 /* OTG_ChordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTG_ChordsAppDelegate.m; path = source/OTG_ChordsAppDelegate.m; sourceTree = "<group>"; };
+		704BF7C512C0800800E27025 /* Chord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chord.h; path = source/Chord.h; sourceTree = "<group>"; };
+		704BF7C612C0800800E27025 /* Chord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chord.m; path = source/Chord.m; sourceTree = "<group>"; };
+		704BF7C812C0800C00E27025 /* LoadFromFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadFromFile.h; path = source/LoadFromFile.h; sourceTree = "<group>"; };
+		704BF7C912C0800C00E27025 /* LoadFromFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadFromFile.m; path = source/LoadFromFile.m; sourceTree = "<group>"; };
 		709F08C612A719E4002C46B4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		70A917161288C937006FC622 /* 6 spoke settings black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black.png"; sourceTree = "<group>"; };
 		70A917171288C937006FC622 /* 6 spoke settings black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black@2x.png"; sourceTree = "<group>"; };
@@ -213,6 +219,8 @@
 		289233A00DB2D0730083E9F9 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				704BF7C512C0800800E27025 /* Chord.h */,
+				704BF7C612C0800800E27025 /* Chord.m */,
 				704BF75A12C07D3600E27025 /* DJ.h */,
 				704BF75B12C07D3600E27025 /* DJ.m */,
 				704BF75C12C07D3600E27025 /* Note.h */,
@@ -243,6 +251,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				704BF7C812C0800C00E27025 /* LoadFromFile.h */,
+				704BF7C912C0800C00E27025 /* LoadFromFile.m */,
 				704BF78412C07D9200E27025 /* SynthesizeSingleton.h */,
 				32CA4F630368D1EE00C91783 /* Interval_Training_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -322,8 +332,8 @@
 		704BF77D12C07D7600E27025 /* Application Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				704BF78112C07D8500E27025 /* Interval_TrainingAppDelegate.h */,
-				704BF78212C07D8500E27025 /* Interval_TrainingAppDelegate.m */,
+				704BF7B312C07FC100E27025 /* OTG_ChordsAppDelegate.h */,
+				704BF7B412C07FC100E27025 /* OTG_ChordsAppDelegate.m */,
 			);
 			name = "Application Delegate";
 			sourceTree = "<group>";
@@ -484,7 +494,9 @@
 				704BF76F12C07D5100E27025 /* CustomDiffViewController.m in Sources */,
 				704BF77012C07D5100E27025 /* FlipsideViewController.m in Sources */,
 				704BF77112C07D5100E27025 /* MainViewController.m in Sources */,
-				704BF78312C07D8500E27025 /* Interval_TrainingAppDelegate.m in Sources */,
+				704BF7B512C07FC100E27025 /* OTG_ChordsAppDelegate.m in Sources */,
+				704BF7C712C0800800E27025 /* Chord.m in Sources */,
+				704BF7CA12C0800C00E27025 /* LoadFromFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
