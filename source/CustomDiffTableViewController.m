@@ -1,6 +1,6 @@
 //
 //  CustomDiffTableViewController.m
-//  Interval-Training
+//  OTG-Chords
 //
 //  Created by Logan Moseley on 11/22/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.
@@ -9,6 +9,7 @@
 #import "CustomDiffTableViewController.h"
 #import "MainViewController.h"
 #import "Settings.h"
+#import "LoadFromFile.h"
 
 
 @implementation CustomDiffTableViewController
@@ -109,12 +110,12 @@
 	[[Settings sharedSettings] setCurrentDifficulty:kCustomDifficulty];
 	
 	// If changing that value would leave zero
-	//    custom difficulty intervals enabled
-	if (![[Settings sharedSettings] setCustomDifficultyAtIndex:[switches indexOfObject:sender] 
+	//    custom difficulty chords enabled
+	if (![[Settings sharedSettings] setCustomDifficultyAtIndex:[self.switches indexOfObject:sender] 
 													   toValue:[sender isOn]] ) {		
 		UIAlertView *alert = [[UIAlertView alloc]
 							  initWithTitle: nil
-							  message: @"The Custom difficulty must have at least one interval enabled."
+							  message: @"The Custom difficulty must have at least one chord enabled."
 							  delegate: nil
 							  cancelButtonTitle:@"OK"
 							  otherButtonTitles:nil];
@@ -176,18 +177,20 @@
 
 - (NSArray *)dataSourceArray {
     if (dataSourceArray == nil) {
-		
-		dataSourceArray = [[NSArray alloc] initWithObjects:@"Unison",  @"Minor Second", @"Major Second",
-						   @"Minor Third", @"Major Third", @"Perfect Fourth", @"Tritone",
-						   @"Perfect Fifth", @"Minor Sixth", @"Major Sixth", @"Minor Seventh",
-						   @"Major Seventh", @"Octave", nil];
+
+		// Initialize dataSourceArray (chord names) from file
+		NSError *loadError;
+		dataSourceArray = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
+		if (!dataSourceArray) {
+			NSLog(@"(CustomDiffTableVC) Error in loading chord names: %@", [loadError domain]);
+		}
     }
     return dataSourceArray;
 }
 
 - (NSArray*)switches {
-	
 	if (switches == nil) {
+		
 		NSMutableArray *tempSwitches = [[NSMutableArray alloc] initWithObjects:nil];
 		NSArray *tempCustomDiff = [[Settings sharedSettings] customDifficulty];
 		

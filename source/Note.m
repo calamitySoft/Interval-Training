@@ -1,6 +1,6 @@
 //
-//  note.m
-//  NoteToFreq
+//  Note.m
+//  OTG-Chords
 //
 //  Created by Sam on 7/31/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.
@@ -16,12 +16,12 @@
 - (id)init
 {
 	Note *newNote = [[Note alloc] initWithNoteName:@"A4" withHertz:440];
+	NSLog(@"(Note) Created default note: A4");
 
 	return newNote;
 }
 
--(void)dealloc
-{
+-(void)dealloc {
 	[noteName release];
 	[wholeSample release];
 	
@@ -32,7 +32,7 @@
 	self = [super init];
 	if (!self) return nil;
 	
-	NSLog(@"(Note Initializing note with noteName=%@", _noteName);
+	NSLog(@"(Note) Initializing note with noteName=%@", _noteName);
 	
 	// Get the filepath to _noteName (whole note).
 	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"wav"];
@@ -69,8 +69,8 @@
 	{
 		// Create a sound ID at var wholeSample.
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-		wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-		[wholeSample setDelegate:self];
+		self.wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+		[self.wholeSample setDelegate:self];
 	}
 	else
 	{
@@ -101,7 +101,7 @@
 // I'll fill this function out more later.
 -(void)stop
 {
-	[wholeSample stop];
+	[self.wholeSample stop];
 }
 
 -(void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
@@ -112,28 +112,30 @@
 
 - (BOOL)playWhole
 {
-	return [wholeSample play];
+	return [self.wholeSample play];
 }
 
+/*
 - (BOOL)playHalf
 {
-	return [halfSample play];
+	return [self.halfSample play];
 }
 
 - (BOOL)playQuarter
 {
-	return [quarterSample play];
+	return [self.quarterSample play];
 }
 
 - (BOOL)playEighth
 {
-	return [eighthSample play];
+	return [self.eighthSample play];
 }
 
 - (BOOL)playSixteenth
 {
-	return [sixteenthSample play];
+	return [self.sixteenthSample play];
 }
+ */
 
 
 #pragma mark -

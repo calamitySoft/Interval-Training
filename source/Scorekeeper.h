@@ -1,6 +1,6 @@
 //
 //  Scorekeeper.h
-//  Interval-Training
+//  OTG-Chords
 //
 //  Created by Sam on 10/20/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ITApplicationDelegate;
+@protocol ChordsApplicationDelegate;
 
 @interface Scorekeeper : NSObject {
 	NSNumber *iNumAttempts;
@@ -27,7 +27,7 @@
 @end
 
 /*
-@protocol ITApplicationDelegate
+@protocol ChordsApplicationDelegate
 
 
 @property(nonatomic, retain) NSNumber *iNumAttempts;

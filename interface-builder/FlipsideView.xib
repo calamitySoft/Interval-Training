@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="40"/>
+			<integer value="114"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -152,7 +152,7 @@
 							<object class="IBUITextView" id="820666327">
 								<reference key="NSNextResponder" ref="132840790"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 77}, {280, 59}}</string>
+								<string key="NSFrame">{{20, 77}, {280, 76}}</string>
 								<reference key="NSSuperview" ref="132840790"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="582401037">
 									<int key="NSColorSpace">3</int>
@@ -164,7 +164,7 @@
 									<integer value="256" key="IBUIAccessibilityTraits"/>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">&lt;testing intervals&gt; sdlf  lksad sflkddskld s sd flskd dkl dslk </string>
+								<string key="IBUIText">&lt;testing intervals&gt; sdlf  lksad sflkddskld s sd flskd dkl dslk asdf sdkfsd</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
@@ -176,7 +176,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 63.5}, {320, 143}}</string>
+						<string key="NSFrame">{{0, 53}, {320, 153}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="IBUIBackgroundColor" ref="582401037"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -189,7 +189,7 @@
 							<object class="IBUISwitch" id="197986030">
 								<reference key="NSNextResponder" ref="116063664"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{206, 20}, {94, 27}}</string>
+								<string key="NSFrame">{{206, 11}, {94, 27}}</string>
 								<reference key="NSSuperview" ref="116063664"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -200,7 +200,7 @@
 							<object class="IBUILabel" id="269533709">
 								<reference key="NSNextResponder" ref="116063664"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 20}, {164, 27}}</string>
+								<string key="NSFrame">{{20, 11}, {164, 27}}</string>
 								<reference key="NSSuperview" ref="116063664"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -211,15 +211,44 @@
 								<reference key="IBUIFont" ref="184248426"/>
 								<reference key="IBUITextColor" ref="398421304"/>
 								<reference key="IBUIHighlightedColor" ref="398421304"/>
-								<object class="NSColor" key="IBUIShadowColor">
+								<object class="NSColor" key="IBUIShadowColor" id="353101537">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">18</float>
 							</object>
+							<object class="IBUISwitch" id="255624070">
+								<reference key="NSNextResponder" ref="116063664"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{206, 63}, {94, 27}}</string>
+								<reference key="NSSuperview" ref="116063664"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<bool key="IBUIOn">YES</bool>
+							</object>
+							<object class="IBUILabel" id="242617581">
+								<reference key="NSNextResponder" ref="116063664"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{20, 63}, {164, 27}}</string>
+								<reference key="NSSuperview" ref="116063664"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Inversions</string>
+								<reference key="IBUIFont" ref="184248426"/>
+								<reference key="IBUITextColor" ref="398421304"/>
+								<reference key="IBUIHighlightedColor" ref="398421304"/>
+								<reference key="IBUIShadowColor" ref="353101537"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">18</float>
+							</object>
 						</object>
-						<string key="NSFrame">{{0, 224}, {320, 67}}</string>
+						<string key="NSFrame">{{0, 214}, {320, 110}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="IBUIBackgroundColor" ref="582401037"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -10255,14 +10284,6 @@ AAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">intervalSettingsDisplay</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="820666327"/>
-					</object>
-					<int key="connectionID">91</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">isArpeggiatedSwitch</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="197986030"/>
@@ -10277,6 +10298,31 @@ AAEAAQABA</bytes>
 						<int key="IBEventType">13</int>
 					</object>
 					<int key="connectionID">123</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">toggleInversions:</string>
+						<reference key="source" ref="255624070"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">127</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">chordSettingsDisplay</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="820666327"/>
+					</object>
+					<int key="connectionID">128</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">allowInversionsSwitch</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="255624070"/>
+					</object>
+					<int key="connectionID">129</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -10305,9 +10351,9 @@ AAEAAQABA</bytes>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="871675769"/>
-							<reference ref="132840790"/>
 							<reference ref="259319153"/>
 							<reference ref="116063664"/>
+							<reference ref="132840790"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -10341,6 +10387,8 @@ AAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="197986030"/>
 							<reference ref="269533709"/>
+							<reference ref="255624070"/>
+							<reference ref="242617581"/>
 						</object>
 						<reference key="parent" ref="249263867"/>
 						<string key="objectName">Play Style section</string>
@@ -10349,11 +10397,13 @@ AAEAAQABA</bytes>
 						<int key="objectID">107</int>
 						<reference key="object" ref="269533709"/>
 						<reference key="parent" ref="116063664"/>
+						<string key="objectName">Arpeggiate?</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">105</int>
 						<reference key="object" ref="197986030"/>
 						<reference key="parent" ref="116063664"/>
+						<string key="objectName">Arpeggiate Switch</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">110</int>
@@ -10420,6 +10470,18 @@ AAEAAQABA</bytes>
 						<reference key="object" ref="820666327"/>
 						<reference key="parent" ref="132840790"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">124</int>
+						<reference key="object" ref="255624070"/>
+						<reference key="parent" ref="116063664"/>
+						<string key="objectName">Inversions Switch</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">125</int>
+						<reference key="object" ref="242617581"/>
+						<reference key="parent" ref="116063664"/>
+						<string key="objectName">Inversions?</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -10438,6 +10500,10 @@ AAEAAQABA</bytes>
 					<string>110.IBViewBoundsToFrameTransform</string>
 					<string>114.IBPluginDependency</string>
 					<string>114.IBViewBoundsToFrameTransform</string>
+					<string>124.IBPluginDependency</string>
+					<string>124.IBViewBoundsToFrameTransform</string>
+					<string>125.IBPluginDependency</string>
+					<string>125.IBViewBoundsToFrameTransform</string>
 					<string>40.IBEditorWindowLastContentRect</string>
 					<string>40.IBPluginDependency</string>
 					<string>42.IBPluginDependency</string>
@@ -10465,15 +10531,15 @@ AAEAAQABA</bytes>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw5KAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw6OAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDTgAAwmwAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDTgAAwhwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCDAAAwjQAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAwhwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -10481,9 +10547,17 @@ AAEAAQABA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwzkAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw0yAAA</bytes>
 					</object>
-					<string>{{641, 250}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDTgAAwo4AAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAwo4AAA</bytes>
+					</object>
+					<string>{{621, 260}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform"/>
@@ -10535,7 +10609,7 @@ AAEAAQABA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">123</int>
+			<int key="maxID">129</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -10552,11 +10626,13 @@ AAEAAQABA</bytes>
 							<string>switchRootLeft</string>
 							<string>switchRootRight</string>
 							<string>toggleArpeggiate:</string>
+							<string>toggleInversions:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
 							<string>UISegmentedControl</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -10571,6 +10647,7 @@ AAEAAQABA</bytes>
 							<string>switchRootLeft</string>
 							<string>switchRootRight</string>
 							<string>toggleArpeggiate:</string>
+							<string>toggleInversions:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -10594,15 +10671,20 @@ AAEAAQABA</bytes>
 								<string key="name">toggleArpeggiate:</string>
 								<string key="candidateClassName">id</string>
 							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleInversions:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>allowInversionsSwitch</string>
+							<string>chordSettingsDisplay</string>
 							<string>delegate</string>
 							<string>difficultySegmentedControl</string>
-							<string>intervalSettingsDisplay</string>
 							<string>isArpeggiatedSwitch</string>
 							<string>rootName</string>
 							<string>switchRootLeftBtn</string>
@@ -10610,9 +10692,10 @@ AAEAAQABA</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UISwitch</string>
+							<string>UITextView</string>
 							<string>id</string>
 							<string>UISegmentedControl</string>
-							<string>UITextView</string>
 							<string>UISwitch</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
@@ -10623,9 +10706,10 @@ AAEAAQABA</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>allowInversionsSwitch</string>
+							<string>chordSettingsDisplay</string>
 							<string>delegate</string>
 							<string>difficultySegmentedControl</string>
-							<string>intervalSettingsDisplay</string>
 							<string>isArpeggiatedSwitch</string>
 							<string>rootName</string>
 							<string>switchRootLeftBtn</string>
@@ -10634,16 +10718,20 @@ AAEAAQABA</bytes>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
+								<string key="name">allowInversionsSwitch</string>
+								<string key="candidateClassName">UISwitch</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">chordSettingsDisplay</string>
+								<string key="candidateClassName">UITextView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">delegate</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">difficultySegmentedControl</string>
 								<string key="candidateClassName">UISegmentedControl</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">intervalSettingsDisplay</string>
-								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">isArpeggiatedSwitch</string>
@@ -10665,7 +10753,7 @@ AAEAAQABA</bytes>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/FlipsideViewController.h</string>
+						<string key="minorKey">source/FlipsideViewController.h</string>
 					</object>
 				</object>
 			</object>
@@ -10932,7 +11020,7 @@ AAEAAQABA</bytes>
 			<integer value="3100" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">Interval-Training.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../OTG-Chords.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<bool key="EncodedWithXMLCoder">YES</bool>

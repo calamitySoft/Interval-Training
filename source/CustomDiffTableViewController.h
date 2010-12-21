@@ -1,6 +1,6 @@
 //
 //  CustomDiffTableViewController.h
-//  Interval-Training
+//  OTG-Chords
 //
 //  Created by Logan Moseley on 11/22/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.

@@ -8,12 +8,13 @@
 
 #import "MainViewController.h"
 #import "Settings.h"
+#import "LoadFromFile.h"
 
 
 
 @implementation MainViewController
 
-@synthesize delegate, oldDifficulty;
+@synthesize delegate, oldDifficulty, chordStrings, chordPickerIndex;
 
 #define DEFAULT_ANSWER 4
 
@@ -26,33 +27,37 @@ BOOL currentlyInGuessingState = YES;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor Second", @"Major Second",
-					   @"Minor Third", @"Major Third", @"Perfect Fourth", @"Tritone",
-					   @"Perfect Fifth", @"Minor Sixth", @"Major Sixth", @"Minor Seventh",
-					   @"Major Seventh", @"Octave", nil];
+	
+	// Initialize chordStrings from file
+	NSError *loadError;
+	self.chordStrings = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
+	if (!self.chordStrings) {
+		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
+	}
 	
 	
-	NSUInteger randomAnswer;
-	do {
-		// get a new random answer in integer form
-		// while that answer is not enabled
-		randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
-	} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
+	NSUInteger randomAnswer = 0;
+//	do {
+//		// get a new random answer in integer form
+//		// while that answer is not enabled
+//		randomAnswer = arc4random()%[[[Settings sharedSettings] enabledChordsByName] count];
+//	} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 	
-	[self setOptionTextToIntervalIndex:0];	// coming back from settings screen, reset answer option
+	[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
 	[self resetArrowVisibility];
 	
 	
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%@,\t\t%@",		// help a dev out
-						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@ %@,\t\t%@,\t\t%@",		// help a dev out
+						   [[delegate myChord] rootName],
+						   [[delegate myChord] chordType],
 						   [[Settings sharedSettings] currentDifficulty],
-						   [self enabledRoot]]];
+						   [[Settings sharedSettings] enabledRoot]]];
 	
 	// Make sure we have the initial difficulty set
-	oldDifficulty = [[Settings sharedSettings] enabledIntervals];
+	self.oldDifficulty = [[NSArray alloc] initWithArray:[[Settings sharedSettings] enabledChords]];
 
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
@@ -94,23 +99,24 @@ BOOL currentlyInGuessingState = YES;
 	//		Go to the next question.
 	//		Reset answer picker.
 	//
-	if (![oldDifficulty isEqualToArray:[[Settings sharedSettings] enabledIntervals]]) {
+	if (![self.oldDifficulty isEqualToArray:[[Settings sharedSettings] enabledChords]]) {
 
 		// store the old difficulty so we know if we need to get a new quesiton when we come back
 		//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
 		//		the two array always equal
-		oldDifficulty = [[Settings sharedSettings] enabledIntervals];
+		[oldDifficulty release];
+		self.oldDifficulty = [[NSArray alloc] initWithArray:[[Settings sharedSettings] enabledChords]];
 		
 		[self goToNextQuestion];
 		
-		NSUInteger randomAnswer;
-		do {
-			// get a new random answer in integer form
-			// while that answer is not enabled
-			randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
-		} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
+		NSUInteger randomAnswer = 0;
+//		do {
+//			// get a new random answer in integer form
+//			// while that answer is not enabled
+//			randomAnswer = arc4random()%[[[Settings sharedSettings] enabledChordsByName] count];
+//		} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 		
-		[self setOptionTextToIntervalIndex:0];	// coming back from settings screen, reset answer option
+		[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
 		
 		[self resetArrowVisibility];
 	}
@@ -127,6 +133,8 @@ BOOL currentlyInGuessingState = YES;
 
 
 - (void)dealloc {
+	[oldDifficulty release];
+	
     [super dealloc];
 }
 
@@ -138,7 +146,8 @@ BOOL currentlyInGuessingState = YES;
 	// store the old difficulty so we know if we need to get a new quesiton when we come back
 	//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
 	//		the two array always equal
-	oldDifficulty = [[Settings sharedSettings] enabledIntervals];
+	[oldDifficulty release];
+	self.oldDifficulty = [[NSArray alloc] initWithArray:[[Settings sharedSettings] enabledChords]];
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
@@ -152,7 +161,7 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)showInstructions:(id)sender{
 	UIAlertView *alert = [[UIAlertView alloc]
 						  initWithTitle: nil
-						  message: @"Use the bottom half to select\nyour interval answer."
+						  message: @"Use the bottom half to select\nyour chord answer."
 						  delegate: nil
 						  cancelButtonTitle:@"OK"
 						  otherButtonTitles:nil];
@@ -173,7 +182,7 @@ BOOL currentlyInGuessingState = YES;
 	[delegate replayNote];									// reinforce the sound while showing the answer
 	
 	// Show the answer.
-	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
+	[self displayChord:[[delegate myChord] chordType]];
 }
 
 - (IBAction)nextNote:(id)sender {
@@ -186,7 +195,7 @@ BOOL currentlyInGuessingState = YES;
 }
 
 - (IBAction)separate:(id)sender{
-	[delegate arrpegiate];
+	[delegate arpeggiate];
 }
 
 - (IBAction)submitAnswer:(id)sender {
@@ -200,13 +209,13 @@ BOOL currentlyInGuessingState = YES;
 	
 	
 	// Show the answer.
-	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
+	[self displayChord:[[delegate myChord] chordType]];
 
 	
 	// Show whether the user got it right.
-	NSString *tempAnswerString = [[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalPickerIndex];
-	NSUInteger tempAnswerIndex = [intervalStrings indexOfObject:tempAnswerString];
-	if ([delegate submitAnswer:tempAnswerIndex]) {		// if our choice matches the interval being played
+	NSString *tempAnswerString = [[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordPickerIndex];
+	[tempAnswerString retain];
+	if ([delegate submitAnswer:tempAnswerString]) {		// if our choice matches the chord being played
 		[scoreTextItem setTitle:@"Correct!"];
 		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
 	}
@@ -214,6 +223,7 @@ BOOL currentlyInGuessingState = YES;
 		[scoreTextItem setTitle:@"Nope"];
 		[scoreBar setTintColor:[UIColor redColor]];
 	}
+	[tempAnswerString release];
 
 }
 
@@ -222,9 +232,9 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)switchAnswerLeft:(id)sender {
 	
 	// if we're currently after the first one
-	if (intervalPickerIndex > 0) {
-		intervalPickerIndex--;
-		[self setOptionTextToIntervalIndex:intervalPickerIndex];
+	if (self.chordPickerIndex > 0) {
+		self.chordPickerIndex--;
+		[self setOptionTextToChordIndex:self.chordPickerIndex];
 	}
 	[self resetArrowVisibility];		// outside the IF just in case
 }
@@ -232,29 +242,29 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)switchAnswerRight:(id)sender {
 	
 	// if we're currently before the last one
-	if (intervalPickerIndex < [[Settings sharedSettings] numIntervalsEnabled]-1) {
-		intervalPickerIndex++;
-		[self setOptionTextToIntervalIndex:intervalPickerIndex];
+	if (self.chordPickerIndex < [[Settings sharedSettings] numChordsEnabled]-1) {
+		self.chordPickerIndex++;
+		[self setOptionTextToChordIndex:self.chordPickerIndex];
 	}
 	[self resetArrowVisibility];		// outside the IF just in case
 }
 
 - (void)resetArrowVisibility {
 	
-	if ([[Settings sharedSettings] numIntervalsEnabled]==1) {
+	if ([[Settings sharedSettings] numChordsEnabled]==1) {
 		[switchAnswerLeftBtn setHidden:TRUE];
 		[switchAnswerRightBtn setHidden:TRUE];
 		return;
 	}
 	
 	// if at first answer
-	if (intervalPickerIndex == 0) {
+	if (chordPickerIndex == 0) {
 		[switchAnswerLeftBtn setHidden:TRUE];
 		[switchAnswerRightBtn setHidden:FALSE];
 	}
 	
 	// if at last answer
-	else if (intervalPickerIndex >= [[Settings sharedSettings] numIntervalsEnabled]-1) {
+	else if (self.chordPickerIndex >= [[Settings sharedSettings] numChordsEnabled]-1) {
 		[switchAnswerLeftBtn setHidden:FALSE];
 		[switchAnswerRightBtn setHidden:TRUE];
 	}
@@ -266,17 +276,21 @@ BOOL currentlyInGuessingState = YES;
 	}
 }
 
-- (void)setOptionTextToIntervalIndex:(NSUInteger)intervalIndex {
-	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
-	[currentAnswerLabel setText:[[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalIndex]];
+- (void)setOptionTextToChordIndex:(NSUInteger)chordIndex {
+	self.chordPickerIndex = chordIndex;		// we won't assume that it's been set
+	[currentAnswerLabel setText:[[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordIndex]];
 }
 
 
 #pragma mark -
 #pragma mark View Controlling
 
-- (void)displayInterval:(NSString *)theInterval {
-	[intervalLabel setText:theInterval];
+- (void)displayChord:(NSString *)theChord {
+	if (theChord == nil) {
+		[chordLabel setText:@"Error: no chord"];
+	} else {
+		[chordLabel setText:theChord];
+	}
 }
 
 - (void)checkIsArpeggiatedForGiveUpBtn {
@@ -302,38 +316,25 @@ BOOL currentlyInGuessingState = YES;
 	[scoreTextItem setTitle:[self.delegate getScoreString]];	// set score display in top bar
 	[scoreBar setTintColor:[UIColor blackColor]];	// set the top bar color back to black
 	
-	// Pick and play new interval.
+	// Pick and play new chord.
 	[delegate generateQuestion];
 	
-	// Indicate new interval.
-	[self displayInterval:@"Listen"];
+	// Indicate new chord.
+	[self displayChord:@"Listen"];
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%@,\t\t%@",		// help a dev out
-						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@ %@,\t\t%@,\t\t%@",		// help a dev out
+						   [[delegate myChord] rootName],
+						   [[delegate myChord] chordType],
 						   [[Settings sharedSettings] currentDifficulty],
-						   [self enabledRoot]]];
+						   [[Settings sharedSettings] enabledRoot]]];
 }
 
 #pragma mark -
 
 - (IBAction)printDifficulty:(id)sender {
 	[delegate printDifficulty];
-}
-
-
-#pragma mark -
-#pragma mark Wrapper
-
-// Pass along to AppDelegate
-- (void)setEnabledRoot:(NSString*)str {
-	[delegate setEnabledRoot:str];
-}
-
-// Gets from AppDelegate
-- (NSString*)enabledRoot {
-	return [delegate enabledRoot];
 }
 
 @end

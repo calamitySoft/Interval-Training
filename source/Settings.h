@@ -1,6 +1,6 @@
 //
 //  Settings.h
-//  Interval-Training
+//  OTG-Chords
 //
 //  Created by Logan Moseley on 11/24/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.
@@ -9,42 +9,57 @@
 #import <Foundation/Foundation.h>
 
 
-static NSString *kEasyDifficulty = @"EasyDifficulty";
-static NSString *kMediumDifficulty = @"MediumDifficulty";
-static NSString *kHardDifficulty = @"HardDifficulty";
-static NSString *kCustomDifficulty = @"CustomDifficulty";
+#define kEasyDifficulty @"EasyDifficulty"
+#define kMediumDifficulty @"MediumDifficulty"
+#define kHardDifficulty @"HardDifficulty"
+#define kCustomDifficulty @"CustomDifficulty"
 
 typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFourth, tritone, 
 	perFifth, minSixth, majSixth, minSeventh, majSeventh, octave} interval;
 
 
 @interface Settings : NSObject {
-	NSArray			*intervalNames;
+	NSUserDefaults	*userDefaults;			// Saving user settings between sessions
+	
+	NSArray			*chordNames;			// NSArray of NSStrings (Major, Minor, Augmented, etc)
+	
 	BOOL			isArpeggiated;			// True if we're arpeggiating as a base
+	BOOL			allowInversions;		// YES if inversions are allowed
+	
+	NSString		*enabledRoot;			// "any" or "A", "A#", "B",...
+	
 	NSArray			*easyDifficulty;		// NSArray of NSNumbers
 	NSArray			*mediumDifficulty;		// NSArray of NSNumbers
 	NSArray			*hardDifficulty;		// NSArray of NSNumbers
 	NSMutableArray	*customDifficulty;		// NSArray of NSNumbers
 	NSString		*currentDifficulty;		// kEasyDifficulty, or kMediumDifficulty, etc
-	NSArray			*enabledIntervals;		// always points to easyDifficulty, or mediumDifficulty, etc
+	NSArray			*enabledChords;			// always points to easyDifficulty, or mediumDifficulty, etc
 }
 
-@property (nonatomic, retain, readonly) NSArray *intervalNames;
+@property (nonatomic, retain) NSUserDefaults *userDefaults;
+
+@property (nonatomic, retain, readonly) NSArray *chordNames;
+
 @property (nonatomic) BOOL isArpeggiated;
+@property (nonatomic) BOOL allowInversions;
+
+@property (nonatomic, retain) NSString *enabledRoot;
+
 @property (nonatomic, retain, readonly) NSArray *easyDifficulty;
 @property (nonatomic, retain, readonly) NSArray *mediumDifficulty;
 @property (nonatomic, retain, readonly) NSArray *hardDifficulty;
 @property (nonatomic, retain) NSMutableArray *customDifficulty;
 @property (nonatomic, retain) NSString *currentDifficulty;
 
-@property (nonatomic, retain) NSArray *enabledIntervals;
+@property (nonatomic, retain) NSArray *enabledChords;
 
 
 
 + (Settings *)sharedSettings;	// necessary for singelton-ness. DO NOT REMOVE.
 
-- (NSArray*)enabledIntervalsByName;	// currently used in MainVC to show the correct answer options
-- (NSUInteger)numIntervalsEnabled;
+- (NSArray*)enabledChordsByName;	// currently used in MainVC to show the correct answer options
+- (NSUInteger)numChordsEnabled;
+- (BOOL)chordIsEnabled:(NSString*)_chordName;
 
 // Change particulars of customDifficulty.
 // Used in CustomDiffTableViewController.

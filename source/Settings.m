@@ -1,6 +1,6 @@
 //
 //  Settings.m
-//  Interval-Training
+//  OTG-Chords
 //
 //  Created by Logan Moseley on 11/24/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.
@@ -8,30 +8,60 @@
 
 #import "Settings.h"
 #import "SynthesizeSingleton.h"
+#import "LoadFromFile.h"
 
 @implementation Settings
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NOT REMOVE.
 
-@synthesize currentDifficulty, isArpeggiated;
+@synthesize userDefaults, currentDifficulty, isArpeggiated, allowInversions, enabledRoot;
 
+#define kIsArpeggiated		@"isArpeggiated"
+#define kAllowInversions	@"allowInversions"
+#define kEnabledRoot		@"enabledRoot"
+#define kCurrentDifficulty	@"currentDifficulty"
 
 - (id)init {
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	//self.enabledIntervals = [prefs arrayForKey:@"enabledIntervals"];
-	//if (!enabledIntervals) {
-	self.enabledIntervals = self.easyDifficulty;
-	[self setCurrentDifficulty:[prefs stringForKey:@"currentDiff"]];
-	//}
-	//if ([prefs arrayForKey:@"customDiff"]) {
-//		self.customDifficulty = [prefs arrayForKey:@"customDiff"];
-//	}
-	[self setIsArpeggiated:[prefs boolForKey:@"arpeggiate"]];
+	/*** Get and use user settings ***/
+	self.userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	// We care about saving these settings:
+	//	isArpeggiated, allowInversions, customDifficulty, currentDifficulty, and enabledRoot
+	// Notice: We do NOT care about enabledChords, as it is taken care of in
+	//	setCurrentDifficulty.
+
+	NSString *testValue = [self.userDefaults stringForKey:kCurrentDifficulty];
+	if (testValue != nil) {
+		[self setIsArpeggiated:[self.userDefaults boolForKey:kIsArpeggiated]];
+		[self setAllowInversions:[self.userDefaults boolForKey:kAllowInversions]];
+		[self setEnabledRoot:[self.userDefaults stringForKey:kEnabledRoot]];
+		NSMutableArray *tempArray = [[NSMutableArray alloc] initWithArray:[self.userDefaults arrayForKey:kCustomDifficulty]];
+		[self setCustomDifficulty:tempArray];
+		[self setCurrentDifficulty:[self.userDefaults stringForKey:kCurrentDifficulty]];
+	}
+
+	else {
+		[self setIsArpeggiated:FALSE];
+		[self setAllowInversions:YES];
+		[self customDifficulty];				// invoke customDifficulty so that we can set the obj below
+		[self setCurrentDifficulty:kEasyDifficulty];
+		
+		// Set all of the userDefaults we load to something.
+		// We don't want testValue!=nil and have one of them missing. (-> maybe crash?)
+		[self.userDefaults setBool:self.isArpeggiated forKey:kIsArpeggiated];
+		[self.userDefaults setBool:self.allowInversions forKey:kAllowInversions];
+		[self.userDefaults setObject:self.enabledRoot forKey:kEnabledRoot];
+		[self.userDefaults setObject:self.customDifficulty forKey:kCustomDifficulty];
+		[self.userDefaults setObject:self.currentDifficulty forKey:kCurrentDifficulty];
+		[self.userDefaults synchronize];
+	}
+	
 	return self;
 }
 
 - (void)dealloc {
-	[intervalNames release];
+	[chordNames release];
+	[enabledRoot release];
 	[easyDifficulty release];
 	[mediumDifficulty release];
 	[hardDifficulty release];
@@ -49,24 +79,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	
 	// read the _difficulty data from the plist
 	NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
-//	NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-//	NSDictionary *difficultyDict = [[NSDictionary alloc] initWithDictionary:[rawConfigDict objectForKey:_difficulty]];
 	NSDictionary *rawConfigDict = [NSDictionary dictionaryWithContentsOfFile:thePath];
 	NSDictionary *difficultyDict = [NSDictionary dictionaryWithDictionary:[rawConfigDict objectForKey:_difficulty]];
 	
-	for (NSUInteger i=0; i<[self.intervalNames count]; i++) {
-		NSString *intervalName = [self.intervalNames objectAtIndex:i];
-		Boolean isEnabled = [[difficultyDict valueForKey:intervalName] boolValue];		
+	for (NSUInteger i=0; i<[self.chordNames count]; i++) {
+		NSString *chordName = [self.chordNames objectAtIndex:i];
+		Boolean isEnabled = [[difficultyDict valueForKey:chordName] boolValue];		
 		[tempArray addObject:[NSNumber numberWithBool:isEnabled]];
 	}
 	
+	[tempArray autorelease];
 	
 	return tempArray;
 }
 
-- (NSUInteger)numIntervalsEnabledInCustomDifficulty {
+- (NSUInteger)numChordsEnabledInCustomDifficulty {
 	NSUInteger numEnabled = 0;
-	NSEnumerator *e = [customDifficulty objectEnumerator];
+	NSEnumerator *e = [self.customDifficulty objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
 		if ([obj boolValue]) {
@@ -81,41 +110,42 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 #pragma mark Inter-file Methods
 
 /*
- *	enabledIntervalsByName
+ *	enabledChordsByName
  *
  *	Purpose:	Currently used in MainVC to show the correct answer options
  *	Returns:	NSArray of NSStrings -- ONLY the ones enabled.
- *				[enabledIntervalsByName count] should == [numIntervalsEnabled]
+ *				[enabledChordsByName count] should == [numChordsEnabled]
  */
-- (NSArray*)enabledIntervalsByName {
-	NSMutableArray *enabledIntervalNames = [[NSMutableArray alloc] init];
-	for (NSUInteger i=0; i<[intervalNames count] && i<[enabledIntervals count]; i++) {
-		if ([[enabledIntervals objectAtIndex:i] boolValue]) {
-			[enabledIntervalNames addObject:[intervalNames objectAtIndex:i]];
+- (NSArray*)enabledChordsByName {
+	NSMutableArray *enabledChordNames = [[NSMutableArray alloc] init];
+	for (NSUInteger i=0; i<[self.chordNames count] && i<[self.enabledChords count]; i++) {
+		if ([[self.enabledChords objectAtIndex:i] boolValue]) {
+			[enabledChordNames addObject:[self.chordNames objectAtIndex:i]];
 		}
 	}
 	
-	// there should always be at least one interval enabled
+	// there should always be at least one chord enabled
 	// but this guards against 0 enabled anyway
-	if ([enabledIntervalNames count]==0) {
+	if ([enabledChordNames count]==0) {
+		[enabledChordNames release];
 		return nil;
 	}
 	
-	[enabledIntervalNames autorelease];
-	
-	return (NSArray*)enabledIntervalNames;
+	[enabledChordNames autorelease];
+		
+	return (NSArray*)enabledChordNames;
 }
 
 
 /*
- *	numIntervalsEnabled
+ *	numChordsEnabled
  *
- *	Purpose:	Exactly like the private numIntervalsEnabledInCustomDifficulty,
+ *	Purpose:	Exactly like the private numChordsEnabledInCustomDifficulty,
  *				except it's public and for current difficulty only.
  */
-- (NSUInteger)numIntervalsEnabled {
+- (NSUInteger)numChordsEnabled {
 	NSUInteger numEnabled = 0;
-	NSEnumerator *e = [enabledIntervals objectEnumerator];
+	NSEnumerator *e = [self.enabledChords objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
 		if ([obj boolValue]) {
@@ -127,20 +157,31 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 
+- (BOOL)chordIsEnabled:(NSString*)_chordName {
+	NSString *str;
+	for (str in [self enabledChordsByName]) {
+		if ([str isEqualToString:_chordName]) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
+
 /*
  *	setCustomDifficultyAtIndex: toValue:
  *
  *	Purpose:	Allows other classes/views to change the settings one at a time.
  *	Arguments:	(NSUInteger)_index:	index of self.customDifficulty
- *				(BOOL)_value:		interval is ON/OFF
- *	Returns:	(BOOL):				1 if the change leaves >=1 interval enabled
- *									0 if there would be 0 intervals enabled
- *										(the last interval is NOT disabled)
+ *				(BOOL)_value:		chord is ON/OFF
+ *	Returns:	(BOOL):				1 if the change leaves >=1 chord enabled
+ *									0 if there would be 0 chords enabled
+ *										(the last chord is NOT disabled)
  */
 - (BOOL)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value {
 	
-	// If making the change would mean 0 intervals enabled
-	if (_value == FALSE && [self numIntervalsEnabledInCustomDifficulty] == 1) {
+	// If making the change would mean 0 chords enabled
+	if (_value == FALSE && [self numChordsEnabledInCustomDifficulty] == 1) {
 		return 0;
 	}
 	
@@ -149,16 +190,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		NSNumber *tempValue = [[NSNumber alloc] initWithBool:_value];
 		[self.customDifficulty replaceObjectAtIndex:_index withObject:tempValue];
 		[tempValue release];
+		
+		// Set user default
+		[self.userDefaults setObject:self.customDifficulty forKey:kCustomDifficulty];
+		[self.userDefaults synchronize];
+		
 		return 1;
 	}
 }
 
 - (char)getDifficulty {
-	char *chars;
-	[self.currentDifficulty characterAtIndex:0];
-	NSLog(@"\t\t(Settings)\t\t%c", chars[0]);
+	char char0 = [self.currentDifficulty characterAtIndex:0];
+	NSLog(@"\t\t(Settings)\t\t%c", char0);
 	
-	return chars[0];
+	return char0;
 }
 
 - (NSUInteger)getDifficultyAsUInt {
@@ -204,9 +249,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		default:
 			break;
 	}	
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	[prefs setObject:[self customDifficulty] forKey:@"currentDiff"];
-	[prefs synchronize];
 }
 
 - (void)setDifficultyWithUInt:(NSUInteger)_difficulty {
@@ -236,47 +278,102 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  *	lazy init of our vars
  */
 
-- (NSArray*)intervalNames {
-	if (intervalNames == nil) {
+- (NSArray*)chordNames {
+	if (chordNames == nil) {
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		intervalNames = [rawConfigDict objectForKey:@"IntervalNames"];
+		chordNames = [rawConfigDict objectForKey:@"ChordNames"];
+		[chordNames retain];
+		[rawConfigDict release];
 	}
-	return intervalNames;
+	return chordNames;
+}
+
+#pragma mark -
+
+- (void)setIsArpeggiated:(BOOL)_isArpeggiated {
+	isArpeggiated = _isArpeggiated;
+	
+	// Set user default
+	[self.userDefaults setBool:isArpeggiated forKey:kIsArpeggiated];
+	[self.userDefaults synchronize];
+}
+
+- (void)setAllowInversions:(BOOL)_allowInversions {
+	allowInversions = _allowInversions;
+	
+	// Set user default
+	[self.userDefaults setBool:allowInversions forKey:kAllowInversions];
+	[self.userDefaults synchronize];
+}
+
+#pragma mark -
+
+- (NSString*)enabledRoot {
+	if (enabledRoot == nil) {
+		NSString *temp = [[NSString alloc] initWithString:@"any"];
+		[self setEnabledRoot:temp];
+		[temp release];
+	}
+	return enabledRoot;
+}
+
+- (void)setEnabledRoot:(NSString *)_enabledRoot {
+	if (enabledRoot	!= _enabledRoot) {
+		[_enabledRoot retain];
+		[enabledRoot release];
+		enabledRoot = _enabledRoot;
+	}
+	
+	// Set user default
+	[self.userDefaults setObject:enabledRoot forKey:kEnabledRoot];
+	[self.userDefaults synchronize];
 }
 
 #pragma mark -
 
 - (NSArray*)easyDifficulty {
 	if (easyDifficulty == nil) {
-		easyDifficulty = [self loadDifficulty:kEasyDifficulty];
+		easyDifficulty = [self loadDifficulty:kEasyDifficulty];			// returns an autoreleased (+0 retain count) object
+		[easyDifficulty retain];
 	}
 	return easyDifficulty;
 }
 
 - (NSArray*)mediumDifficulty {
 	if (mediumDifficulty == nil) {
-		mediumDifficulty = [self loadDifficulty:kMediumDifficulty];
+		mediumDifficulty = [self loadDifficulty:kMediumDifficulty];		// returns an autoreleased (+0 retain count) object
+		[mediumDifficulty retain];
 	}
 	return mediumDifficulty;
 }
 
 - (NSArray*)hardDifficulty {
 	if (hardDifficulty == nil) {
-		hardDifficulty = [self loadDifficulty:kHardDifficulty];
+		hardDifficulty = [self loadDifficulty:kHardDifficulty];			// returns an autoreleased (+0 retain count) object
+		[hardDifficulty retain];
 	}
 	return hardDifficulty;
 }
 
 - (NSMutableArray*)customDifficulty {
     if (customDifficulty == nil) {
-		customDifficulty = (NSMutableArray*) [self loadDifficulty:kCustomDifficulty];
+		customDifficulty = (NSMutableArray*) [self loadDifficulty:kCustomDifficulty];	// returns an autoreleased (+0 retain count) object
+		[customDifficulty retain];
     }
     return customDifficulty;	
 }
 
 - (void)setCustomDifficulty:(NSMutableArray *)_customDifficulty {
-	self.customDifficulty = _customDifficulty;
+	if (customDifficulty != _customDifficulty) {
+		[_customDifficulty retain];
+		[customDifficulty release];
+		customDifficulty = _customDifficulty;
+		
+		// Set user default
+		[self.userDefaults setObject:customDifficulty forKey:kCustomDifficulty];
+		[self.userDefaults synchronize];
+	}
 }
 
 - (NSString*)currentDifficulty {
@@ -287,51 +384,59 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 - (void)setCurrentDifficulty:(NSString*)_difficulty {
-	currentDifficulty = _difficulty;
-	
-	// easy
-	if ([_difficulty isEqualToString:kEasyDifficulty]) {
-		[self setEnabledIntervals:self.easyDifficulty];
+	if (currentDifficulty != _difficulty) {
+		[_difficulty retain];
+		[currentDifficulty release];
+		currentDifficulty = _difficulty;
+		
+		// easy
+		if ([_difficulty isEqualToString:kEasyDifficulty]) {
+			[self setEnabledChords:self.easyDifficulty];
+		}
+		
+		// medium
+		else if ([_difficulty isEqualToString:kMediumDifficulty]) {
+			[self setEnabledChords:self.mediumDifficulty];
+		}
+		
+		// hard
+		else if ([_difficulty isEqualToString:kHardDifficulty]) {
+			[self setEnabledChords:self.hardDifficulty];
+		}
+		
+		// custom
+		else if ([_difficulty isEqualToString:kCustomDifficulty]) {
+			[self setEnabledChords:self.customDifficulty];
+		}
+		
+		// default
+		else {
+			[self setEnabledChords:self.easyDifficulty];
+		}
+		
+		NSLog(@"(Settings)Difficulty is now %@", currentDifficulty);
+		
+		// Set user default
+		[self.userDefaults setObject:currentDifficulty forKey:kCurrentDifficulty];
+		[self.userDefaults synchronize];
 	}
-	
-	// medium
-	else if ([_difficulty isEqualToString:kMediumDifficulty]) {
-		[self setEnabledIntervals:self.mediumDifficulty];
-	}
-	
-	// hard
-	else if ([_difficulty isEqualToString:kHardDifficulty]) {
-		[self setEnabledIntervals:self.hardDifficulty];
-	}
-	
-	// custom
-	else if ([_difficulty isEqualToString:kCustomDifficulty]) {
-		[self setEnabledIntervals:self.customDifficulty];
-	}
-	
-	// default
-	else {
-		[self setEnabledIntervals:self.easyDifficulty];
-	}
-	
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	[prefs setObject:currentDifficulty forKey:@"currentDiff"];
-	[prefs synchronize];
-	
-	NSLog(@"(Settings)Difficulty is now %@", currentDifficulty);
 }
 
 #pragma mark -
 
-- (NSArray*)enabledIntervals {
-	if (enabledIntervals == nil) {
-		enabledIntervals = self.easyDifficulty;
+- (NSArray*)enabledChords {
+	if (enabledChords == nil) {
+		enabledChords = self.easyDifficulty;
 	}
-	return enabledIntervals;
+	return enabledChords;
 }
 
-- (void)setEnabledIntervals:(NSArray*)_enabledIntervals; {
-	enabledIntervals = _enabledIntervals;
+- (void)setEnabledChords:(NSArray*)_enabledChords; {
+	if (enabledChords != _enabledChords) {
+		[_enabledChords retain];
+		[enabledChords release];
+		enabledChords = _enabledChords;
+	}
 }
 
 

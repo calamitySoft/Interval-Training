@@ -1,6 +1,6 @@
 //
 //  FlipsideViewController.m
-//  Interval-Training
+//  OTG-Chords
 //
 //  Created by Logan Moseley on 8/20/10.
 //  Copyright CalamitySoft 2010. All rights reserved.
@@ -18,10 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
-
-	// Arpeggiate setup
-	[isArpeggiatedSwitch setOn:[[Settings sharedSettings] isArpeggiated] animated:NO];
+    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
 	
 	
 	// Difficulty setup
@@ -30,12 +27,23 @@
 	
 	
 	// Root setup
-	noteNames = [[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
-						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
-		// intermediate str->int step means this list can be in whatever order we want
-	NSString *currentRootSettingStr = [delegate enabledRoot];
+	[self setNoteNames:[[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
+						@"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil]];
+	// intermediate str->int step means this list can be in whatever order we want
+	NSString *currentRootSettingStr = [[Settings sharedSettings] enabledRoot];
 	[self setCurrentRootSetting:[noteNames indexOfObject:currentRootSettingStr]];
 	[self updateRootDisplay];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	// Arpeggiate setup
+	[isArpeggiatedSwitch setOn:[[Settings sharedSettings] isArpeggiated] animated:NO];
+	
+	// Inversion setup
+	[allowInversionsSwitch setOn:[[Settings sharedSettings] allowInversions] animated:NO];
 }
 
 
@@ -65,12 +73,12 @@
 
 
 /*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
 
 
 - (void)dealloc {
@@ -78,17 +86,22 @@
     [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Arpeggiate Control
 
-// Inverts whatever the arpeggiate mode is set too
-// Also updates the button with text to reflect current action
+
+#pragma mark -
+#pragma mark Play Style Control
+
+// tells Settings about the new isArpeggiated setting
 - (IBAction)toggleArpeggiate:(id)sender {
 	[[Settings sharedSettings] setIsArpeggiated:[sender isOn]];
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	[prefs setBool:[[Settings sharedSettings] isArpeggiated] forKey:@"arpeggiate"];
-	[prefs synchronize];
 }
+
+// tells Settings about the new allowInversions setting
+- (IBAction)toggleInversions:(id)sender {
+	[[Settings sharedSettings] setAllowInversions:[sender isOn]];
+}
+
+
 
 #pragma mark -
 #pragma mark Difficulty Control
@@ -104,7 +117,7 @@
 	}
 }
 
-//	Allow the player to set his own set of intervals to practice.
+//	Allow the player to set his own set of chords to practice.
 //	Flips to a CustomDiffView.
 - (void)setCustomDifficulty {
 	
@@ -118,12 +131,12 @@
 }
 
 //	Sets indication of the current difficulty, and of the text view
-//		explaining the currently tested intervals.
+//		explaining the currently tested chords.
 //	Side effect: This will invoke [setDifficulty:] (above), due to setting the
 //		selection. (~It doesn't only respond to hardware UI events.)
 - (void)setDifficultyDisplay {
 	[difficultySegmentedControl setSelectedSegmentIndex:self.tempDifficultySetting];
-
+	
 	NSArray *selectedDifficulty;
 	switch (difficultySegmentedControl.selectedSegmentIndex) {
 		case 0:
@@ -141,22 +154,22 @@
 		default:
 			return;
 	}
-
-	NSString *tempTestingString = [[NSString alloc] initWithString:@""];
+	
+	NSString *tempTestingString = [NSString stringWithString:@""];
 	BOOL first = TRUE;
 	for (NSUInteger i=0; i<[selectedDifficulty count]; i++) {
 		if ([[selectedDifficulty objectAtIndex:i] boolValue]) {
 			tempTestingString = first ?
-								[tempTestingString stringByAppendingFormat:@"%@",
-								 [self.abbrIntervalNames objectAtIndex:i]] :
-								[tempTestingString stringByAppendingFormat:@", %@",
-								 [self.abbrIntervalNames objectAtIndex:i]];
+			[tempTestingString stringByAppendingFormat:@"%@",
+			 [self.abbrChordNames objectAtIndex:i]] :
+			[tempTestingString stringByAppendingFormat:@", %@",
+			 [self.abbrChordNames objectAtIndex:i]];
 			first = FALSE;
 		}
 	}
 	[selectedDifficulty release];
 	
-	[intervalSettingsDisplay setText:tempTestingString];
+	[chordSettingsDisplay setText:tempTestingString];
 }
 
 
@@ -166,14 +179,14 @@
 - (IBAction)switchRootLeft {
 	[self setCurrentRootSetting:
 	 currentRootSetting>0 ? currentRootSetting-1 : currentRootSetting];				// set local var for storage
-	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
+	[[Settings sharedSettings] setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
 	[self updateRootDisplay];	// update display
 }
 
 - (IBAction)switchRootRight {
 	[self setCurrentRootSetting:
 	 currentRootSetting<[noteNames count]-1 ? currentRootSetting+1 : currentRootSetting];	// set local var for storage
-	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];		// tell AppDelegate
+	[[Settings sharedSettings] setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];		// tell AppDelegate
 	[self updateRootDisplay];	// update display
 }
 
@@ -206,13 +219,15 @@
  *	lazy init of our vars
  */
 
-- (NSArray*)abbrIntervalNames {
-	if (abbrIntervalNames == nil) {
+- (NSArray*)abbrChordNames {
+	if (abbrChordNames == nil) {
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		abbrIntervalNames = [rawConfigDict objectForKey:@"AbbrIntervalNames"];
+		abbrChordNames = [rawConfigDict objectForKey:@"AbbrChordNames"];
+		[abbrChordNames retain];
+		[rawConfigDict release];		// var must be released, but it's a part of abbrChordNames, so that one would be released as well (I think?)
 	}
-	return abbrIntervalNames;
+	return abbrChordNames;
 }
 
 @end

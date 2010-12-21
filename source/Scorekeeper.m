@@ -1,6 +1,6 @@
 //
 //  Scorekeeper.m
-//  Interval-Training
+//  OTG-Chords
 //
 //  Created by Sam on 10/20/10.
 //  Copyright 2010 CalamitySoft. All rights reserved.
