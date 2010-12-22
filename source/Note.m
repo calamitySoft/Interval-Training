@@ -41,9 +41,10 @@
 		// Create a sound ID at var wholeSample.
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
 		AVAudioPlayer *tempPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-		tempPlayer.delegate = self;
 		self.wholeSample = tempPlayer;
 		[tempPlayer release];
+		[self.wholeSample setDelegate:self];
+		[self.wholeSample.delegate retain];
 	} else {
 		NSLog(@"(Note) Error with soundPath");
 	}
@@ -69,8 +70,11 @@
 	{
 		// Create a sound ID at var wholeSample.
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-		self.wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+		AVAudioPlayer *tempPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+		self.wholeSample = tempPlayer;
+		[tempPlayer release];
 		[self.wholeSample setDelegate:self];
+		[self.wholeSample.delegate retain];
 	}
 	else
 	{
